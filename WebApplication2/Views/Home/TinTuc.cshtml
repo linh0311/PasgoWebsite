@@ -1,0 +1,50 @@
+﻿@model IEnumerable<WebApplication2.Models.BaiVietSP_Result>
+@using WebApplication2.CustomHtmlHelper
+
+@{
+    Layout = null;
+    int x = 6;
+}
+
+<section class="wapper" id="pasgo-tintuc">
+    <div class="wapcontent">
+        <div class="row">
+            <div class="col-md-12 col-12 no-padding mobile">
+                <span class="mobile-header" style="margin-bottom: 0; float: left; margin-bottom: 5px;"><h1>Tin tức PasGo</h1></span>
+                <span class="mobile-header-more" style="float: right;"><a href="https://pasgo.vn/tin-tuc">Xem tất cả<span class="pasgo-icondesktop-menured"></span></a></span>
+            </div>
+            <div class="col-md-12 col-sm-12 no-padding hold-list">
+                <ul class="list-header">
+                    <li><a href="https://pasgo.vn/tin-tuc">Tin tức PasGo <span class="pasgo-icondesktop-menublack"></span></a></li>
+                    <li><a href="https://pasgo.vn/tin-tuc/chuyen-muc-tin-pasgo-2">Tin PasGo</a></li>
+                    <li><a href="https://pasgo.vn/tin-tuc/chuyen-muc-tuyen-dung-5">Tuyển dụng</a></li>
+                    <li><a href="https://pasgo.vn/tin-tuc/chuyen-muc-tin-am-thuc-3">Tin Ẩm thực</a></li>
+                    <li><a href="https://pasgo.vn/tin-tuc/chuyen-muc-goc-nhin-4">Góc nhìn</a></li>
+                    <li><a href="https://pasgo.vn/tin-tuc/chuyen-muc-ve-pasgo-6">Về PasGo</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-12 col-12 no-padding bodynotscroll">
+            @for (int i = 0; i < 3; i++)
+            {
+                <div class="col-md-4 col-sm-4 col-6 no-padding">
+                    <div class="blog border-bottom container">
+                        @Html.TinTuc1(Model.ElementAt(i).Title, Model.ElementAt(i).Teaser, Model.ElementAt(i).Link, Model.ElementAt(i).Img, Model.ElementAt(i).date)
+                    </div>
+                </div>
+            }
+            <div class="col-md-12 col-12 no-padding">
+                <ul class="blog-item container no-padding">
+                    @for (int i = 3; i < 6; i++)
+                    {
+                        <li class="col-md-4 col-sm-4 col-12">
+                            <div class=" border-bottom container blog">
+                                @Html.TinTuc2(Model.ElementAt(i).Title, Model.ElementAt(i).Teaser, Model.ElementAt(i).Link, Model.ElementAt(i).Img, Model.ElementAt(i).date)
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

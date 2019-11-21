@@ -1,0 +1,27 @@
+﻿@model IEnumerable<WebApplication2.Models.thongtinthemSP_Result>
+
+@{
+    ViewBag.Title = "Pic";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="col-12" id="admin-pic">
+    <h2>Thông tin thêm</h2>
+    <span>
+        @Html.ActionLink("Chỉnh sửa", "Details")
+    </span>
+    <div>
+        @foreach (var item in Model)
+        {
+            <div class="checkboxthongtin" style="float: left; width: 14%">
+                @if(item.val == 1){
+                    <input style="margin-right: 5px;" type="checkbox" name="vehicle1" value="Bike" checked disabled>
+                }else{
+                    <input style="margin-right: 5px;" type="checkbox" name="vehicle1" value="Bike" disabled>
+                }
+                <label style="font-weight: unset">@item.thuoctinh</label>
+            </div>
+        }
+    </div>
+</div>

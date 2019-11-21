@@ -1,0 +1,112 @@
+﻿@model int?
+
+@{
+    ViewBag.Title = "InsertPic";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+    <div class="col-12" id="admin-updatepic">
+        <br />
+        <br />
+        <h2>Thêm hình ảnh</h2>
+        <label class="field-validation-error" style="float: left">@TempData["Failed"]</label>
+        <label class="field-validation-error" style="color:forestgreen !important; float: left">@TempData["Success"]</label>
+        <br />
+        <div class="dol-12" style="overflow: auto">
+            @using (Html.BeginForm("UpdatePic", "NhaHang", new { Rid = Model, vitri = 1 }))
+            {
+                <input type="submit" value="Quay về" class="btn btn-default" style="float: left" />
+            }
+        </div>
+
+        <div style="width: 50%; float: left;">
+            <h4>Xem trước hình ảnh</h4>
+            <label class="field-validation-error" id="notify"></label>
+            <img name="newimg" style="width: 100%" />
+        </div>
+
+        @using (Html.BeginForm("Insert1Pic", "NhaHang", FormMethod.Post))
+        {
+            <input type="hidden" value=@Model.ToString() name="rid" />
+            <div style="width: 50%; float: left; padding-top: 15px;">
+                <div class="form-group">
+                    <label class="control-label col-md-2">ID :</label>
+                    <div class="col-md-2">
+                        <input class="form-control text-box single-line" name="showid" type="number" readonly>
+                    </div>
+                    <label class="control-label col-md-2">Thứ tự :</label>
+                    <div class="col-md-2">
+                        <input class="form-control text-box single-line" name="showthutu" type="number" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Src :</label>
+                    <div class="col-md-6">
+                        <input class="form-control text-box single-line" name="newduongdan" type="text">
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="form-control" id="btnXoa" disabled>Xóa</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="form-control" id="btnXem">Xem</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Mô tả :</label>
+                    <div class="col-md-10">
+                        <textarea class="form-control" cols="20" name="showmota" rows="6" style="width: 100%;"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Loại :</label>
+                    <div class="col-md-4">
+                        <!--<input class="form-control text-box single-line" name="showloai" type="number">-->
+                        <select id="loai" name="loai" class="form-control">
+                            <option value="1">Slide</option>
+                            <option value="2">Menu</option>
+                            <option value="99">Home Page</option>
+                        </select>
+                    </div>
+                </div>
+                <input type="submit" id="submit" value="Cập nhật" class="btn btn-default" style="float: left; margin-left: calc(17% + 15px); margin-bottom: 15px;" disabled />
+            </div>
+        }
+        <br />
+    </div>
+    <script>
+        var img = new Image();
+        var img2 = document.getElementsByName("newimg")[0];
+        var btn = document.getElementById("submit");
+        var notify = document.getElementById("notify");
+        var duongdan = document.getElementsByName("newduongdan")[0];
+        var btnXoa = document.getElementById("btnXoa");
+
+        document.getElementById("btnXem").addEventListener("click", function () { CheckAvailable(duongdan.value) });
+        btnXoa.addEventListener("click", function () { reset() });
+
+        function CheckAvailable(url) {      
+            notify.innerHTML = "Đường dẫn hình ảnh không hợp lệ";
+            notify.removeAttribute("style");
+            btn.setAttribute("disabled", true);
+            btnXoa.removeAttribute("disabled");
+            img.addEventListener("load", function () {
+                btn.removeAttribute("disabled");
+                duongdan.setAttribute("readonly", true);
+                notify.setAttribute("style", "color:forestgreen !important");
+                notify.innerHTML = "Đường dẫn hình ảnh hợp lệ";
+            });
+            img.src = url;
+            img2.src = url;
+        }
+
+        function reset() {
+            duongdan.value = '';
+            duongdan.removeAttribute("readonly");
+            btn.setAttribute("disabled", true);
+            btnXoa.setAttribute("disabled", true);
+            notify.innerHTML = "Không có hình ảnh";
+            notify.removeAttribute("style");
+            img2.src = null;
+        }
+    </script>

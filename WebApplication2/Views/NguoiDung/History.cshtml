@@ -1,0 +1,145 @@
+﻿@model Tuple<List<WebApplication2.Models.FullInfoHistory_Result>, int, int>
+
+    @{
+        ViewBag.Title = "History";
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+
+    <div class="col-12" id="admin-userdetails">
+        <div>
+            <br />
+            <br />
+            <h2>Lịch sử đặt chỗ</h2>
+            <div style="margin-bottom: 3px;">
+                @using (Html.BeginForm("Details", "NguoiDung", new { PasgoID = Model.Item2, type = Model.Item3 }))
+                {
+                    <input type="submit" value="Quay về" class="btn btn-default" style="float: left; margin-right: 10px;" />
+                }
+                @using (Html.BeginForm("History", "NguoiDung", new { PasgoID = Model.Item2, type = Model.Item3 }))
+                {
+                    <label style="padding-left: 25%">Từ</label>
+                    <input class="btn btn-default" type="date" name="from" min="2001-01-01"/>
+                    <label>đến</label>
+                    <input class="btn btn-default" type="date" name="to" min="2001-01-01"/>
+                    <input class="btn btn-default" type="submit" value="Tìm" />
+                }
+                <label class="field-validation-error">@TempData["Failed"]</label>
+                <label class="field-validation-error" style="color:forestgreen !important">@TempData["Success"]</label>
+            </div>
+            
+            <table>
+                <tr>
+                    <th style="text-align: center; width: 9%;">
+                        Thời gian gọi
+                    </th>
+                    <th style="text-align: center; width: 15%">
+                        Nhà hàng
+                    </th>
+                    <th style="width: 25%">
+                    </th>
+                    <th style="text-align: center; width: 15%">
+                        Địa chỉ
+                    </th>
+                    <th style="text-align: center;">
+                        SĐT
+                    </th>
+                    <th style="text-align: center; width: 9%">
+                        Thời gian đặt
+                    </th>
+                    <th style="text-align: center; width: 9%">
+                        Thời gian đến
+                    </th>
+                    <th style="text-align: center; width: 4%">
+                        Trạng thái
+                    </th>
+                    <th style="text-align: center; width: 25%">
+                        Yêu cầu
+                    </th>
+                    <th style="text-align: center; width: 4%">
+                        Trạng thái
+                    </th>
+                </tr>
+                @foreach (var item in Model.Item1)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(x => item.CallTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(x => item.RName)
+                        </td>
+                        <td>
+                            <a href=@Html.DisplayFor(x => item.Rlink) target="_blank">
+                                <img src=@Html.DisplayFor(x => item.imgLink) style="width: 100%">
+                            </a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(x => item.Raddress)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(x => item.RPhone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(x => item.ETA)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(x => item.ArriveTime)
+                        </td>
+                        <td style="text-align: center">
+                            <p name="status1" style="text-align: center;">@Html.DisplayFor(x => item.TrangThai1)</p>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(x => item.Request)
+                        </td>
+                        <td style="text-align: center">
+                            <p name="status2" style="text-align: center;">@Html.DisplayFor(x => item.TrangThai2)</p>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+<script>
+    window.onload = function () { statuscolor(), date() };
+
+    function statuscolor() {
+        for (var x = 0; x < @Model.Item1.Count(); x++) {
+            var a = document.getElementsByName("status2")[x].innerHTML;
+            var b = document.getElementsByName("status1")[x].innerHTML;
+            switch (a) {
+                case "Yêu cầu bị hủy":
+                    document.getElementsByName("status2")[x].setAttribute("style", "text-align: center; color: red;");
+                    break;
+                case "Hoàn thành":
+                    document.getElementsByName("status2")[x].setAttribute("style", "text-align: center; color: green;");
+                    break;
+                default:
+                    document.getElementsByName("status2")[x].setAttribute("style", "text-align: center; color: mediumblue;");
+                    break;
+            }
+            switch (b) {
+                case "Chưa đến":
+                    document.getElementsByName("status1")[x].setAttribute("style", "text-align: center; color: red;");
+                    break;
+                case "Đã đến":
+                    document.getElementsByName("status1")[x].setAttribute("style", "text-align: center; color: green;");
+                    break;
+                default:
+                    document.getElementsByName("status1")[x].setAttribute("style", "text-align: center; color: mediumblue;");
+                    break;
+            }
+        }
+    }
+
+    function date() {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+        document.getElementsByName("from")[0].setAttributes("max", today);
+        document.getElementsByName("to")[0].setAttribute("max", today);
+        document.getElementsByName("to")[0].setAttribute("value", today);
+    }
+</script>

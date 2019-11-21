@@ -1,0 +1,44 @@
+﻿@model IEnumerable<WebApplication2.Models.PasgoTV>
+@using WebApplication2.CustomHtmlHelper
+
+@{
+    Layout = null;
+    int x = 6;
+}
+
+<section class="wapper" id="pasgo-tv">
+    <div class="wapcontent">
+        <div class="row">
+            <div class="col-md-12 col-12 no-padding mobile">
+                <span class="mobile-header" style="margin-bottom: 0; float: left; margin-bottom: 5px;"><h1>PasGoTV</h1></span>
+                <span class="mobile-header-more" style="float: right;"><a href="https://pasgo.vn/ha-noi/video">Xem tất cả<span class="pasgo-icondesktop-menured"></span></a></span>
+            </div>
+            <div class="col-sm-12 col-md-12 no-padding pc">
+                <a href="https://pasgo.vn/ha-noi/video"><h1>PasGoTV <span class="pasgo-icondesktop-menublack"></span></h1></a>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-12 no-padding">
+            <div class="col-md-4 col-sm-12 col-12">
+                <div class="container blog">
+                    @Html.Video1(Model.ElementAt(1).Title, Model.ElementAt(1).LinkTV, Model.ElementAt(1).Img, Model.ElementAt(1).Views.Value, Model.ElementAt(1).Date.ToString(), Model.ElementAt(1).Tag, Model.ElementAt(1).TagLink, Model.ElementAt(1).VideoTime)
+                </div>
+            </div>
+            <div class="col-12 no-padding mobile" style="float: left;"><h1 style="text-align-last: center; border: none; background-color: #cfcfcf; padding: 5px;">Video nổi bật</h1></div>
+            <div class="col-md-8 col-sm-12 col-12 no-padding bodyscroll" style="float: left;">
+                <ul class="blog body-list">
+                    @for (int i = 1; i < Model.Count(); i++)
+                    {
+                        <li class="col-md-6 col-sm-12 col-12 bois" style="float: left;">
+                            <div class="container wap-item">
+                                @Html.Video2(Model.ElementAt(i).Title, Model.ElementAt(i).LinkTV, Model.ElementAt(i).Img, Model.ElementAt(i).Views.Value, Model.ElementAt(i).Date.ToString(), Model.ElementAt(i).Tag, Model.ElementAt(i).TagLink, Model.ElementAt(i).VideoTime, i)
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="col-md-12 col-12 end-wapper">
+                <a href="https://pasgo.vn/ha-noi/bo-suu-tap">Xem tất cả<span class="pasgo-icondesktop-menured"></span></a>
+            </div>
+        </div>
+    </div>
+</section>

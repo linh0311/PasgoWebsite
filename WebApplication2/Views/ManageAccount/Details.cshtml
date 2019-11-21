@@ -1,0 +1,131 @@
+﻿@model WebApplication2.Models.GetUserInforSP_Result
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+    <div class="wapper-content" id="infor">
+        @using (Html.BeginForm("Details", "ManageAccount", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="container">
+                <div class="wapper">
+                    <br />
+                    <div style="float: left;" class="col-12">
+                        <label class="field-validation-error">@TempData["Failed"]</label>
+                        <label class="field-validation-error" style="color:forestgreen !important">@TempData["Success"]</label>
+                    </div>
+                    <ul class="col-12 col-sm-4">
+                        <li class="col-12 infor-tab">
+                            <div class="col-12 col-sm-3 avatar">
+                                <img src="" alt="Smiley face">
+                            </div>
+                            <div class="col-12 col-sm-9 pasgo-user-id">
+                                <p>ID Pasgo : @Session["PasgoID"]</p>
+                                <p>SĐT : @Session["PhoneNumber"]</p>
+                            </div>
+                        </li>
+                        <li class="col-12 infor-tab">
+                            <span>Icon</span>
+                            @Html.ActionLink("Thông tin tài khoản", "Details", "ManageAccount")
+                            <span class="pasgo-icondesktop-menublack"></span>
+                        </li>
+                        <li class="col-12 infor-tab">
+                            <span>Icon</span>
+                            @Html.ActionLink("Quản lý mật khẩu", "ChangePassword", "ManageAccount")
+                            <span class="pasgo-icondesktop-menublack"></span>
+                        </li>
+                        <li class="col-12 infor-tab">
+                            <span>Icon</span>
+                            @Html.ActionLink("Lịch sử đặt chỗ", "History", "ManageAccount")
+                            <span class="pasgo-icondesktop-menublack"></span>
+                        </li>
+                        <li class="col-12 infor-tab">
+                            <span>Icon</span>
+                            @Html.ActionLink("Thoát", "Index", "Home")
+                            <span class="pasgo-icondesktop-menublack"></span>
+                        </li>
+                    </ul>
+                    <div class="col-12 col-sm-8">
+
+                        <h1 class="col-12">THÔNG TIN TÀI KHOẢN</h1>
+                        <div class="col-12 infor-user">
+                            <label class="col-2">Tên :</label>
+                            @Html.TextBoxFor(model => model.FullName, new { @class = "col-6" })
+                        </div>
+                        <div class="col-12 infor-user">
+                            <label class="col-2">Email :</label>
+                            @Html.TextBoxFor(model => model.Email, new { @class = "col-6" })
+                        </div>
+                        <div class="col-12 infor-user">
+                            <label class="col-2" style="float: left;">Ngày sinh:</label>
+                            @Html.TextBoxFor(model => model.DOB, "{0:dd/MM/yyyy}", new { @class = "col-6" })
+                            <!--
+                <label class="col-2" style="float: left;">Ngày sinh:</label>
+                @Html.TextBoxFor(model => model.DOB, "{0:dd}", new { @class = "col-2" })
+                <label class="col-1" style="float: left;">Tháng:</label>
+                @Html.TextBoxFor(model => model.DOB, "{0:MM}", new { @class = "col-2" })
+                <label class="col-1" style="float: left;">Năm:</label>
+                @Html.TextBoxFor(model => model.DOB, "{0:yyyy}", new { @class = "col-2" })
+            -->
+                        </div>
+                        <div class="col-12 infor-user">
+                            <label class="col-2">Giới tính :</label>
+                            <div class="col-3">
+                                @Html.RadioButtonFor(model => model.Gender_, "True", Model.Gender_ == true ? new { Checked = "checked" } : null)
+                                <label>Nam</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.RadioButtonFor(model => model.Gender_, "False", Model.Gender_ == false ? new { Checked = "checked" } : null)
+                                <label>Nữ</label>
+                            </div>
+
+                        </div>
+                        <div class="col-12">
+                            <p>Tích chọn những lĩnh vực mà bạn quan tâm</p>
+                            <div class="col-3">
+                                <input type="checkbox" name="vehicle1" value="Bike">
+                                <label>Bar - Cafe</label>
+                            </div>
+                            <div class="col-3">
+                                <input type="checkbox" name="vehicle1" value="Bike">
+                                <label>Nhà Hàng</label>
+                            </div>
+                            <div class="col-3">
+                                <input type="checkbox" name="vehicle1" value="Bike">
+                                <label>Khách sạn</label>
+                            </div>
+                            <div class="col-3">
+                                <input type="checkbox" name="vehicle1" value="Bike">
+                                <label>Thời trang</label>
+                            </div>
+                            <div class="col-3">
+                                <input type="checkbox" name="vehicle1" value="Bike">
+                                <label>Làm đẹp</label>
+                            </div>
+                            <div class="col-3">
+                                <input type="checkbox" name="vehicle1" value="Bike">
+                                <label>Giải trí</label>
+                            </div>
+                            <div class="col-3">
+                                <input type="checkbox" name="vehicle1" value="Bike">
+                                <label>Sức khỏe</label>
+                            </div>
+                            <div class="col-3">
+                                <input type="checkbox" name="vehicle1" value="Bike">
+                                <label>Sân bay</label>
+                            </div>
+                        </div>
+                        <div class="col-2 no-padding">
+                            <input type="submit" value="Cập nhật" class="submit" />
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        }
+
+    </div>

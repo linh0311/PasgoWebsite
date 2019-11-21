@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WebApplication2.Models.BaiVietSP_Result>
+    @using WebApplication2.CustomHtmlHelper;
+    @{
+        Layout = null;
+        int x = 7;
+    }
+
+    <section class="wapper" id="pasgo-blog">
+        <div class="wapcontent">
+            <div class="row">
+                <div class="col-md-12 col-12 no-padding mobile">
+                    <span class="mobile-header" style="margin-bottom: 0; float: left; margin-bottom: 5px;"><h1>Blog PasGo</h1></span>
+                    <span class="mobile-header-more" style="float: right;"><a href="https://pasgo.vn/blog/ha-noi">Xem tất cả<span class="pasgo-icondesktop-menured"></span></a></span>
+                </div>
+                <div class="col-sm-12 col-md-12 hold-list">
+                    <ul class="list-header">
+                        <li><a href="https://pasgo.vn/blog/ha-noi">Blog PasGo<span class="pasgo-icondesktop-menublack"></span></a></li>
+                        <li><a href="https://pasgo.vn/blog/chuyen-muc-dia-diem-an-uong-1">Địa Điểm Ăn Uống</a></li>
+                        <li><a href="https://pasgo.vn/blog/chuyen-muc-mon-ngon-and-cong-thuc-16">Món ngon &amp; Công thức</a></li>
+                        <li><a href="https://pasgo.vn/blog/chuyen-muc-dac-san-vung-mien-17">Đặc sản vùng miền</a></li>
+                        <li><a href="https://pasgo.vn/blog/chuyen-muc-tiec-and-to-chuc-tiec-18">Tiệc &amp; Tổ chức tiệc</a></li>
+                        <li><a href="https://pasgo.vn/blog/chuyen-muc-suc-khoeandlam-dep-19">Sức khỏe &amp; Làm đẹp</a></li>
+                        <li><a href="https://pasgo.vn/blog/chuyen-muc-ben-le-am-thuc-4">Bên lề ẩm thực</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12 col-12 no-padding bodynotscroll">
+                @for (int i = 0; i < 2; i++)
+                {
+                    <div class="col-md-4 col-sm-6 col-12 no-padding">
+                        <div class="container blog">
+                            @Html.Blog1(Model.ElementAt(i).Title, Model.ElementAt(i).Teaser, Model.ElementAt(i).Link, Model.ElementAt(i).Img, Model.ElementAt(i).date)
+                        </div>
+                    </div>
+                }
+                <div class="col-md-4 col-sm-12 col-12 no-padding">
+                    <ul class="container blog-item" style="border:none;">
+                        @for (int i = 2; i < Model.Count(); i++)
+                        {
+                            <li class="col-12 no-padding">
+                                @Html.Blog2(Model.ElementAt(i).Title, Model.ElementAt(i).Link, Model.ElementAt(i).Img, Model.ElementAt(i).date)
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+                            <div class="col-md-12 col-12 end-wapper">
+                                <a href="https://pasgo.vn/ha-noi/bo-suu-tap">Xem tất cả<span class="pasgo-icondesktop-menured"></span></a>
+                            </div>
+    </div>
+</section>
+
+

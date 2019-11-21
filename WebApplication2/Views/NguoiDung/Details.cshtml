@@ -1,0 +1,242 @@
+﻿@model Tuple<WebApplication2.Models.FullInfoUser_Result, List<WebApplication2.Models.SimpleHistory_Result>, int>
+
+
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-12" id="admin-userdetails">
+    <br />
+    <br />
+    <br />
+    <input id="btnlock" value="Khóa" class="btn btn-default" style="float: right; width: 8%" />
+    @using (Html.BeginForm("Unlock", "NguoiDung", new { PasgoID = Model.Item1.PasgoID, usertype = Model.Item3 }))
+    {
+        <input type="submit" id="btnunlock" value="Mở khóa" class="btn btn-default" style="display: none" />
+    }
+    @using (Html.BeginForm("Index", "NguoiDung"))
+    {
+        <input type="submit" value="Trở về" class="btn btn-default" style="float: left;" />
+    }
+    <label class="field-validation-error" style="padding-left: 33% !important">@TempData["Failed"]</label>
+    <label class="field-validation-error" style="color:forestgreen !important; padding-left: 33% !important;">@TempData["Success"]</label>
+
+    <h2>Chi tiết</h2>
+    <div>
+        <!--Xoay cái bảng lại-->
+        <table style="width: 50%; float: left;">
+            <tr>
+                <th>
+                    PasgoID :
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Item1.PasgoID)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Tên người dùng :
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Item1.FullName)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Điện thoại :
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Item1.PhoneNumber)
+                </td>
+            </tr>
+            <!--Có thể đối chiếu để lấy tên thành phố-->
+            <tr>
+                <th>
+                    Trạng thái :
+                </th>
+                <td>
+                    @if (Model.Item1.PhoneConfrimed == true)
+                    {
+                        <p style="color: green;">Đã xác nhận</p>
+                    }
+                    else
+                    {
+                        <p style="color: red;">Chưa xác nhận</p>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Email:
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Item1.Email)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Trạng thái :
+                </th>
+                <td>
+                    @if (Model.Item1.EmailConfirmed == true)
+                    {
+                        <p style="color: green;">Đã xác nhận</p>
+                    }
+                    else
+                    {
+                        <p style="color: red;">Chưa xác nhận</p>
+                    }
+                </td>
+            </tr>
+
+        </table>
+        <table style="width: 50%; float: left;">
+            <tr>
+                <th>
+                    DOB :
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Item1.DOB)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Giới tính :
+                </th>
+                <td>
+                    @if (Model.Item1.Gender_ == true)
+                    {
+                        <text>Nam</text>
+                    }
+                    else
+                    {
+                        <text>Nữ</text>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Phân Loại :
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Item1.loai)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Trạng thái TK:
+                </th>
+                <td>
+                    @if (Model.Item1.Status == "Active")
+                    {
+                        <p id="status3" style="color: green;">Hoạt động</p>
+                    }
+                    else
+                    {
+                        <p id="status3" style="color: red;">Khóa tạm thời</p>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Mở khóa TK :
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Item1.Locked)
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="col-12" id="admin-userdetails">
+    <h2>Lịch sử đặt chỗ</h2>
+    <span>
+        @Html.ActionLink("Chi tiết", "History", new { PasgoID = Model.Item1.PasgoID, type = Model.Item3 })
+    </span>
+    <table>
+        <tr>
+            <th style="text-align: center; width: 10%;">
+                Thời gian đặt
+            </th>
+            <th style="text-align: center; width: 25%">
+                Nhà hàng
+            </th>
+            <th style="text-align: center; width: 5%">
+                Số lượng đặt
+            </th>
+            <th style="text-align: center">
+                Yêu cầu
+            </th>
+            <th style="text-align: center; width: 10%">
+                Trạng thái
+            </th>
+        </tr>
+        @foreach (var item in Model.Item2)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(x => item.ThoiGian)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => item.NhaHang)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => item.SoLuong)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => item.YeuCau)
+                </td>
+                <td>
+                    <p name="status" style="text-align: center;">@Html.DisplayFor(x => item.TrangThai)</p>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+@using (Html.BeginForm("Lock", "NguoiDung"))
+{
+    <div class="col-12 modal" id="myModal">
+        <div class="modal-content">
+            <p>Nhập thời gian muốn khóa</p>
+            <input class="form-control text-box single-line" type="number" name="howlong" />
+            <select class="form-control text-box single-line" name="type">
+                <option value="day">Ngày</option>
+                <option value="month">Tháng</option>
+                <option value="year">Năm</option>
+            </select>
+            <input type="hidden" name="id" value=@Model.Item1.PasgoID />
+            <input type="hidden" name="usertype" value=@Model.Item3 />
+            <button class="form-control text-box single-line" name="btncancel">Hủy</button>
+            <button class="form-control text-box single-line" type="submit" name="btnok">Xác nhận</button>
+        </div>
+    </div>
+}
+
+    <script>
+    window.onload = function () { statuscolor(), lock() };
+    document.getElementById("btnlock").addEventListener("click", function () {
+        document.getElementById("myModal").style.display = "block";
+    });
+
+    function statuscolor() {
+        for (var x = 0; x < @Model.Item2.Count(); x++) {
+            if (document.getElementsByName("status")[x].innerHTML == "Yêu cầu bị hủy")
+                document.getElementsByName("status")[x].setAttribute("style", "text-align: center; color: red;");
+            if (document.getElementsByName("status")[x].innerHTML == "Hoàn thành")
+                document.getElementsByName("status")[x].setAttribute("style", "text-align: center; color: green;" );
+        }
+    }
+
+    function lock() {
+        if (document.getElementById("status3").innerHTML != "Hoạt động") {
+            document.getElementById("btnunlock").setAttribute("style","float: right; width: 8%");
+            document.getElementById("btnlock").setAttribute("style", "display: none");
+        }
+        if (@Model.Item3 == 1)
+            document.getElementById("btnlock").setAttribute("style","display: none");
+    }
+    </script>
+

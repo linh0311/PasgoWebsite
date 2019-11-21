@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WebApplication2.Models.DoiTacSP_Result>
+@using WebApplication2.CustomHtmlHelper
+
+@{
+    Layout = null;
+}
+
+<section class="wapper" id="pasgo-doitac">
+    <div class="wapcontent">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 no-padding pc">
+                <h1>Đối tác của PasGo</h1>
+            </div>
+            <div class="col-md-12 col-12 no-padding mobile">
+                <span class="mobile-header" style="margin-bottom: 0; float: left; margin-bottom: 5px;"><h1>Đối tác của PasGo</h1></span>
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-12 no-padding bodyscroll" style="float: left;">
+            <div class="notarealcarousel" id="12345">
+                @foreach(var item in Model)
+                {
+                    <div class="wap-item">
+                        @Html.DoiTac(item.ImgDT, item.ImgDT, item.NameDT, item.AddressDT)
+                    </div>
+                }
+
+            </div>
+            <button class="carousel-control-next next-prev pc" id="control-left" onclick="goleft()">
+                <span class="carousel-control-next-icon" style="filter: invert(75%);" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-prev next-prev pc" id="control-right" onclick="goright()">
+                <span class="carousel-control-prev-icon" style="filter: invert(75%);" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+</section>

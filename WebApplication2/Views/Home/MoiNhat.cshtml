@@ -1,0 +1,29 @@
+﻿@model IEnumerable<WebApplication2.Models.AnUongSP_Result>
+@using WebApplication2.CustomHtmlHelper;
+@{
+    Layout = null;
+}
+
+    <section class="wapper" id="pasgo-moinhat">
+        <div class="wapcontent">
+            <div class="row">
+                <div class="col-md-12 col-12 no-padding mobile">
+                    <span class="mobile-header" style="margin-bottom: 0; float: left; margin-bottom: 5px;"><h1>Mới nhất trên PasGo</h1></span>
+                    <span class="mobile-header-more" style="float: right;"><a href="https://pasgo.vn/ha-noi/diem-den-moi-nhat">Xem tất cả<span class="pasgo-icondesktop-menured"></span></a></span>
+                </div>
+                <div class="col-md-12 col-sm-12 no-padding pc">
+                    <a href="https://pasgo.vn/nha-hang/le-beer-nguyen-thi-thap-3849"><h1>Mới nhất trên PasGo<span class="pasgo-icondesktop-menublack"></span></h1></a>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 no-padding">
+                <div id="pasgo-carousel-menu" class="carousel slide" data-ride="carousel" data-interval="2000">
+                    <div class="carousel-inner" role="listbox">
+                        @for (int x = 0; x < (Model.Count()); x++)
+                        {
+                            @Html.CarouselRating(Model.ElementAt(x).RName, Model.ElementAt(x).Raddress, Model.ElementAt(x).Rlink, Model.ElementAt(x).Rstar.Value, Model.ElementAt(x).Rdollar.Value, Model.ElementAt(x).Rpromotion, Model.ElementAt(x).Rfeature, Model.ElementAt(x).imgLink, Model.ElementAt(x).PasgoRID)
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

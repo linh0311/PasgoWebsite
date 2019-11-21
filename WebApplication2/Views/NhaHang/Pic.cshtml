@@ -1,0 +1,47 @@
+﻿@model Tuple<List<WebApplication2.Models.allImg_Result>>
+@using WebApplication2.CustomHtmlHelper
+
+@{
+    ViewBag.Title = "Pic";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+
+    <div class="col-12" id="admin-updatepic">
+        <br />
+        <h2>Pic</h2>
+        <span>
+            @Html.ActionLink("Chỉnh sửa", "Details")
+        </span>
+        <div style="display: flex;">
+            <div id="picCarousel" class="carousel slide" data-interval="false">
+             
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    @foreach (var item in Model.Item1)
+                    {
+                        @Html.AdminPicCarousel(item.imgLink, item.imgMoTa, Convert.ToInt64(item.No), Convert.ToInt32(item.imgType));
+                    }
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#picCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#picCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+            <div class="indicators">
+                <!-- Indicators -->
+                @foreach (var item in Model.Item1)
+                {
+                    @Html.AdminPicIndicators(item.imgLink, item.imgMoTa, Convert.ToInt64(item.No));
+                }
+            </div>
+        </div>
+    </div>

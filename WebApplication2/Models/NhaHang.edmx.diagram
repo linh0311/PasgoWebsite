@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9a4ad1f9a1a24f679642000d708409db" Name="Diagram1" ZoomLevel="80">
+        <EntityTypeShape EntityType="NhaHangModel.AnUong" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NhaHangModel.HeaderSlide" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NhaHangModel.img" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NhaHangModel.KhamPha" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NhaHangModel.khuyenmai" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NhaHangModel.loc" Width="1.5" PointX="10.125" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NhaHangModel.MoiNhat" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NhaHangModel.NhaHangUyTin" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NhaHangModel.PasgoRestaurant" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NhaHangModel.UuDaiHot" Width="1.5" PointX="3" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NhaHangModel.thongtinthem" Width="1.5" PointX="3" PointY="24.625" IsExpanded="true" />
+        <AssociationConnector Association="NhaHangModel.FK_dbo_anuong_dbo_PasgoRestaurant_PasgoRID" ManuallyRouted="false" />
+        <AssociationConnector Association="NhaHangModel.FK_dbo_HeaderSlide_dbo_PasgoRestaurant_PasgoRID" ManuallyRouted="false" />
+        <AssociationConnector Association="NhaHangModel.FK_dbo_img_dbo_PasgoRestaurant_PasgoRID" ManuallyRouted="false" />
+        <AssociationConnector Association="NhaHangModel.FK_dbo_KhamPha_dbo_PasgoRestaurant_PasgoRID" ManuallyRouted="false" />
+        <AssociationConnector Association="NhaHangModel.FK_dbo_khuyenmai_dbo_PasgoRestaurant_PasgoRID" ManuallyRouted="false" />
+        <AssociationConnector Association="NhaHangModel.FK_dbo_MoiNhat_dbo_PasgoRestaurant_PasgoRID" ManuallyRouted="false" />
+        <AssociationConnector Association="NhaHangModel.FK_dbo_NhaHangUyTin_dbo_PasgoRestaurant_PasgoRID" ManuallyRouted="false" />
+        <AssociationConnector Association="NhaHangModel.FK_dbo_thongitnthem_dbo_PasgoRestaurant_PasgoRID" ManuallyRouted="false" />
+        <AssociationConnector Association="NhaHangModel.FK_dbo_UuDaiHot_dbo_PasgoRestaurant_PasgoRID" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="NhaHangModel.PasgoUser" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="NhaHangModel.Menu" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="NhaHangModel.KhamPhaBv" Width="1.5" PointX="7.375" PointY="1" />
+        <AssociationConnector Association="NhaHangModel.FK_dbo_KhamPha_dbo_KhamPhaBv_PasgoRID" />
+        <EntityTypeShape EntityType="NhaHangModel.ThuongHieuChuoi" Width="1.5" PointX="3.75" PointY="29.5" />
+        <EntityTypeShape EntityType="NhaHangModel.ThuongHieuChuoiD" Width="1.5" PointX="6.5" PointY="13.625" />
+        <AssociationConnector Association="NhaHangModel.FK_dbo_ThuongHieuChuoiDS_dbo_PasgoRestaurant_PasgoRID" />
+        <AssociationConnector Association="NhaHangModel.FK_dbo_ThuongHieuChuoiDS_dbo_ThuongHieuChuoi_PasgoRID" />
+        <EntityTypeShape EntityType="NhaHangModel.BaiViet" Width="1.5" PointX="7.375" PointY="5.75" />
+        <EntityTypeShape EntityType="NhaHangModel.KhachHang" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="NhaHangModel.PasgoTV" Width="1.5" PointX="9.375" PointY="3.75" />
+        <EntityTypeShape EntityType="NhaHangModel.Promotion" Width="1.5" PointX="5.375" PointY="9.75" />
+        <EntityTypeShape EntityType="NhaHangModel.City" Width="1.5" PointX="6.5" PointY="16.125" />
+        <AssociationConnector Association="NhaHangModel.FK_dbo_PasgoRestaurant_dbo_City_Id" />
+        <EntityTypeShape EntityType="NhaHangModel.History" Width="1.5" PointX="6.5" PointY="18" />
+        <EntityTypeShape EntityType="NhaHangModel.PasgoVisitor" Width="1.5" PointX="9.375" PointY="7.75" />
+        <AssociationConnector Association="NhaHangModel.FK_dbo_History_dbo_PasgoRestaurant_PasgoRID" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

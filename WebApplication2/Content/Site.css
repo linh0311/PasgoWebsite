@@ -1,0 +1,4587 @@
+﻿
+@font-face {
+    font-family: 'Roboto Medium';
+    src: url('../fonts/fontroboto/Roboto-Medium.woff')
+}
+
+@font-face {
+    font-family: 'Roboto Regular';
+    src: url('../fonts/fontroboto/roboto-regular.woff')
+}
+
+.active {
+    display: block !important;
+}
+
+.container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.red {
+    background-color: #d02028 !important;
+}
+
+.white {
+    background-color: white !important;
+}
+
+.font-white {
+    color: white !important;
+}
+
+.border-bottom-red li:hover {
+    border-bottom: 2px solid white !important;
+}
+
+.border-bottom-red .menu-desktop-dropdown-list li:hover {
+    border-bottom: 2px solid #d02028 !important;
+}
+
+.noscroll {
+    overflow: hidden;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.header-top p {
+    float: left;
+    padding-left: 6px;
+    margin: 0;
+    font-size: 13px;
+}
+
+.header-top select {
+    float: left;
+    width: auto;
+    font-size: 13px;
+    border: none;
+    color: #d30606;
+    height: 100%;
+    padding-top: 0;
+}
+
+    .header-top select:focus {
+        border: none;
+        box-shadow: none;
+        color: #d30606;
+    }
+
+.header-main .col-12 {
+    padding: 0;
+}
+
+.header-fixed {
+    position: fixed;
+    transition: top 0.5s ease 0s;
+    -webkit-transition: top 0.5s ease 0s;
+    -moz-transition: top 0.5s ease 0s;
+    -o-transition: top 0.5s ease 0s;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+}
+
+.invisible {
+    display: none;
+}
+
+.border {
+    border: 1px solid #eee;
+}
+
+.round-border {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: auto;
+}
+
+.navigation {
+    height: 35px;
+    background-color: #f6f6f6;
+}
+/*Icon desktop*/
+
+.pasgo-huongdan{
+    background: url('../Assets/Images/icon-chon-nha-hang.png') no-repeat 0 0; 
+    width: 1019px; 
+    height: 209px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    margin-bottom: 20px; 
+    margin-top: 10px;
+}
+
+.pasgo-icondesktop-logored {
+    background: url('../Assets/Images/2x-desktop-v2.png') no-repeat -6px -8px;
+    width: 160px;
+    height: 36px;
+    zoom: 0.5;
+}
+
+.pasgo-icondesktop-logowhite {
+    background: url('../Assets/Images/2x-desktop-v2.png') no-repeat -171px -8px;
+    width: 160px;
+    height: 36px;
+    zoom: 0.5;
+}
+
+.pasgo-icondesktop-dropdown {
+    background: url("../Assets/Images/select/br_down.png") no-repeat 0 -3px;
+    filter: invert(75%);
+    width: 16px;
+    height: 10px;
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+    zoom: 0.65;
+}
+
+.pasgo-icondesktop-search {
+    background: url('../Assets/Images/2x-desktop-v2.png') no-repeat -435px -12px;
+    width: 33px;
+    height: 32px;
+    position: absolute;
+    zoom: 0.5;
+}
+
+.pasgo-icondesktop-menured {
+    background: url('../Assets/Images/2x-desktop-v2.png') no-repeat -244px -72px;
+    width: 16px;
+    height: 27px;
+    position: absolute;
+    zoom: 0.5;
+}
+
+.pasgo-icondesktop-menublack {
+    background: url('../Assets/Images/2x-desktop-v2.png') no-repeat -221px -72px;
+    width: 16px;
+    height: 27px;
+    position: absolute;
+    zoom: 0.5;
+    top: 65px;
+    margin-left: 1%;
+}
+
+.pasgo-icondesktop-district {
+    background: url('../Assets/Images/2x-desktop-v2.png') no-repeat -408px -11px;
+    width: 24px;
+    height: 33px;
+    position: absolute;
+    zoom: 0.5;
+}
+
+.pasgo-icondesktop-filter {
+    background: url('../Assets/Images/2x-desktop-v2.png') no-repeat -185px -75px;
+    width: 28px;
+    height: 24px;
+    position: absolute;
+    zoom: 0.5;
+    left: 20px;
+    top: 20px;
+}
+
+.pasgo-icondesktop-phone {
+    background: url('../Assets/Images/2x-desktop-v2.png') no-repeat -6px -49px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    zoom: 0.5;
+}
+
+.pasgo-icondesktop-category {
+    background: url('../Assets/Images/2x-desktop-v2.png') no-repeat -126px -73px;
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    zoom: 0.5;
+    margin: 25px;
+}
+
+.pasgo-icondesktop-arrow-left {
+    background: url('../Assets/Images/2x-desktop-v2.png') no-repeat -317px -57px;
+    width: 24px;
+    height: 42px;
+    position: absolute;
+    left: 20px;
+    top: 40%;
+    margin: -12px 0 0 10px
+}
+
+.pasgo-icondesktop-arrow-right {
+    background: url('../Assets/Images/2x-desktop-v2.png') no-repeat -357px -57px;
+    width: 24px;
+    height: 42px;
+    position: absolute;
+    right: 20px;
+    top: 40%;
+}
+
+.pasgo-icondesktop-kp-pin {
+    background: url('../Assets/Images/kp-icon/pin.jpg') no-repeat 0 0;
+    zoom: 0.8;
+    width: 30px;
+    height: 30px;
+}
+
+.pasgo-icondesktop-kp-usd {
+    background: url('../Assets/Images/kp-icon/usd.jpg') no-repeat 0 0;
+    zoom: 0.8;
+    width: 30px;
+    height: 30px;
+}
+
+.pasgo-icondesktop-kp-sale {
+    background: url('../Assets/Images/kp-icon/sale.jpg') no-repeat 0 0;
+    zoom: 0.8;
+    width: 30px;
+    height: 30px;
+}
+
+.pasgo-icondesktop-kp-star {
+    background: url('../Assets/Images/kp-icon/star.jpg') no-repeat 0 0;
+    zoom: 0.8;
+    width: 30px;
+    height: 30px;
+}
+
+.pasgo-icondesktop-facebook {
+    background: url('../Assets/Images/2x-desktop-v2.png') no-repeat -10px -263px;
+    width: 79px;
+    height: 78px;
+    zoom: 0.5;
+    display: inline-block;
+}
+
+.pasgo-icondesktop-google {
+    background: url('../Assets/Images/2x-desktop-v2.png') no-repeat -109px -261px;
+    width: 80px;
+    height: 80px;
+    zoom: 0.5;
+    display: inline-block;
+}
+
+.pasgo-icondesktop-youtube {
+    background: url('../Assets/Images/2x-desktop-v2.png') no-repeat -209px -261px;
+    width: 80px;
+    height: 80px;
+    zoom: 0.5;
+    display: inline-block;
+}
+
+.pasgo-icondesktop-bocongthuong {
+    background: url('../Assets/Images/2x-desktop-v2.png') no-repeat -10px -347px;
+    width: 290px;
+    height: 109px;
+    zoom: 0.5;
+    display: inline-block;
+}
+
+.pasgo-icondesktop-dmca {
+    background: url('../Assets/Images/2x-desktop-v2.png') no-repeat -307px -426px;
+    width: 121px;
+    height: 24px;
+    display: inline-block;
+}
+
+.pasgo-icondesktop-playbutton {
+    background: url('../Assets/Images/iconfinder_icon-play_211876.png') no-repeat -24px -15px;
+    width: 80px;
+    height: 97px;
+}
+/*.pasgo-icondesktop-appstore { background: url('Assets/Images/2x-desktop-v2.png') no-repeat -21px -168px; width: 229px; height: 68px;}
+	.pasgo-icondesktop-playstore { background: url('Assets/Images/2x-desktop-v2.png') no-repeat -286px -164px; width: 227px; height: 74px;}*/
+.pasgo-icondesktop-playstore {
+    background: url('../Assets/Images/playstore.png') no-repeat -41px -41px;
+    width: 564px;
+    height: 168px;
+}
+
+.pasgo-icondesktop-appstore {
+    background: url('../Assets/Images/appstore.png') no-repeat 0 0;
+    width: 300px;
+    height: 89px;
+}
+
+/*Icon mobile*/
+.pasgo-iconmobile-menu {
+    background: url('../Assets/Images/2x-mobile.png') no-repeat -407px -4px;
+    width: 50px;
+    height: 36px;
+    zoom: 0.5;
+}
+
+.pasgo-iconmobile-login {
+    background: url('../Assets/Images/2x-mobile.png') no-repeat -407px -140px;
+    width: 36px;
+    height: 39px;
+    zoom: 0.5;
+}
+
+.pasgo-iconmobile-search {
+    background: url('../Assets/Images/2x-mobile.png') no-repeat -314px -573px;
+    width: 46px;
+    height: 46px;
+    zoom: 0.5;
+    padding: inherit;
+}
+
+.pasgo-huongdan{background: url('../Assets/Images/icon-chon-nha-hang.png') no-repeat 0 0; width: 1019px; height: 209px; margin-left: auto; margin-right: auto; margin-bottom: 10px; margin-top: 10px;}
+
+/*Header-main*/
+.sticky {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    transition: top 0.5s ease 0s;
+    -webkit-transition: top 0.5s ease 0s;
+    -moz-transition: top 0.5s ease 0s;
+    -o-transition: top 0.5s ease 0s;
+}
+
+.show {
+    display: block !important;
+}
+
+.hide {
+    display: none !important;
+    transition: top 0.5s ease 0s;
+    -webkit-transition: top 0.5s ease 0s;
+    -moz-transition: top 0.5s ease 0s;
+    -o-transition: top 0.5s ease 0s;
+}
+
+.borderless {
+    border: none;
+}
+
+#header-main-logo div {
+    display: block;
+}
+
+#header-main-logo, #header-main-menu, #header-main-login, #header-main-search-icon, #header-main-search-input, #header-main-search-icon, #header-main-search-input {
+    float: left;
+    padding: 0 5px;
+    margin: 3px auto;
+}
+
+
+
+#header-main-logo {
+    margin-bottom: 0;
+}
+
+#header-main-search-icon .pasgo-iconmobile-search {
+    margin: 5px auto;
+}
+
+#header-main-search-input input {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+}
+
+    #header-main-search-input input:focus {
+        outline: none;
+    }
+
+.header-main .pasgo-iconmobile-menu, .header-main .pasgo-iconmobile-login, .header-main .pasgo-icondesktop-logored, .header-main .pasgo-icondesktop-logowhite {
+    margin: 10px auto;
+}
+
+#header-main-menu-mobile {
+    float: left;
+    padding: inherit;
+}
+
+    #header-main-menu-mobile:active {
+        background-color: #eee
+    }
+
+#header-main-login-mobile {
+    float: left;
+    padding: inherit;
+}
+
+#header-main-logo-scroll {
+    display: none;
+}
+
+.header-main-menu-dropdown {
+    position: initial;
+}
+
+.menu-desktop-dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 3;
+    float: left;
+    background-color: white;
+}
+
+#dim {
+    background-color: rgba(0,0,0,0.2);
+    transform: translate3d(0,0,0);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    opacity: 0;
+    transition: all 0.5s;
+    visibility: hidden;
+    transition-duration: 0.5s;
+}
+
+#logored, #logowhite {
+    display: none;
+}
+
+
+
+
+@media (max-width: 414px) {
+    body {
+        transition-duration: 0.5s;
+        background-color: #f6f6f6;
+        scroll-behavior: smooth;
+    }
+
+    header {
+        background-color: white;
+    }
+
+        header .container {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+    .row {
+        margin: 0;
+    }
+
+    .pasgo-icondesktop-dropdown {
+        transform: rotate(0deg);
+        transition: transform 0.2s
+    }
+
+    #header-main .navigation {
+        height: 45px;
+    }
+
+    .header-top .container {
+        height: 25px;
+    }
+
+    #header-search, #header-main-logo {
+        transition-duration: 0.2s;
+    }
+
+    .container {
+        max-width: unset;
+    }
+
+    .district-mobile {
+        padding: 0 !important;
+    }
+
+    .form-control {
+        background-color: transparent;
+    }
+
+    #header-main-login-mobile {
+        float: right;
+    }
+
+    .navigation {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+
+    .overlay {
+        width: 100%;
+        max-width: 280px;
+        height: 106vh;
+        top: 0;
+        left: 0;
+        transition-duration: 0.5s;
+        z-index: 1;
+        background-color: white;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: absolute;
+        display: block;
+        transform: translate3d(-280px, 0,0);
+        padding-bottom: 74px;
+        display: block;
+        margin-top: 0;
+    }
+
+    .overlay-content {
+        width: 100%;
+        text-align: left;
+        position: relative;
+        display: block;
+    }
+
+        .overlay-content a {
+            text-decoration: none;
+        }
+
+    .overlay .closebtn {
+        position: absolute;
+        color: black;
+        font-size: 17px;
+        font-family: "Roboto Medium";
+        width: 100%;
+        text-align: center;
+        padding: 7px 0;
+        border-bottom: 1px solid #777;
+        background-color: #f5f5f5;
+    }
+
+    #header-main-menu-desktop ul {
+        margin-top: 72px;
+        list-style: none;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 18px;
+    }
+
+    #header-main-menu-desktop a span {
+        font-size: 20px;
+    }
+
+    #header-main-menu-desktop ul li button {
+        border: none;
+        border-bottom: 1px solid #eee;
+        height: 35px;
+    }
+
+    #header-main-menu-desktop ul li button, #header-main-menu-desktop ul li {
+        margin-bottom: 2px;
+        font-family: "Roboto Regular";
+        outline: none;
+        color: #555;
+    }
+
+    .overlay-content button {
+        width: 100%;
+        text-align: left;
+        padding-left: 10px;
+        background-color: white;
+    }
+
+        .overlay-content button:focus {
+            background-color: #eee;
+        }
+
+        .overlay-content button img {
+            float: right;
+            text-align: center;
+            margin-top: 8px;
+            margin-right: 8px;
+        }
+
+    #login-btn, #searchsticky {
+        display: none;
+    }
+
+    .menu-desktop-dropdown-content {
+        position: unset;
+        transition: max-height 0.3s ease-in-out;
+        width: 100%;
+        display: block;
+        max-height: 0px;
+        overflow: hidden;
+    }
+
+        .menu-desktop-dropdown-content ul {
+            margin-top: 0 !important;
+        }
+
+            .menu-desktop-dropdown-content ul li {
+                height: 32px;
+                padding-top: 5px;
+                font-size: 16px;
+            }
+
+    .menu-desktop-dropdown-list {
+        padding-left: 10px;
+        padding-right: 10px;
+        transition: 0.5s;
+    }
+        /*.menu-desktop-dropdown-list li:hover {border-bottom: 2px solid #d02028 !important;} */
+        .menu-desktop-dropdown-list li {
+            border-bottom: 1px solid#eee;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+            .menu-desktop-dropdown-list li:active {
+                background-color: #eee;
+            }
+
+            .menu-desktop-dropdown-list li a {
+                color: black;
+            }
+
+    .pasgo-icondesktop-arrow-left {
+        filter: invert(75%);
+        zoom: 0.5;
+    }
+
+    .wapper-content {
+        background-color: #f6f6f6;
+    }
+
+        .wapper-content .wapper:first-child {
+            background-color: transparent;
+        }
+
+        .wapper-content .container {
+            padding: 0;
+        }
+
+    .img {
+        width: 100%;
+    }
+
+    #slideshow {
+        display: none;
+    }
+
+    #pasgo-slide .row {
+        margin-top: 0;
+    }
+
+    #pasgo-slide div {
+        padding: 0;
+    }
+
+    #pasgo-slide .img {
+        width: 100%;
+        height: 110px;
+        background-position: center;
+        background-size: cover;
+        float: left;
+        margin-bottom: 5px;
+    }
+
+        #pasgo-slide .img img {
+            width: unset;
+            height: 100%;
+            border-radius: 0;
+        }
+
+    .scrollshow {
+        display: inline-block;
+        height: fit-content;
+        overflow-y: hidden;
+        overflow-x: auto;
+    }
+
+        .scrollshow::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollshow ul {
+            height: 200px;
+            width: 1040px;
+            list-style: none;
+            padding-left: 5px;
+            margin-bottom: 5px;
+        }
+
+            .scrollshow ul li {
+                width: 200px;
+                height: 210px;
+                float: left;
+                margin-right: 10px;
+                border: 1px solid #eee;
+                background-color: white;
+            }
+
+                .scrollshow ul li p {
+                    font-size: 14px;
+                    font-family: "Roboto Medium";
+                    padding-left: 10px;
+                    margin-bottom: 0;
+                    color: #212529
+                }
+
+                .scrollshow ul li span {
+                    font-size: 13px;
+                    font-family: "Roboto Regular";
+                    padding-left: 10px;
+                    color: #777;
+                    margin-bottom: 10px;
+                }
+
+    .scrollshow-header {
+        display: none;
+    }
+
+    .mobile-header {
+        padding-left: 15px;
+        margin-top: 10px;
+        margin-bottom: 8px;
+        float: left;
+    }
+
+        .mobile-header h1, h1 {
+            font-size: 18px;
+            font-family: "Roboto Medium";
+            border-bottom: 2px solid #d30606;
+            margin: 0;
+            padding-bottom: 8px;
+            color: black;
+        }
+
+        .mobile-header span {
+            color: black;
+        }
+
+    .mobile-header-more {
+        padding-left: 15px;
+        margin-top: 15px;
+        float: right;
+        width: 115px;
+        font-size: 14px;
+    }
+
+        .mobile-header-more a {
+            font-size: 14px;
+            font-family: "Roboto Medium";
+            margin: 0;
+            padding-bottom: 8px;
+            color: #d30606
+        }
+
+        .mobile-header-more .pasgo-icondesktop-menured {
+            top: 40px;
+            right: 30px;
+        }
+
+    .pc {
+        display: none !important;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    #pasgo-carousel-menu, #pasgo-carousel-menu-2 {
+        overflow: hidden;
+    }
+
+        #pasgo-carousel-menu img {
+            width: 100%
+        }
+
+        #pasgo-carousel-menu .col-6 {
+            float: left;
+        }
+
+        #pasgo-carousel-menu .carousel-control-next:hover {
+            opacity: 0.7;
+        }
+
+        #pasgo-carousel-menu .carousel-control-prev:hover {
+            opacity: 0.7;
+        }
+
+    .wapper {
+        background-color: white;
+        margin-bottom: 5px;
+    }
+
+        .wapper .wapcontent .pasgo-collection {
+            padding: 0 3px 10px 3px;
+            margin: 5px 0;
+        }
+
+            .wapper .wapcontent .pasgo-collection .col-6 {
+                padding: 0;
+                width: calc(50% - 10px) !important;
+                padding: 1px;
+                border-radius: 2px;
+            }
+
+            .wapper .wapcontent .pasgo-collection .col-md-12 {
+                padding: 15px 5px;
+            }
+
+                .wapper .wapcontent .pasgo-collection .col-md-12 a {
+                    color: #d92028;
+                    font-family: "Roboto Medium";
+                    font-size: 14px;
+                }
+
+                    .wapper .wapcontent .pasgo-collection .col-md-12 a span {
+                        margin-left: 20px;
+                        margin-top: 12px;
+                    }
+
+            .wapper .wapcontent .pasgo-collection .item-collection img {
+                width: 100%;
+                border-radius: 5px;
+            }
+
+            .wapper .wapcontent .pasgo-collection .item-collection .wapsale {
+                width: 60px;
+                background-color: #f30505ba;
+                color: white;
+                font-size: 14px;
+                text-align: center;
+                height: 60px;
+                border-radius: 30px 30px 30px 30px;
+                position: absolute;
+                display: block;
+                top: 5px;
+                right: 5px;
+                font-weight: bold;
+                font-family: "Roboto Regular";
+                text-align: center;
+                padding-top: 12px;
+                padding-bottom: 0;
+                line-height: 1.3;
+            }
+
+                .wapper .wapcontent .pasgo-collection .item-collection .wapsale aside {
+                    font-weight: normal;
+                    font-size: 11px;
+                }
+
+            .wapper .wapcontent .pasgo-collection .item-collection .wapfooter {
+                height: 45px;
+                background-color: #00000099;
+                color: white;
+                bottom: 0;
+                display: block;
+                font-size: 13px;
+                padding: 5px;
+                text-align: left;
+                font-family: "Roboto Regular";
+                position: absolute;
+                width: calc(100% - 2px);
+                border-radius: 0 0 5px 5px;
+            }
+
+        .wapper .wapcontent .row div:first-child a span:last-child {
+            color: #d30606;
+            font-family: "Roboto Medium"
+        }
+
+    .rate {
+        display: inline-block;
+        position: relative;
+        line-height: 1;
+        white-space: nowrap;
+    }
+
+    .rate2 {
+        position: absolute;
+        display: block;
+        top: 0;
+        overflow: hidden;
+        bottom: 0;
+        line-height: 1;
+        z-index: 1;
+    }
+
+    .checked {
+        color: orange;
+    }
+
+    .notchecked {
+        color: silver;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .wap-item {
+        position: relative;
+        border: 1px solid #eee;
+        margin-bottom: 5px;
+        border-radius: 10px;
+    }
+
+    .wapfooter {
+        width: 100%;
+        height: 25%;
+        background-color: #00000099;
+        color: white;
+        bottom: 0;
+        display: block;
+        font-size: 14px;
+        text-align: center;
+        bottom: 80px;
+        position: absolute;
+    }
+
+        .wapfooter a {
+            color: white;
+            font-size: 15px;
+        }
+
+            .wapfooter a:hover {
+                text-decoration: none;
+            }
+
+            .wapfooter a div {
+                height: 18px;
+                margin: 0;
+                margin-top: 5px;
+            }
+
+                .wapfooter a div p, .text-address {
+                    font-size: 13px;
+                    overflow: hidden;
+                    -webkit-line-clamp: 1;
+                    text-overflow: ellipsis;
+                    max-height: 1rem;
+                    line-height: 1rem;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    padding: 0 3px;
+                    height: 100%
+                }
+
+        .wapfooter .text-address {
+            font-size: 12px;
+            margin: 3px 0 5px 0;
+        }
+
+    .danhgia-ct {
+        width: auto;
+    }
+
+    .rating-star, .rating-money {
+        text-align: unset;
+        line-height: 1;
+    }
+
+    .wap-sale {
+        color: #d02028;
+        line-height: 20px;
+        font-size: 15px;
+        text-align: center;
+        font-family: "Roboto Regular";
+    }
+
+    .wap-tag {
+        color: #757777;
+        height: 20px;
+        font-size: 12px;
+        text-align: center;
+        overflow: hidden;
+        font-family: "Roboto Regular";
+        margin-bottom: 5px;
+    }
+
+    .btn-booking {
+        border: 1px solid #eee;
+        border-radius: 30px;
+        text-decoration: none;
+        text-align: center !important;
+        font-family: "Roboto Regular";
+        padding: 5px 10px;
+        color: #757777;
+        font-size: 13px;
+    }
+
+    .fa {
+        zoom: 0.75;
+    }
+
+    .btn-booking:hover {
+        text-decoration: none;
+        background-color: #d02028;
+        color: white;
+    }
+
+    .wap-booking {
+        text-align: center;
+        height: 30px;
+        margin-bottom: 5px;
+    }
+
+    .next-prev {
+        background-color: white;
+        opacity: 0.5;
+        top: 30%;
+        height: 35px;
+        width: 50px;
+        border-radius: 30px;
+    }
+
+    #pasgo-carousel-menu-2 .next-prev {
+        background-color: transparent;
+    }
+
+    .wapstar, .wapdollar {
+        min-width: 50%;
+    }
+
+    #pasgo-carousel-menu .col-md-3, #pasgo-carousel-menu-2 .col-md-3 {
+        float: left;
+        padding: 2px;
+    }
+
+    #pasgo-carousel-menu .carousel-control-next, #pasgo-carousel-menu-2 .carousel-control-next {
+        right: -15px;
+    }
+
+    #pasgo-carousel-menu .carousel-control-prev, #pasgo-carousel-menu-2 .carousel-control-prev {
+        left: -15px;
+    }
+
+    .carousel-control-next-icon {
+        margin-right: 10px;
+    }
+
+    .carousel-control-prev-icon {
+        margin-left: 10px;
+    }
+
+    .wapper img {
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .end-wapper {
+        display: none;
+    }
+
+    .hold-list {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: auto;
+        padding: 8px 0;
+        box-shadow: 0 1px 3px rgba(0,0,0,.15);
+    }
+
+    .list-header {
+        list-style: none;
+        padding: 0;
+        width: 1150px;
+        margin: 0;
+    }
+
+        .list-header li {
+            float: left;
+            font-size: 13px;
+            padding: 0 10px;
+            font-family: "Roboto Regular";
+            border-right: 1px solid #eee;
+        }
+
+            .list-header li:first-child {
+                display: none;
+            }
+
+            .list-header li:last-child {
+                border: none;
+            }
+
+            .list-header li a {
+                color: #6a6a6a;
+            }
+
+            .list-header li:first-child a {
+                color: black;
+            }
+
+        .list-header a:hover {
+            text-decoration: none;
+        }
+
+    .body-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 10px;
+    }
+
+        .body-list .col-4, .body-list .col-6, .body-list .col-12 {
+            padding: 2px;
+        }
+
+        .body-list .col-12 {
+            padding: 0 4px;
+        }
+
+    .bodyscroll {
+        overflow-y: hidden;
+        overflow-x: auto;
+    }
+
+    .bodynotscroll {
+        overflow: auto;
+    }
+
+        .bodynotscroll .col-12, .bodynotscroll .col-6 {
+            padding: 0 3px;
+        }
+
+    .bodyscroll::-webkit-scrollbar {
+        display: none;
+    }
+
+    .bodyscroll ul {
+        width: 705px;
+    }
+
+        .bodyscroll ul li {
+            float: left;
+            width: fit-content;
+            width: 176px;
+        }
+    /*.bodyscroll ul li div {border: 1px solid #cccccc; border-radius: 30px;}*/
+    #pasgo-moinhat .wapfooter {
+        position: unset;
+    }
+
+    #header-search-pc {
+        width: 100vw;
+        height: 100vh;
+        z-index: 101;
+        position: fixed;
+        background-color: white;
+        top: 0;
+        transition: transform 0.3s;
+        transform: translate3d(0, 100%, 0);
+        padding: 10px 0;
+    }
+
+        #header-search-pc .close-btn {
+            bottom: 15px;
+            position: absolute;
+            width: 80%;
+            margin: 0 10%;
+            color: white;
+            background-color: #d30606;
+            border-radius: 30px;
+            border: 1px solid #cccccc;
+            font-size: 16px;
+            padding: 5px;
+        }
+
+    .sven div:focus, .sven input:focus, .sven select:focus {
+        outline: 0;
+        border: none;
+        box-shadow: none;
+        background-color: transparent;
+    }
+
+    #sven1 {
+        border: 1px solid #cccccc;
+        height: 40px;
+    }
+
+        #sven1 button {
+            filter: invert(75%);
+            position: absolute;
+            top: 12px;
+            right: 30px;
+            zoom: 0.65;
+            border: none;
+        }
+
+        #sven1 input {
+            border-radius: 30px;
+            padding-left: 5%;
+            border: none;
+        }
+
+    #sven2 .input-group {
+        float: left;
+        width: calc(50% - 4px);
+        border-radius: 30px;
+        border: 1px solid #cccccc;
+        margin: 2px;
+        height: 40px;
+    }
+
+    #sven2 select, #sven2 .input-group-addon {
+        width: 100%
+    }
+
+    #sven2 select {
+        -webkit-appearance: none;
+        text-align-last: center;
+    }
+
+    #sven2 .form-control {
+        border: none;
+    }
+
+    #sven2 .input-group .pasgo-icondesktop-district, #sven2 .input-group img, #sven2 .input-group i {
+        position: absolute;
+    }
+
+    #sven2 .input-group img {
+        top: 15px;
+        right: 15px;
+    }
+
+    #sven2 .input-group .pasgo-icondesktop-district {
+        zoom: 0.6;
+        top: 15px;
+        left: 20px;
+    }
+
+    #sven2 .input-group i {
+        font-size: 25px;
+        top: 15px;
+        left: 15px;
+    }
+
+    .search-btn {
+        display: none;
+    }
+
+    #pasgo-moinhat .col-6 {
+        flex: 0 0 33%;
+        max-width: 33%;
+    }
+
+    #pasgo-moinhat .wap-item {
+        margin-bottom: 5px;
+    }
+
+    #pasgo-moinhat .wapfooter {
+        background-color: transparent;
+        color: #757777
+    }
+
+        #pasgo-moinhat .wapfooter a {
+            color: #757777;
+        }
+
+    #pasgo-moinhat .wap-booking {
+        display: none;
+    }
+
+    #pasgo-moinhat .wapstar {
+        width: 40%;
+        padding: 0;
+        overflow: hidden;
+        float: left;
+        min-width: 40%;
+        border-right: 1px solid #757777
+    }
+
+    #pasgo-moinhat .wapdollar {
+        width: 60%;
+        padding: 0;
+        float: left;
+    }
+
+    #pasgo-moinhat .wap-sale {
+        font-size: 13px;
+    }
+
+    #mini-review {
+        position: absolute;
+        top: 47%;
+        background-color: #00000099;
+        width: 100%;
+        padding: 3px 0;
+        color: white;
+        font-family: "Roboto Regular";
+        font-size: 13px;
+    }
+
+    #pasgo-khampha .list-header {
+        width: 145%;
+    }
+
+    #pasgo-blog .list-header {
+        width: 125%;
+    }
+
+    #pasgo-khampha .hold-list {
+        padding: 4px 5px
+    }
+
+    #pasgo-khampha .list-header li, #pasgo-blog .list-header li {
+        border: 1px solid #cccccc;
+        width: 120px;
+        height: 2rem;
+        line-height: 1;
+        margin: 2px;
+        text-align: center;
+        padding: 8px 3px;
+        background-color: #eee;
+        color: black;
+    }
+
+        #pasgo-khampha .list-header li a, #pasgo-blog .list-header li a {
+            color: black;
+        }
+
+    .pasgo-khampha-item {
+        border: 1px solid #d6d6d6;
+        border-radius: 0;
+    }
+
+        .pasgo-khampha-item .pasgo-khampha-item-img, .pasgo-khampha-item .pasgo-khampha-item-title {
+            float: left;
+        }
+
+    .pasgo-khampha-item-info {
+        color: black !important;
+        padding-bottom: 10px;
+    }
+
+    .pasgo-khampha-item-review .col-md-5, .pasgo-khampha-item-review .col-md-7 {
+        padding: 0 5px 5px 10px;
+    }
+
+    .pasgo-khampha-item-txt {
+        width: calc(100% - 40px);
+        overflow: hidden;
+        -webkit-line-clamp: 1;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+
+    .pasgo-khampha-item-img {
+        overflow: hidden;
+    }
+
+        .pasgo-khampha-item-img img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            border-radius: 0;
+        }
+
+    .pasgo-khampha-item-title {
+        padding: 5px 5px 5px 10px;
+    }
+
+        .pasgo-khampha-item-title p {
+            font-family: "Roboto Medium";
+            font-size: 14px;
+            margin: 0;
+            color: black;
+        }
+
+    .pasgo-khampha-item-review {
+        padding: 5px 0 5px 0;
+        overflow: auto;
+    }
+
+        .pasgo-khampha-item-review div {
+            padding-bottom: 2px;
+        }
+
+        .pasgo-khampha-item-review span {
+            color: black;
+            font-size: 14px;
+        }
+
+        .pasgo-khampha-item-review div div {
+            zoom: 0.7;
+        }
+
+    .pasgo-icondesktop-kp-pin, .pasgo-icondesktop-kp-usd, .pasgo-icondesktop-kp-star, .pasgo-icondesktop-kp-sale {
+        margin-right: 10px;
+    }
+
+    /*Thương hiệu chuỗi*/
+    #pasgo-thuonghieuchuoi .next-prev {
+        top: calc(50% - 25px);
+        opacity: 0.2
+    }
+
+    #pasgo-thuonghieuchuoi .wap-tag {
+        height: unset;
+        font-size: 14px;
+        font-family: "Roboto Medium";
+        text-align: inherit;
+        padding: 0 5px;
+        overflow: hidden;
+        -webkit-line-clamp: 3;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        color: black;
+        text-align: inherit;
+        line-height: 1.4;
+    }
+
+    #pasgo-thuonghieuchuoi .wap-sale {
+        overflow: auto;
+        padding-left: calc(50% - 60px);
+        padding-bottom: 5px;
+        font-size: 13px;
+    }
+
+    #pasgo-thuonghieuchuoi .pasgo-icondesktop-kp-sale {
+        zoom: 0.6;
+        margin-top: 2px;
+    }
+
+    #pasgo-thuonghieuchuoi .wap-sale .pasgo-icondesktop-kp-sale, #pasgo-thuonghieuchuoi .wap-sale span {
+        float: left;
+    }
+    /*Blog PasGo*/
+    .blog {
+        overflow: auto;
+    }
+
+        .blog img {
+            height: auto;
+            width: 100%;
+            border-radius: unset;
+        }
+
+        .blog h2 {
+            font-size: 14px;
+            padding: 5px;
+            margin-bottom: 0;
+            color: black;
+            overflow: hidden;
+            -webkit-line-clamp: 3;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            text-align: justify;
+            line-height: 1.1;
+            color: #333;
+            font-family: "Roboto Medium"
+        }
+
+        .blog a div {
+            float: left;
+        }
+
+    #pasgo-blog .col-sm-4, #pasgo-blog .col-md-4, #pasgo-tintuc .col-sm-4, #pasgo-tintuc .col-md-4, #pasgo-tv .col-sm-4, #pasgo-tv .col-md-4 {
+        height: auto;
+        float: left;
+        max-height: 900px;
+        overflow: auto;
+    }
+
+    .blog-teaser {
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-height: 18pt;
+        max-height: 62px;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        color: #5d5b5b;
+        font-size: 11pt;
+        padding: 5px 10px;
+        line-height: 1.6
+    }
+
+    #pasgo-blog .container {
+        border: 1px solid #d6d6d6;
+        padding: 0;
+        margin-bottom: 5px;
+    }
+
+    .blog-time {
+        font-size: 13px;
+        color: #949494;
+        margin-bottom: 0;
+    }
+
+    #pasgo-tintuc .container {
+        margin-bottom: 10px;
+    }
+
+    .blog-item li {
+        list-style: none;
+        margin-bottom: 5px;
+        overflow: auto;
+        padding: 0 !important;
+        border: 1px solid #d6d6d6;
+    }
+
+    .blog-item img {
+        border-radius: 0;
+    }
+
+    .blog-item h4 {
+        font-size: 14px;
+        color: black;
+        padding: 5px 10px;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        font-family: "Roboto Medium"
+    }
+
+    .blog-item .col-5, .blog-item .col-7 {
+        float: left;
+    }
+
+    .blog-item .blog-time {
+        margin-left: 0;
+    }
+
+    .bottom-border {
+        border-bottom: 1px solid #949494;
+    }
+
+    #pasgo-blog .list-header li {
+        width: 145px;
+    }
+
+    #pasgo-tintuc .blog-item li .border-bottom {
+        padding-bottom: 1px;
+        overflow: auto;
+    }
+    /*Tin tức PasGo */
+    #pasgo-tintuc {
+        border: none;
+    }
+
+    .blog-teaser {
+        display: none;
+    }
+
+    #pasgo-tintuc .list-header {
+        width: 420px
+    }
+
+    #pasgo-tintuc .blog-item li {
+        border: none;
+    }
+
+    #pasgo-tintuc .bodynotscroll .col-12 .blog a .col-7 h2 {
+        padding-left: 10px;
+    }
+
+    .blog .fa {
+        zoom: unset;
+    }
+    /*PasGoTV*/
+    .bois {
+        max-width: 66% !important;
+        flex: 0 0 66% !important;
+        width: 240px !important;
+    }
+
+    .sons {
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        padding: 0;
+    }
+
+    .daughter {
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+        width: 100% !important;
+    }
+
+        .daughter h2 {
+            padding: 5px 10px 15px 10px;
+        }
+
+    #pasgo-tv {
+        overflow: auto;
+    }
+
+        #pasgo-tv .bodyscroll ul {
+            width: 1230px;
+        }
+
+        #pasgo-tv h2 {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin: 0;
+        }
+
+        #pasgo-tv ul {
+            padding: 5px 0 5px 0;
+            margin: 0;
+            background-color: #f4f4f4
+        }
+
+        #pasgo-tv li {
+            padding: 0 !important;
+            margin: 0 3px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        #pasgo-tv .body-list .wap-item {
+            overflow: auto;
+        }
+
+        #pasgo-tv .video-time {
+            text-align: right;
+            font-size: 10px;
+            color: white;
+            border-radius: 20px;
+            background-color: black;
+            opacity: 0.7;
+            position: absolute;
+            left: calc(95% - 34px);
+            top: calc(90% - 15px);
+            padding: 0 5px;
+        }
+
+        #pasgo-tv .view-time {
+            text-align: left;
+            font-size: 13px;
+            color: #333;
+            padding-top: 10px;
+            padding-left: 10px;
+            margin-bottom: 0;
+        }
+
+        #pasgo-tv .pasgo-tag {
+            text-align: left;
+            font-size: 13px;
+            color: #333;
+            top: 0;
+            padding-left: 10px;
+            padding-top: 10px;
+        }
+
+        #pasgo-tv .container {
+            border: 1px solid #949494;
+            padding: 0;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+        }
+
+        #pasgo-tv .pasgo-icondesktop-playbutton {
+            display: inline-block;
+            filter: invert(90%);
+            position: absolute;
+            top: calc(50% - 48px);
+            left: calc(50% - 40px);
+            zoom: 0.3;
+        }
+
+        #pasgo-tv .body-list li .wap-item {
+            margin: 0;
+        }
+
+        #pasgo-tv .body-list h2 {
+            line-height: 1.4
+        }
+
+        #pasgo-tv .blog h2 {
+            line-height: 1.4
+        }
+
+        #pasgo-tv .col-md-4 {
+            padding: 0 4px;
+        }
+
+        #pasgo-tv .blog .container {
+            border: 1px solid #eee;
+            padding-bottom: 0;
+        }
+    /*Đối tác*/
+    .notarealcarousel {
+        width: 900px;
+    }
+
+        .notarealcarousel .wap-item {
+            border: none;
+            margin-bottom: 0;
+            padding: 5px;
+            float: left;
+            width: 90px;
+        }
+
+    #pasgo-doitac .wapcontent {
+        overflow: auto;
+    }
+
+    #pasgo-doitac img {
+        border-radius: unset;
+        border: none;
+    }
+    /*Khách Hàng*/
+    #pasgo-khachhang {
+        overflow: auto;
+    }
+
+        #pasgo-khachhang img {
+            height: 100%;
+        }
+
+        #pasgo-khachhang .row .col-12 h1 {
+            font-family: "Roboto Medium";
+            font-size: 18px;
+        }
+
+        #pasgo-khachhang .body-list {
+            width: 1250px;
+        }
+
+        #pasgo-khachhang .col-md-12 {
+            padding: 0;
+        }
+
+            #pasgo-khachhang .col-md-12 .col-12, #pasgo-khachhang .col-md-12 .col-12 .col-3, #pasgo-khachhang .col-md-12 .col-12 .col-9 {
+                float: left;
+            }
+
+            #pasgo-khachhang .col-md-12 .col-12 {
+                flex: 0 0 100%;
+                max-width: 100%;
+                width: 250px
+            }
+
+                #pasgo-khachhang .col-md-12 .col-12 .col-3 {
+                    padding: 0 0 0 5px;
+                }
+
+                #pasgo-khachhang .col-md-12 .col-12 .col-9 {
+                    padding: 0 0 0 10px;
+                }
+
+                    #pasgo-khachhang .col-md-12 .col-12 .col-9 h1, #pasgo-khachhang .mobile .col-9 h1 {
+                        font-family: "Roboto Medium";
+                        font-size: 16px;
+                        border: none;
+                        padding: 5px 0;
+                    }
+
+                    #pasgo-khachhang .col-md-12 .col-12 .col-9 p, #pasgo-khachhang .mobile p {
+                        font-family: "Roboto Regular";
+                        font-size: 14px;
+                    }
+
+                #pasgo-khachhang .col-md-12 .col-12 .quotes, #pasgo-khachhang .mobile .quotes {
+                    font-family: "Roboto Regular";
+                    font-size: 14px;
+                    text-align: justify;
+                    color: #5c5c5c
+                }
+    /*Download*/
+    #pasgo-app .col-6 {
+        float: left;
+        padding: 0;
+    }
+
+    #pasgo-app .col-12 {
+        overflow: auto;
+    }
+
+    .pasgo-icondesktop-appstore {
+        zoom: 0.4;
+        float: right;
+        margin-right: 30px;
+    }
+
+    .pasgo-icondesktop-playstore {
+        zoom: 0.212;
+        float: left;
+        margin-left: 60px;
+    }
+
+    #pasgo-app p {
+        margin-bottom: 5px;
+        font-family: "Roboto Medium";
+        font-size: 14px;
+    }
+
+    #pasgo-app h1 {
+        text-align-last: center;
+        border: none;
+        color: #d30606;
+    }
+
+    #pasgo-app ul {
+        padding-left: 70px;
+    }
+
+    #pasgo-app .wapcontent {
+        padding: 10px 0 10px 0;
+    }
+    /*Footer*/
+    footer {
+        background-color: white;
+    }
+
+        footer h1, footer h2, footer h3 {
+            color: black;
+            font-size: 15px;
+            font-family: "Roboto Medium";
+            text-align: center;
+            padding: 5px 2px 5px 2px;
+            margin: 0;
+        }
+
+        footer h1 {
+            text-align: left;
+            border: none;
+            padding-top: 15px;
+        }
+
+        footer h4 {
+            color: black;
+            font-size: 14px;
+            font-family: "Roboto Medium";
+            text-align: left;
+            padding-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        footer .container-fluid {
+            background-color: white;
+            margin-top: 35px;
+        }
+
+        footer .pasgo-icondesktop-logored {
+            display: block;
+        }
+
+        footer div {
+            text-align: justify;
+            font-size: 14px;
+            color: #7e7e7e;
+            word-spacing: -1px;
+        }
+
+        footer .about-pasgo {
+            padding: 0px 15px 2px 5px;
+        }
+
+            footer .about-pasgo ul {
+                padding: 0;
+                list-style: none;
+            }
+
+            footer .about-pasgo li {
+                padding-bottom: 7px;
+            }
+
+                footer .about-pasgo li a {
+                    color: #606060;
+                    font-family: "Roboto Regular"
+                }
+
+                    footer .about-pasgo li a:hover {
+                        text-decoration: none;
+                        color: #d02028;
+                    }
+
+        footer .input-group-btn {
+            background-color: #f9f9f9;
+        }
+
+    .pasgo-social {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .pasgo-certification {
+        text-align: center;
+    }
+
+        .pasgo-certification a {
+            display: block;
+        }
+
+    .pasgo-subcription {
+        margin-bottom: 15px;
+    }
+
+        .pasgo-subcription div {
+            word-spacing: -2px;
+            padding-bottom: 15px;
+        }
+
+        .pasgo-subcription .input-group {
+            border-radius: 30px;
+            background-color: #e8e8e8;
+            padding: 3px;
+        }
+
+        .pasgo-subcription input {
+            border-radius: 30px;
+            background-color: #f9f9f9;
+            border-color: #f9f9f9;
+        }
+
+            .pasgo-subcription input:focus, .pasgo-subcription input:hover {
+                background-color: #f9f9f9 !important;
+                border: none;
+                box-shadow: none;
+            }
+
+        .pasgo-subcription button {
+            border-radius: 30px;
+            background-color: #d02028;
+            color: white;
+            width: 80px;
+        }
+
+            .pasgo-subcription button:focus {
+                border: none;
+                box-shadow: none;
+                border-color: transparent;
+            }
+
+    .link-company {
+        font-size: 14px;
+        font-family: "Arial";
+        text-align: left;
+        padding-bottom: 15px;
+    }
+
+    footer a:hover {
+        text-decoration: none;
+    }
+
+    footer p {
+        margin-bottom: 5px;
+    }
+
+        footer p:last-children span {
+            color: #007bff;
+        }
+
+    footer .mobile:first-child {
+        margin-bottom: 20px;
+    }
+
+    footer .mobile h1 {
+        font-size: 20px;
+        font-family: "Roboto Medium";
+        text-align: center;
+    }
+
+    footer .mobile a {
+        color: #cf252c;
+    }
+    /*Filter*/
+    #pasgo-filter .col-lg-3 img {
+        width: 10px;
+    }
+
+    #order {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #pasgo-slide {
+        order: 2;
+    }
+
+    #pasgo-filter {
+        order: 1;
+    }
+
+        #pasgo-filter p {
+            margin: 0;
+            color: white;
+            font-family: "Roboto Regular";
+            font-size: 18px;
+        }
+
+        #pasgo-filter button {
+            width: 100%;
+            background-color: #d02028;
+            border-radius: 30px;
+            border-left: none;
+        }
+
+            #pasgo-filter button p {
+                font-size: 16px;
+                line-height: 1;
+                margin-left: 20px;
+            }
+
+        #pasgo-filter .search-btn {
+            display: block;
+        }
+
+        #pasgo-filter .mobile img {
+            filter: brightness(0.6);
+            border-radius: 7px;
+        }
+
+        #pasgo-filter .mobile .col-md-12 {
+            overflow: auto;
+        }
+
+    .ft {
+        position: absolute;
+        bottom: 10px;
+    }
+
+        .ft .col-9 {
+            color: #777;
+            font-style: italic;
+        }
+
+    #pasgo-filter .mobile .col-9 {
+        padding: 6px 0 6px 15px;
+        font-family: "Roboto Regular";
+        font-size: 15px;
+        border-radius: 30px 0 0 30px;
+        border: 1px solid #ccc;
+        background-color: white;
+        border-right: none;
+    }
+
+    #pasgo-filter .mobile .col-3 {
+        border-radius: 0 30px 30px 0;
+        border: 1px solid #ccc;
+        padding: 2px;
+        background-color: white;
+        border-left: none;
+    }
+
+    #pasgo-filter .mobile .col-xs-12 {
+        position: absolute;
+        top: 10px;
+        left: calc(50% - 142.5px);
+    }
+
+        #pasgo-filter .mobile .col-xs-12 h1 {
+            border: none;
+        }
+
+        #pasgo-filter .mobile .col-xs-12 p:first-child {
+            margin: 6px 0px;
+            text-align: center;
+            width: 100%;
+            color: white;
+            font-family: "Roboto Regular"
+        }
+
+        #pasgo-filter .mobile .col-xs-12 p:last-child {
+            margin: 0px;
+            text-align: center;
+            width: 100%;
+            color: lightcyan;
+            font-family: "Roboto Regular"
+        }
+
+    #pasgo-filter .pasgo-icondesktop-filter {
+        zoom: 0.6;
+        top: 17px;
+        left: 25px;
+    }
+
+    #scrollbtn {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        padding: 0 3px 0px 2.9px;
+        background-color: white;
+        z-index: 999;
+        border-radius: 30px;
+        visibility: hidden;
+        transition: opacity 2s linear;
+        opacity: 0;
+    }
+
+        #scrollbtn i {
+            font-size: 4em;
+        }
+
+        #scrollbtn:hover {
+            opacity: 1;
+        }
+    /*Kết quả tìm kiếm*/
+    #result {
+        display: block !important;
+        padding: 0;
+        height: calc(100vh - 160px);
+        overflow-x: auto;
+    }
+
+        #result .col-md-3, #result .col-md-9 {
+            padding: 0;
+        }
+
+        #result .wappersearch {
+            display: block;
+            position: relative;
+            background-color: #eee;
+        }
+
+        #result .row h4 {
+            text-transform: uppercase;
+            font-size: 15px;
+            margin: 8px;
+        }
+
+        #result .wappersearch .row .col-md-9 {
+            background: #fff;
+            min-height: 100px;
+        }
+
+    #get-tag-search {
+        line-height: 1;
+    }
+
+        #get-tag-search a {
+            text-decoration: none;
+            color: #494949;
+            cursor: pointer;
+            padding: 2px 10px 4px 10px;
+            display: inline-block;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+            font-size: 14.5px;
+            line-height: 1.4;
+            overflow: auto;
+            margin: 0;
+            border-bottom: 1px solid #eee
+        }
+
+            #get-tag-search a:last-child {
+                border-bottom: unset;
+            }
+
+    #get-name-restaurant a {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        color: #000;
+        text-decoration: none;
+        border-bottom: 1px solid #eaeaea;
+        padding: 6px 0 6px 10px;
+        clear: both;
+    }
+
+        #get-name-restaurant a:hover {
+            background-color: #eee
+        }
+
+        #get-name-restaurant a:last-child {
+            border-bottom: none;
+        }
+
+        #get-name-restaurant a .img-circle {
+            width: 50px;
+            float: left;
+            margin-right: 10px;
+            border-radius: 50px;
+            min-height: 40px;
+        }
+
+        #get-name-restaurant a p {
+            font-size: 14px;
+            line-height: 1;
+            margin: 5px 0;
+            font-family: "Roboto Regular";
+        }
+
+        #get-name-restaurant a .text-address {
+            color: #797979;
+            font-size: 13px;
+            padding: 0;
+        }
+
+    #indicators li {
+        overflow: hidden;
+        margin: 5px 0 0 5px;
+    }
+
+        #indicators li:hover a {
+            text-decoration: none;
+        }
+}
+
+@media (min-width: 415px) and (max-width: 576px) {
+    #pasgo-tv .pasgo-tag {
+        display: none;
+    }
+
+    #pasgo-tv .body-list h2 {
+        font-size: 14px;
+    }
+
+    #pasgo-tv .body-list .pasgo-icondesktop-playbutton {
+        zoom: 0.3;
+    }
+
+    #pasgo-tintuc .bodynotscroll .col-12 .blog a .pc .blog-teaser {
+        display: none;
+    }
+
+    .triangle {
+        display: none !important;
+    }
+
+    #pasgo-app ul {
+        padding-left: calc(100% - 450px);
+    }
+
+    #pasgo-filter .pasgo-icondesktop-filter {
+        top: 15px;
+        left: calc(50% - 12px);
+        zoom: 0.7;
+    }
+
+    #pasgo-filter p {
+        padding-top: 20px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 767px) {
+
+    #pasgo-tv li:first-child h2 {
+        font-size: 14px;
+    }
+
+    #pasgo-tv li:first-child .container {
+        margin: 0;
+        padding: 2px;
+    }
+
+    #pasgo-tv .body-list li:first-child h2 {
+        font-size: 17px;
+        padding: 10px 10px 5px 10px;
+    }
+
+    #pasgo-tv .body-list li:first-child .pasgo-tag {
+        display: none;
+    }
+
+    #pasgo-tv .body-list h2 {
+        font-size: 17px;
+    }
+
+    #pasgo-tv .body-list .wap-item .view-time {
+        padding-top: 10px;
+        padding-left: 10px
+    }
+
+    #pasgo-tv .pasgo-icondesktop-playbutton {
+        zoom: 0.5;
+    }
+
+    #pasgo-tv .container h2 {
+        padding-top: 30px;
+    }
+
+    .triangle {
+        display: none !important;
+    }
+
+    #pasgo-app ul {
+        padding-left: calc(100% - 450px);
+    }
+
+    #pasgo-filter .pasgo-icondesktop-filter {
+        top: 25px;
+        left: calc(50% - 12px);
+        zoom: 0.7;
+    }
+
+    #pasgo-filter p {
+        padding-top: 25px;
+    }
+
+    #result {
+        margin: 0 15px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    #pasgo-tv .body-list h2 {
+        font-size: 14px;
+        padding: 0 2px
+    }
+
+    #pasgo-tv .body-list li:first-child h2 {
+        font-size: 17px;
+        padding: 30px 10px 5px 10px;
+    }
+
+    #pasgo-tv .body-list li:first-child .wap-item .view-time {
+        padding-top: 10px;
+        padding-left: 10px
+    }
+
+    #pasgo-tv .body-list .wap-item .view-time {
+        padding-top: 0;
+        padding-left: 2px
+    }
+
+    #pasgo-tv .container h2 {
+        padding-top: 30px;
+    }
+
+    #pasgo-tv .body-list .pasgo-icondesktop-playbutton {
+        zoom: 0.3;
+    }
+
+    #pasgo-tv .pasgo-icondesktop-playbutton, #pasgo-tv .body-list li:first-child .pasgo-icondesktop-playbutton {
+        zoom: 0.5;
+    }
+
+    #pasgo-app .wapcontent .no-padding {
+        width: 50%;
+    }
+
+    .triangle {
+        display: none !important;
+    }
+
+    #pasgo-app ul {
+        padding-left: 120px;
+    }
+
+    #pasgo-filter .pasgo-icondesktop-filter {
+        top: 27px;
+        left: 15%
+    }
+
+    #pasgo-filter p {
+        padding-left: 15%;
+    }
+
+    #result {
+        margin: 0 15px;
+    }
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+    #pasgo-tv .body-list h2 {
+        font-size: 14px;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 5px
+    }
+
+    #pasgo-tv .body-list li:first-child h2 {
+        font-size: 17px;
+        padding: 5px 10px 5px 10px;
+    }
+
+    #pasgo-tv .body-list li:first-child .wap-item .view-time {
+        padding-top: 10px;
+    }
+
+    #pasgo-tv .body-list .wap-item .view-time {
+        padding-top: 0;
+        padding-left: 10px
+    }
+
+    #pasgo-tv .body-list .pasgo-icondesktop-playbutton {
+        zoom: 0.3;
+    }
+
+    #pasgo-tv .pasgo-icondesktop-playbutton, #pasgo-tv .body-list li:first-child .pasgo-icondesktop-playbutton {
+        zoom: 0.5;
+    }
+
+    #pasgo-app .wapcontent .no-padding {
+        width: 50%
+    }
+
+    #pasgo-app ul {
+        padding-left: 120px;
+    }
+
+    #pasgo-filter .pasgo-icondesktop-filter {
+        top: 27px;
+        left: 15%
+    }
+
+    #pasgo-filter p {
+        padding-left: 5%;
+    }
+
+    #result {
+        margin: 0 15px;
+    }
+}
+
+@media (min-width: 1121px) {
+    #pasgo-tv li:first-child h2 {
+        font-size: 17px;
+    }
+
+    #pasgo-tv .body-list h2 {
+        font-size: 15px;
+    }
+
+    #pasgo-tv .body-list .wap-item .view-time {
+        padding-top: 5px;
+    }
+
+    #pasgo-tv .body-list li:first-child .wap-item .view-time {
+        padding-top: 10px;
+    }
+
+    #pasgo-tv .pasgo-icondesktop-playbutton {
+        zoom: 0.5;
+    }
+
+    .blog h2 {
+        text-align: justify;
+    }
+
+    #pasgo-doitac .bodyscroll {
+        margin-left: calc(9.67% - 100px);
+    }
+
+        #pasgo-doitac .bodyscroll::-webkit-scrollbar {
+            display: none;
+        }
+
+    #pasgo-app .wapcontent .no-padding {
+        width: 50%
+    }
+
+    #pasgo-app ul {
+        padding-left: 120px;
+    }
+
+    #pasgo-filter .pasgo-icondesktop-filter {
+        top: 27px;
+        left: 25%
+    }
+
+    #pasgo-filter p {
+        padding-left: 5%;
+    }
+
+    #result {
+        margin: 0 15px;
+    }
+}
+
+@media (min-width: 414px) {
+
+    .header-main-menu-button a {
+        color: unset;
+    }
+
+    .header-main-menu-button:focus {
+        outline: none;
+    }
+
+    .header-main-menu-button:hover {
+        color: unset;
+        text-decoration: none;
+    }
+
+    body {
+        background-color: #eee;
+    }
+
+    header {
+        background-color: #fff;
+        background-color: #fcf;
+    }
+
+    .row {
+        margin: 5px 0;
+    }
+
+    .mobile-header {
+        display: none;
+    }
+
+    .pc {
+        display: block;
+    }
+
+    .mobile {
+        display: none;
+    }
+
+    .bodynotscroll {
+        overflow: auto;
+    }
+
+    .pasgo-icondesktop-dropdown {
+        transform: rotate(0deg) !important;
+    }
+
+    .overlay {
+        display: block;
+    }
+
+    .closebtn {
+        display: none;
+    }
+
+    #logored {
+        display: block;
+    }
+
+        #logored:hover, #logowhite:hover {
+            border: none !important;
+        }
+
+    .header-top {
+        display: none;
+    }
+
+    #header-main {
+        height: auto;
+        border-bottom: 1px solid #cfcfcf;
+        background-color: white;
+    }
+
+    .navigation {
+        margin-top: 0;
+        background-color: transparent;
+        height: unset;
+    }
+
+        .navigation .col-md-12 {
+            height: 100%;
+        }
+
+    #header-main-menu-mobile {
+        display: none;
+    }
+
+    .district-mobile {
+        display: none;
+    }
+
+    #header-main-logo {
+        float: left;
+        background-color: #eee;
+        left: 0;
+    }
+
+    #header-main-logo {
+        display: none;
+    }
+
+    #header-main-login-mobile {
+        float: left;
+        order: 3;
+    }
+
+    #header-main-login-mobile {
+        display: none;
+    }
+
+    #header-main-menu-desktop {
+        display: block;
+        float: left;
+        padding: 0;
+        font-size: 15px;
+        height: 100%;
+        margin: 0;
+        padding-bottom: 3px;
+        width: 100%;
+    }
+
+        #header-main-menu-desktop ul {
+            float: left;
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 0 !important;
+            width: 100%
+        }
+
+            #header-main-menu-desktop ul li {
+                float: left;
+                padding: 3px;
+                padding-right: 8px;
+                border-bottom: 2px solid transparent;
+                height: fit-content;
+                padding-top: 3px;
+            }
+
+                #header-main-menu-desktop ul li:hover {
+                    border-bottom: 2px solid #d02028;
+                }
+
+    #header-search {
+        display: none;
+    }
+
+    .container {
+        max-width: 1300px !important;
+        height: 100%
+    }
+
+    .header-main-menu-button {
+        border: none;
+        background-color: transparent;
+        color: black;
+        font-family: "Roboto Medium";
+        padding-top: 5px;
+    }
+
+        .header-main-menu-button:focus {
+            outline: none;
+        }
+
+    .menu-desktop-dropdown-content {
+        top: 36px;
+        height: 36px;
+        box-shadow: 0 1px 3px rgba(0,0,0,.25);
+        overflow: hidden;
+    }
+
+    .header-main-menu-dropdown:hover .menu-desktop-dropdown-content {
+        display: block;
+        left: 0;
+        width: 100%;
+        max-height: 500px !important;
+    }
+
+    .menu-desktop-dropdown-list a {
+        color: black;
+        font-family: "Roboto Medium" !important;
+        font-size: 15px;
+        border-right: 1px solid #eee;
+        padding-right: 8px;
+    }
+
+    .menu-desktop-dropdown-list li:last-child a {
+        border: none;
+    }
+
+    .menu-desktop-dropdown-list li {
+        padding-right: 0px !important;
+        padding-left: 8px !important;
+        height: 34px !important
+    }
+
+        .menu-desktop-dropdown-list li:hover {
+            background-color: #eee;
+        }
+
+            .menu-desktop-dropdown-list li:hover a {
+                text-decoration: none;
+            }
+
+    #login-btn {
+        float: right !important;
+    }
+
+        #login-btn:hover .menu-desktop-dropdown-content-l {
+            display: block;
+        }
+
+    .menu-desktop-dropdown-content-l {
+        display: none;
+        width: 200px;
+        position: absolute;
+        right: 0;
+        background-color: white;
+        border: 1px solid #eee;
+        box-shadow: 0 1px 3px rgba(0,0,0,.25);
+        padding: 10px 25px;
+        z-index: 20;
+    }
+
+        .menu-desktop-dropdown-content-l a {
+            float: left;
+            width: 150px;
+            text-align-last: center;
+            margin-left: auto;
+            margin-right: auto;
+            height: 32px;
+            text-align: center;
+            padding-top: 5px;
+            font-size: 13px
+        }
+
+    .pasgo-loginbtn {
+        border-radius: 30px;
+        background-color: #d02028;
+        color: white;
+        font-family: "Roboto Medium";
+        font-size: 15px!important;
+    }
+
+    .pasgo-loginbtn:hover{
+        color: white;
+    }
+
+            .menu-desktop-dropdown-content-l a:hover {
+                text-decoration: none;
+            }
+
+    .searchsticky {
+        float: right !important;
+        display: none;
+        border: 1px solid #eee !important;
+        border-radius: 30px;
+        padding-left: 6px !important;
+        background-color: white;
+        margin-top: 5px;
+        height: 29px !important;
+        padding-right: 6px !important;
+        padding-top: 2px !important;
+    }
+
+        .searchsticky input, .searchsticky input:focus, .searchsticky:hover {
+            border: none;
+            outline: none;
+        }
+
+        .searchsticky .pasgo-icondesktop-search {
+            position: unset;
+            margin: 5px 5px 0 0;
+            filter: invert(75%);
+        }
+
+    .search-btn-header {
+        float: right;
+    }
+
+        .search-btn-header .pasgo-icondesktop-search {
+            border: none;
+            float: left;
+        }
+
+    .pasgo-icondesktop-search {
+        margin-top: 4px;
+    }
+
+
+    .wapper-content {
+        background-color: #eee;
+        margin-bottom: 15px;
+        margin-top: 5px;
+    }
+
+    .scrollshow-header {
+        border-bottom: 1px solid #c3c2c2;
+    }
+
+        .scrollshow-header h1 {
+            font-size: 16px;
+            font-family: "Roboto Medium";
+            text-align: center;
+        }
+
+    #pasgo-slide {
+        padding-top: 5px;
+    }
+
+        #pasgo-slide .img {
+            width: 100px;
+            height: 60px;
+            background-position: center;
+            background-size: cover;
+            float: left;
+            overflow: hidden;
+        }
+
+            #pasgo-slide .img img {
+                height: 100%
+            }
+
+        #pasgo-slide .carousel-control-next:hover {
+            background-image: linear-gradient(to left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
+        }
+
+        #pasgo-slide .carousel-control-prev:hover {
+            background-image: linear-gradient(to right,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
+        }
+
+        #pasgo-slide .carousel-indicators {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            position: relative;
+            display: block;
+        }
+
+            #pasgo-slide .carousel-indicators li p {
+                text-align: left;
+                font-size: 13px;
+                margin: 0;
+                margin-left: 110px;
+                margin-bottom: 0;
+                color: #000000;
+            }
+
+            #pasgo-slide .carousel-indicators li:hover p {
+                color: #d02028;
+            }
+
+            #pasgo-slide .carousel-indicators li span {
+                text-align: left;
+                font-size: 13px;
+                bottom: 0;
+                margin-left: 10px;
+                color: #676767
+            }
+
+            #pasgo-slide .carousel-indicators li {
+                width: 100%;
+                height: 60px;
+                float: left;
+                text-indent: 0;
+                opacity: 1;
+                overflow: hidden;
+            }
+
+            #pasgo-slide .carousel-indicators .active {
+                background-color: #eee;
+            }
+
+                #pasgo-slide .carousel-indicators .active p {
+                    color: #d02028;
+                }
+
+        #pasgo-slide .mobile-header {
+            display: none;
+        }
+
+    #slideshow {
+        height: fit-content;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+        #slideshow img {
+            width: 100%
+        }
+
+    .wapper {
+        margin: 10px;
+        background-color: white;
+        padding: 0 15px;
+        box-shadow: 0 1px 3px rgba(0,0,0,.25);
+        padding-bottom: 10px;
+    }
+
+        .wapper .wapcontent h1 {
+            font-size: 18px;
+            font-weight: normal;
+            margin-top: 30px;
+            font-family: "Roboto Regular";
+        }
+
+            .wapper .wapcontent h1 span {
+                font-size: 14px;
+                color: #d02028;
+                font-family: "Roboto Regular";
+            }
+
+        .wapper .wapcontent h2 a:first-child {
+            font-size: 18px;
+            font-weight: normal;
+            margin-top: 30px;
+            font-family: "Roboto Regular";
+            color: black;
+            padding-right: 30px;
+        }
+
+            .wapper .wapcontent h2 a:first-child:hover {
+                color: #d02028;
+                text-decoration: none;
+            }
+
+        .wapper .wapcontent h2 a {
+            font-size: 13px;
+            font-weight: normal;
+            margin-top: 30px;
+            font-family: "Roboto Regular";
+            color: #6a6a6a;
+            padding: 3px;
+        }
+
+            .wapper .wapcontent h2 a:last-child {
+                font-size: 13px;
+                font-weight: normal;
+                margin-top: 30px;
+                font-family: "Roboto Regular";
+                color: #d02028;
+            }
+
+                .wapper .wapcontent h2 a:last-child:hover {
+                    text-decoration: none;
+                }
+
+        .wapper .wapcontent li:first-child:hover {
+            box-shadow: none;
+        }
+
+        .wapper .wapcontent li:hover {
+            box-shadow: 0 3px 3px -3px rgba(0,0,0,.25);
+        }
+
+        .wapper .wapcontent a:hover {
+            text-decoration: none;
+        }
+
+        .wapper .wapcontent .wapper-end-text {
+            color: #d02028;
+            padding-bottom: 30px;
+        }
+
+        .wapper .wapcontent a h1 {
+            font-size: 18px;
+            font-weight: normal;
+            margin-top: 30px;
+            font-family: "Roboto Medium";
+            color: black;
+            padding-right: 30px;
+            text-decoration: none;
+        }
+
+            .wapper .wapcontent a h1:hover {
+                color: #d02028;
+            }
+        /*.wapper .wapcontent .pasgo-collection {padding-left: 15px; padding-right: 15px;}*/
+        .wapper .wapcontent .pasgo-collection .col-md-3 {
+            width: unset;
+            width: 25%;
+            padding: 5px;
+        }
+
+    .end-wapper a {
+        color: #d92028;
+    }
+
+    .end-wapper span {
+        margin-left: 20px;
+        margin-top: 12px;
+    }
+
+    .wapper .wapcontent .pasgo-collection .item-collection img {
+        width: 100%
+    }
+
+    .wapper .wapcontent .pasgo-collection .item-collection .wapsale {
+        width: 60px;
+        background-color: #f30505ba;
+        color: white;
+        font-size: 16px;
+        text-align: center;
+        height: 60px;
+        border-radius: 30px 30px 30px 30px;
+        position: absolute;
+        display: block;
+        top: 10px;
+        right: 25px;
+        font-weight: bold;
+        font-family: "Roboto Regular";
+        text-align: center;
+        padding-top: 3px;
+        padding-bottom: 0;
+    }
+
+        .wapper .wapcontent .pasgo-collection .item-collection .wapsale aside {
+            font-weight: normal;
+            font-size: 13px;
+        }
+
+    .wapper .wapcontent .pasgo-collection .item-collection .wapfooter {
+        width: calc(100% - 10px);
+        height: 60px;
+        background-color: #00000099;
+        color: white;
+        bottom: 5px;
+        position: absolute;
+        display: block;
+        font-size: 14px;
+        padding: 10px;
+        text-align: left;
+        font-family: "Roboto Regular"
+    }
+
+    /*Slide ăn uống*/
+    /*#pasgo-carousel-menu.carousel-inner .carousel-item.active,#pasgo-carousel-menu.carousel-inner .carousel-item-next,#pasgo-carousel-menu.carousel-inner .carousel-item-prev {  display: flex;}
+		#pasgo-carousel-menu.carousel-inner .carousel-item-right.active,#pasgo-carousel-menu.carousel-inner .carousel-item-next {  transform: translateX(25%);}
+		#pasgo-carousel-menu.carousel-inner .carousel-item-left.active, #pasgo-carousel-menu.carousel-inner .carousel-item-prev {  transform: translateX(-25%);		}		  
+		#pasgo-carousel-menu.carousel-inner .carousel-item-right,#pasgo-carousel-menu.carousel-inner .carousel-item-left{ transform: translateX(0);	}*/
+    .rate {
+        display: inline-block;
+        position: relative;
+        line-height: 1;
+        white-space: nowrap;
+    }
+
+    .rate2 {
+        position: absolute;
+        display: block;
+        top: 0;
+        overflow: hidden;
+        bottom: 0;
+        line-height: 1;
+        z-index: 1;
+    }
+
+    .checked {
+        color: orange;
+    }
+
+    .notchecked {
+        color: silver;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .wap-item {
+        position: relative;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+    }
+
+    .wapfooter {
+        width: 100%;
+        height: auto;
+        background-color: #00000099;
+        color: white;
+        bottom: 0;
+        border-bottom-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        position: absolute;
+        display: block;
+        font-size: 14px;
+        text-align: center;
+        bottom: 92px;
+    }
+
+        .wapfooter a {
+            color: white;
+            font-size: 16px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+            .wapfooter a div p {
+                margin: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .wapfooter a:hover {
+                text-decoration: none;
+                color: white;
+            }
+
+        .wapfooter .textname {
+            overflow: hidden;
+            -webkit-line-clamp: 2;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+        }
+
+        .wapfooter .text-address {
+            font-size: 13px;
+            overflow: hidden;
+            -webkit-line-clamp: 1;
+            text-overflow: ellipsis;
+            max-height: 2rem;
+            line-height: 1rem;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            padding: 0 5px;
+        }
+
+    .danhgia-ct {
+        width: auto;
+    }
+
+    .rating-star {
+        text-align: right;
+    }
+
+    .rating-money {
+        text-align: left;
+    }
+
+    .wap-sale {
+        color: #d02028;
+        line-height: 27px;
+        font-size: 16px;
+        text-align: center;
+        font-family: "Roboto Regular";
+    }
+
+    .wap-tag {
+        color: #757777;
+        height: 25px;
+        font-size: 12px;
+        text-align: center;
+        overflow: hidden;
+        font-family: "Roboto Regular";
+        margin-bottom: 5px;
+    }
+
+    .btn-booking {
+        border: 1px solid #ccc;
+        border-radius: 30px;
+        text-decoration: none;
+        text-align: center !important;
+        font-family: "Roboto Regular";
+        padding: 4px 20px 5px 20px;
+        color: #757777;
+    }
+
+        .btn-booking:hover {
+            text-decoration: none;
+            color: white;
+            background-color: #d92028
+        }
+
+    .wap-booking {
+        text-align: center;
+        height: 35px;
+    }
+
+    .next-prev {
+        background-color: white;
+        opacity: 0.5;
+        top: 38%;
+        height: 50px;
+        width: 50px;
+        border-radius: 5px 5px 5px 5px;
+    }
+
+    .wapstar {
+        max-width: 50%;
+        padding-right: 0px !important;
+    }
+
+    .wapdollar {
+        max-width: 50%;
+        padding-left: 0px !important;
+    }
+
+    .rating-star .rate {
+        border-right: 1px solid #ccc;
+        padding-right: 7px;
+    }
+
+    .rating-money .rate {
+       
+        padding-left: 5px;
+    }
+
+    .wapper .col-md-3, .wapper .col-md-4, .wapper .col-md-6 {
+        float: left;
+        padding: 2px;
+    }
+    /*.wapper .col-md-4 {float: left; padding: 5px;}*/
+    #pasgo-carousel-menu .carousel-control-next {
+        right: -10px;
+    }
+
+    #pasgo-carousel-menu .carousel-control-prev {
+        left: -10px;
+    }
+
+    .wapper .col-md-3 img {
+        width: 100%;
+    }
+
+    .list-header {
+        list-style: none;
+        padding: 0;
+        margin-top: 25px;
+    }
+
+        .list-header li {
+            float: left;
+            font-size: 14px;
+            padding: 4px 12px 3px 12px;
+            font-family: "Roboto Regular";
+        }
+
+            .list-header li:first-child {
+                font-size: 18px;
+                color: black;
+                padding: 0 0 5px 0;
+                font-family: "Roboto Medium";
+                padding-right: 15px;
+            }
+
+                .list-header li:first-child:hover a {
+                    color: #d02028
+                }
+
+            .list-header li a {
+                color: #6a6a6a;
+            }
+
+            .list-header li:first-child a {
+                color: black;
+            }
+
+        .list-header a:hover {
+            color: #d02028;
+        }
+
+    .hold-list {
+        padding-left: 2px;
+    }
+
+    .body-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        overflow: auto;
+    }
+
+        .body-list::-webkit-scrollbar {
+            display: none;
+        }
+    /*Header search PC*/
+    .input-group, .input-group-addon {
+        width: 100%
+    }
+
+    .input-group-addon .pasgo-icondesktop-dropdown {
+        position: absolute;
+        top: 25px;
+        left: 90%;
+    }
+
+    .search-btn {
+        background-color: #d02028;
+        margin-left: 4px;
+        border-radius: 30px;
+        color: white;
+        position: absolute;
+        right: 3px;
+        height: 32px;
+        top: 3px;
+        padding-top: 3px;
+        text-align: center;
+        bottom: 2px;
+        width: 34%
+    }
+
+        .search-btn div {
+            position: absolute;
+        }
+
+    #header-search-pc {
+        padding: 5px 0;
+        background-color: #f7f6f4;
+    }
+
+        #header-search-pc .row {
+            margin-top: 0;
+        }
+
+    .sven .col-lg-7 {
+        border: 1px solid #cccccc;
+        border-radius: 30px 0 0 30px;
+    }
+
+    .sven .col-lg-5 {
+        border: 1px solid #cccccc;
+        border-radius: 0 30px 30px 0;
+        border-left: none;
+    }
+
+    .sven div {
+        float: left;
+    }
+
+    .sven i {
+        position: absolute;
+        top: 11px;
+        left: calc(10% - 6px);
+    }
+
+    .sven div, .sven input, .sven select {
+        border: none;
+        background-color: transparent;
+    }
+
+        .sven div:focus, .sven input:focus, .sven select:focus {
+            outline: 0;
+            border: none;
+            box-shadow: none;
+            background-color: transparent;
+        }
+
+    .sven input {
+        padding: 0 0 2px 5%;
+    }
+
+    .sven select {
+        text-align-last: center;
+    }
+
+    .sven .input-group:first-child {
+        border-right: 1px solid #cccccc;
+        border-left: 1px solid transparent
+    }
+
+    .sven .input-group select {
+        -webkit-appearance: none;
+    }
+
+    .sven .input-group .pasgo-icondesktop-dropdown {
+        position: absolute;
+        top: 25px;
+        left: 80%;
+    }
+
+    #sven2 .input-group {
+        width: 33%
+    }
+
+    .pasgo-phonenumber {
+        float: right;
+        color: #d02028;
+        font-size: 20px;
+        font-weight: 600;
+        padding-top: 5px;
+    }
+
+    .pasgo-icondesktop-phone {
+        top: 15px;
+        right: 190px;
+    }
+
+    .pasgo-icondesktop-district {
+        top: 20px;
+        left: 10%;
+    }
+
+    .pasgo-khampha {
+        list-style-type: none;
+        width: auto;
+        overflow: auto;
+        padding-left: 0;
+    }
+
+        .pasgo-khampha li {
+            float: left;
+            margin-top: 27px;
+            padding-left: 10px;
+        }
+
+            .pasgo-khampha li:first-child {
+                margin-top: 0px;
+                padding-left: 0;
+            }
+
+            .pasgo-khampha li a {
+                color: #343a40 !important;
+                border-right: 1px solid #343a40;
+                padding-right: 10px;
+            }
+
+                .pasgo-khampha li a:hover {
+                    text-decoration: underline !important;
+                    color: #d02028 !important;
+                }
+
+            .pasgo-khampha li:first-child a {
+                border: none;
+                padding-right: 0;
+            }
+
+                .pasgo-khampha li:first-child a:hover {
+                    text-decoration: none !important;
+                }
+
+            .pasgo-khampha li:last-child a {
+                border: none;
+                padding-right: 0;
+            }
+
+    .pasgo-khampha-item:hover p {
+        color: #d02028;
+    }
+
+    .pasgo-khampha-item:hover img {
+        transform: scale(1.1);
+    }
+
+    .pasgo-khampha-item .pasgo-khampha-item-img, .pasgo-khampha-item .pasgo-khampha-item-title {
+        float: left;
+    }
+
+    .pasgo-khampha-item-info {
+        color: black !important;
+        padding-bottom: 10px;
+    }
+
+    .pasgo-khampha-item-review .col-md-5, .pasgo-khampha-item-review .col-md-7 {
+        padding: 0 5px 5px 10px;
+    }
+
+    .pasgo-khampha-item-txt {
+        width: calc(100% - 40px);
+        overflow: hidden;
+        -webkit-line-clamp: 1;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+
+    .pasgo-khampha-item-img {
+        overflow: hidden;
+    }
+
+        .pasgo-khampha-item-img img {
+            transition: transform 0.5s ease;
+            width: 100%;
+        }
+
+    .pasgo-khampha-item-title {
+        padding: 5px 5px 5px 10px;
+    }
+
+        .pasgo-khampha-item-title p {
+            font-family: "Roboto Medium";
+            font-size: 16px;
+            margin: 0;
+            color: black;
+            height: 48px;
+        }
+
+    .pasgo-khampha-item-review {
+        padding: 5px 0 5px 0;
+    }
+
+        .pasgo-khampha-item-review div {
+            padding-bottom: 2px;
+        }
+
+        .pasgo-khampha-item-review span {
+            color: black;
+        }
+
+    .pasgo-icondesktop-kp-pin, .pasgo-icondesktop-kp-usd, .pasgo-icondesktop-kp-star, .pasgo-icondesktop-kp-sale {
+        margin-right: 10px;
+    }
+    /*Thương hiệu chuỗi*/
+    #pasgo-thuonghieuchuoi .wap-tag {
+        height: unset;
+        font-size: 16px;
+        font-family: "Roboto Medium";
+        text-align: inherit;
+        padding: 5px 10px 0 10px;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        color: black;
+    }
+
+    #pasgo-thuonghieuchuoi .wap-sale {
+        overflow: auto;
+        padding-left: calc(50% - 60px)
+    }
+
+        #pasgo-thuonghieuchuoi .wap-sale span {
+            color: black;
+            font-size: 14px;
+        }
+
+        #pasgo-thuonghieuchuoi .wap-sale .pasgo-icondesktop-kp-sale {
+            zoom: 0.8;
+        }
+
+        #pasgo-thuonghieuchuoi .wap-sale .pasgo-icondesktop-kp-sale, #pasgo-thuonghieuchuoi .wap-sale span {
+            float: left;
+        }
+
+    #pasgo-thuonghieuchuoi .next-prev {
+        opacity: 0.3;
+        width: 30px;
+        border: 2px;
+    }
+    /*Blog PasGo*/
+    .blog {
+        overflow: auto;
+    }
+
+        .blog img {
+            height: auto;
+            width: 100%
+        }
+
+        .blog h2 {
+            font-size: 17px;
+            padding: 10px 10px 0px 10px;
+            margin-bottom: 5px;
+            overflow: hidden;
+            -webkit-line-clamp: 3;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            line-height: 1.3;
+            color: #333;
+            font-family: "Roboto Medium"
+        }
+
+        .blog a div, .blog-item li a div {
+            float: left;
+        }
+
+    #pasgo-blog .col-sm-4, #pasgo-blog .col-md-4, #pasgo-tintuc .col-sm-4, #pasgo-tintuc .col-md-4, #pasgo-tv .col-sm-4, #pasgo-tv .col-md-4, #pasgo-blog .col-5, #pasgo-block .col-7, .blog-item .col-12 {
+        height: auto;
+        float: left;
+        max-height: 900px;
+        overflow: auto;
+    }
+
+    .blog-item .col-sm-4 {
+        padding-bottom: 5px;
+    }
+
+    .blog-teaser {
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-height: 18pt;
+        max-height: 62px;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        color: #5d5b5b;
+        font-size: 11pt;
+        padding: 5px 10px;
+        line-height: 1.6;
+        font-family: "Roboto Regular"
+    }
+
+    #pasgo-blog .container {
+        border: 1px solid #949494;
+        padding: 0;
+        margin-bottom: 10px;
+    }
+
+    #pasgo-blog .bodynotscroll {
+        display: table;
+    }
+
+        #pasgo-blog .bodynotscroll .col-md-4 {
+            display: table-cell;
+        }
+
+    .blog-time {
+        font-size: 13px;
+        color: #949494;
+    }
+
+    #pasgo-tintuc .container {
+        margin-bottom: 10px;
+    }
+
+    .blog-item {
+        overflow: auto;
+        margin: 0 !important;
+    }
+
+        .blog-item li {
+            list-style: none;
+        }
+
+            .blog-item li:hover {
+                box-shadow: none !important;
+            }
+
+        .blog-item img {
+            width: 100%;
+            float: left;
+        }
+
+        .blog-item h4 {
+            font-size: 14px;
+            color: black;
+            padding: calc(20% - 50px) 10px;
+            padding-bottom: 0;
+            margin-bottom: 0;
+            text-align: justify;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden
+        }
+
+        .blog-item .blog-time {
+            margin-left: 0;
+        }
+
+    .bottom-border {
+        border-bottom: 1px solid #949494;
+    }
+    /*Tin tức PasGo*/
+    #pasgo-tintuc .blog-item li .border-bottom {
+        padding-bottom: 1px;
+        overflow: auto;
+    }
+
+    #pasgo-tintuc h2, #pasgo-tv h2 {
+        -webkit-line-clamp: 2;
+    }
+    /*PasGo TV*/
+    #pasgo-tv {
+        overflow: auto;
+    }
+
+        #pasgo-tv h2 {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin: 0;
+        }
+
+        #pasgo-tv .body-list .wap-item {
+            overflow: auto;
+        }
+
+        #pasgo-tv .video-time {
+            text-align: right;
+            font-size: 10px;
+            color: white;
+            border-radius: 20px;
+            background-color: black;
+            opacity: 0.7;
+            position: absolute;
+            left: calc(95% - 34px);
+            top: calc(90% - 15px);
+            padding: 0 5px;
+        }
+
+        #pasgo-tv .view-time {
+            text-align: left;
+            font-size: 13px;
+            color: #333;
+            padding-top: 10px;
+            padding-left: 10px;
+            margin-bottom: 0;
+            font-family: "Roboto Regular"
+        }
+
+        #pasgo-tv .pasgo-tag {
+            text-align: left;
+            font-size: 13px;
+            color: #333;
+            top: 0;
+            padding-left: 10px;
+            padding-top: 10px;
+            font-family: "Roboto Regular"
+        }
+
+        #pasgo-tv .container {
+            border: 1px solid #949494;
+            padding: 0;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+        }
+
+        #pasgo-tv .pasgo-icondesktop-playbutton {
+            display: inline-block;
+            filter: invert(90%);
+            position: absolute;
+            top: calc(50% - 48px);
+            left: calc(50% - 40px);
+        }
+
+        #pasgo-tv .body-list li .wap-item {
+            margin: 0;
+        }
+
+        #pasgo-tv .body-list h2 {
+            line-height: 1.4
+        }
+
+        #pasgo-tv .blog h2 {
+            line-height: 1.4
+        }
+
+        #pasgo-tv .bois {
+            float: left;
+        }
+
+        #pasgo-tv .blog .pasgo-tag {
+            display: block;
+        }
+
+        #pasgo-tv .end-wapper {
+            float: left;
+        }
+    /*App download*/
+    #pasgo-app .col-6 {
+        float: left;
+        padding: 0;
+    }
+
+    #pasgo-app .col-12 {
+        overflow: auto;
+    }
+
+    .pasgo-icondesktop-appstore {
+        zoom: 0.4;
+        float: right;
+        margin-right: 30px;
+    }
+
+    .pasgo-icondesktop-playstore {
+        zoom: 0.212;
+        float: left;
+        margin-left: 60px;
+    }
+
+    #pasgo-app p {
+        margin-bottom: 2px;
+        font-family: "Roboto Regular";
+        font-size: 18px;
+    }
+
+    #pasgo-app h1 {
+        text-align-last: center;
+        border: none;
+        color: #d30606;
+        font-family: "Roboto Medium"
+    }
+
+    #pasgo-app ul li:hover {
+        box-shadow: none;
+    }
+
+    #pasgo-app .wapcontent {
+        padding: 15px 0 30px 0;
+    }
+
+        #pasgo-app .wapcontent .pc {
+            text-align-last: center;
+        }
+
+        #pasgo-app .wapcontent .no-padding {
+            margin-bottom: 30px;
+        }
+
+        #pasgo-app .wapcontent div:first-child p {
+            font-size: 16px;
+        }
+
+        #pasgo-app .wapcontent div:last-child {
+            margin-top: 10px;
+        }
+
+    .triangle {
+        border-left: 40px solid #555;
+        border-top: 40px solid transparent;
+        border-bottom: 40px solid transparent;
+        margin-top: 5px;
+    }
+
+
+    /*Đối tác*/
+    .notarealcarousel {
+        width: 2400px;
+        transition-duration: 0.3s
+    }
+
+        .notarealcarousel .wap-item {
+            border: none;
+            margin-bottom: 0;
+            padding: 5px;
+            float: left;
+            width: 200px;
+            height: 198px;
+        }
+
+    #pasgo-doitac .wapcontent {
+        overflow: auto;
+    }
+
+    #pasgo-doitac .bodyscroll {
+        overflow: hidden;
+        max-width: 1200px;
+    }
+
+    #pasgo-doitac .row .col-sm-12 {
+        text-align-last: center;
+    }
+
+        #pasgo-doitac .row .col-sm-12 h1 {
+            margin-top: 15px;
+        }
+
+    #control-left, #control-right {
+        border: none;
+    }
+
+        #control-left span, #control-right span {
+            margin-top: calc(40% - 10px);
+        }
+    /*Khách Hàng*/
+    #pasgo-khachhang {
+        overflow: auto;
+    }
+
+        #pasgo-khachhang img {
+            height: 100%;
+        }
+
+        #pasgo-khachhang .row .col-12 {
+            text-align: center;
+        }
+
+            #pasgo-khachhang .row .col-12 h1 {
+                font-family: "Roboto Medium";
+                font-size: 20px;
+                padding-bottom: 20px;
+                margin-top: 15px;
+            }
+
+        #pasgo-khachhang .col-md-12 .col-4 {
+            float: left;
+        }
+
+        #pasgo-khachhang .col-md-12 .col-md-4 .col-3 {
+            height: 150px;
+            text-align-last: center;
+        }
+
+        #pasgo-khachhang .col-md-12 .col-md-4 .col-9 h1 {
+            font-family: "Roboto Medium";
+            font-size: 16px;
+            text-align: center;
+        }
+
+        #pasgo-khachhang .col-md-12 .col-md-4 .col-9 p {
+            font-family: "Roboto Regular";
+            font-size: 15px;
+            text-align: center;
+        }
+
+        #pasgo-khachhang .col-md-12 .col-md-4 .quotes {
+            font-family: "Roboto Regular";
+            font-size: 15px;
+            text-align: center;
+            color: #5c5c5c
+        }
+    /*Footer*/
+    footer {
+        background-color: white;
+        box-shadow: 0 1px 3px rgba(0,0,0,.15);
+        padding-top: 35px;
+    }
+
+        footer h1, footer h2, footer h3 {
+            color: black;
+            font-size: 16px;
+            font-family: "Roboto Medium";
+            text-align: center;
+            padding-bottom: 5px;
+        }
+
+        footer h1 {
+            padding-bottom: 0;
+        }
+
+        footer h4 {
+            color: black;
+            font-size: 14px;
+            font-family: "Roboto Medium";
+            text-align: left;
+            text-transform: uppercase;
+            padding-top: 15px;
+        }
+
+        footer .container-fluid {
+            background-color: white;
+            margin-top: 35px;
+        }
+
+        footer .pasgo-icondesktop-logored {
+            display: block;
+        }
+
+        footer div {
+            text-align: justify;
+            font-size: 14px;
+            color: #7e7e7e;
+            word-spacing: -1px;
+        }
+
+        footer .about-pasgo {
+            list-style: none;
+            padding-left: 15px;
+        }
+
+            footer .about-pasgo ul {
+                padding-left: 10px;
+                list-style: none;
+            }
+
+            footer .about-pasgo li {
+                padding-bottom: 7px;
+            }
+
+                footer .about-pasgo li a {
+                    color: #606060;
+                    font-family: "Roboto Regular";
+                    text-align: justify;
+                }
+
+                    footer .about-pasgo li a:hover {
+                        text-decoration: none;
+                        color: #d02028;
+                    }
+
+        footer .pc div {
+            padding-top: 10px;
+            font-family: "Roboto Regular";
+            padding-bottom: 20px;
+        }
+
+        footer .pc p {
+            font-size: 13px;
+        }
+
+    .pasgo-social {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .pasgo-certification {
+        text-align: center;
+    }
+
+        .pasgo-certification a {
+            display: block;
+        }
+
+    .pasgo-subcription div {
+        word-spacing: -2px;
+        padding-bottom: 15px;
+    }
+
+    .pasgo-subcription .input-group {
+        border-radius: 30px;
+        background-color: #e8e8e8;
+        padding: 3px;
+    }
+
+    .pasgo-subcription input {
+        border-radius: 30px;
+        background-color: #f9f9f9;
+        border-color: #f9f9f9;
+    }
+
+    .pasgo-subcription .input-group-btn {
+        background-color: #f9f9f9;
+    }
+
+    .pasgo-subcription input:focus {
+        background-color: #f9f9f9 !important;
+        border-color: transparent;
+        box-shadow: none;
+    }
+
+    .pasgo-subcription button {
+        border-radius: 30px;
+        background-color: #d02028;
+        color: white;
+        width: 80px;
+    }
+
+    .link-company {
+        font-size: 14px;
+        font-family: "Arial";
+        text-align: left;
+        padding-bottom: 15px;
+    }
+
+    footer a:hover {
+        text-decoration: none;
+    }
+
+    footer p {
+        margin-bottom: 5px;
+    }
+
+        footer p:last-children span {
+            color: #007bff;
+        }
+    /*Filter*/
+    #pasgo-filter .col-md-3 img {
+        width: 10px;
+    }
+
+    #pasgo-filter button {
+        width: 100%;
+        position: unset;
+        margin: 0;
+        height: 100%;
+        border-radius: 5px;
+    }
+
+        #pasgo-filter button:hover p {
+            color: white;
+            transition: none;
+        }
+
+    #pasgo-filter select:focus {
+        box-shadow: none;
+        border-color: #ced4da
+    }
+
+    #pasgo-filter .btn {
+        transition: none;
+    }
+
+    #pasgo-filter p {
+        font-family: "Roboto Medium";
+        font-size: 15px;
+        margin: 0;
+    }
+
+    #pasgo-filter img {
+        position: absolute;
+        top: 15px;
+        right: 5%
+    }
+
+    #pasgo-filter select {
+        text-align-last: center;
+        -webkit-appearance: none;
+    }
+
+    #pasgo-filter .pasgo-icondesktop-category {
+        margin: 25px 0 25px 4%;
+    }
+
+    #pasgo-filter .pasgo-icondesktop-district {
+        left: 4%
+    }
+
+    #pasgo-filter .col-lg-3 {
+        padding: 1px 1px;
+        
+    }
+
+    #pasgo-filter .col-md-2 {
+        padding: 1px 2px;
+    }
+
+    .wapper .col-md-2 {
+        padding: 2px;
+    }
+
+    #pasgo-filter .col-md-3 {
+        float: unset;
+    }
+
+    #pasgo-filter .row:last-child {
+        display: flex;
+    }
+
+    #pasgo-slide {
+        order: 1;
+    }
+
+    #pasgo-filter {
+        order: 2;
+    }
+
+    #scrollbtn {
+        position: fixed;
+        right: 20px;
+        bottom: 60px;
+        padding: 0 3px 0px 2.9px;
+        background-color: white;
+        z-index: 999;
+        border-radius: 30px;
+        visibility: hidden;
+        transition: opacity 0.5s linear;
+        opacity: 0;
+    }
+
+        #scrollbtn i {
+            font-size: 3em;
+        }
+
+        #scrollbtn:hover {
+            opacity: 1 !important;
+        }
+    /*Kết quả tìm kiếm*/
+    #result {
+        position: absolute;
+        border: 1px solid #ccc;
+        left: 0;
+        top: 50px;
+        background-color: #eee;
+        overflow: auto;
+        z-index: 100;
+        display: none;
+    }
+
+        #result .row {
+            margin: 5px 0;
+        }
+
+        #result .wappersearch {
+            margin-right: auto;
+            margin-left: auto;
+            padding-left: 6px;
+            padding-right: 6px;
+            display: block;
+            position: relative;
+            background-color: #eee;
+        }
+
+        #result .row h4 {
+            text-transform: uppercase;
+            font-size: 15px;
+            margin-top: 15px;
+        }
+
+        #result .wappersearch .row .col-md-9 {
+            background: #fff;
+            min-height: 100px;
+        }
+
+    #get-tag-search {
+        line-height: 1;
+    }
+
+        #get-tag-search a {
+            text-decoration: none;
+            color: #494949;
+            cursor: pointer;
+            padding: 4px 10px;
+            display: inline-block;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+            font-size: 14.5px;
+            line-height: 1.2;
+            overflow: auto;
+            margin: 0;
+        }
+
+            #get-tag-search a:hover {
+                color: #fff;
+                background-color: #d02028;
+            }
+
+            #get-tag-search a:first-child {
+                margin-top: 5px;
+            }
+
+    #get-name-restaurant a {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        color: #000;
+        text-decoration: none;
+        border-bottom: 1px solid #eaeaea;
+        margin: 5px 0;
+        padding: 6px 0 6px 10px;
+        clear: both;
+    }
+
+        #get-name-restaurant a:hover {
+            background-color: #eee
+        }
+
+        #get-name-restaurant a:last-child {
+            border-bottom: none;
+        }
+
+        #get-name-restaurant a .img-circle {
+            width: 40px;
+            float: left;
+            margin-right: 10px;
+            border-radius: 0;
+            min-height: 40px;
+        }
+
+        #get-name-restaurant a p {
+            font-size: 14px;
+            line-height: 1;
+            margin: 0;
+            font-family: "Roboto Regular";
+        }
+
+        #get-name-restaurant a:hover p {
+            color: #d02028;
+        }
+
+        #get-name-restaurant a .text-address {
+            color: #797979;
+            font-size: 12px;
+        }
+
+    #indicators li {
+        border: none;
+        margin: 5px 0 0 5px;
+    }
+
+        #indicators li:hover a {
+            text-decoration: none;
+        }
+    #login .wapper {margin-left: auto; margin-right: auto;}
+    #login input, #login select, #login span, #login button {margin: 10px 0; height: 40px; float: left;border: 1px solid #ccc}
+    #login select { float: left; }
+    #login span {border-right: none;padding: 7px 0 0 0; text-align: center; color: #ccc}
+    #login .submit {background-color: #d02028; color: white; font-family: "Roboto Regular"; width: 100%;}
+    #login .row {margin: 0;}
+    #login h1 {font-size: 20px; font-family: "Roboto Medium";  margin: 20px 0 10px calc(50% - 151px)}
+    #login a{font-family: "Roboto Medium"; color: #d02028;}
+    #male, #female {float: unset !important; height: 13px !important; margin: 0 10px 0 50px !important;}
+    #policy {margin:0 !important;}
+    #login label{margin: 8px 0; padding-left: 10px;}
+    #login p {margin: 0; float: left;}
+    .field-validation-error, .field-validation-error span {
+        border: none !important;
+        padding: 0 !important;
+        text-align: unset;
+        color: red !important;
+        font-size: 14px;
+        height: 20px !important;
+        margin: unset !important;
+    }
+        .field-validation-valid{
+            display: none;
+        }
+        .checkbox {
+            float: left;
+        }
+    #login .col-12 {overflow: auto;}
+    #huongdan h1 {font-family: "Roboto Medium"; font-size: 22px; text-align-last: center; padding-top: 25px; padding-bottom: 5px;}
+    #huongdan p {font-family: Roboto Regular; font-size: 16px; text-align-last: center; padding-bottom: 10px;}
+
+    #infor .col-12, #infor .col-4, #infor .col-3, #infor .col-2 {float: left;}
+    #infor h1 {
+        text-align: center;
+        font-size: 20px;
+        font-family: "Roboto Medium"
+    }
+
+    #infor input, #infor label {
+        font-family: "Roboto Regular"; font-size: 15px;
+    }
+
+    #infor .wapper {
+        overflow: auto;
+    }
+
+    #infor .col-12, #infor .col-4, #infor .col-3, #infor .col-2, #infor .col-10, #infor .col-8 {
+        float: left;
+    }
+
+    .infor-tab {
+        margin: 0;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-bottom: none;
+    }
+
+        .infor-tab .pasgo-icondesktop-menublack {
+            right: 40px;
+            top: 30px;
+        }
+
+        .infor-tab p {
+            font-family: "Roboto Medium";
+            font-size: 15px;
+            padding-left: 30px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+    .infor-user input {
+        margin: 5px 0;
+        padding: 7px;
+        color: #555;
+        border: 1px solid #ccc;
+    }
+
+    .infor-user label {
+        margin-top: 12px;
+        padding-left: 7px;
+    }
+
+    #infor .submit {
+        background-color: #d02028;
+        color: white;
+        font-family: "Roboto Regular";
+        width: 100%;
+    }
+
+    #infor .submit {
+        height: 40px;
+    }
+
+    #infor li {
+        list-style-type: none;
+    }
+
+        #infor li a {
+            width: 100%
+        }
+
+    #infor img {
+        border: 40px;
+        height: 40px;
+    }
+
+    .fa {padding-left:4px;}
+
+    .notarealcarousel .name-address {
+        visibility: hidden;
+        width: 120px;
+        background-color: #eee;
+        border: 1px solid #ccc;
+        color: #212529;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 999;
+        top: 25px;
+        width: 250px;
+        min-height: 50px;
+    }
+
+        .notarealcarousel .name-address p {
+            margin: 0;
+            padding: 0;
+            float: left;
+            padding-left: 10px;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .notarealcarousel .name-address h1 {
+            float: left;
+            padding-left: 10px;
+            margin: 0;
+            font-size: 16px;
+        }
+        .img-responsive{
+            width: 100%;
+            height: 100%;
+        }
+        td, th{
+            border: 1px solid #dddddd;
+            padding: 8px; 
+            text-align: left;
+        }
+        tr:nth-child(2n+1){
+            background-color: #dddddd;
+        }
+        table{
+            border-collapse: collapse;
+            width: 100%;
+        }
+        #admin-details th {width: 25%}
+        #admin-pic .no {
+            position: absolute;
+            background-color: white;
+            left: 10px;
+            top: 10px;
+            border-radius: 10px;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            border: 1px solid black;
+        }
+        #admin-pic .title {
+            color: black;
+            text-align: center;
+            border-bottom: 1px solid #cccccc
+        }
+        #admin-pic .img-indicators {
+            width: 25%;
+            padding: 0 0 5px 5px;
+            float: left;
+        }
+    #admin-pic, #admin-details, .adminthongtin, #admin-thuonghieu, #admin-updatepic, #admin-userdetails {
+        background-color: white;
+        padding: 0 25px;
+        overflow: auto
+    }
+        #admin-details{
+            padding-top: 25px;
+        }
+            #admin-pic .indicators {
+                height: 345px;
+                float: left;
+                width: 50%;
+                overflow: auto;
+            }
+            #admin-pic .img-indicators:hover {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+        #picCarousel {
+            width: 50%;
+            float: left;
+        }
+        #updatePicCarousel{
+            width: 100%;
+        }
+        #admin-pic .imgtype{
+            position: absolute;
+            background-color: white;
+            right: 10px;
+            top: 10px;
+            border-radius: 10px;
+            width: auto;
+            height: auto;
+            text-align: center;
+            padding: 0 5px;
+            border: 1px solid black;
+        }
+        .adminthongtin .img{
+            float: left;
+            width: 30%;
+            overflow: hidden;
+        }
+        .adminthongtin .info{
+            float: left;
+            width: 70%;
+            margin-top: 15px;
+        }
+        .control-label{
+            margin-top: 7px;
+            text-align: right;
+        }
+        .form-group{
+            overflow: auto;
+            margin-bottom: 10px;
+        }
+        .form-group .number{
+            width: 15%;
+            text-align: center;
+            float: left;
+        }
+        .form-group .option{
+            width: 30%;
+            float: left;
+            margin-right: 5px;
+        }
+        #admin-updatepic .img-indicators {
+            width: 100%;
+            padding: 0 3px;
+            float: left;
+        }
+        #admin-updatepic .div-img {
+            width: 20%; 
+            height: 150px; 
+            float: left;
+        }
+        #admin-details .carousel-control, #admin-updatepic .carousel-control{
+            width: 7%;
+        }
+        #admin-updatepic .img-indicators:hover{
+            border: 1px solid black;
+        }
+        #adminthongtin .checkboxthongtin input[type="checkbox"]{
+            cursor: unset;
+        }
+        #admin-pic .checkboxthongtin input[type="checkbox"]{
+            cursor: pointer;
+        }
+        input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    #admin-userdetails  p{
+        margin: 0;
+    }
+    #admin-userdetails td{
+        padding: 5px;
+    }
+    #admin-userdetails{
+        padding: 5px;
+    }
+    #admin-userdetails label{
+        font-weight: unset;
+    }
+    .admin-nguoidung input {
+        float: left;
+        margin: 3px;
+    }
+    #myModal input, #myModal select {
+        width: 20%;
+        float: left;
+        margin: 3px;
+    }
+    #myModal button {
+        width: 20%;
+        float: right;
+        margin: 3px;
+    }
+    #myModal button:hover{
+        background-color:#eee;
+    }
+    #myModal .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 40%;
+        overflow: auto;
+        margin-top: 15%;
+    }
+    input[type=checkbox][disabled] {
+        cursor: unset;
+    }
+    .tab {
+        overflow: hidden;
+    }
+    .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 10px;
+        transition: 0.3s;
+        font-size: 17px;
+        border-bottom: 2px solid white;
+        font-family: "Roboto Medium";
+        color: #555;
+        margin-bottom: 5px;
+    }
+    .tab button:hover {
+        background-color: #eee;
+    }
+    .tab button.active {
+        border-bottom: 2px solid #d02028;
+        color: #d02028;
+    }
+    .tabcontent {
+        display: none;
+        padding: 6px 12px;
+    }
+    .tab td, .tab th {
+        font-family: "Arial";
+        font-size: 14px;
+        color: Black;
+    }
+    .tab .btntab-col {
+        overflow: auto;
+        float: left;
+        padding: unset;
+    }
+
+}

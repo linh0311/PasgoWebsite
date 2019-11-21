@@ -1,0 +1,55 @@
+﻿@model IEnumerable<WebApplication2.Models.imgSlide_Result>
+@using WebApplication2.CustomHtmlHelper;
+
+@{
+    ViewBag.Title = "Đặt bàn, đặt chỗ nhà hàng trực tuyến và nhân ưu đãi tại Hà Nội";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int x = Convert.ToInt32(Request.Form["fQuanId"]);
+}
+
+<div class="wapper-content">
+    <div class="container">
+        <!--Int không trả về Object-->
+
+        @Html.Action("SlideShow")
+        @Html.Action("BoSuuTap", "Home", new { city = 3 })
+        @Html.Action("AnUong", "Home", new { city = 3 })
+        @Html.Action("UyTin", "Home", new { city = 3 })
+        @Html.Action("UuDai", "Home", new { city = 3 })
+        @Html.Action("MoiNhat", "Home", new { city = 3 })
+        @Html.Action("KhamPha", "Home", new { city = 3 })
+        @Html.Action("ChuoiThuongHieu", "Home", new { city = 3 })
+        @Html.Action("BlogPasgo", "Home", new { city = 3 })
+        @Html.Action("TinTuc", "Home", new { city = 3 })
+        @Html.Action("PasgoTV", "Home", new { city = 3 })
+        <section class="wapper" id="pasgo-app">
+            <div class="wapcontent col-12">
+                <div class="col-12 no-padding">
+                    <h1>ỨNG DỤNG KHỞI NGHIỆP TIÊN PHONG!</h1>
+                    <p class="pc">Giải pháp chọn Nhà hàng ngon</p>
+                </div>
+                <div class="col-md-6 col-sm-12 col-12 pc" style="float: left;">
+                    <i class="fa fa-download fa-5x" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-6 col-sm-12 col-12 " style="float: left;">
+                    <div class="triangle col-md-1 pc" style="float: left;"></div>
+                    <ul class="col-md-11 col-sm-12">
+                        <li><p>Đặt bàn trực tuyến giữ chỗ</p></li>
+                        <li><p>Nhận ưu đãi trực tiếp vào hóa đơn</p></li>
+                        <li><p>Tất cả đều MIỄN PHÍ</p></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-sm-12 col-12">
+                    <a class="col-6" href="https://apps.apple.com/app/id896053668">
+                        <div class="pasgo-icondesktop-appstore"></div>
+                    </a>
+                    <a class="col-6" href="https://play.google.com/store/apps/details?id=com.onepas.android.pasgo">
+                        <div class="pasgo-icondesktop-playstore"></div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        @Html.Action("KhachHang", "Home")
+        @Html.Action("DoiTac", "Home")
+    </div>
+</div>

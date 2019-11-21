@@ -1,0 +1,667 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{85CB80EF-9576-4AAC-AA9D-F5BFD230C1F9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApplication2</RootNamespace>
+    <AssemblyName>WebApplication2</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44389</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ManageAccountController.cs" />
+    <Compile Include="Controllers\NguoiDungController.cs" />
+    <Compile Include="Controllers\NhaHangController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="CustomHtmlHelper\CustomHtmlHelpers.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\allImg_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AnUong.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AnUong2SP_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AnUongSP_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BaiViet.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BaiVietSP_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChuoiThuongHieuSP_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\City.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DoiTacSP_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FullInfoHistory_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FullInfoRestaurant_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FullInfoUser_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetUserInforSP_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HeaderSlide.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\History.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\img.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\imgSlide_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KhachHang.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KhachhangSP_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KhamPha.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KhamPhaBv.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KhamPhaSP_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\khuyenmai.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\loc.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\Login_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Menu.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MenuCatalogue1_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MoiNhat.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MoiNhatSP_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhaHang.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NhaHang.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhaHang.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhaHang.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NhaHang.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhaHangUyTin.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PasgoRestaurant.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PasgoTV.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PasgotvSP_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PasgoUser.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PasgoVisitor.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Procedure_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Promotion.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SimpleHistory_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SimpleRestaurant_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SimpleUser_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\thongtinthem.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\thongtinthemSP_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThuocThuongHieuChuoi_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThuongHieuChuoi.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThuongHieuChuoiD.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UuDaiHot.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UuDaiSP_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UyTinSP_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Database1.mdf" />
+    <Content Include="App_Data\Database1_log.ldf">
+      <DependentUpon>Database1.mdf</DependentUpon>
+    </Content>
+    <Content Include="Assets\background.jpg" />
+    <Content Include="Assets\background2.jpg" />
+    <Content Include="Assets\Images\2x-desktop-v2.png" />
+    <Content Include="Assets\Images\2x-mobile.png" />
+    <Content Include="Assets\Images\359550_screenshots_20190829190106_1.jpg" />
+    <Content Include="Assets\Images\amp-video\icon-video-pasgo.png" />
+    <Content Include="Assets\Images\amp-video\play-icon.png" />
+    <Content Include="Assets\Images\appstore.png" />
+    <Content Include="Assets\Images\chat-now-green-v1.png" />
+    <Content Include="Assets\Images\chat-now-red-v1.png" />
+    <Content Include="Assets\Images\Chat\icon-pasgo.png" />
+    <Content Include="Assets\Images\download %281%29.png" />
+    <Content Include="Assets\Images\download %282%29.png" />
+    <Content Include="Assets\Images\download.png" />
+    <Content Include="Assets\Images\gif\search-loading.gif" />
+    <Content Include="Assets\Images\holder\img-holder-534x330.png" />
+    <Content Include="Assets\Images\holder\img-holder-600x600.png" />
+    <Content Include="Assets\Images\holder\img-holder-666x120.png" />
+    <Content Include="Assets\Images\holder\img-holder-909x344.png" />
+    <Content Include="Assets\Images\icon-clock.png" />
+    <Content Include="Assets\Images\icon-maps-detail.png" />
+    <Content Include="Assets\Images\icon-time.jpg" />
+    <Content Include="Assets\Images\iconfinder_icon-play_211876.png" />
+    <Content Include="Assets\Images\icon_close.png" />
+    <Content Include="Assets\Images\kp-icon\map-pin.jpg" />
+    <Content Include="Assets\Images\kp-icon\map.jpg" />
+    <Content Include="Assets\Images\kp-icon\pin.jpg" />
+    <Content Include="Assets\Images\kp-icon\sale.jpg" />
+    <Content Include="Assets\Images\kp-icon\star.jpg" />
+    <Content Include="Assets\Images\kp-icon\tag.jpg" />
+    <Content Include="Assets\Images\kp-icon\time.jpg" />
+    <Content Include="Assets\Images\kp-icon\usd.jpg" />
+    <Content Include="Assets\Images\kp-icon\view.jpg" />
+    <Content Include="Assets\Images\logo\dang-ky-thanh-vien.png" />
+    <Content Include="Assets\Images\logo\dang-nhap.png" />
+    <Content Include="Assets\Images\playstore.png" />
+    <Content Include="Assets\Images\select\br_down.png" />
+    <Content Include="Assets\Images\select\ful_grid_img.png" />
+    <Content Include="Assets\Images\select\google.png" />
+    <Content Include="Assets\Images\select\search.png" />
+    <Content Include="Assets\Images\tim-kiem-1301674141.jpg" />
+    <Content Include="Assets\Images\ui-icon\ui-icon.png" />
+    <Content Include="Assets\Slide\AnUong\70048261_1908103129334878_6773364842578313216_n.jpg" />
+    <Content Include="Assets\Slide\AnUong\le-beer-nguyen-thi-thap-300-129335073849.jpg" />
+    <Content Include="Assets\Slide\AnUong\moo-beef-steak-tran-quoc-toan-300-12502051275.jpg" />
+    <Content Include="Assets\Slide\AnUong\nha-hang-gri-and-gri-times-city-300-100227321196.jpg" />
+    <Content Include="Assets\Slide\AnUong\nha-hang-hai-san-bien-cua-nguyen-khang-300-69222701842.jpg" />
+    <Content Include="Assets\Slide\AnUong\zamba-extra-bbq-and-beer-dong-cac-300-105498673539.jpg" />
+    <Content Include="Assets\Slide\Blog\7-mau-trang-tri-sinh-nhat-cho-be-trai-tai-nha-voi-xe-o-to-cool-ngau-400-204127014025.jpg" />
+    <Content Include="Assets\Slide\Blog\an-gi-o-sai-gon-ngon-re-top-20-noi-tieng-nay-la-cau-tra-loi-400-182525014114.jpg" />
+    <Content Include="Assets\Slide\Blog\day-la-cac-mon-dac-san-ha-noi-noi-tieng-nhat-may-chuc-nam-qua-400-152694113942.jpg" />
+    <Content Include="Assets\Slide\cha-ca-gia-nguyen-cha-ca-ngon-ha-thanh-11837111917.jpg" />
+    <Content Include="Assets\Slide\cha-ca-gia-nguyen-cha-ca-ngon-ha-thanh-200-11837111917.jpg" />
+    <Content Include="Assets\Slide\DoiTac\golden-gate-2769727305.jpg" />
+    <Content Include="Assets\Slide\DoiTac\gyu-kaku-2781107338.jpg" />
+    <Content Include="Assets\Slide\DoiTac\hai-san-bien-dong-276997071.jpg" />
+    <Content Include="Assets\Slide\DoiTac\hai-san-pho-2770674314.jpg" />
+    <Content Include="Assets\Slide\DoiTac\long-dinh-2770848318.jpg" />
+    <Content Include="Assets\Slide\DoiTac\mon-hue-2771682307.jpg" />
+    <Content Include="Assets\Slide\DoiTac\moo-beef-steak-2770575312.jpg" />
+    <Content Include="Assets\Slide\DoiTac\pepperonis-276993372.jpg" />
+    <Content Include="Assets\Slide\DoiTac\redsun-2769645304.jpg" />
+    <Content Include="Assets\Slide\DoiTac\the-gioi-hai-san-276975167.jpg" />
+    <Content Include="Assets\Slide\DoiTac\you-willget-10-million-usd-cash-but-samuel-l-jackson-39079192.png" />
+    <Content Include="Assets\Slide\gyu-kaku-nuong-lau-nhat-ban-18937054383.jpg" />
+    <Content Include="Assets\Slide\gyu-kaku-nuong-lau-nhat-ban-200-18937054383.jpg" />
+    <Content Include="Assets\Slide\KhachHang\Hoang-Van-Đoan.png" />
+    <Content Include="Assets\Slide\KhachHang\Hoàng-Thu-Thủy.png" />
+    <Content Include="Assets\Slide\KhachHang\NGUYỄN-THỊ-HẠNH-LOAN.png" />
+    <Content Include="Assets\Slide\KhachHang\NGUYỄN-TÀI-TUỆ.png" />
+    <Content Include="Assets\Slide\KhachHang\Võ-Linh-Phương.png" />
+    <Content Include="Assets\Slide\KhamPha\tong-hop-cac-nha-hang-buffet-hai-san-ngon-noi-tieng-uu-dai-tot-tai-ha-noi-400-5139925195.jpg" />
+    <Content Include="Assets\Slide\kien-do-akaari-thuong-hieu-am-thuc-nhat-ban-since-1999-200-9682244948.jpg" />
+    <Content Include="Assets\Slide\kien-do-akaari-thuong-hieu-am-thuc-nhat-ban-since-1999-9682244948.jpg" />
+    <Content Include="Assets\Slide\lau-de-nhat-ly-de-re-tuoi-ngon-11179878916.jpg" />
+    <Content Include="Assets\Slide\lau-nuong-seoul-bbq-buffet-nuong-lau-phong-cach-nhat-han-16183446912.jpg" />
+    <Content Include="Assets\Slide\lau-nuong-seoul-bbq-buffet-nuong-lau-phong-cach-nhat-han-200-16183446912.jpg" />
+    <Content Include="Assets\Slide\lau-nuong-seoul-bbq-buffet-nuong-lau-phong-cach-nhat-han-200-9895197912.jpg" />
+    <Content Include="Assets\Slide\lau-nuong-seoul-bbq-buffet-nuong-lau-phong-cach-nhat-han-9895197912.jpg" />
+    <Content Include="Assets\Slide\nhung-quan-chay-ngon-ha-noi-phu-hop-nhat-cho-mua-vu-lan-bao-hieu-200-9999490402.jpg" />
+    <Content Include="Assets\Slide\on-yasai-shabu-shabu-buffet-lau-nhat-200-9608541918.jpg" />
+    <Content Include="Assets\Slide\on-yasai-shabu-shabu-buffet-lau-nhat-9608541918.jpg" />
+    <Content Include="Assets\Slide\ong-gia-cha-ca-cha-ca-ngon-dat-kinh-ki-11345668929.jpg" />
+    <Content Include="Assets\Slide\ong-gia-cha-ca-cha-ca-ngon-dat-kinh-ki-200-11345668929.jpg" />
+    <Content Include="Assets\Slide\PasgoTV\cho-hai-san-kien-ghe-quan-ha-dong-nha-hang-dat-tiec-toi-gan-100-khach-600-10071207575.jpg" />
+    <Content Include="Assets\Slide\PasgoTV\sapasa-96b-nguyen-huy-tuong-buffet-goi-mon-lau-nuong-and-vuon-bia-600-19001716568.jpg" />
+    <Content Include="Assets\Slide\sapasa-lau-nuong-and-vuon-bia-15425867875 %281%29.jpg" />
+    <Content Include="Assets\Slide\sapasa-lau-nuong-and-vuon-bia-15425867875.jpg" />
+    <Content Include="Assets\Slide\sapasa-lau-nuong-and-vuon-bia-200-15425867875.jpg" />
+    <Content Include="Assets\Slide\season-bbq-ba-trieu-buffet-nuong-lau-ngon-chuan-vin-han-200-9130344930.jpg" />
+    <Content Include="Assets\Slide\season-bbq-ba-trieu-buffet-nuong-lau-ngon-chuan-vin-han-9130344930.jpg" />
+    <Content Include="Assets\Slide\ThuongHieuChuoi\chuoi-king-bbq-ha-noi-nuong-lau-chuan-vi-xu-kim-chi-400-17429291153.jpg" />
+    <Content Include="Assets\Slide\ThuongHieuChuoi\chuoi-nha-hang-daruma-ha-noi-quan-an-nhanh-nhat-ban-400-16011275767.jpg" />
+    <Content Include="Assets\Slide\ThuongHieuChuoi\chuoi-nha-hang-hai-san-bien-dong-chuyen-hai-san-tuoi-song-400-1654857540.jpg" />
+    <Content Include="Assets\Slide\TinTuc\gap-pasgo-tuyen-nhan-vien-cong-tac-vien-phong-dich-vu-khach-hang-500-1811070475.jpg" />
+    <Content Include="Assets\Slide\TinTuc\tim-nha-hang-chat-luong-gan-nhat-tren-pasgo-nha-trang-500-1559324579.jpg" />
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\Antlr3.Runtime.pdb" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\csi.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll" />
+    <Content Include="bin\roslyn\System.AppContext.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Console.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.FileVersionInfo.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.StackTrace.dll" />
+    <Content Include="bin\roslyn\System.IO.Compression.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.Primitives.dll" />
+    <Content Include="bin\roslyn\System.IO.Pipes.AccessControl.dll" />
+    <Content Include="bin\roslyn\System.IO.Pipes.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\System.Security.AccessControl.dll" />
+    <Content Include="bin\roslyn\System.Security.Claims.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Algorithms.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Encoding.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Primitives.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.X509Certificates.dll" />
+    <Content Include="bin\roslyn\System.Security.Principal.Windows.dll" />
+    <Content Include="bin\roslyn\System.Text.Encoding.CodePages.dll" />
+    <Content Include="bin\roslyn\System.ValueTuple.dll" />
+    <Content Include="bin\roslyn\System.Xml.ReaderWriter.dll" />
+    <Content Include="bin\roslyn\System.Xml.XmlDocument.dll" />
+    <Content Include="bin\roslyn\System.Xml.XPath.dll" />
+    <Content Include="bin\roslyn\System.Xml.XPath.XDocument.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Optimization.xml" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.xml" />
+    <Content Include="bin\WebApplication2.dll" />
+    <Content Include="bin\WebApplication2.pdb" />
+    <Content Include="bin\WebGrease.dll" />
+    <Content Include="Content\Admin\bootstrap-theme.css" />
+    <Content Include="Content\Admin\bootstrap-theme.min.css" />
+    <Content Include="Content\Admin\bootstrap.css" />
+    <Content Include="Content\Admin\bootstrap.min.css" />
+    <Content Include="Content\Admin\Site.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\Site.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Models\NhaHang.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NhaHang.edmx</DependentUpon>
+      <LastGenOutput>NhaHang.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\NhaHang.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NhaHang.edmx</DependentUpon>
+      <LastGenOutput>NhaHang.cs</LastGenOutput>
+    </Content>
+    <Content Include="obj\Debug\WebApplication2.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\WebApplication2.dll" />
+    <Content Include="obj\Debug\WebApplication2.pdb" />
+    <Content Include="Sample\login.sql" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="bin\roslyn\csc.exe.config" />
+    <Content Include="bin\roslyn\csc.rsp" />
+    <Content Include="bin\roslyn\csi.exe.config" />
+    <Content Include="bin\roslyn\csi.rsp" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.Managed.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\vbc.exe.config" />
+    <Content Include="bin\roslyn\vbc.rsp" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="bin\WebApplication2.dll.config" />
+    <Content Include="obj\Debug\build.force" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\WebApplication2.csproj.CopyComplete" />
+    <Content Include="obj\Debug\WebApplication2.csprojAssemblyReference.cache" />
+    <Content Include="fonts\fontroboto\Roboto-Bold.woff" />
+    <Content Include="fonts\fontroboto\Roboto-Medium.woff" />
+    <Content Include="fonts\fontroboto\roboto-regular.woff" />
+    <Content Include="Assets\fontroboto\Roboto-Bold.woff" />
+    <Content Include="Assets\fontroboto\Roboto-Medium.woff" />
+    <Content Include="Assets\fontroboto\roboto-regular.woff" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regulard41d.eot" />
+    <EntityDeploy Include="Models\NhaHang.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NhaHang.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\NhaHang.edmx.diagram">
+      <DependentUpon>NhaHang.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\Admin\bootstrap-theme.css.map" />
+    <Content Include="Content\Admin\bootstrap-theme.min.css.map" />
+    <Content Include="Content\Admin\bootstrap.css.map" />
+    <Content Include="Content\Admin\bootstrap.min.css.map" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\site.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_NotLayout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Account\ContentPage1.cshtml" />
+    <Content Include="Views\Account\UserLandingView.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\_Layout1.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\ManageAccount\Details.cshtml" />
+    <Content Include="Views\Home\SlideShow.cshtml" />
+    <Content Include="Views\Home\BoSuuTap.cshtml" />
+    <Content Include="Views\Home\AnUong.cshtml" />
+    <Content Include="Views\Home\Uytin.cshtml" />
+    <Content Include="Views\Home\UuDai.cshtml" />
+    <Content Include="Views\Home\MoiNhat.cshtml" />
+    <Content Include="Views\Home\KhamPha.cshtml" />
+    <Content Include="Views\Home\ChuoiThuongHieu.cshtml" />
+    <Content Include="Views\Home\BlogPasgo.cshtml" />
+    <Content Include="Views\Home\TinTuc.cshtml" />
+    <Content Include="Views\Home\PasgoTv.cshtml" />
+    <Content Include="Views\Home\KhachHang.cshtml" />
+    <Content Include="Views\Home\DoiTac.cshtml" />
+    <Content Include="Views\Home\hochiminh.cshtml" />
+    <Content Include="Views\Home\danang.cshtml" />
+    <Content Include="Views\Home\khanhhoa.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Admin\NhaHang.cshtml" />
+    <Content Include="Views\NhaHang\Index.cshtml" />
+    <Content Include="Views\NhaHang\Details.cshtml" />
+    <Content Include="Views\NhaHang\Pic.cshtml" />
+    <Content Include="Views\NhaHang\Thongtin.cshtml" />
+    <Content Include="Views\NhaHang\Thuonghieu.cshtml" />
+    <Content Include="Views\NhaHang\UpdateDetails.cshtml" />
+    <Content Include="Views\NhaHang\UpdatePic.cshtml" />
+    <Content Include="Views\NhaHang\Updatethongtin.cshtml" />
+    <Content Include="Views\NhaHang\UpdateChuoi.cshtml" />
+    <Content Include="Views\NhaHang\InsertPic.cshtml" />
+    <Content Include="Views\NhaHang\CreatNhaHang.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\ManageAccount\ChangePassword.cshtml" />
+    <Content Include="Views\Admin\NguoiDung.cshtml" />
+    <Content Include="Views\NguoiDung\Index.cshtml" />
+    <Content Include="Views\NguoiDung\Details.cshtml" />
+    <Content Include="Views\NguoiDung\History.cshtml" />
+    <Content Include="Views\ManageAccount\History.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52317</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44389/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

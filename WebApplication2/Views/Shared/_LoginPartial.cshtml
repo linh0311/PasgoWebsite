@@ -1,0 +1,34 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Session["PasgoID"]!=null)
+{
+    using (Html.BeginForm())
+    {
+    <li class="dropdown" id="login-btn" style="padding-top: 8px;">
+        @Html.ActionLink("Xin chào, " + Session["FullName"].ToString(), "Details", "ManageAccount", routeValues: null, htmlAttributes: new { @class = "header-main-menu-button" })
+
+        <div class="menu-desktop-dropdown-content-l">
+            @Html.ActionLink("Thông tin tài khoản", "Details", "ManageAccount", routeValues: null, htmlAttributes: new { style = "font-size: 15px; padding: 0" })
+            @Html.ActionLink("Quản lý mật khẩu", "ChangePassword", "ManageAccount", routeValues: null, htmlAttributes: new { style = "font-size: 15px; padding: 0" })
+            @Html.ActionLink("Lịch sử đặt chỗ", "Details", "ManageAccount", routeValues: null, htmlAttributes: new { style = "font-size: 15px; padding: 0" })
+            <a class="pasgo-loginbtn" href="@Url.Action("LogOut","Account")">LogOut</a>
+        </div>
+    </li>
+    }
+}
+else
+{
+    <li class="dropdown" id="login-btn" style="padding-top: 8px;">
+        <!-- <a class="header-main-menu-button" href="">Tài Khoản</a> -->
+        @Html.ActionLink("Tài khoản", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "header-main-menu-button" })
+        <div class="menu-desktop-dropdown-content-l" style=" ">
+            <!--<a class="pasgo-loginbtn" href="https://pasgo.vn/dang-nhap">Đăng nhập</a>
+            <a href="https://pasgo.vn/dang-ky" style="font-size: 13px;">Thành viên mới?</a>
+            <a class="pasgo-loginbtn" href="https://pasgo.vn/dang-ky">Tạo tài khoản</a>-->
+            @Html.ActionLink("Tài khoản", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "pasgo-loginbtn" })
+            @Html.ActionLink("Thành viên mới", "Login", "Account", routeValues: null, htmlAttributes: new { style = "font-size: 13px;" })
+            @Html.ActionLink("Tạo tài khoản", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "pasgo-loginbtn" })
+        </div>
+    </li>
+}
+
+

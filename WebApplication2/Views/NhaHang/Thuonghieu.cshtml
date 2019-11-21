@@ -1,0 +1,63 @@
+﻿@model WebApplication2.Models.ThuocThuongHieuChuoi_Result
+@{
+    ViewBag.Title = "thuonghieu";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <div class="col-12" id="admin-thuonghieu">
+        <h2>Thuộc chuỗi nhà hàng</h2>
+        <span>
+            @Html.ActionLink("Chỉnh sửa", "Details")
+        </span>
+        <div class="col-12">
+            <div class="img">
+                @if (Model.ImgDT == null)
+                {
+                    <a href=@Html.DisplayFor(model => model.LinkTH)>
+                        <img src=@Html.DisplayFor(model => model.ImgTH) style="width: 100%" alt=@Html.DisplayFor(model => model.Name)/>
+                    </a>  
+                }
+                else
+                {
+                    <a href=@Html.DisplayFor(model => model.LinkTH)>
+                        <img src=@Html.DisplayFor(model => model.ImgDT) style="width: 100%" alt=@Html.DisplayFor(model => model.Name)/>
+                    </a>
+                }
+            </div>
+            <div class="info">
+                <table>
+                    <tr>
+                        <th>
+                            Mã thương hiệu:
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.IdThuongHieu)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Tên thương hiệu:
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Name)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Địa chỉ trụ sở:
+                        </th>
+                        <td>
+                            @if (Model.AddressDT == null)
+                            {
+                                <text>(chưa cập nhật)</text>
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(model => model.AddressDT)
+                            }
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebApplication2.Models.KhachHang>
+@using WebApplication2.CustomHtmlHelper
+@{
+    Layout = null;
+    int x = 0;
+}
+
+<section class="wapper" id="pasgo-khachhang">
+    <div class="wapcontent">
+        <div class="row">
+            <div class="col-md-12 col-12 no-padding mobile">
+                <span class="mobile-header" style="margin-bottom: 0; float: left; margin-bottom: 5px;"><h1>PasGo với Khách hàng</h1></span>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 pc">
+                <h1>PasGo với Khách hàng</h1>
+            </div>
+        </div>
+        <div class="col-md-12 bodyscroll">
+            <div class="body-list">
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    if (i < 3)
+                    {
+                        <div class="col-md-4 col-sm-12 col-12">
+                            @Html.KhachHang(Model.ElementAt(i).Name, Model.ElementAt(i).Img, Model.ElementAt(i).Job, Model.ElementAt(i).Review)
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-12 mobile">
+                            @Html.KhachHang(Model.ElementAt(i).Name, Model.ElementAt(i).Img, Model.ElementAt(i).Job, Model.ElementAt(i).Review)
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>

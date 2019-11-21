@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "NhaHang";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<br />
+<br />
+<h2>Nhà Hàng</h2>
+<p>
+    <a>
+        Thêm mới
+    </a>
+</p>
+@using (Html.BeginForm("Index", "NhaHang", FormMethod.Post))
+{
+    <div class="col-12">
+        <select class="col-3" name="Loai">
+            <option value="0" selected>Loại</option>
+            <option value="1">Nhà Hàng</option>
+            <option value="2">Lẩu</option>
+            <option value="3">Buffet</option>
+            <option value="4">Nướng</option>
+            <option value="5">Hải Sản</option>
+            <option value="6">Lẩu & Nướng</option>
+            <option value="7">Hải Sản</option>
+        </select>
+        <select class="col-3" name="ThanhPho">
+            <option value="0" selected>Thành Phố</option>
+            <option value="1">Hà Nội</option>
+            <option value="2">Hồ Chí Minh</option>
+            <option value="3">Đà Nẵng</option>
+            <option value="4">Khánh Hòa</option>
+        </select>
+        <select class="col-3" name="KhuyenMai">
+            <option value="0" selected>Khuyến Mãi</option>
+            <option value="1">Giảm giá</option>
+            <option value="2">Ưu đãi món</option>
+        </select>
+        <select class="col-3" name="SoLuong">
+            <option value="20">20 nhà hàng/trang</option>
+            <option value="50">50 nhà hàng/trang</option>
+            <option value="100">100 nhà hàng/ trang</option>
+        </select>
+        <input type="submit" value="Lọc" class="submit" />
+
+    </div>
+    <div class="col-12">
+        <table>
+            <tr>
+                <th>
+                    Tên
+                </th>
+                <th>
+                    Địa chỉ
+                </th>
+                <th>
+                    Khuyến Mãi
+                </th>
+                <th>
+                    Thành Phố
+                </th>
+                <th>
+                    Thời gian
+                </th>
+                <th>
+
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    Kiến Đỏ Akaari - Thương hiệu ẩm thực Nhật Bản "since" 1999
+                </td>
+                <td>
+                    A105-106, D5, Trần Thái Tông, P. Dịch Vọng, Q. Cầu Giấy
+                </td>
+                <td>
+                    Ðặt bàn PasGo ưu đãi tới 10%
+                </td>
+                <td>
+                    Hà Nội
+                </td>
+                <td>
+                    20-Oct-18
+                </td>
+                <td>
+                    <a>Chỉnh&nbsp;sửa</a>
+                    <a>Chi&nbsp;tiết</a>
+                    <a>Xóa</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+
+

@@ -1,0 +1,168 @@
+﻿@model Tuple<List<WebApplication2.Models.SimpleHistory_Result>,List<WebApplication2.Models.SimpleHistory_Result>>
+
+@{
+    ViewBag.Title = "ChangePassword";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="wapper-content" id="infor">
+    <div class="container">
+        <div class="wapper">
+            <br />
+            <div style="float: left;" class="col-12">
+                <label class="field-validation-error">@TempData["Failed"]</label>
+                <label class="field-validation-error" style="color:forestgreen !important">@TempData["Success"]</label>
+            </div>
+            <ul class="col-12 col-sm-4">
+                <li class="col-12 infor-tab">
+                    <div class="col-12 col-sm-3 avatar">
+                        <img src="" alt="Smiley face">
+                    </div>
+                    <div class="col-12 col-sm-9 pasgo-user-id">
+                        <p>ID Pasgo : @Session["PasgoID"]</p>
+                        <p>SĐT : @Session["PhoneNumber"]</p>
+                    </div>
+                </li>
+                <li class="col-12 infor-tab">
+                    <span>Icon</span>
+                    @Html.ActionLink("Thông tin tài khoản", "Details", "ManageAccount")
+                    <span class="pasgo-icondesktop-menublack"></span>
+                </li>
+                <li class="col-12 infor-tab">
+                    <span>Icon</span>
+                    @Html.ActionLink("Quản lý mật khẩu", "ChangePassword", "ManageAccount")
+                    <span class="pasgo-icondesktop-menublack"></span>
+                </li>
+                <li class="col-12 infor-tab">
+                    <span>Icon</span>
+                    @Html.ActionLink("Lịch sử đặt chỗ", "History", "ManageAccount")
+                    <span class="pasgo-icondesktop-menublack"></span>
+                </li>
+                <li class="col-12 infor-tab">
+                    <span>Icon</span>
+                    @Html.ActionLink("Thoát", "Index", "Home")
+                    <span class="pasgo-icondesktop-menublack"></span>
+                </li>
+
+            </ul>
+            <div class="col-12 col-sm-8 tab">
+                <div class="col-6 btntab-col">
+                    <button class="tablinks active" style="float: right;" onclick="opentab(event, 'dangdatcho')">Đang đặt chỗ...</button>
+                </div>
+                <div class="col-6 btntab-col">
+                    <button class="tablinks" style="float: left;" onclick="opentab(event, 'lichsu')">Lịch sử đặt chỗ</button>
+                </div>
+                
+                <div class="tabcontent" id="dangdatcho" style="display:block">
+                    <table>
+                        <tr>
+                            <th style="text-align: center; width: 15%;">
+                                Thời gian đặt
+                            </th>
+                            <th style="text-align: center; width: 25%">
+                                Nhà hàng
+                            </th>
+                            <th style="text-align: center; width: 9%">
+                                Số chỗ
+                            </th>
+                            <th style="text-align: center">
+                                Yêu cầu
+                            </th>
+                            <th style="text-align: center; width: 12%">
+                                Trạng thái
+                            </th>
+                        </tr>
+                        @foreach (var item in Model.Item1)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(x => item.ThoiGian)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => item.NhaHang)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => item.SoLuong)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => item.YeuCau)
+                                </td>
+                                <td>
+                                    <p name="status" style="text-align: center;">@Html.DisplayFor(x => item.TrangThai)</p>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+                <div class="tabcontent" id="lichsu">
+                    <table>
+                        <tr>
+                            <th style="text-align: center; width: 15%;">
+                                Thời gian đặt
+                            </th>
+                            <th style="text-align: center; width: 25%">
+                                Nhà hàng
+                            </th>
+                            <th style="text-align: center; width: 9%">
+                                Số chỗ
+                            </th>
+                            <th style="text-align: center">
+                                Yêu cầu
+                            </th>
+                            <th style="text-align: center; width: 12%">
+                                Trạng thái
+                            </th>
+                        </tr>
+                        @foreach (var item in Model.Item2)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(x => item.ThoiGian)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => item.NhaHang)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => item.SoLuong)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => item.YeuCau)
+                                </td>
+                                <td>
+                                    <p name="status2" style="text-align: center;">@Html.DisplayFor(x => item.TrangThai)</p>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    window.onload = function () { statuscolor()};
+
+    function opentab(evt, name) {
+        var tabcontent = document.getElementsByClassName("tabcontent");
+        var tablinks = document.getElementsByClassName("tablinks");
+        for (var i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(name).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    function statuscolor() {
+        for (var x = 0; x < @Model.Item2.Count(); x++) {
+            if (document.getElementsByName("status2")[x].innerHTML == "Yêu cầu bị hủy")
+                document.getElementsByName("status2")[x].setAttribute("style", "text-align: center; color: red;");
+            if (document.getElementsByName("status2")[x].innerHTML == "Hoàn thành")
+                document.getElementsByName("status2")[x].setAttribute("style", "text-align: center; color: green;" );
+        }
+    }
+</script>

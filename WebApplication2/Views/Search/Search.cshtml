@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search</h2>
+<input id="textSearch" type="text" name="search" placeholder="Buffet, Lẩu &amp; Nướng, Hải sản..." style="text-align-last: left;" autocomplete="off">
+<select class="form-control no-border" name="fQuanId">
+    <option selected="" value="1">Hà Nội</option>
+    <option value="2">TP.HCM</option>
+    <option value="4">Đà Nẵng</option>
+    <option value="5">Khánh Hòa</option>
+</select>
+<select class="form-control no-border" id="slTypeSearch">
+    <option value="1" selected="">Nhà hàng</option>
+    <option value="2">Khám phá</option>
+    <option value="3">Video</option>
+</select>
+<button>Default Button</button>
+

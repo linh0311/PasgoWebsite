@@ -1,0 +1,75 @@
+﻿@model IEnumerable<WebApplication2.Models.AnUongSP_Result>
+@using WebApplication2.CustomHtmlHelper;
+@{
+    Layout = null;
+    int x = 0;
+}
+
+<section class="wapper">
+    <div class="wapcontent">
+        <div class="row">
+            <div class="col-md-12 col-12 no-padding mobile">
+                <span class="mobile-header" style="margin-bottom: 0; float: left;"> <h1>Ăn uống</h1></span>
+                <span class="mobile-header-more" style="float: right;">
+                    <a href="https://pasgo.vn/ha-noi/bop">Xem tất cả<span class="pasgo-icondesktop-menured"></span></a>
+                </span>
+            </div>
+            <div class="col-md-12 col-12 hold-list">
+                <ul class="list-header">
+                    <li><a href="https://pasgo.vn/ha-noi/an-uong" target="_blank" rel="tag">Ăn uống <span class="pasgo-icondesktop-menublack"></span></a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/nha-hang" target="_blank" rel="tag">Nhà hàng</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/nha-hang/buffet-29" target="_blank" rel="tag">Buffet</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/nha-hang/lau-27" target="_blank" rel="tag">Lẩu</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/nha-hang/nuong-25" target="_blank" rel="tag">Nướng</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/nha-hang/hai-san-28" target="_blank" rel="tag">Hải sản</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/nha-hang/lau-and-nuong-91" target="_blank" rel="tag">Lẩu &amp; Nướng</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/nha-hang/quan-nhau-165" target="_blank" rel="tag">Quán Nhậu</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/nha-hang/mon-chay-44" target="_blank" rel="tag">Món chay</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/nha-hang/dat-tiec-224" target="_blank" rel="tag">Đặt tiệc</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/nha-hang/han-quoc-16" target="_blank" rel="tag">Hàn Quốc</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/nha-hang/nhat-ban-15" target="_blank" rel="tag">Nhật Bản</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/nha-hang/mon-au-23" target="_blank" rel="tag">Món Âu</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/nha-hang/mon-viet-21" target="_blank" rel="tag">Món Việt</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/nha-hang/mon-thai-18" target="_blank" rel="tag">Món Thái</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/nha-hang/mon-trung-hoa-126" target="_blank" rel="tag">Món Trung Hoa</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 no-padding">
+            <div id="pasgo-carousel-menu" class="carousel slide" data-ride="carousel" data-interval="2000">
+                <div class="carousel-inner" role="listbox">
+                    @for (int i = 0; i < (Model.Count() / 4); i++)
+                    {
+                        if (x == 0){
+                            <div class="carousel-item active">
+                                @for (int j = 0; j < 4; j++) { 
+                                    @Html.CarouselRating(Model.ElementAt(x).RName, Model.ElementAt(x).Raddress, Model.ElementAt(x).Rlink, Model.ElementAt(x).Rstar.Value, Model.ElementAt(x).Rdollar.Value, Model.ElementAt(x).Rpromotion, Model.ElementAt(x).Rfeature, Model.ElementAt(x).imgLink, Model.ElementAt(x).PasgoRID)
+                                    x++;
+                                }  
+                            </div>
+                        }else{
+                            <div class="carousel-item">
+                                @for (int j = 0; j < 4; j++) {
+                                    @Html.CarouselRating(Model.ElementAt(x).RName, Model.ElementAt(x).Raddress, Model.ElementAt(x).Rlink, Model.ElementAt(x).Rstar.Value, Model.ElementAt(x).Rdollar.Value, Model.ElementAt(x).Rpromotion, Model.ElementAt(x).Rfeature, Model.ElementAt(x).imgLink, Model.ElementAt(x).PasgoRID)
+                                    x++;
+                                }
+                            </div>
+                        }
+                    }
+                </div>
+                                <a class="carousel-control-prev next-prev" href="#pasgo-carousel-menu" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" style="filter: invert(75%);" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next next-prev" href="#pasgo-carousel-menu" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" style="filter: invert(75%);" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+            </div>
+        </div>
+        <div class="col-md-12 col-12 end-wapper">
+            <a href="https://pasgo.vn/ha-noi/bo-suu-tap">Xem tất cả<span class="pasgo-icondesktop-menured"></span></a>
+        </div>
+
+    </div>
+</section>

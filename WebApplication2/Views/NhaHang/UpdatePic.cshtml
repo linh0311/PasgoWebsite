@@ -1,0 +1,208 @@
+﻿@model Tuple<List<WebApplication2.Models.allImg_Result>, int, int>
+@using WebApplication2.CustomHtmlHelper
+
+@{
+    ViewBag.Title = "Pic";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+    int limit = 0;
+    int vitri = 1;
+}
+
+
+    <div class="col-12" id="admin-updatepic">
+        <br />
+        <br />
+        <h2>Hình Ảnh</h2>
+        <label class="field-validation-error">@ViewBag.UpdateFailed</label>
+        <label class="field-validation-error" style="color:forestgreen !important">@ViewBag.UpdateSuccess</label>
+        <div class="dol-12" style="overflow: auto">
+            @using (Html.BeginForm("Details", "NhaHang", new { Rid = Model.Item2 }))
+            {
+                <input type="submit" value="Quay về" class="btn btn-default" style="float: left" />
+            }
+            @using (Html.BeginForm("InsertPic", "NhaHang", new { id = Model.Item2 }))
+            {
+                <input type="submit" value="Thêm mới" class="btn btn-default" style="float: right" />
+            }
+        </div>
+        <div style="margin-top: 10px;">
+            <div id="picupdate" class="carousel slide" data-interval="false" style="width: 100%">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    @for (int x = 0; x < ((Model.Item1.Count() / 5) + 1); x++)
+                    {
+                        if ((count + 5) < Model.Item1.Count())
+                        {
+                            limit = count + 5;
+                        }
+                        else
+                        {
+                            limit = Model.Item1.Count();
+                        }
+                        if (x == 0)
+                        {
+                            <div class="item active">
+                                @for (int y = count; y < limit; y++)
+                                {
+                                    count++;
+                                    @Html.AdminPicUpdateCarousel(Model.Item1.ElementAt(y).imgLink, Model.Item1.ElementAt(y).imgMoTa, Convert.ToInt64(y), Model.Item1.ElementAt(y).imgType, Model.Item1.ElementAt(y).imgID);
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="item">
+                                @for (int y = count; y < limit; y++)
+                                {
+                                    count++;
+                                    @Html.AdminPicUpdateCarousel(Model.Item1.ElementAt(y).imgLink, Model.Item1.ElementAt(y).imgMoTa, Convert.ToInt64(y), Model.Item1.ElementAt(y).imgType, Model.Item1.ElementAt(y).imgID);
+                                }
+
+                            </div>
+                        }
+                    }
+                </div>
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#picupdate" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#picupdate" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <label class="field-validation-error">@TempData["Failed"]</label>
+            <label class="field-validation-error" style="color:forestgreen !important">@TempData["Success"]</label>
+            <!--Không cần thiết màu mè carousel -->
+            @using (Html.BeginForm("Update1Pic", "NhaHang", FormMethod.Post))
+            {
+                <input type="hidden" value=@Model.Item1.ElementAt(0).nhahangID name="nhahangid" />
+                //<input type="hidden" value=@Model.ElementAt(0).imgID name="imgid" />
+                <div class="" style="width: 50%; float: left;">
+                    <img name="showimg" style="width: 100%" />
+                    <div id="picpreview" style="display: none;">
+                        <h4>Xem trước hình ảnh thay thế</h4>
+                        <label class="field-validation-error" id="notify"></label>
+                        <img name="newimg" style="width: 100%" />
+                    </div>
+                </div>
+                <div class="" style="width: 50%; float: left; padding-top: 15px;">
+                    <div class="form-group">
+                        <label class="control-label col-md-3">ID :</label>
+                        <div class="col-md-3">
+                            <input class="form-control text-box single-line" name="showid" type="number">
+                        </div>
+                        <label class="control-label col-md-3">Thứ tự :</label>
+                        <div class="col-md-2">
+                            <input class="form-control text-box single-line" name="showthutu" type="number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Src :</label>
+                        <div class="col-md-8">
+                            <input class="form-control text-box single-line" name="showduongdan" type="text" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Src mới :</label>
+                        <div class="col-md-7">
+                            <input class="form-control text-box single-line" name="newduongdan" type="text">
+                            <input name="finalduongdan" type="hidden">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="form-control" id="btnXem">Xem</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Mô tả :</label>
+                        <div class="col-md-8">
+                            <textarea class="form-control" cols="20" name="showmota" rows="6" style="width: 100%;"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Loại :</label>
+                        <div class="col-md-4">
+                            <!--<input class="form-control text-box single-line" name="showloai" type="number">-->
+                            <select id="loai" name="loai" class="form-control">
+                                <option value="1">Slide</option>
+                                <option value="2">Menu</option>
+                                <option value="99">Home Page</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="submit" id="submit" value="Cập nhật" class="btn btn-default" style="float: left; margin-left: 50px;" disabled />
+                </div>
+            }
+            @using (Html.BeginForm("DeletePic", "NhaHang"))
+            {
+                <input type="submit" id="btndel" value="Xóa" class="btn btn-default" style="float: right; margin-right: 30px; width: 8%" />
+                <input type="hidden" name="confirmdelete"/>
+                <input type="hidden" name="deleteID" value="0" />
+                <input type="hidden" name="nhahangid" value=@Model.Item1.ElementAt(0).nhahangID />
+            }
+
+            @using (Html.BeginForm("UpdatePic", "NhaHang", new { Rid = Model.Item1.ElementAt(0).nhahangID, vitri = vitri }))
+            {
+                <input type="submit" value="Huỷ" class="btn btn-default" style="float: right; margin-right: 30px; width: 8%" />
+            }
+        </div>
+    </div>
+@for (int x = 0; x < Model.Item1.Count(); x++)
+{
+    <script>
+            document.getElementsByName("imgslide")[@x].addEventListener("click", function () { PicInfo(@x) });
+    </script>
+}
+<script>
+
+    var btn = document.getElementById("submit");
+    var img = new Image();
+    var img2 = document.getElementsByName("newimg")[0];
+    var notify = document.getElementById("notify");
+    var finallink = document.getElementsByName("finalduongdan")[0];
+
+    window.onload = function () { PicInfo(@Model.Item3 - 1) };
+    document.getElementById("btnXem").addEventListener("click", function () { CheckAvailable(document.getElementsByName("newduongdan")[0].value) });
+    document.getElementById("loai").addEventListener("change", function () { btn.removeAttribute("disabled") });
+
+    function PicInfo(a) {
+        var slide = document.getElementsByName("imgslide")[a];
+        var src = slide.getAttribute("src");
+        var alt = slide.getAttribute("alt");
+        var href = slide.getAttribute("href");
+        var id = slide.getAttribute("idimg");
+        var loai = slide.getAttribute("typename");
+        finallink.setAttribute("value", src);
+        document.getElementsByName("deleteID")[0].setAttribute("value", id);
+        document.getElementById("loai").value = loai;
+        document.getElementsByName("showid")[0].setAttribute("value", id);
+        document.getElementsByName("showimg")[0].setAttribute("src", src);
+        document.getElementsByName("showimg")[0].setAttribute("href", href);
+        document.getElementsByName("showthutu")[0].setAttribute("value", (a + 1));
+        document.getElementsByName("showduongdan")[0].setAttribute("value", src);
+        document.getElementsByName("showmota")[0].innerHTML = alt;
+        //document.getElementsByName("showloai")[0].setAttribute("value", loai);
+    }
+
+    function CheckAvailable(url) {  
+        notify.innerHTML = "Đường dẫn hình ảnh không hợp lệ";
+        btn.setAttribute("disabled", "disabled");
+        img.addEventListener("load", function () {
+            btn.removeAttribute("disabled");
+            notify.setAttribute("style", "color:forestgreen !important");
+            notify.innerHTML = "Đường dẫn hình ảnh hợp lệ";
+            finallink.setAttribute("value", url);
+        });
+        document.getElementById("picpreview").setAttribute("style", "display: block");
+        img.src = url;
+        img2.src = url;
+    }
+    document.getElementById("btndel").addEventListener("click", function confirmdel() {
+        if (confirm('Bạn có thực sự muốn xóa ảnh? Ảnh bị xóa không thể tìm lại') == true) {
+            document.getElementsByName("confirmdelete")[0].setAttribute("value", true);
+        }    
+    });
+    
+</script>

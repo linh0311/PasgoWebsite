@@ -1,0 +1,67 @@
+﻿@model IEnumerable<WebApplication2.Models.ThuongHieuChuoi>
+@using WebApplication2.CustomHtmlHelper
+
+@{
+    Layout = null;
+    int x = 0;
+}
+
+<section class="wapper" id="pasgo-thuonghieuchuoi">
+    <div class="wapcontent">
+        <div class="row">
+            <div class="col-md-12 col-12 no-padding mobile">
+                <span class="mobile-header" style="margin-bottom: 0; float: left; margin-bottom: 5px;"><h1>Thương hiệu chuỗi</h1></span>
+                <span class="mobile-header-more" style="float: right;"><a href="https://pasgo.vn/ha-noi/kham-pha/thuong-hieu-chuoi-1">Xem tất cả<span class="pasgo-icondesktop-menured"></span></a></span>
+            </div>
+            <div class="col-sm-12 col-md-12 no-padding pc">
+                <a href="https://pasgo.vn/ha-noi/kham-pha/thuong-hieu-chuoi-1"><h1>Thương hiệu chuỗi<span class="pasgo-icondesktop-menublack"></span></h1></a>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 no-padding">
+            <div id="pasgo-carousel-menu-5" class="carousel slide" data-ride="carousel" data-interval="false">
+                <div class="carousel-inner" role="listbox">
+                    @for (int i = 0; i < (Model.Count() / 4); i++)
+                    {
+                        if (x == 0)
+                        {   
+                            <div class="carousel-item active">                       
+                                        @for (int j = 0; j < 4; j++)
+                                        {
+                                            @Html.ThuongHieu(Model.ElementAt(x).Name, Model.ElementAt(x).LinkTH, Model.ElementAt(x).ImgTH, Model.ElementAt(x).Promotion)
+                                            x++;
+                                        }
+                            </div>
+                        }
+                        else
+                        {
+                        <div class="carousel-item">
+                            
+                                    @for (int j = 0; j < 4; j++)
+                                    {
+                                        @Html.ThuongHieu(Model.ElementAt(x).Name, Model.ElementAt(x).LinkTH, Model.ElementAt(x).ImgTH, Model.ElementAt(x).Promotion)
+                                        x++;
+                                    }
+                           
+                        </div>
+                        }
+                    }
+
+
+                </div>
+                                <a class="carousel-control-prev next-prev" href="#pasgo-carousel-menu-5" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" style="filter: invert(75%);" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next next-prev" href="#pasgo-carousel-menu-5" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" style="filter: invert(75%);" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+
+                        </div>
+        <div class="col-md-12 col-12 end-wapper">
+            <a href="https://pasgo.vn/ha-noi/bo-suu-tap">Xem tất cả<span class="pasgo-icondesktop-menured"></span></a>
+        </div>
+
+    </div>
+</section>

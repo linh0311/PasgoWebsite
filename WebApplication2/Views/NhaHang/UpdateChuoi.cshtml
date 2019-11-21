@@ -1,0 +1,228 @@
+﻿@model Tuple<WebApplication2.Models.ThuocThuongHieuChuoi_Result, List<WebApplication2.Models.ThuocThuongHieuChuoi_Result>, int, WebApplication2.Models.ThuocThuongHieuChuoi_Result>
+@{
+    ViewBag.Title = "UpdateChuoi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = Model.Item2.Count();
+}
+
+    <div class="col-12 adminthongtin">
+        <br />
+        <br />
+        <br />
+        <div class="col-12" style="overflow:auto"></div>
+        <h2>Chuỗi nhà hàng hiện tại</h2>
+        @using (Html.BeginForm("DeleteChuoiID", "NhaHang", FormMethod.Post))
+        {
+            @Html.Hidden("nhahang", Model.Item3)
+            <input type="submit" value="Xóa" class="btn btn-default" style="float:right; margin-right:10px;" />
+        }
+        @using (Html.BeginForm("UpdateChuoi", "NhaHang", FormMethod.Post))
+        {
+            @Html.Hidden("nhahang", Model.Item3)
+            <input type="submit" value="Hủy" class="btn btn-default" id="submitbtnhuy" disabled style="float:right; margin-right:10px;" />
+        }
+        @using (Html.BeginForm("Details", "NhaHang", FormMethod.Post))
+        {
+            @Html.Hidden("Rid", Model.Item3)
+            <input type="submit" value="Quay về" class="btn btn-default" style="float:left; margin-right: 10px;" />
+        }
+        @using (Html.BeginForm("UpdateChuoiID", "NhaHang", FormMethod.Post))
+        {
+            @Html.Hidden("nhahang", Model.Item3)
+            <input type="submit" value="Lưu" class="btn btn-default" id="submitbtnluu" disabled />
+            <div class="col-12" style="overflow: auto; padding-top: 5px;">
+                <div class="img col-12 col-sm-4">
+                    @if (Model.Item1.ImgDT == null)
+                    {
+                        <a href=@Html.DisplayFor(model => model.Item1.LinkTH)>
+                            <img src=@Html.DisplayFor(model => model.Item1.ImgTH) name="pic" style="max-height: 170px; margin-left: auto; margin-right: auto; display: block;" alt=@Html.DisplayFor(model => model.Item1.ImgTH) ) />
+                        </a>
+                    }
+                    else
+                    {
+                        <a href=@Html.DisplayFor(model => model.Item1.LinkTH)>
+                            <img src=@Html.DisplayFor(model => model.Item1.ImgDT) name="pic" style="max-height: 170px; margin-left: auto; margin-right: auto; display: block;" alt=@Html.DisplayFor(model => model.Item1.ImgDT) ) />
+                        </a>
+                    }
+                </div>
+                <div class="info col-12 col-sm-8">
+                    <table>
+                        <tr>
+                            <th>
+                                Mã thương hiệu:
+                            </th>
+                            <td>
+                                <span name="ima" value=@Html.DisplayFor(model => model.Item1.IdThuongHieu)>@Html.DisplayFor(model => model.Item1.IdThuongHieu)</span>
+                                @Html.Hidden("chuoibandau", @Html.DisplayFor(model => model.Item1.IdThuongHieu))
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Tên thương hiệu:
+                            </th>
+                            <td>
+                                @if (Model.Item1.Name == null)
+                                {
+                                    <span name="ten" valua="chuaco">(chưa cập nhật)</span>
+                                }
+                                else
+                                {
+                                    <span name="ten" value=@Html.DisplayFor(model => model.Item1.Name)>@Html.DisplayFor(model => model.Item1.Name)</span>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Địa chỉ trụ sở:
+                            </th>
+                            <td>
+                                @if (Model.Item1.AddressDT == null)
+                                {
+                                    <span name="diachi" valua="chuaco">(chưa cập nhật)</span>
+                                }
+                                else
+                                {
+                                    <span name="diachi" value=@Html.DisplayFor(model => model.Item1.AddressDT)>@Html.DisplayFor(model => model.Item1.AddressDT)</span>
+                                }
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!--Chọn-->
+            <div class="col-12" id="chuoithaythe" style="display: none;">
+                <h4>Chuỗi nhà hàng thay thế</h4>
+                <div class="img col-12 col-sm-4">
+                    <a href=@Html.DisplayFor(model => model.Item1.LinkTH)>
+                        <img name="pic" style="max-height: 170px; margin-left: auto; margin-right: auto; display: block;" />
+                    </a>
+                </div>
+                <div class="info col-12 col-sm-8">
+                    <table>
+                        <tr>
+                            <th>
+                                Mã thương hiệu:
+                            </th>
+                            <td>
+                                <span name="ma"></span>
+                                <input type="hidden" name="chuoimoi" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Tên thương hiệu:
+                            </th>
+                            <td>
+                                <span name="ten"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Địa chỉ trụ sở:
+                            </th>
+                            <td>
+                                <span name="diachi"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        }
+        <!--Truyền vào 1 trang html nữa hiển thị được chọn-->
+        <!--Control Lưu return về View khi mà nhận được name="xxx" có giá trị null-->
+        <div class="col-12">
+            @using (Html.BeginForm("UpdateChuoi", "NhaHang", FormMethod.Post))
+            {
+                <div class="col-12" style="margin: 5px">
+                    <h4 style="margin: 7px 18% 7px 0; float: left;">Tìm chuỗi nhà hàng thay thế</h4>
+                    @Html.Hidden("nhahang", Model.Item3)
+                    <input class="col-4" style="width: 25%" type="text" id="searchsticky" name="searchbox" placeholder="Tên chuỗi nhà hàng" />
+                    <input type="submit" value="Tìm kiếm" class="btn btn-default" />
+                </div>
+            }
+        </div>
+        <div class="col-12">
+            <table>
+                <tr>
+                    <th>
+
+                    </th>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Hình Ảnh
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Address
+                    </th>
+                </tr>
+                <!--Nên tạo 1 trang tiên cho cái này-->
+                @foreach (var item in Model.Item2)
+                {
+                    <tr>
+                        <td>
+                            @Html.Hidden("nhahang", Model.Item3)
+                            @Html.Hidden("chuoi", item.IdThuongHieu)
+                            <input name="button" type="submit" value="Thay đổi" class="btn btn-default" />
+                        </td>
+                        <td>
+                            <span name="ma" value=@Html.DisplayFor(x => item.IdThuongHieu)>@Html.DisplayFor(x => item.IdThuongHieu)</span>
+                        </td>
+                        <td>
+                            @if (item.ImgTH == null)
+                            {
+                                <img name="pic" src=@item.ImgDT style="max-height: 110px; margin-left: auto; margin-right: auto; display: block;" />
+                            }
+                            else
+                            {
+                                <img name="pic" src=@item.ImgTH style="max-height: 110px; margin-left: auto; margin-right: auto; display: block;" />
+                            }
+                        </td>
+                        <td>
+                            <span name="ten">@Html.DisplayFor(x => item.Name)</span>
+                        </td>
+                        <td>
+                            @if (item.AddressDT == null)
+                            {
+                                <text>Chưa cập nhật</text>
+                            }
+                            else
+                            {
+                                <span name="diachi">@Html.DisplayFor(x => item.AddressDT)</span>
+                            }
+                        </td>
+                    </tr>
+
+                }
+            </table>
+        </div>
+    </div>
+    @for (int x = 0; x < Model.Item2.Count(); x++)
+    {
+        <script>
+            document.getElementsByName("button")[@x].addEventListener("click", function () { chonchuoi(@x) });
+        </script>
+    }
+    <!--Chỉ là chọn chuỗi cố định-->
+<script>     
+    function chonchuoi(a) {
+        document.getElementById("submitbtnluu").removeAttribute("disabled");
+        document.getElementById("submitbtnhuy").removeAttribute("disabled");
+        document.getElementById("chuoithaythe").setAttribute("style", "display: block; overflow: auto; padding-top: 5px; ")
+        chuoiin = document.getElementsByName("ma")[a+1].getAttribute("value");
+        document.getElementsByName("ma")[0].setAttribute("value", chuoiin); 
+        document.getElementsByName("chuoimoi")[0].setAttribute("value", chuoiin);
+        document.getElementsByName("ma")[0].innerHTML=chuoiin;
+        picin = document.getElementsByName("pic")[a+2].getAttribute("src");
+        document.getElementsByName("pic")[1].setAttribute("src", picin);
+        document.getElementsByName("pic")[1].setAttribute("alt", picin);
+        tenin = document.getElementsByName("ten")[a+2].innerHTML;
+        document.getElementsByName("ten")[1].innerHTML=tenin;
+        diachiin = document.getElementsByName("diachi")[a+2].innerHTML;
+        document.getElementsByName("diachi")[1].innerHTML=diachiin;
+    }
+</script>

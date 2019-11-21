@@ -1,0 +1,367 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <header>
+        <!-- Chọn khu vực Mobile / Có thể chuyển sang menu nav -->
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 district-mobile">
+                        <p>Bạn đang xem khu vực</p>
+                        <select class="form-control no-border" name="fQuanId" id="province" onchange="setProvince()">
+                            <!-- 1 2 4 5 là id province lưu trong cookies -->
+                            <option selected="" value="1">Hà Nội</option>
+                            <option value="2">TP.HCM</option>
+                            <option value="4">Đà Nẵng</option>
+                            <option value="5">Khánh Hòa</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Header -->
+        <div class="header-main" id="header-main">
+            <div class="container">
+                <div class="row navigation">
+                    <!-- Logo Menu -->
+                    <div class="col-1" id="header-main-menu-mobile">
+                        <div class="pasgo-iconmobile-menu" onclick="openNav()"></div>
+                    </div>
+                    <!-- Logo -->			<!-- Bỏ hết vào list -->
+                    <div class="col-10" id="header-main-logo">
+                        <div class="pasgo-icondesktop-logored" style="margin-top: 0; margin-bottom: 5px;"></div>
+                        <div style="text-align: center; line-height: 1; font-family: 'Roboto Medium'; font-size: 12px;">
+                            <i class="fa fa-phone fa-lg" aria-hidden="true"></i>1900&nbsp6005
+                        </div>
+                    </div>
+                    <div class="col-md-2" id="header-main-logo-scroll">
+                        <div class="pasgo-icondesktop-logowhite"></div>
+                    </div>
+                    <!-- Header menu -->
+                    <div class="row overlay" id="header-main-menu-desktop">
+                        <!-- Menu header Mobile -->
+                        <a href="javascript:void(0)" class="closebtn">
+                            <span class="pasgo-icondesktop-arrow-left" onclick="closeNav()"></span>
+                            <span>MENU</span>
+                        </a>
+                        <!-- Header cho PC/Mobile -->
+                        <ul class="overlay-content" id="xul">
+                            <li id="logored"><a href="https://pasgo.vn/ha-noi"><div class="pasgo-icondesktop-logored"></div></a></li>
+                            <li id="logowhite"><a href="https://pasgo.vn/ha-noi"><div class="pasgo-icondesktop-logowhite"></div></a></li>
+                            <li><button class="header-main-menu-button">@Html.ActionLink("Bộ sưu tập", "Blog", "Home")</button></li>
+                            <li class="header-main-menu-dropdown active">
+                                <button class="header-main-menu-button">@Html.ActionLink("Ăn uống", "Blog", "Home")<div class="pasgo-icondesktop-dropdown"></div></button>
+                                <div class="menu-desktop-dropdown-content" style="max-height: 0px;">
+                                    <div class="container">
+                                        <ul class="menu-desktop-dropdown-list">
+                                            <li><a href="#">Nhà hàng</a></li>
+                                            <li><a href="#">Buffet</a></li>
+                                            <li><a href="#">Lẩu </a></li>
+                                            <li><a href="#">Nướng</a></li>
+                                            <li><a href="#">Hải sản</a></li>
+                                            <li><a href="#">Lẩu & Nướng</a></li>
+                                            <li><a href="#">Quán nhậu</a></li>
+                                            <li><a href="#">Món chay</a></li>
+                                            <li><a href="#">Đặt tiệc</a></li>
+                                            <li><a href="#">Hàn Quốc</a></li>
+                                            <li><a href="#">Nhật Bản</a></li>
+                                            <li><a href="#">Món Âu</a></li>
+                                            <li><a href="#">Món Việt</a></li>
+                                            <li><a href="#">Món Thái</a></li>
+                                            <li><a href="#">Món Trung Hoa</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><button class="header-main-menu-button" style="">@Html.ActionLink("Nhà hàng uy tín", "Blog", "Home")</button></li>
+                            <li><button class="header-main-menu-button" style="">@Html.ActionLink("Ưu đãi HOT", "Blog", "Home")</button></li>
+                            <li><button class="header-main-menu-button" style="">@Html.ActionLink("Mới nhất", "Blog", "Home")</button></li>
+                            <li class="header-main-menu-dropdown">
+                                <button class="header-main-menu-button">@Html.ActionLink("Khám phá", "Blog", "Home")<div class="pasgo-icondesktop-dropdown"></div></button>
+                                <div class="menu-desktop-dropdown-content" style="max-height: 0px;">
+                                    <div class="container">
+                                        <ul class="menu-desktop-dropdown-list">
+                                            <li><a href="#">Top Buffert</a></li>
+                                            <li><a href="#">Thương hiệu chuỗi</a></li>
+                                            <li><a href="#">Top lẩu nướng</a></li>
+                                            <li><a href="#">Top hải sản</a></li>
+                                            <li><a href="#">Top đặt tiệc</a></li>
+                                            <li><a href="#">Top ăn chay</a></li>
+                                            <li><a href="#">Top khu vực</a></li>
+                                            <li><a href="#">Top nhà hàng khác</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="header-main-menu-dropdown">
+                                <button class="header-main-menu-button">@Html.ActionLink("Blog PasGo", "Blog", "Home")<div class="pasgo-icondesktop-dropdown"></div></button>
+                                <div class="menu-desktop-dropdown-content" style="max-height: 0px;">
+                                    <div class="container">
+                                        <ul class="menu-desktop-dropdown-list">
+                                            <li><a href="#">Top Buffert</a></li>
+                                            <li><a href="#">Thương hiệu chuỗi</a></li>
+                                            <li><a href="#">Top lẩu nướng</a></li>
+                                            <li><a href="#">Top hải sản</a></li>
+                                            <li><a href="#">Top đặt tiệc</a></li>
+                                            <li><a href="#">Top ăn chay</a></li>
+                                            <li><a href="#">Top khu vực</a></li>
+                                            <li><a href="#">Top nhà hàng khác</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="header-main-menu-dropdown">
+                                <button class="header-main-menu-button">@Html.ActionLink("Tin tức", "Blog", "Home")<div class="pasgo-icondesktop-dropdown"></div></button>
+                                <div class="menu-desktop-dropdown-content" style="max-height: 0px;">
+                                    <div class="container">
+                                        <ul class="menu-desktop-dropdown-list">
+                                            <li><a href="#">Tất cả</a></li>
+                                            <li><a href="#">Địa điểm ăn uống</a></li>
+                                            <li><a href="#">Món ngon & công thức</a></li>
+                                            <li><a href="#">Đặc sản vùng miền</a></li>
+                                            <li><a href="#">Tiệc & Tổ chức tiệc</a></li>
+                                            <li><a href="#">Sức khỏe & làm đẹp</a></li>
+                                            <li><a href="#">Bên lề</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="header-main-menu-dropdown">
+                                <button class="header-main-menu-button">@Html.ActionLink("Video PasGo", "Blog", "Home")<div class="pasgo-icondesktop-dropdown"></div></button>
+                                <div class="menu-desktop-dropdown-content" style="max-height: 0px;">
+                                    <div class="container">
+                                        <ul class="menu-desktop-dropdown-list">
+                                            <li><a href="#">Tất cả</a></li>
+                                            <li><a href="#">Nhà hàng</a></li>
+                                            <li><a href="#">Món ngon</a></li>
+                                            <li><a href="#">Ký sự</a></li>
+                                            <li><a href="#">Chuyện nhặt</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            @Html.Partial("_LoginPartial")
+
+                            <!-- Search thay thế cho btn Login khi cuộn xuống -->
+                            <li class="searchsticky" id="searchsticky">
+                                <input id="inputsticky" name="" placeholder="Buffet, Lẩu &amp; Nướng...">
+
+                                <div class="search-btn-header">
+                                    <button class="pasgo-icondesktop-search" onclick="searchs()"></button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Đăng nhập -->
+                    <div class="col-1 col-md-2" id="header-main-login-mobile">
+                        <div class="pasgo-iconmobile-login">@Html.ActionLink("Đăng nhập", "DangNhap", "Home")</div>
+                    </div>
+                </div>
+                <!-- Search bar Mobile -->
+                <div class="row navigation" id="header-search">
+                    <div class="col-12 round-border">
+                        <!-- Search icon -->
+                        <div class="col-1" id="header-main-search-icon">
+                            <div class="pasgo-iconmobile-search"></div>
+                        </div>
+                        <!-- Search -->
+                        <div class="col-11" id="header-main-search-input" onclick="openSearch()">
+                            <input name="" placeholder="Nhập từ khóa..." onkeydown="searchWebsite()" onclick="searchWebsite()">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Search -->
+        <div id="header-search-pc">
+            <div class="container no-padding">
+                <div class="col-md-12 col-lg-12 col-12">
+                    <div class="row">
+                        <span class="col-md-10 col-lg-10 col-sm-12 no-padding sven">
+                            <div class="col-lg-7 col-md-6 col-sm-5 col-12 no-padding white" id="sven1" style="margin: 2px 0;">
+                                <input id="textSearch" type="text" name="search" class="form-control no-border" placeholder="Buffet, Lẩu &amp; Nướng, Hải sản..." style="text-align-last: left;" oninput="searchWebsite()" onclick="searchWebsite()" autocomplete="off">
+                                <button class="pasgo-icondesktop-search mobile" onclick=""></button>
+                            </div>
+                            <div class="col-lg-5 col-md-6 col-sm-7 col-12 no-padding white" id="sven2" style="margin: 2px 0;">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <div class="pasgo-icondesktop-district"></div>
+                                        <select class="form-control no-border" name="fQuanId">
+                                            <option selected="" value="1">Hà Nội</option>
+                                            <option value="2">TP.HCM</option>
+                                            <option value="4">Đà Nẵng</option>
+                                            <option value="5">Khánh Hòa</option>
+                                        </select>
+                                        <div class="pasgo-icondesktop-dropdown"></div>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                                        <select class="form-control no-border" id="slTypeSearch">
+                                            <option value="1" selected="">Nhà hàng</option>
+                                            <option value="2">Khám phá</option>
+                                            <option value="3">Video</option>
+                                        </select>
+                                        <div class="pasgo-icondesktop-dropdown"></div>
+                                    </div>
+                                </div>
+                                <div>
+
+                                    <button id="btnsearchSlide" type="submit" class="btn search-btn" onclick="btnsearchSlideClick()">
+                                        <div class="pasgo-icondesktop-search" style="left: 20%; top: 10px;"></div>
+                                        <div style="float: none; top: 2px; left: 35%;">Tìm kiếm</div>
+                                    </button>
+                                </div>
+                            </div>
+                        </span>
+                        <span class="col-md-2 col-lg-2 col-0 no-padding" id="pasgo-phonenumber">
+                            <div class="pasgo-icondesktop-phone"></div>
+                            <div class="pasgo-phonenumber">1900 6005</div>
+                        </span>
+                        <div class="col-12 col-sm-10" id="result" style=""></div>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile close-btn" onclick="closeSearch()">Đóng</button>
+        </div>
+    </header>
+
+    @RenderBody()
+    <div class="wapper-content" id="huongdan">
+        <div class="container" style="overflow: auto;">
+            <section class="wapper">
+                <h1>Hướng dẫn đặt bàn nhận ưu đãi</h1>
+                <p>Xem chi tiết hướng dẫn tại đây</p>
+                <div style="height: 100%; width: 100%;">
+                    <div class="pasgo-huongdan">
+                    </div>
+                </div>
+                
+            </section>
+        </div>
+    </div>
+    <div id="scrollbtn" onclick="scrolltop()" title="Lên đầu trang" style="">
+        <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mobile">
+                    <h1>
+                        Tổng đài hỗ trợ
+                        <a href="tel:19006005">1900&nbsp;6005</a>
+                    </h1>
+                </div>
+                <div class="col-xl-2 col-lg-4 col-md-4 col-sm-12 col-12 pc">
+                    <a href="https://pasgo.vn/">
+                        <span class="pasgo-icondesktop-logored">
+                        </span>
+                    </a>
+
+                    <div>PasGo là Mạng lưới nhà hàng NGON, uy tín và chất lượng. Giúp thực khách đặt bàn dễ dàng, được tặng kèm ưu đãi mà không cần mua Deal, Voucher. Giải pháp đột phá mới cho câu chuyện ăn gì, ở đâu!</div>
+                </div>
+                <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-6 about-pasgo no-padding">
+                    <h1>Về PasGo</h1>
+                    <ul>
+                        <li><a href="https://pasgo.vn/tin-tuc/nhung-dieu-thu-vi-ve-app-pasgo-co-the-ban-chua-biet-50">Những điều thú vị về App PasGo – Có thể bạn chưa biết!</a></li>
+                        <li><a href="https://pasgo.vn/tin-tuc/vi-sao-pasgo-dang-phat-trien-63">Vì sao PasGo đang phát triển!</a></li>
+                        <li><a href="https://pasgo.vn/huong-dan" target="_blank">Hướng dẫn đặt bàn</a></li>
+                        <li><a href="https://pasgo.vn/chinh-sach-bao-ve-thong-tin" target="_blank">Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+                <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-6 about-pasgo no-padding">
+                    <h1>Tương tác</h1>
+                    <ul>
+                        <li>
+                            <a href="https://pasgo.vn/co-che-giai-quyet-tranh-chap" target="_blank">Khiếu nại</a>
+                        </li>
+                        <li>
+                            <a href="https://pasgo.vn/cau-hoi-thuong-gap" target="_blank">Câu hỏi thường gặp</a>
+                        </li>
+                        <li>
+                            <a href="https://pasgo.vn/danh-cho-nha-hang" target="_blank">Dành cho nhà hàng</a>
+                        </li>
+                        <li>
+                            <a href="https://pasgo.vn/tin-tuc" target="_blank">Tin tức</a>
+                        </li>
+                        <li>
+                            <a href="https://pasgo.vn/lien-he" target="_blank">Liên hệ</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xl-2 col-lg-8 col-md-6 col-sm-12 col-12">
+                    <div class="col-lg-12 col-md-6 col-sm-6 col-6" style="float: left;">
+                        <h2>Tham gia với chúng tôi</h2>
+                        <div class="pasgo-social">
+                            <a href="https://www.facebook.com/pasgo.vn" rel="nofollow" target="_blank"><span class="pasgo-icondesktop-facebook"></span></a>
+                            <a href="https://plus.google.com/b/100191765057279539886/112877402556770962948/posts?pageId=100191765057279539886" rel="nofollow" target="_blank"><span class="pasgo-icondesktop-google"></span></a>
+                            <a href="https://www.youtube.com/channel/UCZVrGI9UypsJxa-U_-DC2qg" rel="nofollow" target="_blank"><span class="pasgo-icondesktop-youtube"></span></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-6 col-sm-6 col-6" style="float: left;">
+                        <h2>Thương hiêu được chứng nhận</h2>
+                        <div class="pasgo-certification">
+                            <a class="link-bct" rel="nofollow" href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=16895" target="_blank"><span class="pasgo-icondesktop-bocongthuong"></span></a>
+                            <a rel="nofollow" href="https://www.dmca.com/Protection/Status.aspx?ID=25701f4d-601c-4a62-acbd-eef1c7d4b620" title="DMCA.com Protection Status">
+                                <span class="pasgo-icondesktop-dmca"></span>
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 pasgo-subcription">
+                    <h3>Đăng ký nhận bản tin khuyến mãi</h3>
+                    <div>
+                        Đăng ký nhận thông tin ưu đãi hấp dẫn và khám phá, cập nhật các xu hướng ẩm thực mới lạ, thú vị.
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Email của bạn">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-send-mail">Gửi</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-12 col-12 pc ">
+                    <h4>
+                        <span> © Copyright 2010 onepas.jsc, All rights reserved</span>
+                    </h4>
+                    <div class="link-company"><a href="http://onepas.com/" rel="nofollow" target="_blank">CÔNG TY CỔ PHẦN ONEPAS</a></div>
+                    <p>Văn phòng Hà Nội: Tầng 2 tòa nhà VTC Online, Số 18 Tam Trinh, Q. Hai Bà Trưng, ​​Hà Nội</p>
+                    <p>Văn Phòng TP.HCM: Lầu 13, Tòa nhà M-H, Số 728-730 Võ Văn Kiệt, P.1, Quận 5, TP Hồ Chí Minh</p>
+
+                    <p>Tổng đài: 1900 6005 | Email: CSKH@pasgo.vn</p>
+                    <p>Mã số doanh nghiệp: 0106329034 do Sở Kế hoạch đầu tư TP Hà Nội cấp ngày 08/10/2013</p>
+                    <p><span>Chúng tôi đang nỗ lực cải tiến chất lượng và dịch vụ trên app và website. Mọi ý tưởng, ý kiến đóng góp của khách hàng cho chúng tôi đều được ghi nhận và trân trọng!</span></p>
+                </div>
+                <div class="col-md-12 col-12 qctags pc">
+                    <hr>
+                    <a href="https://soketqua.vn/" target="_blank" rel="nofollow">Kết quả Xổ số | </a>
+                    <a href="https://soketqua.vn/xsmb-sxmb-kqxsmb-xo-so-mien-bac" target="_blank" rel="nofollow">Kết quả XSMB | </a>
+                    <a href="http://gody.vn/" target="_blank" rel="nofollow">Du lịch</a>
+                </div>
+                <div class="col-md-12 col-12 mobile">
+                    <p>Chúng tôi đang nỗ lực cải tiến chất lượng và dịch vụ trên app và website. Mọi ý tưởng, ý kiến đóng góp của khách hàng cho chúng tôi đều được ghi nhận và trân trọng!</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="~/Scripts/site.js" type="text/javascript"></script>
+</body>
+</html>

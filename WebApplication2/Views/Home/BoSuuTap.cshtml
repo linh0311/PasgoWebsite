@@ -1,0 +1,30 @@
+﻿@model IEnumerable<WebApplication2.Models.Menu>
+@using WebApplication2.CustomHtmlHelper;
+@{
+    Layout = null;
+}
+
+<section class="wapper">
+    <div class="wapcontent">
+        <div class="row">
+            <div class="col-md-12 col-12 no-padding">
+                <h1 class="pc">Bộ sưu tập | <span>PasGo là Mạng lưới nhà hàng ngon, nổi tiếng, nhiều loại hình – với hàng nghìn nhà hàng có mặt rộng khắp. Giúp đặt bàn nhà hàng miễn phí, tặng kèm ưu đãi.</span></h1>
+            </div>
+            <div class="col-md-12 col-12 no-padding mobile">
+                <span class="mobile-header" style="margin-bottom: 0; float: left;"> <h1>Bộ sưu tập</h1></span>
+                <span class="mobile-header-more" style="float: right;">
+                    <a href="https://pasgo.vn/ha-noi/bop">Xem tất cả<span class="pasgo-icondesktop-menured"></span></a>
+                </span>
+            </div>
+        </div>
+        <div class="row pasgo-collection">
+            @foreach (var item in Model)
+            {
+                @Html.MenuCatalogue(item.TenMenu, item.SoluongNH, item.ImgLink, item.MenuLink)
+            }
+            <div class="col-md-12 col-12 end-wapper">
+                <a href="https://pasgo.vn/ha-noi/bo-suu-tap">Xem tất cả<span class="pasgo-icondesktop-menured"></span></a>
+            </div>
+        </div>
+    </div>
+</section>

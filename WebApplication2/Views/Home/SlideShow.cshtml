@@ -1,0 +1,216 @@
+﻿@model IEnumerable<WebApplication2.Models.imgSlide_Result>
+@using WebApplication2.CustomHtmlHelper;
+
+@{Layout = null; }
+
+
+<!-- Slide -->
+<section class="wapper" id="order">
+    <div id="pasgo-slide" class="carousel slide" data-ride="carousel" style="">
+        <div class="col-sm-12 col-md-12 no-padding">
+            <div class="row">
+                <span class="mobile-header">
+                    <h1>Nóng cùng PasGo</h1>
+                </span>
+                <span class="col-md-8 col-12 left no-padding" id="slideshow">
+                    <!-- The slideshow -->
+                    <div class="carousel-inner">
+                        @foreach (var item in Model)
+                        {
+                            @Html.SlideShow(item.Id, item.Rlink, item.imgLink, item.RName, new { });
+
+                        }
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="carousel-control-prev" href="#pasgo-slide" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#pasgo-slide" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </span>
+                <span class="col-md-4 col-12 left no-padding scrollshow">
+                    <!-- Làm thế nào để chuyển sang scroll ngang, mà ul không bị mất? Sử dụng 1 div bên ngoài làm khung. set overflow-y trục ngang ag hidden  -->
+
+                    <div class="scrollshow-header">
+                        <h1>Nóng cùng Pasgo</h1>
+                    </div>
+                    <ul class="carousel-indicators" id="indicators">
+                        <!-- ------------------------------ -->
+                        <!-- Mobile - Bỏ class caruosel-indicators tha vào cái khác      JS-->
+                        @foreach(var item in Model)
+                        {
+                            @Html.SlideShowIndicators(item.Id, item.Rlink, item.imgLink, item.RName, item.Rpromotion, new { });
+                        }
+                    </ul>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div id="pasgo-filter" class="" style="overflow: auto;">
+        <div class="row mobile">
+            <div class="col-md-12 col-12 no-padding">
+                <img src="Assets/background2.jpg">
+                <div class="col-xs-12" style="position: absolute; top: 10px;">
+                    <h1>
+                        <p>
+                            <em>
+                                <strong>PasGo - Mạng Lưới Nhà Hàng Ngon</strong>
+                            </em>
+                        </p>
+                        <p>
+                            <span>
+                                <strong>Đặt bàn dễ dàng - Tặng kèm ưu đãi</strong>
+                            </span>
+                        </p>
+                    </h1>
+                </div>
+
+                <div class="col-md-12 ft">
+                    <a href="https://pasgo.vn/bo-loc/nha-hang-4-0">
+                        <div class="col-9 no-padding" style="float: left;">Lọc theo khu vực, mức giá...</div>
+                        <div class="col-3 no-padding" style="float: left;">
+                            <button class="btn search-btn">
+                                <span class="pasgo-icondesktop-filter"></span>
+                                <p>Lọc</p>
+                            </button>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row col-12 no-padding pc">
+            <div class="col-10 col-md-10 no-padding" style="float: left;">
+                <div class=" col-lg-3 col-md-3 col-sm-5 col-5 no-padding" style="float: left;">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <div class="pasgo-icondesktop-district"></div>
+                            <select class="form-control no-border" name="fQuanId">
+                                <option value="0"> Khu vực</option>
+                                <option value="1"> Ba Đình</option>
+                                <option value="2"> Hoàn Kiếm</option>
+                                <option value="3"> Thanh Xuân</option>
+                                <option value="4"> Hai Bà Trưng</option>
+                                <option value="5"> Đống Đa</option>
+                                <option value="6"> Cầu Giấy</option>
+                                <option value="7"> Long Biên</option>
+                                <option value="8"> Tây Hồ</option>
+                                <option value="9"> Hoàng Mai</option>
+                                <option value="10"> Hà Đông</option>
+                                <option value="35"> Từ Liêm</option>
+                                <option value="40"> Tây Hồ</option>
+                                <option value="41"> Nam Từ Liêm</option>
+                                <option value="42"> Bắc Từ Liêm</option>
+                                <option value="51"> Huyện Thanh Trì</option>
+                                <option value="53"> Huyện Hoài Đức</option>
+                                <option value="55"> Huyện Đông Anh</option>
+                                <option value="36"> Sóc Sơn</option>
+                                <option value="38"> Sơn Tây</option>
+                                <option value="39"> Gia Lâm</option>
+                                <option value="34"> Quốc Oai</option>
+                            </select>
+                            <div class="pasgo-icondesktop-dropdown"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-3 col-md-3 col-sm-7 col-7 no-padding" style="float: left;">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <div class="pasgo-icondesktop-category"></div>
+                            <select class="form-control no-border" name="fId_1">
+                                <option value="0"> Giá trung bình</option>
+                                <option value="3">&lt; 150K</option>
+                                <option value="4">150K - 250K</option>
+                                <option value="5">250K - 500K</option>
+                                <option value="6">500K - 1000K </option>
+                                <option value="7">&gt; 1000K </option>
+                            </select>
+                            <div class="pasgo-icondesktop-dropdown"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-3 col-md-3 col-sm-5 col-5 no-padding" style="float: left;">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <div class="pasgo-icondesktop-category"></div>
+                            <select class="form-control no-border" name="fId_2">
+                                <option value="0"> Loại hình</option>
+                                <option value="91">Món miền Bắc</option>
+                                <option value="92">Món miền Trung</option>
+                                <option value="93">Món miền Nam</option>
+                                <option value="94">Món Nhật-Hàn</option>
+                                <option value="95">Món Âu</option>
+                                <option value="96">Món Thái</option>
+                                <option value="97">Món Trung Quốc</option>
+                                <option value="98">Lẩu</option>
+                                <option value="99">Buffet</option>
+                                <option value="100">Nướng</option>
+                                <option value="101">Hải Sản</option>
+                                <option value="102">Đặc sản rừng núi</option>
+                                <option value="103">Món chay</option>
+                                <option value="104">Khác</option>
+                                <option value="105">Món Á</option>
+                                <option value="106">Địa Điểm Nhậu</option>
+                                <option value="107">Tiệc, sự kiện</option>
+                                <option value="108">Lẩu nướng</option>
+                                <option value="109">Quán nhậu</option>
+                                <option value="110">Món chay</option>
+                                <option value="111">Hàn Quốc</option>
+                                <option value="112">Nhật Bản</option>
+                                <option value="113">Món Việt</option>
+                                <option value="114">Món Thái</option>
+                                <option value="115">Món Trung</option>
+                                <option value="127">Bình dân</option>
+                                <option value="129">Món Ý</option>
+                                <option value="130">Pizza</option>
+                                <option value="188">Món Singapore</option>
+                                <option value="189">Món Mỹ</option>
+                                <option value="190">Món Pháp</option>
+                            </select>
+                            <div class="pasgo-icondesktop-dropdown"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-3 col-md-3 col-sm-7 col-7 no-padding" style="float: left;">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <div class="pasgo-icondesktop-category"></div>
+                            <select class="form-control no-border" name="fId_3">
+                                <option value="0"> Phù hợp</option>
+                                <option value="24">Tiệc/Hội nghị</option>
+                                <option value="83">Hiện đại</option>
+                                <option value="85">Truyền thống</option>
+                                <option value="86">Sang trọng</option>
+                                <option value="87">Cổ điển</option>
+                                <option value="88">Phong cách Nhật - Hàn</option>
+                                <option value="89">Thiên nhiên</option>
+                                <option value="90">Sân vườn</option>
+                                <option value="116">Ăn gia đình</option>
+                                <option value="117">Hẹn hò</option>
+                                <option value="118">Đặt tiệc</option>
+                                <option value="119">Họp nhóm</option>
+                                <option value="120">Tiếp khách</option>
+                                <option value="121">Sinh nhật</option>
+                                <option value="122">Hội thảo</option>
+                                <option value="123">Tiệc cưới</option>
+                                <option value="124">Dã ngoại</option>
+                                <option value="125">Tiệc ngoài trời</option>
+                                <option value="126">Tiệc tận nơi</option>
+                                <option value="131">Món Nhật</option>
+                            </select>
+                            <div class="pasgo-icondesktop-dropdown"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-2 no-padding search-right" style=" float: left;">
+                <button type="submit" class="btn search-btn">
+                    <div class="pasgo-icondesktop-filter"></div>
+                    <p>Áp dụng</p>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+

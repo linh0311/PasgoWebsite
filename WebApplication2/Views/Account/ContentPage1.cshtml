@@ -1,0 +1,37 @@
+﻿@model WebApplication2.Models.PasgoUser
+
+
+
+@{
+    Page.Title = "PasGo Đăng Nhập";
+    //Layout = "Your Layout Page goes here";
+}
+
+    <div class="wapper-content" id="login">
+        <div class="container">
+            <div class="wapper col-md-9 col-12">
+                <div class="row">
+                    <h1>ĐĂNG NHẬP THÀNH VIÊN PASGO</h1>
+                </div>
+                <div class="col-12">
+                    <span class="col-2">Quốc gia</span>
+                    <select class="col-10" style="float: left;">
+                        <option value="">Vietnam(+84)</option>
+                    </select>
+                   
+                    @Html.EditorFor(model => model.PhoneNumber, new {@class = "col-12", @placeholder = "Số điện thoại"})
+                    @Html.ValidationMessageFor(model => model.PhoneNumber);
+                    @Html.EditorFor(model => model.Password, new {@class = "col-12", @placeholder = "Mật khẩu" })
+                    @Html.ValidationMessageFor(model => model.Password);
+>
+                    <button class="col-12" type="submit">Đăng nhập</button>
+                    <div class="col-12" style="text-align-last: center; font-size: 15px;">
+                        <a href="">Quên mật khẩu?</a>
+                    </div>
+                    <div class="col-12" style="text-align-last: center;">
+                        <a href="">Đăng ký thành viên!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

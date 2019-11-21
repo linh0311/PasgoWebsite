@@ -1,0 +1,37 @@
+﻿@model List<WebApplication2.Models.thongtinthemSP_Result>
+@using WebApplication2.CustomHtmlHelper
+
+@{
+    ViewBag.Title = "updatethongtin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+    <div class="col-12" id="admin-pic">
+        <br />
+        <br />
+        <h2>Thay đổi thông tin</h2>
+
+        @using (Html.BeginForm("Details", "NhaHang", new { Rid = Model.ElementAt(0).val }))
+        {
+            <input type="submit" value="Quay về" class="btn btn-default" style="float: left; margin-right: 10px;"/>
+        }
+
+        @using (Html.BeginForm("updatethongtin", "NhaHang", FormMethod.Post))
+        {
+            <input type="submit" value="Lưu" class="btn btn-default" style="float: left"/>
+            <label class="field-validation-error">@TempData["Failed"]</label>
+            <label class="field-validation-error" style="color:forestgreen !important">@TempData["Success"]</label>
+            <div class="col-12" style="margin-top: 14px;">
+                <input type="hidden" name="id" value=@Model.ElementAt(0).val>
+                @for (int x = 1; x < Model.Count(); x++)
+                {
+                <div class="checkboxthongtin" style="float: left; width: 14%">
+                    @Html.CheckBox("out" + x, Convert.ToBoolean(Model.ElementAt(x).val))
+                    @Html.Label(Model.ElementAt(x).thuoctinh, new { style = "font-weight: unset" })
+                </div>
+                }
+                <br />
+            </div>
+        }
+    </div>
+
+

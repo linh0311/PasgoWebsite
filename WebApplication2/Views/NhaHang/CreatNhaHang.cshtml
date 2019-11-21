@@ -1,0 +1,165 @@
+﻿@model WebApplication2.Models.PasgoRestaurant
+
+@{
+    ViewBag.Title = "UpdateDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <div class="col-12" id="admin-details">
+        <br />
+        <h2>Tạo mới nhà hàng</h2>
+
+        @using (Html.BeginForm("Index", "NhaHang", FormMethod.Post))
+        {
+            <input type="submit" id="quayve" value="Quay về" class="btn btn-default" style="float: left" />
+        }
+
+        @using (Html.BeginForm("Details", "NhaHang", new { Rid = ViewBag.RID }))
+        {
+            <input type="submit" id="capnhat" value="Cập nhật thông tin chi tiết" class="btn btn-default" style="float: left; margin-left: 10px;" />
+        }
+
+        @using (Html.BeginForm("CreatNhaHang", "NhaHang", FormMethod.Post))
+        {
+            <input type="submit" id="luu" value="Lưu" onclick="return confirm('Bạn có muốn tạo mới nhà hàng?')" class="btn btn-default" style="display: none;" />
+            <br />
+            <div class="col-12" style="margin-top: 14px;">
+                <label class="field-validation-error">@ViewBag.UpdateFailed</label>
+                <label class="field-validation-error" style="color:forestgreen !important">@ViewBag.UpdateSuccess</label>
+                <br />
+                <br />
+                <div class="form-group">
+                    <label class="control-label col-md-2">Mã nhà hàng :</label>
+                    <div class="col-md-3">
+                        <!--Không dùng Model.RiD do đang trả về null, không thể dùng model => model.RID do chỉ trả về giá trị nhập vào-->
+                        <input class="form-control" id="viewbag" value=@ViewBag.RID readonly style="text-align: center;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Tên nhà hàng :</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.RName, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Địa chỉ :</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Raddress, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <!--Thay đổi thành select/option-->
+                <div class="form-group">
+                    <label class="control-label col-md-2">Vị trí :</label>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.Rcity, new SelectList(ViewBag.Cities, "Id", "CName"), new { @class = "form-control option" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Đường dẫn :</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Rlink, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <!--Sẽ thay đổi để thành select/option-->
+                <div class="form-group">
+                    <label class="control-label col-md-2">Khuyến Mãi :</label>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.Rpromotion, new SelectList(ViewBag.Promotions, "PName", "PName"), new { @class = "form-control option" })
+                        @Html.EditorFor(model => model.RpromotionPercent, new { htmlAttributes = new { @class = "form-control number" } })
+                        <div style="margin: 7px  0 7px 46%">%</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Chất lượng :</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Rstar, new { htmlAttributes = new { @class = "form-control number" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Chi phí :</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Rdollar, new { htmlAttributes = new { @class = "form-control number" } })
+                    </div>
+                </div>
+                <!--Có thể chuyển thành select/option-->
+                <div class="form-group">
+                    <label class="control-label col-md-2">Chuyên :</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Rfeature, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <!--Có thể chuyển thành check box nếu được-->
+                <div class="form-group">
+                    <label class="control-label col-md-2">Loại hình :</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.RLoaiHinh, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Phù hợp :</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.RPhuHop, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Không gian :</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.RKhongGian, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Chỗ để xe :</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.RChoDeXe, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Đặc trưng :</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.RDacTrung, new { @class = "form-control", @rows = "4" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Thông tin thêm :</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.RThongTinThem, new { @class = "form-control", @rows = "4" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Giới thiệu:</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.RGioiThieu, new { @class = "form-control", @rows = "4" })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+<script>
+
+    var promotion = document.getElementById("Rpromotion");
+    var percent = document.getElementById("RpromotionPercent");
+    var id = document.getElementById("viewbag");
+    window.onload = function () {
+
+        if (id.value == "none") {
+            id.setAttribute("value", "");
+            document.getElementById("capnhat").setAttribute("style", "display: none");
+            document.getElementById("luu").setAttribute("style", "float: left; margin-left: 10px;");
+        }
+    };
+
+    promotion.addEventListener("change", function () {
+        var value = promotion.options[promotion.selectedIndex].value;
+        if (value == "Đặt bàn được giữ chỗ") {
+            percent.value = 0;
+            percent.setAttribute("readonly", "true");
+        } else {
+            percent.value = null;
+            percent.removeAttribute("readonly");
+        }
+    });
+
+    
+        
+</script>

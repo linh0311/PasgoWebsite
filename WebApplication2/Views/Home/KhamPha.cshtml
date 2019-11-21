@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WebApplication2.Models.KhamPhaBv>
+@using WebApplication2.CustomHtmlHelper
+
+@{
+    Layout = null;
+}
+<section class="wapper" id="pasgo-khampha">
+    <div class="wapcontent">
+        <div class="row">
+            <div class="col-md-12 col-12 no-padding mobile">
+                <span class="mobile-header" style="margin-bottom: 0; float: left;"> <h1>Ăn uống</h1></span>
+                <span class="mobile-header-more" style="float: right;">
+                    <a href="https://pasgo.vn/ha-noi/kham-pha">Khám phá<span class="pasgo-icondesktop-menured"></span></a>
+                </span>
+            </div>
+            <div class="col-12 col-md-12 hold-list">
+                <ul class="list-header">
+                    <li><a href="https://pasgo.vn/ha-noi/kham-pha">Khám phá<span class="pasgo-icondesktop-menublack"></span></a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/kham-pha/top-buffet-3">Top Buffet</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/kham-pha/thuong-hieu-chuoi-1">Thương hiệu chuỗi</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/kham-pha/top-lau-nuong-4">Top lẩu nướng</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/kham-pha/top-hai-san-7">Top hải sản</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/kham-pha/top-dat-tiec-8">Top đặt tiệc</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/kham-pha/top-an-chay-9">Top ăn chay</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/kham-pha/top-khu-vuc-10">Top khu vực</a></li>
+                    <li><a href="https://pasgo.vn/ha-noi/kham-pha/top-nha-hang-khac-11">Top nhà hàng khác</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 no-padding bodynotscroll">
+            <ul class="body-list">
+                @foreach (var item in Model)
+                {
+                    <li class="col-lg-4 col-md-6 col-sm-6 col-12 no-padding float-left"><div>
+                        <div class="wap-item pasgo-khampha-item">
+                            @Html.KhamPha(item.Name, item.LinkBv, item.Img, item.Diadiem.ToString(), item.Min.ToString(), item.Max.ToString(), item.Rating.ToString(), item.Promotion)
+                        </div>
+                    </div></li>
+                }
+            </ul>
+        </div>
+        <div class="col-md-12 col-12 end-wapper">
+            <a href="https://pasgo.vn/ha-noi/bo-suu-tap">Xem tất cả<span class="pasgo-icondesktop-menured"></span></a>
+        </div>
+
+    </div>
+</section>
+

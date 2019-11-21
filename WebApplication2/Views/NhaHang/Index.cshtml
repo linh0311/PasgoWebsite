@@ -1,0 +1,111 @@
+﻿@model  IEnumerable<WebApplication2.Models.SimpleRestaurant_Result>
+
+@{
+    ViewBag.Title = "NhaHang";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+    <div class="col-12" style="background-color: white; padding: 25px;">
+        <br />
+        <h2>Nhà Hàng</h2>
+        <label class="field-validation-error">@TempData["Failed"]</label>
+        <label class="field-validation-error" style="color:forestgreen !important">@TempData["Success"]</label>
+        <p>
+            @Html.ActionLink("Thêm mới", "CreatNhaHang", "NhaHang")
+        </p>
+
+        @using (Html.BeginForm("Index", "NhaHang", FormMethod.Post))
+        {
+            <div class="col-12">
+                <select class="col-3" name="Loai">
+                    <option value="0" selected>Loại</option>
+                    <option value="1">Nhà Hàng</option>
+                    <option value="2">Lẩu</option>
+                    <option value="3">Buffet</option>
+                    <option value="4">Nướng</option>
+                    <option value="5">Hải Sản</option>
+                    <option value="6">Lẩu & Nướng</option>
+                    <option value="7">Hải Sản</option>
+                </select>
+                <select class="col-3" name="ThanhPho">
+                    <option value="0" selected>Thành Phố</option>
+                    <option value="1">Hà Nội</option>
+                    <option value="2">Hồ Chí Minh</option>
+                    <option value="3">Đà Nẵng</option>
+                    <option value="4">Khánh Hòa</option>
+                </select>
+                <select class="col-3" name="KhuyenMai">
+                    <option value="0" selected>Khuyến Mãi</option>
+                    <option value="1">Giảm giá</option>
+                    <option value="2">Ưu đãi món</option>
+                </select>
+                <select class="col-3" name="SoLuong">
+                    <option value="0">Số lượng</option>
+                    <option value="20">20 nhà hàng/trang</option>
+                    <option value="50">50 nhà hàng/trang</option>
+                    <option value="100">100 nhà hàng/ trang</option>
+                </select>
+                <input class="col-4" type="text" id="searchbox" name="searchbox" placeholder="Tên nhà hàng" />
+                <input type="submit" value="Lọc" class="submit" />
+            </div>
+            <div class="col-12">
+                <table>
+                    <tr>
+                        <th style="width: 3%; text-align: center;">
+                            @Html.DisplayNameFor(model => model.No)
+                        </th>
+                        <th style="width: 4%; text-align: center;">
+                            @Html.DisplayNameFor(model => model.Code)
+                        </th>
+                        <th style="width:25%; text-align: center">
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th style="width:35%; text-align: center">
+                            @Html.DisplayNameFor(model => model.Address)
+                        </th>
+                        <th>
+                            Partner
+                        </th>
+                        <th style="width: 11%; text-align: center">
+                            @Html.DisplayNameFor(model => model.Promotion)
+                        </th>
+                        <th style="width: 3%; text-align: center">
+                            @Html.DisplayNameFor(model => model.City)
+                        </th>
+                        <th style="width: 9%;">
+                        </th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="col-12">
+                            <td style="text-align: center">
+                                @Html.DisplayFor(x => item.No)
+                            </td>
+                            <td style="text-align: center">
+                                @Html.DisplayFor(x => item.Code)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(x => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(x => item.Address)
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(x => item.Promotion)
+                            </td>
+                            <td style="text-align: center">
+                                @Html.DisplayFor(x => item.City)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Chi tiết", "Details", new { Rid = item.Code })
+                                @Html.ActionLink("Chỉnh sửa", "Details", new { Rid = item.Code })
+                                @Html.ActionLink("Xóa", "Details", new { Rid = item.Code })
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        }
+    </div>
+

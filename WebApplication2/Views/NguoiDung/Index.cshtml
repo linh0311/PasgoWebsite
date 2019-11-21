@@ -1,0 +1,127 @@
+﻿@model  IEnumerable<WebApplication2.Models.SimpleUser_Result>
+
+@{
+    ViewBag.Title = "NguoiDung";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-12 admin-nguoidung" style="background-color: white; padding: 25px;">
+    <br />
+    <h2>Người dùng</h2>
+    <label class="field-validation-error">@TempData["Failed"]</label>
+    <label class="field-validation-error" style="color:forestgreen !important">@TempData["Success"]</label>
+    <p>
+        <!--
+        Html.ActionLink("Thêm mới", "CreatNhaHang", "NhaHang")
+        -->
+    </p>
+    @using (Html.BeginForm("Index", "NguoiDung", FormMethod.Post))
+    {
+        <div class="col-12">
+            <input type="number" id="idbox" name="idbox" placeholder="ID" style="width: 5%; " class="form-control text-box single-line" />
+            <input type="text" id="phonebox" name="phonebox" placeholder="Điện thoại" style="width: 10%;" class="form-control text-box single-line" />
+            <input type="text" id="emailbox" name="emailbox" placeholder="Email" style="width: 15%;" class="form-control text-box single-line" />
+            <input type="text" id="namebox" name="namebox" placeholder="Tên" style="width: 15%;" class="form-control text-box single-line" />
+            <input type="checkbox" id="locked" name="locked" value="0" style="margin-top: 12px; float: none"> Bị khóa
+            <input type="checkbox" id="visitor" name="visitor" value="1" style="margin-top: 12px; float: none"> Khách lẻ
+            <input type="submit" value="Tìm kiếm" style="margin-left: 5%; float: none" />
+        </div>
+    }
+    <div class="col-12">
+        <table>
+            <tr>
+                <th style="width: 3%; text-align: center;">
+                    @Html.DisplayNameFor(model => model.PasgoID)
+                </th>
+                <th style="width: 3%; text-align: center;">
+                    @Html.DisplayNameFor(model => model.Visitor)
+                </th>
+                <th style="width: 15%; text-align: center;">
+                    @Html.DisplayNameFor(model => model.FullName)
+                </th>
+                <th style="width:15%; text-align: center">
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </th>
+                <th style="width:25%; text-align: center">
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th style="width: 15%; text-align: center">
+                    @Html.DisplayNameFor(model => model.Locked)
+                </th>
+                <th style="width: 5%; text-align: center">
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th style="width: 9%;">
+                </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr class="col-12">
+                    <td style="text-align: center">
+                        @Html.DisplayFor(x => item.PasgoID)
+                    </td>
+                    <td style="text-align: center">
+                        <input type="checkbox" name="visitorcheck" value=@Html.DisplayFor(x => item.Visitor) disabled/>
+                    </td>
+                    <td style="text-align: center">
+                        @Html.DisplayFor(x => item.FullName)
+                    </td>
+                    <td style="padding-left: 3%">
+                        @Html.DisplayFor(x => item.PhoneNumber)
+                    </td>
+                    <td style="padding-left: 3%">
+                        @Html.DisplayFor(x => item.Email)
+                    </td>
+                    <td style="text-align: center">
+                        @Html.DisplayFor(x => item.Locked)
+                    </td>
+                    <td name="statuscolor">
+                        <p name="status">@Html.DisplayFor(x => item.Status)</p>
+                    </td>
+                    <td>
+                        @Html.ActionLink("Chi tiết", "Details", new { PasgoID = item.PasgoID, type = item.Visitor })
+                        <br />
+                        @Html.ActionLink("Lịch sử đặt", "Details", new { PasgoID = item.PasgoID, type = item.Visitor })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>
+<script>
+
+    var checkbox = document.getElementById("locked");
+    var visitor = document.getElementById("visitor");
+
+    checkbox.addEventListener("click", function () {
+        if (checkbox.checked == true)
+            checkbox.setAttribute("value", 1);
+        else
+            checkbox.setAttribute("value", 0);
+    });
+
+    visitor.addEventListener("click", function () {
+        if (visitor.checked == true)
+            visitor.setAttribute("value", 1);
+        else
+            visitor.setAttribute("value", 0);
+    });
+
+    window.onload = function () { statuscolor(), check() };
+
+    function statuscolor() {
+        for (var x = 0; x < @Model.Count(); x++) {
+            if (document.getElementsByName("status")[x].innerHTML == "Locked")
+                document.getElementsByName("statuscolor")[x].setAttribute("style", "text-align: center; color: red;");
+            else
+                document.getElementsByName("statuscolor")[x].setAttribute("style", "text-align: center; color: green;" );
+        }
+    }
+
+    function check() {
+        for (var x = 0; x < @Model.Count(); x++) {
+            if (document.getElementsByName("visitorcheck")[x].getAttribute("value") == "1")
+                document.getElementsByName("visitorcheck")[x].setAttribute("checked", "1");
+        }
+    }
+</script>
