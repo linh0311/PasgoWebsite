@@ -10,13 +10,11 @@
 namespace WebApplication2.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class PasgoVisitor
+    public partial class StaffList_Result
     {
-        public int Id { get; set; }
-        public string FullName { get; set; }
         public string PhoneNumber { get; set; }
-        public bool Gender { get; set; }
+        public string FullName { get; set; }
+        public int Level { get; set; }
     }
 }

@@ -4516,9 +4516,12 @@
     #admin-userdetails label{
         font-weight: unset;
     }
-    .admin-nguoidung input {
+    .admin-nguoidung input,
+    .admin-nguoidung select,
+    #admin-nhahang input,
+    #admin-nhahang select {
         float: left;
-        margin: 3px;
+        margin: 5px 3px;
     }
     #myModal input, #myModal select {
         width: 20%;

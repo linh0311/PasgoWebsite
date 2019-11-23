@@ -151,6 +151,7 @@
     <Compile Include="Controllers\ManageAccountController.cs" />
     <Compile Include="Controllers\NguoiDungController.cs" />
     <Compile Include="Controllers\NhaHangController.cs" />
+    <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="CustomHtmlHelper\CustomHtmlHelpers.cs" />
     <Compile Include="Global.asax.cs">
@@ -290,6 +291,15 @@
       <DependentUpon>NhaHang.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SimpleUser_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StaffList_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StaffSetLevels_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StaffSetLevel_Result.cs">
       <DependentUpon>NhaHang.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\thongtinthem.cs">
@@ -619,6 +629,7 @@
     <Content Include="Views\NguoiDung\Details.cshtml" />
     <Content Include="Views\NguoiDung\History.cshtml" />
     <Content Include="Views\ManageAccount\History.cshtml" />
+    <Content Include="Views\NhanVien\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\Debug\TempPE\" />

@@ -14,6 +14,8 @@ namespace WebApplication2.Controllers
 
         public ActionResult Index()
         {
+            if (Convert.ToInt32(Session["Level"]) == 1 || Session["Level"] == null)
+                return RedirectToAction("Index", "Home");
             var id = Request.Form["idbox"];
             if (id == "")
                 id = null;
@@ -36,12 +38,16 @@ namespace WebApplication2.Controllers
 
         public ActionResult Details(string PasgoID, int type)
         {
+            if (Convert.ToInt32(Session["Level"]) == 1 || Session["Level"] == null)
+                return RedirectToAction("Index", "Home");
             FullInfoUser_Result result = db.FullInfoUser(Convert.ToInt32(PasgoID), Convert.ToBoolean(type)).ElementAt(0);
             List<SimpleHistory_Result> hresult = db.SimpleHistory(Convert.ToInt32(PasgoID), Convert.ToBoolean(type)).ToList();
             return View(Tuple.Create(result, hresult, type));
         }
         public ActionResult History(int PasgoID, int type)
         {
+            if (Convert.ToInt32(Session["Level"]) == 1 || Session["Level"] == null)
+                return RedirectToAction("Index", "Home");
             //Lỗi: Nếu ảnh ko để type=99 -> bị loại -> thiếu lịch sử
             var x = Request.Form["from"];
             var y = Request.Form["to"];
@@ -79,6 +85,8 @@ namespace WebApplication2.Controllers
 
         public ActionResult Unlock(int PasgoID, int usertype)
         {
+            if (Convert.ToInt32(Session["Level"]) == 1 || Session["Level"] == null)
+                return RedirectToAction("Index", "Home");
             var result = db.LockUnlock(PasgoID, 1, "a", 1).ToList().ElementAt(0);
             if (Convert.ToInt32(result) == 1)
                 TempData["Success"] = "Mở khóa tài khoản thành công";
@@ -89,6 +97,8 @@ namespace WebApplication2.Controllers
 
         public ActionResult Lock()
         {
+            if (Convert.ToInt32(Session["Level"]) == 1 || Session["Level"] == null)
+                return RedirectToAction("Index", "Home");
             string id = Request.Form["id"];
             string type = Request.Form["type"];
             string usertype = Request.Form["usertype"];

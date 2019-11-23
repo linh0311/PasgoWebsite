@@ -836,5 +836,40 @@ namespace WebApplication2.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("LockUnlock", pasgoidParameter, loaiParameter, typeParameter, howlongParameter);
         }
+    
+        public virtual ObjectResult<StaffList_Result> StaffList()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StaffList_Result>("StaffList");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> StaffSetLevels(string phone, Nullable<int> level)
+        {
+            var phoneParameter = phone != null ?
+                new ObjectParameter("phone", phone) :
+                new ObjectParameter("phone", typeof(string));
+    
+            var levelParameter = level.HasValue ?
+                new ObjectParameter("level", level) :
+                new ObjectParameter("level", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("StaffSetLevels", phoneParameter, levelParameter);
+        }
+    
+        public virtual ObjectResult<StaffList_Result> StaffSearch(string phone, string name, Nullable<int> level)
+        {
+            var phoneParameter = phone != null ?
+                new ObjectParameter("phone", phone) :
+                new ObjectParameter("phone", typeof(string));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            var levelParameter = level.HasValue ?
+                new ObjectParameter("level", level) :
+                new ObjectParameter("level", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StaffList_Result>("StaffSearch", phoneParameter, nameParameter, levelParameter);
+        }
     }
 }

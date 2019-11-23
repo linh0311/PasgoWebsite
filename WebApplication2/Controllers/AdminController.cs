@@ -4,16 +4,22 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication2.Models;
+using System.Security;
 
 namespace WebApplication2.Controllers
 {
     public class AdminController : Controller
     {
+        
         private PasGoEntities2 db = new PasGoEntities2();
         // GET: Admin
+
+
         public ActionResult Index()
         {
-            if(0 == 0)
+            if (Convert.ToInt32(Session["Level"]) == 1 || Session["Level"] == null)
+                return RedirectToAction("Index", "Home");
+            if (0 == 0)
                 return View();
         }
 

@@ -202,6 +202,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FullName" Type="nchar" MaxLength="250" Nullable="false" />
           <Property Name="PhoneNumber" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Gender" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Promotion">
           <Key>
@@ -562,6 +563,16 @@ warning 6002: The table/view 'PasGo.dbo.thongtinthem' does not have a primary ke
           <Parameter Name="name" Type="nvarchar" Mode="In" />
           <Parameter Name="lock" Type="bit" Mode="In" />
           <Parameter Name="visitor" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="StaffList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="StaffSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="level" Type="int" Mode="In" />
+        </Function>
+        <Function Name="StaffSetLevels" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="level" Type="int" Mode="In" />
         </Function>
         <Function Name="thongtinthemSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
@@ -1306,7 +1317,7 @@ warning 6002: The table/view 'PasGo.dbo.thongtinthem' does not have a primary ke
             <End Role="History" EntitySet="Histories" />
           </AssociationSet>
           <FunctionImport Name="FullInfoUser" ReturnType="Collection(NhaHangModel.FullInfoUser_Result)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="type" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="SimpleHistory" ReturnType="Collection(NhaHangModel.SimpleHistory_Result)">
@@ -1324,6 +1335,16 @@ warning 6002: The table/view 'PasGo.dbo.thongtinthem' does not have a primary ke
             <Parameter Name="loai" Mode="In" Type="Int32" />
             <Parameter Name="type" Mode="In" Type="String" />
             <Parameter Name="howlong" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="StaffList" ReturnType="Collection(NhaHangModel.StaffList_Result)" />
+          <FunctionImport Name="StaffSetLevels" ReturnType="Collection(Int32)">
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="level" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="StaffSearch" ReturnType="Collection(NhaHangModel.StaffList_Result)">
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="level" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="imgSlide_Result">
@@ -1728,6 +1749,7 @@ warning 6002: The table/view 'PasGo.dbo.thongtinthem' does not have a primary ke
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FullName" Type="String" Nullable="false" MaxLength="250" FixedLength="true" Unicode="true" />
           <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_dbo_History_dbo_PasgoRestaurant_PasgoRID">
           <End Type="NhaHangModel.PasgoRestaurant" Role="PasgoRestaurant" Multiplicity="1">
@@ -1777,6 +1799,21 @@ warning 6002: The table/view 'PasGo.dbo.thongtinthem' does not have a primary ke
           <Property Type="String" Name="Request" Nullable="true" MaxLength="Max" />
           <Property Type="Int32" Name="HoaDon" Nullable="false" />
           <Property Type="String" Name="TrangThai2" Nullable="false" MaxLength="21" />
+        </ComplexType>
+        <ComplexType Name="StaffList_Result">
+          <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="Level" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="StaffSetLevel_Result">
+          <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="Level" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="StaffSetLevels_Result">
+          <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="Level" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2273,6 +2310,7 @@ warning 6002: The table/view 'PasGo.dbo.thongtinthem' does not have a primary ke
           <EntitySetMapping Name="PasgoVisitors">
             <EntityTypeMapping TypeName="NhaHangModel.PasgoVisitor">
               <MappingFragment StoreEntitySet="PasgoVisitor">
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -2327,6 +2365,26 @@ warning 6002: The table/view 'PasGo.dbo.thongtinthem' does not have a primary ke
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="LockUnlock" FunctionName="NhaHangModel.Store.LockUnlock" />
+          <FunctionImportMapping FunctionImportName="StaffList" FunctionName="NhaHangModel.Store.StaffList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NhaHangModel.StaffList_Result">
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="StaffSetLevels" FunctionName="NhaHangModel.Store.StaffSetLevels">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="StaffSearch" FunctionName="NhaHangModel.Store.StaffSearch" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NhaHangModel.StaffList_Result">
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

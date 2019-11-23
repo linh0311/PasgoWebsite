@@ -1,0 +1,88 @@
+﻿@model  IEnumerable<WebApplication2.Models.StaffList_Result>
+
+@{
+    ViewBag.Title = "NguoiDung";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+    <div class="col-12 admin-nguoidung" style="background-color: white; padding: 25px;">
+        <br />
+        <h2>Nhân viên</h2>
+        <label class="field-validation-error">@TempData["Failed"]</label>
+        <label class="field-validation-error" style="color:forestgreen !important">@TempData["Success"]</label>
+        <p>
+            <!--
+        Html.ActionLink("Thêm mới", "CreatNhaHang", "NhaHang")
+        -->
+        </p>
+        @using (Html.BeginForm("Index", "NhanVien", FormMethod.Post))
+        {
+            <div class="col-12">
+                <input type="number" id="phonebox" name="phonebox" placeholder="Điện thoại" style="width: 15%;" class="form-control text-box single-line" />
+                <input type="text" id="namebox" name="namebox" placeholder="Tên" style="width: 15%;" class="form-control text-box single-line" />
+                <select class="form-control text-box single-line" name="level" style="width:10%">
+                    <option value="0" selected>Level</option>
+                    <option value="2">Nhân viên</option>
+                    <option value="3">Quản lý</option>
+                    <option value="2">Đối tác</option>
+                    <option value="99">Admin</option>
+                </select>
+                <input class="form-control text-box single-line" type="submit" value="Tìm kiếm" style="width: 10%" />
+            </div>
+        }
+        <div class="col-12">
+            <table>
+                <tr>
+                    <th style="width: 3%; text-align: center;">
+                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                    </th>
+                    <th style="width: 3%; text-align: center;">
+                        @Html.DisplayNameFor(model => model.FullName)
+                    </th>
+                    <th style="width: 15%; text-align: center;">
+                        @Html.DisplayNameFor(model => model.Level)
+                    </th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr class="col-12">
+                        <td style="text-align: center">
+                            @Html.DisplayFor(x => item.PhoneNumber)
+                        </td>
+                        <td style="text-align: center">
+                            @Html.DisplayFor(x => item.FullName)
+                        </td>
+                        <td style="padding-left: 3%">
+                            @Html.DisplayFor(x => item.Level)
+                        </td>
+                        <td>
+                            <button class="form-control text-box single-line" style="width: 15%" onclick="SetLevel(@item.PhoneNumber)">Set Level</button>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        @using (Html.BeginForm("SetLevel", "NhanVien"))
+        {
+            <div class="col-12 modal" id="myModal">
+                <div class="modal-content">
+                    <p>Nhập Level gian muốn thiết lập</p>
+                    <select class="form-control text-box single-line" name="level" style="width: 25%">
+                        <option value="2">Nhân viên</option>
+                        <option value="3">Quản lý</option>
+                        <option value="2">Đối tác</option>
+                        <option value="99">Admin</option>
+                    </select>
+                    <input type="hidden" id="phonenumber" name="phonenumber" />
+                    <button class="form-control text-box single-line" name="btncancel">Hủy</button>
+                    <button class="form-control text-box single-line" type="submit" name="btnok">Xác nhận</button>
+                </div>
+            </div>
+        }
+    </div>
+<script>
+    function SetLevel(phone) {
+        document.getElementById("myModal").style.display = "block";
+        document.getElementById("phonenumber").setAttribute("value", "0"+phone);
+        console.log(phone);
+    }
+</script>

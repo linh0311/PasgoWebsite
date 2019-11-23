@@ -15,12 +15,24 @@ namespace WebApplication2.Controllers
     {
         private PasGoEntities2 db = new PasGoEntities2();
 
-
+        public string Get()
+        {
+            //Success
+            return "Test API";
+        }
         public PasgoRestaurant Get(int PasgoRID)
         {
             var result = db.FullInfoRestaurant(PasgoRID).ToList().ElementAt(0);
+           //List<string> result = new List<string> { "abc", "def" };
             return result;
         }
-            
+
+        public List<string> Get(string id)
+        {
+            //var result = db.FullInfoRestaurant(PasgoRID).ToList().ElementAt(0);
+            List<string> result = new List<string> { "abc", "def" };
+            return result;
+        }
+
     }
 }

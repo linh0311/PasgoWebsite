@@ -62,19 +62,23 @@ namespace WebApplication2.Controllers
                 else
                 {
                     var userDetails = db.Login(userModel.PhoneNumber, hash).ElementAt(0);
-                    if (userDetails.Level != 1)
-                        return RedirectToAction("Authentication", "Admin", userDetails);
-                    if (userDetails.Locked != null && userDetails.Locked > DateTime.Now)
-                    {
-                        TempData["Failed"] = "Tài khoản bị khóa, vui lòng liên hệ CSKH!";
-                        return RedirectToAction("Login");
-                    }
                     Session["PasgoID"] = userDetails.PasgoID;
                     Session["FullName"] = userDetails.FullName;
                     Session["PhoneNumber"] = userDetails.PhoneNumber;
                     Session["Email"] = userDetails.Email;
                     Session["DOB"] = userDetails.DOB;
                     Session["Gender"] = userDetails.Gender_;
+                    
+                    if (userDetails.Level != 1)
+                    {
+                        Session["Level"] = userDetails.Level;
+                        return RedirectToAction("Authentication", "Admin", userDetails);
+                    }
+                    if (userDetails.Locked != null && userDetails.Locked > DateTime.Now)
+                    {
+                        TempData["Failed"] = "Tài khoản bị khóa, vui lòng liên hệ CSKH!";
+                        return RedirectToAction("Login");
+                    }
                     return RedirectToAction("Index", "Home");
                 }
             }

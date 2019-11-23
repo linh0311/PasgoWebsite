@@ -4,7 +4,7 @@
     ViewBag.Title = "NhaHang";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-    <div class="col-12" style="background-color: white; padding: 25px;">
+    <div id="admin-nhahang" class="col-12" style="background-color: white; padding: 25px;">
         <br />
         <h2>Nhà Hàng</h2>
         <label class="field-validation-error">@TempData["Failed"]</label>
@@ -16,7 +16,7 @@
         @using (Html.BeginForm("Index", "NhaHang", FormMethod.Post))
         {
             <div class="col-12">
-                <select class="col-3" name="Loai">
+                <select class="form-control text-box single-line" style="width: 15%;" name="Loai">
                     <option value="0" selected>Loại</option>
                     <option value="1">Nhà Hàng</option>
                     <option value="2">Lẩu</option>
@@ -26,26 +26,26 @@
                     <option value="6">Lẩu & Nướng</option>
                     <option value="7">Hải Sản</option>
                 </select>
-                <select class="col-3" name="ThanhPho">
+                <select class="form-control text-box single-line" style="width: 15%;" name="ThanhPho" >
                     <option value="0" selected>Thành Phố</option>
                     <option value="1">Hà Nội</option>
                     <option value="2">Hồ Chí Minh</option>
                     <option value="3">Đà Nẵng</option>
                     <option value="4">Khánh Hòa</option>
                 </select>
-                <select class="col-3" name="KhuyenMai">
+                <select class="form-control text-box single-line" style="width: 15%;" name="KhuyenMai">
                     <option value="0" selected>Khuyến Mãi</option>
                     <option value="1">Giảm giá</option>
                     <option value="2">Ưu đãi món</option>
                 </select>
-                <select class="col-3" name="SoLuong">
+                <select class="form-control text-box single-line" style="width: 20%;" name="SoLuong">
                     <option value="0">Số lượng</option>
                     <option value="20">20 nhà hàng/trang</option>
                     <option value="50">50 nhà hàng/trang</option>
                     <option value="100">100 nhà hàng/ trang</option>
                 </select>
-                <input class="col-4" type="text" id="searchbox" name="searchbox" placeholder="Tên nhà hàng" />
-                <input type="submit" value="Lọc" class="submit" />
+                <input class="form-control text-box single-line" type="text" id="searchbox" name="searchbox" placeholder="Tên nhà hàng" style="width: 20%;" />
+                <input type="submit" value="Lọc" class="submit form-control text-box single-line" style="width: 10%;" />
             </div>
             <div class="col-12">
                 <table>

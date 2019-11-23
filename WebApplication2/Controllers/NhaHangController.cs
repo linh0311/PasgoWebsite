@@ -14,6 +14,8 @@ namespace WebApplication2.Controllers
 
         public ActionResult Index()
         {
+            if (Convert.ToInt32( Session["Level"]) == 1|| Session["Level"] == null)
+                return RedirectToAction("Index", "Home");
             //Loai chưa có giá trị cụ thể trong database - làm sau
             //var loai = Request.Form["Loai"];
             var thanhpho = Convert.ToInt32(Request.Form["ThanhPho"]);
@@ -28,6 +30,8 @@ namespace WebApplication2.Controllers
 
         public ActionResult Details(int? Rid)
         {
+            if (Convert.ToInt32(Session["Level"]) == 1 || Session["Level"] == null)
+                return RedirectToAction("Index", "Home");
             if (Rid == null)
                 return RedirectToAction("Index", "NhaHang");
             var a = db.FullInfoRestaurant(Rid).Count();
@@ -63,6 +67,8 @@ namespace WebApplication2.Controllers
 
         public ActionResult Thongtin()
         {
+            if (Convert.ToInt32(Session["Level"]) == 1 || Session["Level"] == null)
+                return RedirectToAction("Index", "Home");
             List<thongtinthemSP_Result> resulttt = new List<thongtinthemSP_Result>();
             var rstt = db.thongtinthemSP(1);
             foreach (var item in rstt.ToList())
@@ -74,12 +80,16 @@ namespace WebApplication2.Controllers
 
         public ActionResult Thuonghieu()
         {
+            if (Convert.ToInt32(Session["Level"]) == 1 || Session["Level"] == null)
+                return RedirectToAction("Index", "Home");
             ThuocThuongHieuChuoi_Result result = db.ThuocThuongHieuChuoi(15).ElementAt(0);
             return View(result);
         }
 
         public ActionResult UpdateDetails(int? Rid)
         {
+            if (Convert.ToInt32(Session["Level"]) == 1)
+                return View("Index", "Home");
             if (Rid == null)
                 return RedirectToAction("Index", "NhaHang");
             PasgoRestaurant results = db.FullInfoRestaurant(Rid).ElementAt(0);
@@ -88,6 +98,8 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult UpdateDetails(PasgoRestaurant R)
         {
+            if (Convert.ToInt32(Session["Level"]) == 1 || Session["Level"] == null)
+                return RedirectToAction("Index", "Home");
             System.Diagnostics.Trace.WriteLine("test post");
             System.Diagnostics.Trace.WriteLine(R.PasgoRID.ToString());
             System.Diagnostics.Trace.WriteLine(R.RName);
@@ -115,6 +127,8 @@ namespace WebApplication2.Controllers
         //Không có status
         public ActionResult Updatethongtin(int? Rid)
         {
+            if (Convert.ToInt32(Session["Level"]) == 1 || Session["Level"] == null)
+                return RedirectToAction("Index", "Home");
             if (Rid == null)
                 return RedirectToAction("Index", "NhaHang");
             List<thongtinthemSP_Result> result = new List<thongtinthemSP_Result>();
@@ -145,6 +159,8 @@ namespace WebApplication2.Controllers
         //Update/Delete Chuỗi nhà hàng phụ thuộc.
         public ActionResult UpdateChuoi(int? nhahang)
         {
+            if (Convert.ToInt32(Session["Level"]) == 1 || Session["Level"] == null)
+                return RedirectToAction("Index", "Home");
             if (nhahang == null)
                 return RedirectToAction("Index", "NhaHang");
             var listresult = db.ThuocThuongHieuChuoi(nhahang);
@@ -179,6 +195,8 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult UpdateChuoiID(int nhahang, int chuoibandau, int chuoimoi)
         {
+            if (Convert.ToInt32(Session["Level"]) == 1 || Session["Level"] == null)
+                return RedirectToAction("Index", "Home");
             var search = db.UpdateChuoi(nhahang, chuoibandau, chuoimoi, 1);
             System.Diagnostics.Trace.WriteLine("chuỗi mới");
             System.Diagnostics.Trace.WriteLine(chuoimoi.ToString());
@@ -191,6 +209,8 @@ namespace WebApplication2.Controllers
 
         public ActionResult DeleteChuoiID(int? nhahang)
         {
+            if (Convert.ToInt32(Session["Level"]) == 1 || Session["Level"] == null)
+                return RedirectToAction("Index", "Home");
             if (nhahang == null)
                 return RedirectToAction("Index", "NhaHang");
             var search = db.UpdateChuoi(nhahang, 1, 1, 0);
@@ -203,6 +223,8 @@ namespace WebApplication2.Controllers
 
         public ActionResult UpdatePic(int? Rid, int? vitri)
         {
+            if (Convert.ToInt32(Session["Level"]) == 1 || Session["Level"] == null)
+                return RedirectToAction("Index", "Home");
             if (Rid == null || vitri == null)
                 return RedirectToAction("Index");
             List<allImg_Result> result = new List<allImg_Result>();
@@ -216,6 +238,8 @@ namespace WebApplication2.Controllers
 
         public ActionResult Update1Pic()
         {
+            if (Convert.ToInt32(Session["Level"]) == 1 || Session["Level"] == null)
+                return RedirectToAction("Index", "Home");
             var id = Request.Form["showid"];
             var vitri = Request.Form["showthutu"];
             var nhahang = Request.Form["nhahangid"];
@@ -257,6 +281,8 @@ namespace WebApplication2.Controllers
 
         public ActionResult DeletePic()
         {
+            if (Convert.ToInt32(Session["Level"]) == 1 || Session["Level"] == null)
+                return RedirectToAction("Index", "Home");
             var confirm = Request.Form["confirmdelete"].ToString();
             var id = Convert.ToInt32( Request.Form["deleteID"]);
             var nhahang = Request.Form["nhahangid"];
@@ -278,6 +304,8 @@ namespace WebApplication2.Controllers
         
         public ActionResult CreatNhaHang()
         {
+            if (Convert.ToInt32(Session["Level"]) == 1 || Session["Level"] == null)
+                return RedirectToAction("Index", "Home");
             ViewBag.RID = "none";
             ViewBag.Promotions = db.Promotions.ToList();
             ViewBag.Cities = db.Cities.ToList();
@@ -312,6 +340,8 @@ namespace WebApplication2.Controllers
 
         public ActionResult DeleteNhaHang()
         {
+            if (Convert.ToInt32(Session["Level"]) == 1 || Session["Level"] == null)
+                return RedirectToAction("Index", "Home");
             var confirm = Request.Form["confirmdelete"].ToString();
             System.Diagnostics.Trace.WriteLine("delete? "+confirm);
             var nhahang = Convert.ToInt32( Request.Form["nhahangid"]);
