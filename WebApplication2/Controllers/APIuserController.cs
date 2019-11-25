@@ -15,24 +15,39 @@ namespace WebApplication2.Controllers
     {
         private PasGoEntities2 db = new PasGoEntities2();
 
+        PasgoVisitor[] samples = new PasgoVisitor[]
+        {
+            new PasgoVisitor{Id = 123, FullName = "Simson A", PhoneNumber = "0123456789", Gender = true},
+            new PasgoVisitor{Id = 111, FullName = "Simson B", PhoneNumber = "0147852369", Gender = true},
+            new PasgoVisitor{Id = 121, FullName = "Simson C", PhoneNumber = "0159753123", Gender = true}
+        };
+        /*
         public string Get()
         {
             //Success
             return "Test API";
         }
-        public PasgoRestaurant Get(int PasgoRID)
+        */
+        
+        //Hoạt động
+        public IEnumerable<SimpleRestaurant_Result> Get()
         {
-            var result = db.FullInfoRestaurant(PasgoRID).ToList().ElementAt(0);
-           //List<string> result = new List<string> { "abc", "def" };
+            List<SimpleRestaurant_Result> result = db.SimpleRestaurant(null, null, null, null).ToList();
             return result;
         }
 
-        public List<string> Get(string id)
+        //Hoạt động
+        public IEnumerable<SimpleRestaurant_Result> Get(string name)
         {
-            //var result = db.FullInfoRestaurant(PasgoRID).ToList().ElementAt(0);
-            List<string> result = new List<string> { "abc", "def" };
+            //PasgoRestaurant result = db.FullInfoRestaurant(PasgoRID).ToList().ElementAt(0);
+            //List<string> result = new List<string> { "abc", "def" };
+            List<SimpleRestaurant_Result> result = db.SimpleRestaurant(null, null, null, name).ToList();
             return result;
+            //return Ok(result);
         }
+
+        //Call API từ js hoặc jQ
+    
 
     }
 }
