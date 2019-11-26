@@ -871,5 +871,22 @@ namespace WebApplication2.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StaffList_Result>("StaffSearch", phoneParameter, nameParameter, levelParameter);
         }
+    
+        public virtual ObjectResult<APIsearch_Result> APIsearch(Nullable<int> city, Nullable<int> type, string keyword)
+        {
+            var cityParameter = city.HasValue ?
+                new ObjectParameter("city", city) :
+                new ObjectParameter("city", typeof(int));
+    
+            var typeParameter = type.HasValue ?
+                new ObjectParameter("type", type) :
+                new ObjectParameter("type", typeof(int));
+    
+            var keywordParameter = keyword != null ?
+                new ObjectParameter("keyword", keyword) :
+                new ObjectParameter("keyword", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<APIsearch_Result>("APIsearch", cityParameter, typeParameter, keywordParameter);
+        }
     }
 }

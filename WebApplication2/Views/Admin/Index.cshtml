@@ -5,5 +5,23 @@
 }
 
 <h2>Index</h2>
-<label class="field-validation-error">@TempData["Failed"]</label>
-<label class="field-validation-error" style="color:forestgreen !important">@TempData["Success"]</label>
+<div style="overflow: auto; background-color: white; padding: 15px;">
+    <label class="field-validation-error">@TempData["Failed"]</label>
+    <label class="field-validation-error" style="color:forestgreen !important">@TempData["Success"]</label>
+    <input class="form-control text-box single-line" id="textSearch" name="keyword" type="text" placeholder="Buffet, Lẩu & Nướng, Hải sản..." onclick="" autocomplete="off" style="width: 50%" />
+    <select class="form-control text-box single-line" name="city" style="width: 10%;">
+        <option value="1">Hà Nội</option>
+        <option value="2">Tp. Hồ Chí Minh</option>
+        <option value="4">Khánh Hòa</option>
+        <option value="5">Đà Nẵng</option>
+    </select>
+    <select class="form-control text-box single-line" name="city" style="width: 10%;">
+        <option value="1">Nhà hàng</option>
+        <option value="2">Khám phá</option>
+        <option value="3">Video</option>
+    </select>
+</div>
+<script>
+
+
+</script>

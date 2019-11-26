@@ -1,0 +1,41 @@
+﻿@model List<WebApplication2.Models.APIsearch_Result>
+
+@{
+    Layout = null;
+}
+
+<div class="wappersearch">
+    <div class="row">
+        <div class="col-md-3">
+            <h4>KEYWORD</h4>
+        </div>
+        <div class="col-md-9">
+            <div id="get-tag-search">
+                <a href="https://pasgo.vn/tim-kiem?search=Lẩu%20Phan" class="pasgo-text-search" target="_blank">Lẩu Phan</a>
+                <a href="https://pasgo.vn/tim-kiem?search=Manwah%20–%20Taiwanese%20Hot%20Pot%20" class="pasgo-text-search" target="_blank">Manwah – Taiwanese Hot Pot </a>
+                <a href="https://pasgo.vn/tim-kiem?search=Bay%20Buffet%20167%20ho&#224;ng%20ng&#226;n" class="pasgo-text-search" target="_blank">Bay Buffet 167 ho&#224;ng ng&#226;n</a>
+                <a href="https://pasgo.vn/tim-kiem?search=Yakimono%20l&#234;%20Trọng%20tấn" class="pasgo-text-search" target="_blank">Yakimono l&#234; Trọng tấn</a>
+                <a href="https://pasgo.vn/tim-kiem?search=%20Moo%20Beef%20Steak" class="pasgo-text-search" target="_blank"> Moo Beef Steak</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <h4>NH&#192; H&#192;NG</h4>
+        </div>
+        <div class="col-md-9">
+            <!--restaurant-->
+            <div id="get-name-restaurant">
+                @foreach (var item in Model)
+                {
+                    <a href=@item.Rlink target="_blank">
+                        <img src=@item.imgLink alt=@item.RName class="img-circle" />
+                        <p class="text-name">@item.RName</p>
+                        <span class="text-address">@item.Raddress/span>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

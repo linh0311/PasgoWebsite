@@ -481,6 +481,11 @@ warning 6002: The table/view 'PasGo.dbo.thongtinthem' does not have a primary ke
         <Function Name="AnUongSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="city" Type="int" Mode="In" />
         </Function>
+        <Function Name="APIsearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city" Type="int" Mode="In" />
+          <Parameter Name="type" Type="int" Mode="In" />
+          <Parameter Name="keyword" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="BaiVietSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="city" Type="int" Mode="In" />
           <Parameter Name="type" Type="int" Mode="In" />
@@ -1346,6 +1351,11 @@ warning 6002: The table/view 'PasGo.dbo.thongtinthem' does not have a primary ke
             <Parameter Name="name" Mode="In" Type="String" />
             <Parameter Name="level" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="APIsearch" ReturnType="Collection(NhaHangModel.APIsearch_Result)">
+            <Parameter Name="city" Mode="In" Type="Int32" />
+            <Parameter Name="type" Mode="In" Type="Int32" />
+            <Parameter Name="keyword" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="imgSlide_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -1814,6 +1824,12 @@ warning 6002: The table/view 'PasGo.dbo.thongtinthem' does not have a primary ke
           <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="15" />
           <Property Type="String" Name="FullName" Nullable="true" MaxLength="250" />
           <Property Type="Int32" Name="Level" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="APIsearch_Result">
+          <Property Type="String" Name="RName" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Raddress" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Rlink" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="imgLink" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2382,6 +2398,16 @@ warning 6002: The table/view 'PasGo.dbo.thongtinthem' does not have a primary ke
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="Level" ColumnName="Level" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="APIsearch" FunctionName="NhaHangModel.Store.APIsearch" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NhaHangModel.APIsearch_Result">
+                <ScalarProperty Name="RName" ColumnName="RName" />
+                <ScalarProperty Name="Raddress" ColumnName="Raddress" />
+                <ScalarProperty Name="Rlink" ColumnName="Rlink" />
+                <ScalarProperty Name="imgLink" ColumnName="imgLink" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

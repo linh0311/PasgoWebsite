@@ -58,6 +58,9 @@
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -167,6 +170,9 @@
       <DependentUpon>NhaHang.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AnUongSP_Result.cs">
+      <DependentUpon>NhaHang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APIsearch_Result.cs">
       <DependentUpon>NhaHang.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BaiViet.cs">
@@ -570,6 +576,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\site.js" />
+    <Content Include="Views\API\APIresultNhaHang.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -630,6 +637,7 @@
     <Content Include="Views\NguoiDung\History.cshtml" />
     <Content Include="Views\ManageAccount\History.cshtml" />
     <Content Include="Views\NhanVien\Index.cshtml" />
+    <Content Include="Views\API\APIresultNhaHang1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\Debug\TempPE\" />
