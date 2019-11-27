@@ -8,22 +8,29 @@ var phone = document.getElementById("pasgo-phonenumber");
 var indicators = document.getElementById("indicators");
 var textSearch = document.getElementById("textSearch");
 var slTypeSearch = document.getElementById("slTypeSearch");
+var fQuanId = document.getElementById("fQuanId");
 var btnsearchSlide = document.getElementById("btnsearchSlide");
 let blogteaser = document.querySelectorAll(".blog-teaser");
 
 function searchWebsite() {
     var i = textSearch.value;
-    r = slTypeSearch.options[slTypeSearch.selectedIndex].text;
-    n = "https://cors-anywhere.herokuapp.com/https://pasgo.vn/Search/SearchHeader/?keySearch=";
-    m = "&typeName=";
+    c = fQuanId.options[fQuanId.selectedIndex].value;
+    //r = fQuanId.options[fQuanId.selectedIndex].text;
+    n = "https://localhost:44389/api/APIuser?city=";
+    // n = "https://cors-anywhere.herokuapp.com/https://pasgo.vn/Search/SearchHeader/?keySearch=&typeName="
+    //m = "&typeName=";
+    m = "&keyword=";
     $.ajax({
-        url: n + i + m + r,
+        url: n + c + m + i ,
+        //url: n,
         data: {
             // keySearch: i
+            //'id': c,
+            //'keyword': i
         },
         dataType: "html",
         accept: "text/html",
-        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        contentType: "text/html; charset=UTF-8",
         traditional: !0,
         type: "POST",
         success: function (n) {

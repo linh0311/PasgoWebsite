@@ -10,6 +10,7 @@ using WebApplication2.Models;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Web.Mvc;
+using System.Web.Http;
 using System.Web;
 using System.IO;
 using RazorEngine;
@@ -60,11 +61,12 @@ namespace WebApplication2.Controllers
         //Đã lỗi thời - cần thay mới
         //Đây mới chỉ là phương thức GET / phải thay đổi sang POST
         //API link trả về có parameter - Remove querystring from URL
-
+        [System.Web.Http.HttpPost]
         [Obsolete]
-        public HttpResponseMessage get(string city, string keyword)
-        { 
-            
+        public HttpResponseMessage Post(string city, string keyword)
+        {
+            if (keyword == null)
+                keyword = "";
             var result = db.APIsearch(Convert.ToInt32(city), 1, keyword).ToList();
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
             string viewPath = HttpContext.Current.Server.MapPath(@"~/Views/API/APIresultNhaHang1.cshtml");
