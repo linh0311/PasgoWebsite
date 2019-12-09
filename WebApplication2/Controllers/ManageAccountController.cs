@@ -12,6 +12,17 @@ namespace WebApplication2.Controllers
     public class ManageAccountController : Controller
     {
         private PasGoEntities2 db = new PasGoEntities2();
+
+        private bool CheckUserAuthorize()
+        {
+            string phonenumber;
+            if (Session["PhoneNumber"] == null)
+                return false;
+            phonenumber = Session["PhoneNumber"].ToString();
+            if (db.PasgoUsers.Where(x => x.PhoneNumber == phonenumber).FirstOrDefault() != null)
+                return true;
+            return false;
+        }
         private static string CreatSalt()
         {
             RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
@@ -140,6 +151,38 @@ namespace WebApplication2.Controllers
                     cu.Add(item);
             }
             return View(Tuple.Create( moi.ToList(), cu.ToList()));
+        }
+
+        public ActionResult Conversation()
+        {
+            var id = Convert.ToInt32( Session["PasgoID"]);
+            List<Conversation> result = db.Conversations.Where(x => x.IdUser == id).ToList();
+            return View();
+        }
+
+        public ActionResult CreatConversation()
+        {
+            var iduser = Convert.ToInt32(Session["PasgoID"]);
+            if (CheckUserAuthorize() == true)
+            {
+                //add exception
+                var result = db.AddConversation(iduser).ToList().ElementAt(0);
+                if (Convert.ToInt32(result) != 0) {
+                    TempData["Success"] = "Hội thoại đã được thiết lập!";
+                    db.SaveMessage(Convert.ToInt32(result), false, "Xin chào, tôi có thể giúp gì cho bạn?");
+                }
+                else
+                    TempData["Failed"] = "Hệ thống quá tải, xin vui lòng thử lại sau!";
+                return RedirectToAction("Chat", "ManageAccount");
+            }
+            return View("Index", "Home");
+        }
+
+        public ActionResult Chat()
+        {
+            var id = Convert.ToInt32(Session["PasgoID"]);
+            List<Conversation> result = db.Conversations.Where(x => x.IdUser == id).ToList();
+            return View(result);
         }
     }
 }

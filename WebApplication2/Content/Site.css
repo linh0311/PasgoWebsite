@@ -4586,5 +4586,92 @@
         float: left;
         padding: unset;
     }
-
+    #chatpage .chat-left {
+        float: left; width: 90%;
+        border: 1px solid #eee;
+        margin: 5px;
+        border-radius: 5px;
+        padding: 5px 20px;
+        list-style-type: none;
+        background-color: aliceblue;
+        text-align: left;
+        font-family: 'Roboto Regular';
+    }
+    #chatpage .chat-right {
+        float: right; width: 90%;
+        border: 1px solid #eee;
+        margin: 5px;
+        border-radius: 5px;
+        padding: 5px 20px;
+        list-style-type: none;
+        background-color: beige;
+        text-align: right;
+        font-family: 'Roboto Regular';
+    }
+    #chatpage .chat-middle {
+        float: right;
+        width: 100%;
+        margin: 5px;
+        border-radius: 5px;
+        padding: 5px 20px;
+        list-style-type: none;
+        background-color: #eee;
+        text-align: center;
+        font-family: 'Roboto Regular';
+        font-size: 12px;
+    }
+    #chatpage .timestamp{
+        font-size: 10px;
+    }
+    #chatpage .list-discussion {
+        margin: 5px 0;
+        border: 1px solid #eee;
+        border-radius: 3px;
+    }
+    #chatpage .list-discussion:hover {
+        border: 1px solid #eee;
+        background-color: #eee;
+        cursor: pointer;   
+    }
+    #chatpage .conversationclose {
+        background-color: beige;
+    }
+    #chatpage .conversationopen {
+        background-color: aliceblue;
+    }
+    #list-discussion {
+        list-style-type: none;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        height: 500px;
+        padding: 10px;
+        float: left;
+        width: 100%
+    }
+    .list-conversation {
+        float: left;
+        padding-right: 5px;
+    }
+    .list-chathistory {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        height: 500px;
+        padding: 10px;
+        float: left;
+    }
+    .list-chathistory input{
+        height: 50px; 
+        float: left;
+        text-align: center;
+    }
+    #discussion {
+        border: 1px solid #ccc;
+        height: 400px;
+        padding-bottom: 10px;
+        border-radius: 5px;
+        overflow-y: scroll;
+    }
+    .activelist{
+        border: 1px solid black !important;
+    }
 }

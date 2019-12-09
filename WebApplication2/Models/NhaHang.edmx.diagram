@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9a4ad1f9a1a24f679642000d708409db" Name="Diagram1" ZoomLevel="80">
+      <Diagram DiagramId="9a4ad1f9a1a24f679642000d708409db" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="NhaHangModel.AnUong" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="NhaHangModel.HeaderSlide" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="NhaHangModel.img" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
@@ -42,6 +42,11 @@
         <EntityTypeShape EntityType="NhaHangModel.History" Width="1.5" PointX="6.5" PointY="18" />
         <EntityTypeShape EntityType="NhaHangModel.PasgoVisitor" Width="1.5" PointX="9.375" PointY="7.75" />
         <AssociationConnector Association="NhaHangModel.FK_dbo_History_dbo_PasgoRestaurant_PasgoRID" />
+        <EntityTypeShape EntityType="NhaHangModel.Conversation" Width="1.5" PointX="7.625" PointY="10.375" />
+        <EntityTypeShape EntityType="NhaHangModel.Chat" Width="1.5" PointX="9.875" PointY="10.625" />
+        <AssociationConnector Association="NhaHangModel.FK_dbo_Chat_dbo_Conversation_PasgoID" />
+        <AssociationConnector Association="NhaHangModel.FK_dbo_Conversation_dbo_PasgoUser_PasgoID" />
+        <EntityTypeShape EntityType="NhaHangModel.ConnectionIdDB" Width="1.5" PointX="7.625" PointY="22.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

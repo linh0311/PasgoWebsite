@@ -68,6 +68,10 @@ namespace WebApplication2.Controllers
                     Session["Email"] = userDetails.Email;
                     Session["DOB"] = userDetails.DOB;
                     Session["Gender"] = userDetails.Gender_;
+                    for (int i = 0; i < Session.Contents.Count; i++)
+                    {
+                        System.Diagnostics.Trace.WriteLine(Session.Keys[i] + " - " + Session[i]);
+                    }
                     FormsAuthentication.SetAuthCookie(userModel.PhoneNumber, true);
                     if (userDetails.Level != 1)
                     {

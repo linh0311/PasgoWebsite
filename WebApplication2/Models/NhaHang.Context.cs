@@ -50,6 +50,9 @@ namespace WebApplication2.Models
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<History> Histories { get; set; }
         public virtual DbSet<PasgoVisitor> PasgoVisitors { get; set; }
+        public virtual DbSet<Conversation> Conversations { get; set; }
+        public virtual DbSet<Chat> Chats { get; set; }
+        public virtual DbSet<ConnectionIdDB> ConnectionIdDBs { get; set; }
     
         public virtual ObjectResult<imgSlide_Result> imgSlide()
         {
@@ -887,6 +890,156 @@ namespace WebApplication2.Models
                 new ObjectParameter("keyword", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<APIsearch_Result>("APIsearch", cityParameter, typeParameter, keywordParameter);
+        }
+    
+        public virtual ObjectResult<AddConnectionId_Result> AddConnectionId(string phonenumber, string connection)
+        {
+            var phonenumberParameter = phonenumber != null ?
+                new ObjectParameter("phonenumber", phonenumber) :
+                new ObjectParameter("phonenumber", typeof(string));
+    
+            var connectionParameter = connection != null ?
+                new ObjectParameter("connection", connection) :
+                new ObjectParameter("connection", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AddConnectionId_Result>("AddConnectionId", phonenumberParameter, connectionParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> SaveMessage(Nullable<int> id, Nullable<bool> messagetype, string message)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var messagetypeParameter = messagetype.HasValue ?
+                new ObjectParameter("messagetype", messagetype) :
+                new ObjectParameter("messagetype", typeof(bool));
+    
+            var messageParameter = message != null ?
+                new ObjectParameter("message", message) :
+                new ObjectParameter("message", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SaveMessage", idParameter, messagetypeParameter, messageParameter);
+        }
+    
+        public virtual ObjectResult<ChatHistory_Result> ChatHistory(Nullable<int> conversationid)
+        {
+            var conversationidParameter = conversationid.HasValue ?
+                new ObjectParameter("conversationid", conversationid) :
+                new ObjectParameter("conversationid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ChatHistory_Result>("ChatHistory", conversationidParameter);
+        }
+    
+        public virtual int DeleteConnection(string connection)
+        {
+            var connectionParameter = connection != null ?
+                new ObjectParameter("connection", connection) :
+                new ObjectParameter("connection", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteConnection", connectionParameter);
+        }
+    
+        public virtual ObjectResult<FindConnectionID_Result> FindConnectionID(Nullable<int> idconversation)
+        {
+            var idconversationParameter = idconversation.HasValue ?
+                new ObjectParameter("idconversation", idconversation) :
+                new ObjectParameter("idconversation", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FindConnectionID_Result>("FindConnectionID", idconversationParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> ModifyConnectionId(Nullable<int> id, string connection, Nullable<int> type)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var connectionParameter = connection != null ?
+                new ObjectParameter("connection", connection) :
+                new ObjectParameter("connection", typeof(string));
+    
+            var typeParameter = type.HasValue ?
+                new ObjectParameter("type", type) :
+                new ObjectParameter("type", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ModifyConnectionId", idParameter, connectionParameter, typeParameter);
+        }
+    
+        public virtual ObjectResult<ConnectionIdDB> getAllConn(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConnectionIdDB>("getAllConn", idParameter);
+        }
+    
+        public virtual ObjectResult<ConnectionIdDB> getAllConn(Nullable<int> id, MergeOption mergeOption)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConnectionIdDB>("getAllConn", mergeOption, idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> UpdateConversationStatus(Nullable<int> idconversation, Nullable<bool> status)
+        {
+            var idconversationParameter = idconversation.HasValue ?
+                new ObjectParameter("idconversation", idconversation) :
+                new ObjectParameter("idconversation", typeof(int));
+    
+            var statusParameter = status.HasValue ?
+                new ObjectParameter("status", status) :
+                new ObjectParameter("status", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("UpdateConversationStatus", idconversationParameter, statusParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> GetIdStaffOnline()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetIdStaffOnline");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> AddConversation(Nullable<int> userid)
+        {
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("AddConversation", useridParameter);
+        }
+    
+        public virtual ObjectResult<GetConversationList_Result> GetConversationList(Nullable<int> id, Nullable<int> type)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var typeParameter = type.HasValue ?
+                new ObjectParameter("type", type) :
+                new ObjectParameter("type", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetConversationList_Result>("GetConversationList", idParameter, typeParameter);
+        }
+    
+        public virtual ObjectResult<Conversation> GetConversation(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Conversation>("GetConversation", idParameter);
+        }
+    
+        public virtual ObjectResult<Conversation> GetConversation(Nullable<int> id, MergeOption mergeOption)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Conversation>("GetConversation", mergeOption, idParameter);
         }
     }
 }

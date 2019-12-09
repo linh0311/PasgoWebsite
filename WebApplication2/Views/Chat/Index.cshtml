@@ -1,0 +1,216 @@
+﻿@model List<WebApplication2.Models.Conversation>
+
+@{
+    ViewBag.Title = "NguoiDung";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using (Html.BeginForm("CreatConversation", "ManageAccount"))
+{
+    <input type="submit" value="Tạo mới hội thoại" />
+}
+<div id="chatpage" class="col-12" style="background-color: white; padding: 25px; overflow: auto">
+    <br />
+    <h2>Chat</h2>
+    <label class="field-validation-error">@TempData["Failed"]</label>
+    <label class="field-validation-error" style="color:forestgreen !important">@TempData["Success"]</label>
+    <p>
+        <!--
+        Html.ActionLink("Thêm mới", "CreatNhaHang", "NhaHang")
+        -->
+    </p>
+    <div class="col-sm-3 list-conversation">
+        <ul id="list-discussion">
+        </ul>
+    </div>
+    <div class="col-sm-9 list-chathistory">
+        <ul id="discussion">
+        </ul>
+        <input type="text" id="message" name="idbox" placeholder="      Nhập tin nhắn" style="width: 70%;bottom: 0; text-align: left; padding-left: 15px;" disabled="true" />
+        <input id="sendmessage" value="Gửi" style="width: 10%;" disabled="true" />
+        <!--Thay đổi chỗ này phù hợp với id-->
+        @using (Html.BeginForm("LockConversation", "Chat"))
+        {
+            <input type="text" id="lockid" name="lockid" value="1" />
+            <input type="submit" id="lock" value="Khóa trò truyện" style="width: 10%" disabled />
+        }
+        @using (Html.BeginForm("UnlockConversation", "Chat"))
+        {
+            <input type="text" id="unlockid" name="unlockid" value="1" />
+            <input type="submit" id="unlock" value="Mở khóa trò truyện" style=" width: 10%" disabled />
+        }
+        <input type="hidden" id="idreceived" value="1" />
+        <input type="text" id="connId" name="connetionid" style="width: 50%" />Connected ID sent
+    </div>
+
+</div>
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        $(function () {
+            var chat = $.connection.chatHub;
+            //Client nhận tin
+            chat.client.addNewMessageToPage = function (name, message, date) {
+                sendmessage(name, message, date);
+            };
+
+            //add list conversation
+            chat.client.addListConversationToPage = function (id, name, date, status, idreceived) {
+                listconversation(id, name, date, status, idreceived);
+            }
+
+            //add notification
+            chat.client.addNotificationToPage = function (type) {
+                notification(type);
+            };
+
+            //Nếu nhấn enter -> kích hoạt gửi tin
+            $('#message').keypress(function (e) {
+                if (e.which == 13)
+                    $('#sendmessage').trigger("click");
+            });
+
+            //Thiết lập kết nối.
+            $.connection.hub.start().done(function () {
+                    var idreceived = null;
+                    var idconversation = null;
+                    //Get history ver 2: List conversation with newest time/date
+                    list();
+                    //Click on list
+                $(document).on("click", ".list-discussion", function () {
+                        $(".list-discussion").removeClass("activelist");
+                        $("#idconversation").attr("value", $(this).index());    //delete this
+                        var status = $(".list-discussion").eq($(this).index()).attr("status");
+                        idreceived = $(".list-discussion").eq($(this).index()).attr("idreceived");
+                        idconversation = $(".list-discussion").eq($(this).index()).attr("id");
+                        $("#lockid").attr("value", idconversation);
+                        $("#unlockid").attr("value", idconversation);
+                        $(".list-discussion").eq($(this).index()).addClass("activelist");
+                        if (status == "false") {
+                            $("#sendmessage").prop("disabled", true);
+                            $("#message").prop("disabled", true);
+                            $("#unlock").prop("disabled", false);
+                            $("#lock").prop("disabled", true);
+                            notification("4");
+                        } else {
+                            $("#sendmessage").prop("disabled", false);
+                            $("#message").prop("disabled", false);
+                            $("#unlock").prop("disabled", true);
+                            $("#lock").prop("disabled", false);
+                            $(".notification2").hide();
+                        }
+                        //Get history: chat history
+                        chat.server.chatHistoryObject(this.id)
+                            .done(function (result) {
+                                chathistory(result);
+                            })
+                            .fail(function (error) {
+                                console.log('Error: ' + error);
+                            });
+                    });
+                //Console log
+                console.log("Conencted to: " + $.connection.hub.id + " - with transport - " + $.connection.hub.transport.name);
+
+                $("#connId").attr("value", $.connection.hub.id);    //Show id / will delete after then
+                chat.server.saveConnection(@Session["PasgoID"]);    //Save connection to database
+                $('#discussion').animate({ scrollTop: 99999999 }, 50);
+                $('#discussion').click(function () {chat.server.notification(idconversation, idreceived, "2");});
+                $('#message').click(function () {chat.server.notification(idconversation, idreceived, "2");});
+                $('#message').on('input', function () {chat.server.notification(idconversation, idreceived, "1");});
+                //Event click Send
+                $('#sendmessage').click(function () {
+                    //Gọi phương thức Send
+                    chat.server.staffSend("@Session["FullName"]", $('#message').val(), idreceived, idconversation);
+                    var date = new Date();
+                    //Tin nhắn gửi
+                    $('#discussion').append('<li class="chat-right"><span class="timestamp">'+date.getDate() + "-" + (date.getMonth()+1)+ "-" + (date.getFullYear()-2000) + " " +  ('0' + date.getHours()).slice(-2) + ":" + ('0' + date.getMinutes()).slice(-2) + ":" + ('0' + date.getSeconds()).slice(-2) + ' ' + (date.getHours() < 12 ? 'AM' : 'PM')+'</span><br /><span>' + htmlEncode($('#message').val()) + '</span>:<strong>' + "@Session["FullName"]"
+                        + '</strong></li>');
+                    // Clear text box and reset focus for next comment.
+                    $('#message').val('').focus();              
+                });
+                setInterval(function () {
+                    $(".conversationopen").remove();
+                    $(".conversationclose").remove();
+                    list();
+                }, 30000);
+            });
+
+        });
+
+        function sendmessage(name, message, date) {
+            $(".notification1").hide();
+            $(".notification2").hide();
+            if (name == "@Session["FullName"]")
+                $('#discussion').append('<li class="chat-right"><span class="timestamp">' + htmlEncode(date) + '</span><br /><span>' + htmlEncode(message) + '</span><strong> :' + htmlEncode(name)
+                    + '</strong></li>');
+            else
+                $('#discussion').append('<li class="chat-left"><span class="timestamp">' + htmlEncode(date) + '</span><br /><strong>' + htmlEncode(name)
+                    + '</strong>:<span>' + htmlEncode(message) + '</span></li>');
+            $('#discussion').animate({ scrollTop: 99999999 }, 500);
+        }
+
+        function listconversation(id, name, date, status, idreceived) {
+            if (htmlEncode(status) == "true")
+                $('#list-discussion').append('<li class="list-discussion conversationopen" id="' + htmlEncode(id) + '" status="' + htmlEncode(status) + '" idreceived="' + htmlEncode(idreceived) + '">' + htmlEncode(name) + htmlEncode(date) + '</li>');
+            else
+                $('#list-discussion').append('<li class="list-discussion conversationclose" id="' + htmlEncode(id) + '" status="' + htmlEncode(status) + '" idreceived="' + htmlEncode(idreceived) + '">' + htmlEncode(name) + htmlEncode(date) + '</li>');
+        }
+
+        function notification(type) {
+            switch (type) {
+                case "1":
+                    $(".notification1").hide();
+                    $('#discussion').append('<li class="chat-middle notification1"><span>đang trả lời...</span></li>').children(':last').delay(3000).fadeOut(100);
+                    break;
+                case "2":
+                    $(".notification2").hide();
+                    $('#discussion').append('<li class="chat-middle notification2"><span>Đã đọc</span></li>');
+                    break;
+                case "3":
+                    $(".notification2").hide();
+                    $('#discussion').append('<li class="chat-middle notification2"><span>Không gửi được tin nhắn</span></li>');
+                    break;
+                case "4":
+                    $(".notification2").hide();
+                    $('#discussion').append('<li class="chat-middle notification2"><span>Cuộc hội thoại đã kết thúc! Để được hỗ trợ hãy tạo hội thoại mới!</span></li>');
+                    break;
+                default:
+                    $(".notification2").hide();
+                    $('#discussion').append('<li class="chat-middle notification2"><span>Đã gửi</span></li>');
+                    break;
+            }
+            $('#discussion').animate({ scrollTop:99999999 }, 500);
+        }
+
+        function chathistory(result) {
+            var chat = $.connection.chatHub;
+            $(".chat-right").remove();
+            $(".chat-left").remove();
+            $.each(result, function () {
+                var result = this;
+                chat.client.addNewMessageToPage(result.name, result.message, result.date, result.Status, result.IdUser);
+            });
+        }
+
+        function list() {
+            var chat = $.connection.chatHub;
+            chat.server.listConversation("@Session["PasgoID"]", "0")
+                        .done(function (result) {
+                            $.each(result, function () {
+                                var result = this;
+                                chat.client.addListConversationToPage(result.IdConversation, result.Name, result.date, result.Status, result.IdUser);
+                            });
+                            console.log(status);
+                        })
+                        .fail(function (error) {
+                            console.log('Error: ' + error);
+                        });
+        }
+
+        // This optional function html-encodes messages for display in the page.
+        function htmlEncode(value) {
+            var encodedValue = $('<div />').text(value).html();
+            return encodedValue;
+        }
+    </script>
+}

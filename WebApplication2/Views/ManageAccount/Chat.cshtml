@@ -1,0 +1,260 @@
+﻿@model List<WebApplication2.Models.Conversation>
+
+@{
+    ViewBag.Title = "Chat";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="wapper-content" id="infor">
+    <div class="container">
+        <div class="wapper">
+            <br />
+            <div style="float: left;" class="col-12">
+                <label class="field-validation-error">@TempData["Failed"]</label>
+                <label class="field-validation-error" style="color:forestgreen !important">@TempData["Success"]</label>
+            </div>
+            <ul class="col-12 col-sm-3">
+                <li class="col-12 infor-tab">
+                    <div class="col-12 col-sm-3 avatar">
+                        <img src="" alt="Smiley face">
+                    </div>
+                    <div class="col-12 col-sm-9 pasgo-user-id">
+                        <p>ID Pasgo : @Session["PasgoID"]</p>
+                        <p>SĐT : @Session["PhoneNumber"]</p>
+                    </div>
+                </li>
+                <li class="col-12 infor-tab">
+                    <span>Icon</span>
+                    @Html.ActionLink("Thông tin tài khoản", "Details", "ManageAccount")
+                    <span class="pasgo-icondesktop-menublack"></span>
+                </li>
+                <li class="col-12 infor-tab">
+                    <span>Icon</span>
+                    @Html.ActionLink("Quản lý mật khẩu", "ChangePassword", "ManageAccount")
+                    <span class="pasgo-icondesktop-menublack"></span>
+                </li>
+                <li class="col-12 infor-tab">
+                    <span>Icon</span>
+                    @Html.ActionLink("Lịch sử đặt chỗ", "History", "ManageAccount")
+                    <span class="pasgo-icondesktop-menublack"></span>
+                </li>
+                <li class="col-12 infor-tab">
+                    <span>Icon</span>
+                    @Html.ActionLink("Hỗ trợ", "Chat", "ManageAccount")
+                    <span class="pasgo-icondesktop-menublack"></span>
+                </li>
+                <li class="col-12 infor-tab">
+                    <span>Icon</span>
+                    @Html.ActionLink("Thoát", "Index", "Home")
+                    <span class="pasgo-icondesktop-menublack"></span>
+                </li>
+            </ul>
+            <div id="chatpage" class="col-12 col-sm-9">
+                <div class="col-3" style="float: left; padding-right: 5px;">
+                    @using (Html.BeginForm("CreatConversation", "ManageAccount"))
+                    {
+                        <button type="submit" name="btncreat" style="">Tạo hội thoại mới</button>
+                    }
+                    <ul id="list-discussion" style="border: 1px solid #ccc; border-radius: 5px; height: 500px; padding: 10px; float: left; width: 100%">
+                    </ul>
+
+                </div>
+                <div class="col-9" style="height: 500px; padding:0; float: left;">
+                    <ul id="discussion" style="border: 1px solid #ccc; height: 400px; padding-bottom: 10px; border-radius: 5px; overflow-y: scroll">
+                    </ul>
+
+                    <input type="text" id="message" name="idbox" placeholder="      Nhập tin nhắn" style="width: 80%; height: 50px; bottom: 0; float: left" />
+                    <input type="submit" id="sendmessage" value="Gửi" style="margin-left: 5%; height: 50px; float: left; width: 10%" />
+                    <input type="text" id="connId" name="connetionid" style="width: 50%" />Connected ID send
+                    <input type="text" id="idconversation" name="idconversation" /> value get
+                    <!--<input type="hidden" id="friendconnId" style="width: 50%" value=Model.IdStaff />-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        //can user render javascript based on conversation status -> better
+        $(function () {
+                //Kết nối tới hub bằng generated proxy
+            var chat = $.connection.chatHub;
+                //Chỉnh back end phải check trước khi lưu message
+            chat.client.addListConversationToPage = function (id, name, date, status, idreceived) {
+                listconversation(id, name, date, status, idreceived);
+            };
+                //add message in client side with parameters
+            chat.client.addNewMessageToPage = function (name, message, date) {
+                sendmessage(name, message, date);
+            };
+                //add notification in client side
+            chat.client.addNotificationToPage = function (type) {
+                notification(type);
+            };
+
+                //add message in client side with object
+                /*
+                chat.client.addNewMessageToPage = function (message) {
+                    Console.log("User: " + message.name + " / Just sent :" + message.message);
+                }
+                */
+
+                // Set initial focus to message input box.
+                $('#message').focus();
+
+                //Nếu nhấn enter -> kích hoạt gửi tin
+                $('#message').keypress(function (e) {
+                    if (e.which == 13)
+                        $('#sendmessage').trigger("click");
+                });
+                //QueryString được gọi trước khi start conn
+                $.connection.hub.qs = { 'side': 'client' };
+                //Thiết lập kết nối với hub
+                $.connection.hub.start()
+                    //Trạng thái: thành công.
+                    .done(function () {
+                        var idreceived = null;
+                        var idconversation = null;
+                        list();
+                        $("#connId").attr("value", $.connection.hub.id);
+                        chat.server.saveConnection(@Session["PasgoID"]);
+                        //Onclick each <li> element
+                        $(document).on("click", ".list-discussion", function () {
+                             $(".list-discussion").removeClass("activelist");
+                            $("#idconversation").attr("value", $(this).index());    //delete this
+                            var status = $(".list-discussion").eq($(this).index()).attr("status");
+                            idreceived = $(".list-discussion").eq($(this).index()).attr("idreceived");
+                            idconversation = $(".list-discussion").eq($(this).index()).attr("id");
+                            $(".list-discussion").eq($(this).index()).addClass("activelist");
+                            if (status == "false") {
+                                $("#sendmessage").prop("disabled", true);
+                                $("#message").prop("disabled", true);
+                                //chat.client.addNotificationToPage("4");
+                                chat.server.notification(this.id, @Session["PasgoID"], "2");
+                            } else {
+                                $("#sendmessage").prop("disabled", false);
+                                $("#message").prop("disabled", false);
+                                $(".notification2").hide();
+                            }
+                            console.log(this.id);
+                            chat.server.chatHistoryObject(this.id)
+                                .done(function (result) {
+                                    chathistory(result);
+                                })
+                                .fail(function (error) {
+                                    console.log('Error: ' + error);
+                                });
+                        });
+
+                        //Return each message to Client
+                        //chat.server.chatHistory("2", $.connection.hub.id);
+                        //Return an list object to Client -> should use.
+                        $('#discussion').animate({ scrollTop: 9999 }, 500);
+                        $('#discussion').click(function () {
+                            chat.server.notification(idconversation, idreceived, "2");
+                        });
+                        $('#message').click(function () {
+                            chat.server.notification(idconversation, idreceived, "2");
+                        });
+                        $('#message').on('input', function () {
+                            chat.server.notification(idconversation, idreceived, "1");
+                        });
+                        //Event click Send
+                        $('#sendmessage').click(function () {
+                            //Gọi phương thức Send
+                            chat.server.userSend("@Session["FullName"]", $('#message').val(), idreceived, idconversation);
+                            //Tin nhắn gửi
+                            var date = new Date();
+                            $('#discussion').append('<li class="chat-right notification"><span class="timestamp">' + date.getDate() + "-" + (date.getMonth() + 1) + "-" + (date.getFullYear() - 2000) + " " + ('0' + date.getHours()).slice(-2) + ":" + ('0' + date.getMinutes()).slice(-2) + ":" + ('0' + date.getSeconds()).slice(-2) + ' ' + (date.getHours() < 12 ? 'AM' : 'PM') + '</span><br /><span>' + htmlEncode($('#message').val()) + '</span>:<strong>' + "@Session["FullName"]"
+                                + '</strong></li>');
+                            //Clear text box and reset focus for next comment.
+                            $('#message').val('').focus();
+                            $('#discussion').animate({ scrollTop: 99999999 }, 500);
+                        });
+                    })
+                    //Trạng thái: Thất bại
+                    .fail(function () {
+                        console.log('Cant connect to server.');
+                    });
+
+        });
+        // This optional function html-encodes messages for display in the page.
+        function htmlEncode(value) {
+            var encodedValue = $('<div />').text(value).html();
+            return encodedValue;
+        }
+
+        //list
+        function list() {
+            var chat = $.connection.chatHub;
+            chat.server.listConversation("@Session["PasgoID"]", "1")
+                .done(function (result) {
+                    $.each(result, function () {
+                        var result = this;
+                        chat.client.addListConversationToPage(result.IdConversation, result.Name, result.date, result.Status, result.IdUser);
+                    });
+                    console.log(status);
+                })
+                .fail(function (error) {
+                    console.log('Error: ' + error);
+                });
+        }
+
+        function chathistory(result) {
+            var chat = $.connection.chatHub;
+            $(".chat-right").remove();
+            $(".chat-left").remove();
+            $.each(result, function () {
+                var result = this;
+                chat.client.addNewMessageToPage(result.name, result.message, result.date, result.Status, result.IdUser);
+            });
+        }
+
+        function sendmessage(name, message, date) {
+            $(".notification1").hide();
+            $(".notification2").hide();
+            if (name == "@Session["FullName"]")
+                $('#discussion').append('<li class="chat-right"><span class="timestamp">' + htmlEncode(date) + '</span><br /><span>' + htmlEncode(message) + '</span><strong> :' + htmlEncode(name)
+                    + '</strong></li>');
+            else
+                $('#discussion').append('<li class="chat-left"><span class="timestamp">' + htmlEncode(date) + '</span><br /><strong>' + htmlEncode(name)
+                    + '</strong>:<span>' + htmlEncode(message) + '</span></li>');
+            $('#discussion').animate({ scrollTop: 99999999 }, 500);
+        }
+
+        function listconversation(id, name, date, status, idreceived) {
+            if (htmlEncode(status) == "true")
+                $('#list-discussion').append('<li class="list-discussion conversationopen" id="' + htmlEncode(id) + '" status="' + htmlEncode(status) + '" idreceived="' + htmlEncode(idreceived) + '">' + htmlEncode(name) + htmlEncode(date) + '</li>');
+            else
+                $('#list-discussion').append('<li class="list-discussion conversationclose" id="' + htmlEncode(id) + '" status="' + htmlEncode(status) + '" idreceived="' + htmlEncode(idreceived) + '">' + htmlEncode(name) + htmlEncode(date) + '</li>');
+        }
+
+        function notification(type) {
+            switch (type) {
+                case "1":
+                    $(".notification1").hide();
+                    $('#discussion').append('<li class="chat-middle notification1"><span>đang trả lời...</span></li>').children(':last').delay(3000).fadeOut(100);
+                    break;
+                case "2":
+                    $(".notification2").hide();
+                    $('#discussion').append('<li class="chat-middle notification2"><span>Đã đọc</span></li>');
+                    break;
+                case "3":
+                    $(".notification2").hide();
+                    $('#discussion').append('<li class="chat-middle notification2"><span>Không gửi được tin nhắn</span></li>');
+                    break;
+                case "4":
+                    $(".notification2").hide();
+                    $('#discussion').append('<li class="chat-middle notification2"><span>Cuộc hội thoại đã kết thúc! Để được hỗ trợ hãy tạo hội thoại mới!</span></li>');
+                    break;
+                default:
+                    $(".notification2").hide();
+                    $('#discussion').append('<li class="chat-middle notification2"><span>Đã gửi</span></li>');
+                    break;
+            }
+            $('#discussion').animate({ scrollTop:99999999 }, 500);
+        }
+    </script>
+    }
