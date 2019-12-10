@@ -19,5 +19,6 @@ namespace WebApplication2.Models
         public bool Status { get; set; }
         public System.DateTime Creat { get; set; }
         public string Name { get; set; }
+        public Nullable<bool> NewMessage { get; set; }
     }
 }

@@ -30,20 +30,22 @@
         <!--Thay đổi chỗ này phù hợp với id-->
         @using (Html.BeginForm("LockConversation", "Chat"))
         {
-            <input type="text" id="lockid" name="lockid" value="1" />
-            <input type="submit" id="lock" value="Khóa trò truyện" style="width: 10%" disabled />
+            <input type="hidden" id="lockid" name="lockid" value="1" />
+            <input type="hidden" id="lock" value="Khóa trò truyện" style="width: 20%" onclick="return confirm('Bạn có muốn kết thúc cuộc trò chuyện?')"/>
         }
         @using (Html.BeginForm("UnlockConversation", "Chat"))
         {
-            <input type="text" id="unlockid" name="unlockid" value="1" />
-            <input type="submit" id="unlock" value="Mở khóa trò truyện" style=" width: 10%" disabled />
+            <input type="hidden" id="unlockid" name="unlockid" value="1" />
+            <input type="hidden" id="unlock" value="Mở khóa trò truyện" style="width: 20%" onclick="return confirm('Bạn có muốn mở lại cuộc trò chuyện?')"/>
         }
+        <!--
         <input type="hidden" id="idreceived" value="1" />
-        <input type="text" id="connId" name="connetionid" style="width: 50%" />Connected ID sent
+        <input type="text" id="connId" name="connetionid" style="width: 50%" />Connected ID sent-->
     </div>
 
 </div>
-@section scripts {
+@section Scripts {
+    <script src="~/Scripts/Chat.js"></script>
     <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
     <script src="~/signalr/hubs"></script>
     <script>
@@ -57,7 +59,7 @@
             //add list conversation
             chat.client.addListConversationToPage = function (id, name, date, status, idreceived) {
                 listconversation(id, name, date, status, idreceived);
-            }
+            };
 
             //add notification
             chat.client.addNotificationToPage = function (type) {
@@ -75,7 +77,12 @@
                     var idreceived = null;
                     var idconversation = null;
                     //Get history ver 2: List conversation with newest time/date
-                    list();
+                list();
+                if (getCookie("CurrentConversation") != "none") {
+                    chathistory(getCookie("CurrentConversation"));
+                    idreceived = getCookie("CurrentIdreceived");
+                    idconversation = getCookie("CurrentConversation");
+                }
                     //Click on list
                 $(document).on("click", ".list-discussion", function () {
                         $(".list-discussion").removeClass("activelist");
@@ -89,25 +96,22 @@
                         if (status == "false") {
                             $("#sendmessage").prop("disabled", true);
                             $("#message").prop("disabled", true);
-                            $("#unlock").prop("disabled", false);
-                            $("#lock").prop("disabled", true);
+                            $("#unlock").prop("type", "submit");
+                            $("#lock").prop("type", "hidden");
                             notification("4");
                         } else {
                             $("#sendmessage").prop("disabled", false);
                             $("#message").prop("disabled", false);
-                            $("#unlock").prop("disabled", true);
-                            $("#lock").prop("disabled", false);
+                            $("#unlock").prop("type", "hidden");
+                            $("#lock").prop("type", "submit");
                             $(".notification2").hide();
                         }
+                    setCookie("CurrentConversation", idconversation, 1);
+                    setCookie("CurrentIdreceived", idreceived, 1);
                         //Get history: chat history
-                        chat.server.chatHistoryObject(this.id)
-                            .done(function (result) {
-                                chathistory(result);
-                            })
-                            .fail(function (error) {
-                                console.log('Error: ' + error);
-                            });
-                    });
+                    chathistory(this.id);
+                    $('#discussion').animate({ scrollTop: 99999999 }, 500);
+                });
                 //Console log
                 console.log("Conencted to: " + $.connection.hub.id + " - with transport - " + $.connection.hub.transport.name);
 
@@ -126,7 +130,8 @@
                     $('#discussion').append('<li class="chat-right"><span class="timestamp">'+date.getDate() + "-" + (date.getMonth()+1)+ "-" + (date.getFullYear()-2000) + " " +  ('0' + date.getHours()).slice(-2) + ":" + ('0' + date.getMinutes()).slice(-2) + ":" + ('0' + date.getSeconds()).slice(-2) + ' ' + (date.getHours() < 12 ? 'AM' : 'PM')+'</span><br /><span>' + htmlEncode($('#message').val()) + '</span>:<strong>' + "@Session["FullName"]"
                         + '</strong></li>');
                     // Clear text box and reset focus for next comment.
-                    $('#message').val('').focus();              
+                    $('#message').val('').focus();
+                    $('#discussion').animate({ scrollTop: 99999999 }, 500);
                 });
                 setInterval(function () {
                     $(".conversationopen").remove();
@@ -134,7 +139,6 @@
                     list();
                 }, 30000);
             });
-
         });
 
         function sendmessage(name, message, date) {
@@ -145,15 +149,21 @@
                     + '</strong></li>');
             else
                 $('#discussion').append('<li class="chat-left"><span class="timestamp">' + htmlEncode(date) + '</span><br /><strong>' + htmlEncode(name)
-                    + '</strong>:<span>' + htmlEncode(message) + '</span></li>');
-            $('#discussion').animate({ scrollTop: 99999999 }, 500);
+                    + '</strong>:<span>' + htmlEncode(message) + '</span></li>');            
         }
 
         function listconversation(id, name, date, status, idreceived) {
-            if (htmlEncode(status) == "true")
-                $('#list-discussion').append('<li class="list-discussion conversationopen" id="' + htmlEncode(id) + '" status="' + htmlEncode(status) + '" idreceived="' + htmlEncode(idreceived) + '">' + htmlEncode(name) + htmlEncode(date) + '</li>');
-            else
-                $('#list-discussion').append('<li class="list-discussion conversationclose" id="' + htmlEncode(id) + '" status="' + htmlEncode(status) + '" idreceived="' + htmlEncode(idreceived) + '">' + htmlEncode(name) + htmlEncode(date) + '</li>');
+            if (htmlEncode(id) == getCookie("CurrentConversation")) {
+                if (htmlEncode(status) == "true")
+                    $('#list-discussion').append('<li class="list-discussion conversationopen activelist" id="' + htmlEncode(id) + '" status="' + htmlEncode(status) + '" idreceived="' + htmlEncode(idreceived) + '">' + htmlEncode(name) + htmlEncode(date) + '</li>');
+                else
+                    $('#list-discussion').append('<li class="list-discussion conversationclose activelist" id="' + htmlEncode(id) + '" status="' + htmlEncode(status) + '" idreceived="' + htmlEncode(idreceived) + '">' + htmlEncode(name) + htmlEncode(date) + '</li>');
+            } else {
+                if (htmlEncode(status) == "true")
+                    $('#list-discussion').append('<li class="list-discussion conversationopen" id="' + htmlEncode(id) + '" status="' + htmlEncode(status) + '" idreceived="' + htmlEncode(idreceived) + '">' + htmlEncode(name) + htmlEncode(date) + '</li>');
+                else
+                    $('#list-discussion').append('<li class="list-discussion conversationclose" id="' + htmlEncode(id) + '" status="' + htmlEncode(status) + '" idreceived="' + htmlEncode(idreceived) + '">' + htmlEncode(name) + htmlEncode(date) + '</li>');
+            }
         }
 
         function notification(type) {
@@ -184,12 +194,19 @@
 
         function chathistory(result) {
             var chat = $.connection.chatHub;
-            $(".chat-right").remove();
-            $(".chat-left").remove();
-            $.each(result, function () {
-                var result = this;
-                chat.client.addNewMessageToPage(result.name, result.message, result.date, result.Status, result.IdUser);
-            });
+            chat.server.chatHistoryObject(result)
+                .done(function (result) {
+                    $(".chat-right").remove();
+                    $(".chat-left").remove();
+                    $.each(result, function () {
+                        var result = this;
+                        chat.client.addNewMessageToPage(result.name, result.message, result.date, result.Status, result.IdUser);
+                    });
+                })
+                .fail(function (error) {
+                    console.log('Error: ' + error);
+                });
+            $('#discussion').animate({ scrollTop: 99999999 }, 500);
         }
 
         function list() {
@@ -200,7 +217,6 @@
                                 var result = this;
                                 chat.client.addListConversationToPage(result.IdConversation, result.Name, result.date, result.Status, result.IdUser);
                             });
-                            console.log(status);
                         })
                         .fail(function (error) {
                             console.log('Error: ' + error);
@@ -211,6 +227,29 @@
         function htmlEncode(value) {
             var encodedValue = $('<div />').text(value).html();
             return encodedValue;
+        }
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "none";
+        }
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires="+d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
         }
     </script>
 }

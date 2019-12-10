@@ -163,6 +163,10 @@ namespace WebApplication2.Controllers
         public ActionResult CreatConversation()
         {
             var iduser = Convert.ToInt32(Session["PasgoID"]);
+            if(System.DateTime.Now< System.DateTime.Today.AddHours(8) || System.DateTime.Now > System.DateTime.Today.AddHours(20)){
+                TempData["Failed"] = "Hệ thống CSKH hiện đang nghỉ, xin vui lòng liên hệ thời gian làm việc 8:00 - 20:00.";
+                return RedirectToAction("Chat", "ManageAccount");
+            }
             if (CheckUserAuthorize() == true)
             {
                 //add exception
@@ -180,6 +184,8 @@ namespace WebApplication2.Controllers
 
         public ActionResult Chat()
         {
+            if (Session["PasgoID"] == null)
+                return RedirectToAction("Index", "Home");
             var id = Convert.ToInt32(Session["PasgoID"]);
             List<Conversation> result = db.Conversations.Where(x => x.IdUser == id).ToList();
             return View(result);

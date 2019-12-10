@@ -64,6 +64,7 @@ warning 6002: The table/view 'PasGo.dbo.Chat' does not have a primary key define
           <Property Name="Status" Type="bit" Nullable="false" />
           <Property Name="Creat" Type="datetime" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NewMessage" Type="bit" />
         </EntityType>
         <EntityType Name="HeaderSlide">
           <Key>
@@ -633,6 +634,11 @@ warning 6002: The table/view 'PasGo.dbo.thongtinthem' does not have a primary ke
         </Function>
         <Function Name="MoiNhatSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="city" Type="int" Mode="In" />
+        </Function>
+        <Function Name="NewMessage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idconversation" Type="int" Mode="In" />
+          <Parameter Name="idreceived" Type="int" Mode="In" />
+          <Parameter Name="type" Type="int" Mode="In" />
         </Function>
         <Function Name="PasgotvSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="city" Type="int" Mode="In" />
@@ -1525,7 +1531,12 @@ warning 6002: The table/view 'PasGo.dbo.thongtinthem' does not have a primary ke
             <Parameter Name="type" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetConversation" EntitySet="Conversations" ReturnType="Collection(NhaHangModel.Conversation)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="NewMessage" ReturnType="Collection(Int32)">
+            <Parameter Name="idconversation" Mode="In" Type="Int32" />
+            <Parameter Name="idreceived" Mode="In" Type="Int32" />
+            <Parameter Name="type" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="imgSlide_Result">
@@ -2020,6 +2031,7 @@ warning 6002: The table/view 'PasGo.dbo.thongtinthem' does not have a primary ke
           <NavigationProperty Name="Chats" Relationship="NhaHangModel.FK_dbo_Chat_dbo_Conversation_PasgoID" FromRole="Conversation" ToRole="Chat" />
           <NavigationProperty Name="PasgoUser" Relationship="NhaHangModel.FK_dbo_Conversation_dbo_PasgoUser_PasgoID" FromRole="Conversation" ToRole="PasgoUser" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NewMessage" Type="Boolean" />
         </EntityType>
         <EntityType Name="Chat">
           <Key>
@@ -2085,6 +2097,7 @@ warning 6002: The table/view 'PasGo.dbo.thongtinthem' does not have a primary ke
           <Property Type="Boolean" Name="Status" Nullable="false" />
           <Property Type="DateTime" Name="Creat" Nullable="false" Precision="23" />
           <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="Boolean" Name="NewMessage" Nullable="true" />
         </ComplexType>
         <ComplexType Name="GetConversation_Result">
           <Property Type="Int32" Name="IdConversation" Nullable="false" />
@@ -2687,6 +2700,7 @@ warning 6002: The table/view 'PasGo.dbo.thongtinthem' does not have a primary ke
           <EntitySetMapping Name="Conversations">
             <EntityTypeMapping TypeName="NhaHangModel.Conversation">
               <MappingFragment StoreEntitySet="Conversation">
+                <ScalarProperty Name="NewMessage" ColumnName="NewMessage" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Creat" ColumnName="Creat" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
@@ -2746,11 +2760,13 @@ warning 6002: The table/view 'PasGo.dbo.thongtinthem' does not have a primary ke
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Creat" ColumnName="Creat" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NewMessage" ColumnName="NewMessage" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetConversation" FunctionName="NhaHangModel.Store.GetConversation">
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NewMessage" FunctionName="NhaHangModel.Store.NewMessage" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

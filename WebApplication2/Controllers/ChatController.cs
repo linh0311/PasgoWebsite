@@ -30,7 +30,7 @@ namespace WebApplication2.Controllers
 
                 return View(result);
             }else
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home", 1);
         }
 
         public ActionResult Customer()
@@ -40,18 +40,16 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult UnlockConversation()
         {
-            //kết quả ra null?????????
-            string x = Request.Form["lockid"];
-            var idconversation = Convert.ToInt32(Request.Form["lockid"]);
+            string x = Request.Form["unlockid"];
+            var idconversation = Convert.ToInt32(Request.Form["unlockid"]);
             var result = db.UpdateConversationStatus(idconversation, true);
             return RedirectToAction("Index", "Chat");
         }
         [HttpPost]
         public ActionResult LockConversation()
         {
-            //request.form vẫn ra null?????
-            string x = Request.Form["idlockid"];
-            var idconversation = Convert.ToInt32(Request.Form["idlockid"]);
+            string x = Request.Form["lockid"];
+            var idconversation = Convert.ToInt32(Request.Form["lockid"]);
             var result = db.UpdateConversationStatus(idconversation, false);
             return RedirectToAction("Index", "Chat");
         }

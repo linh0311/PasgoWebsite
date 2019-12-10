@@ -90,8 +90,16 @@ namespace WebApplication2.Controllers
        
         public ActionResult LogOut()
         {
+            HttpCookie aCookie;
             FormsAuthentication.SignOut();
             Session.Abandon();
+            for(int x = 0; x< Response.Cookies.Count; x++)
+            {
+                string cookieName = Request.Cookies[x].Name;
+                aCookie = new HttpCookie(cookieName);
+                aCookie.Expires = DateTime.Now.AddDays(-1); // make it expire yesterday
+                Response.Cookies.Add(aCookie); // overwrite it
+            }
             return RedirectToAction("Index", "Home");
         }
 

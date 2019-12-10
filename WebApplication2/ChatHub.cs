@@ -31,26 +31,18 @@ namespace WebApplication2
 
         private PasGoEntities2 db = new PasGoEntities2();
         //Hub does not support session, pass query string here
-        public override Task OnConnected()
+        public override async Task OnConnected()
         {
-            var u = HttpContext.Current.User.Identity.Name;
-            var side = Context.QueryString["side"];
-            System.Diagnostics.Trace.WriteLine(Context.ConnectionId + " - Connected / " + u + " - from - " +side);
-            return base.OnConnected();
+            System.Diagnostics.Trace.WriteLine(Context.ConnectionId + " - Connected / " + HttpContext.Current.User.Identity.Name + " - from - " + Context.QueryString["side"]);
+            await base.OnConnected();
         }
         
-        public override Task OnDisconnected(bool stopCalled)
+        public override async Task OnDisconnected(bool stopCalled)
         {
             db.ModifyConnectionId(0, Context.ConnectionId, 0);
             System.Diagnostics.Trace.WriteLine(Context.ConnectionId + " - Disconnected / " + Context.User.Identity.Name);
-            return base.OnDisconnected(stopCalled);
+            await base.OnDisconnected(stopCalled);
         }
-
-        public override Task OnReconnected()
-        {
-            return base.OnReconnected();
-        }
-
 
         //Handle send message event from Staff side 
         public void StaffSend(string namesend, string message, string connectionID, string idconversation)
@@ -59,6 +51,7 @@ namespace WebApplication2
             var status = db.Conversations.Where(x => x.IdConversation == idconn).FirstOrDefault().Status;
             if (status == true)
             {
+                db.NewMessage(idconn, Convert.ToInt32(connectionID), 1);
                 db.SaveMessage(idconn, false, message);
                 var allconn = db.getAllConn(Convert.ToInt32(connectionID)).ToList();
                 foreach (var item in allconn)
@@ -77,6 +70,7 @@ namespace WebApplication2
             var status = db.Conversations.Where(x => x.IdConversation == idconn).FirstOrDefault().Status;
             if (status == true)
             {
+                db.NewMessage(idconn, Convert.ToInt32(connectionID), 1);
                 db.SaveMessage(idconn, true, message);
                 var allconn = db.getAllConn(Convert.ToInt32(connectionID)).ToList();
                 foreach (var item in allconn)
@@ -138,6 +132,10 @@ namespace WebApplication2
             var status = db.Conversations.Where(x => x.IdConversation == idconversation).FirstOrDefault().Status;
             if (status == true)
             {
+                if (type == "2")
+                {
+                    db.NewMessage(idconversation, idre, 0);
+                }
                 var allconn = db.getAllConn(idre).ToList();
                 foreach (var item in allconn)
                     Clients.Client(item.Conn).addNotificationToPage(type);

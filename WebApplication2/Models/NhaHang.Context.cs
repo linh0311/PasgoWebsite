@@ -1041,5 +1041,22 @@ namespace WebApplication2.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Conversation>("GetConversation", mergeOption, idParameter);
         }
+    
+        public virtual ObjectResult<Nullable<int>> NewMessage(Nullable<int> idconversation, Nullable<int> idreceived, Nullable<int> type)
+        {
+            var idconversationParameter = idconversation.HasValue ?
+                new ObjectParameter("idconversation", idconversation) :
+                new ObjectParameter("idconversation", typeof(int));
+    
+            var idreceivedParameter = idreceived.HasValue ?
+                new ObjectParameter("idreceived", idreceived) :
+                new ObjectParameter("idreceived", typeof(int));
+    
+            var typeParameter = type.HasValue ?
+                new ObjectParameter("type", type) :
+                new ObjectParameter("type", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("NewMessage", idconversationParameter, idreceivedParameter, typeParameter);
+        }
     }
 }

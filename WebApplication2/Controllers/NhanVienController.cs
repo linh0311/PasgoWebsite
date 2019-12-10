@@ -26,8 +26,10 @@ namespace WebApplication2.Controllers
             if (Convert.ToInt32(Session["Level"]) == 1 || Session["Level"] == null)
                 return RedirectToAction("Index", "Home");
             List<StaffList_Result> result = db.StaffSearch(phonebox, namebox, level).ToList();
+            
             if (result.Count() < 1)
                 TempData["Failed"] = "Không tìm thấy nhân viên";
+            TempData["Success"] = "Trả về " + result.Count() + " bản ghi.";
             return View(result);
         }
 
