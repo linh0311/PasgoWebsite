@@ -50,6 +50,8 @@ namespace WebApplication2.Controllers
         public void CheckDayOfYear()
         {
             var DayOfYear = datetime.Date;
+            string exampleDate = "9/10";
+            DateTime oDate = DateTime.ParseExact(exampleDate, "dd/MM"
         }
     }
 }
