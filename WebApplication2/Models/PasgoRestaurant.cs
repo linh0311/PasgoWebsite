@@ -19,15 +19,15 @@ namespace WebApplication2.Models
         {
             this.AnUongs = new HashSet<AnUong>();
             this.HeaderSlides = new HashSet<HeaderSlide>();
+            this.Histories = new HashSet<History>();
             this.imgs = new HashSet<img>();
             this.KhamPhas = new HashSet<KhamPha>();
             this.khuyenmais = new HashSet<khuyenmai>();
             this.MoiNhats = new HashSet<MoiNhat>();
             this.NhaHangUyTins = new HashSet<NhaHangUyTin>();
             this.thongtinthems = new HashSet<thongtinthem>();
-            this.UuDaiHots = new HashSet<UuDaiHot>();
             this.ThuongHieuChuoiDS = new HashSet<ThuongHieuChuoiD>();
-            this.Histories = new HashSet<History>();
+            this.UuDaiHots = new HashSet<UuDaiHot>();
         }
     
         public int PasgoRID { get; set; }
@@ -51,8 +51,11 @@ namespace WebApplication2.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AnUong> AnUongs { get; set; }
+        public virtual City City { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HeaderSlide> HeaderSlides { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<History> Histories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<img> imgs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -66,11 +69,8 @@ namespace WebApplication2.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<thongtinthem> thongtinthems { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UuDaiHot> UuDaiHots { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThuongHieuChuoiD> ThuongHieuChuoiDS { get; set; }
-        public virtual City City { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<History> Histories { get; set; }
+        public virtual ICollection<UuDaiHot> UuDaiHots { get; set; }
     }
 }

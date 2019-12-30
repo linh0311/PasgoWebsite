@@ -20,7 +20,7 @@
                     <div class="carousel-inner" role="listbox">
                         @for (int x = 0; x < (Model.Count()); x++)
                         {
-                            @Html.CarouselRating(Model.ElementAt(x).RName, Model.ElementAt(x).Raddress, Model.ElementAt(x).Rlink, Model.ElementAt(x).Rstar.Value, Model.ElementAt(x).Rdollar.Value, Model.ElementAt(x).Rpromotion, Model.ElementAt(x).Rfeature, Model.ElementAt(x).imgLink, Model.ElementAt(x).PasgoRID)
+                            @Html.CarouselRating(Model.ElementAt(x).RName, Model.ElementAt(x).Raddress, Model.ElementAt(x).Rlink, Model.ElementAt(x).Rstar, Model.ElementAt(x).Rdollar, Model.ElementAt(x).Rpromotion, Model.ElementAt(x).Rfeature, Model.ElementAt(x).imgLink, Model.ElementAt(x).PasgoRID)
                         }
                     </div>
                 </div>

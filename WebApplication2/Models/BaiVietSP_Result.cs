@@ -16,10 +16,10 @@ namespace WebApplication2.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public string Teaser { get; set; }
+        public string date { get; set; }
         public string Link { get; set; }
         public string Img { get; set; }
         public Nullable<int> Type { get; set; }
         public Nullable<int> City { get; set; }
-        public string date { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace WebApplication2.Controllers
 {
     public class ManageAccountController : Controller
     {
-        private PasGoEntities2 db = new PasGoEntities2();
+        private PasGoEntities db = new PasGoEntities();
 
         private bool CheckUserAuthorize()
         {

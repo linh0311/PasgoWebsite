@@ -1,0 +1,2830 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PasGoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AnUong">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nhahangID" Type="int" />
+          <Property Name="city" Type="int" />
+        </EntityType>
+        <EntityType Name="BaiViet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Teaser" Type="nvarchar(max)" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Link" Type="varchar(max)" />
+          <Property Name="Img" Type="varchar(max)" />
+          <Property Name="Type" Type="int" />
+          <Property Name="City" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PasGo.dbo.Chat' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Chat">
+          <Key>
+            <PropertyRef Name="IdConversation" />
+            <PropertyRef Name="MessageType" />
+            <PropertyRef Name="DateSent" />
+          </Key>
+          <Property Name="IdConversation" Type="int" Nullable="false" />
+          <Property Name="MessageType" Type="bit" Nullable="false" />
+          <Property Name="Message" Type="ntext" />
+          <Property Name="DateSent" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConnectionIdDB">
+          <Key>
+            <PropertyRef Name="IdConnection" />
+          </Key>
+          <Property Name="IdConnection" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Conn" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Conversation">
+          <Key>
+            <PropertyRef Name="IdConversation" />
+          </Key>
+          <Property Name="IdConversation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="IdStaff" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="Creat" Type="datetime" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NewMessage" Type="bit" />
+        </EntityType>
+        <EntityType Name="HeaderSlide">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="nhahangID" Type="int" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDuser" Type="int" Nullable="false" />
+          <Property Name="UserType" Type="bit" Nullable="false" />
+          <Property Name="PasgoRID" Type="int" Nullable="false" />
+          <Property Name="Num" Type="int" Nullable="false" />
+          <Property Name="CallTime" Type="datetime" Nullable="false" />
+          <Property Name="ETA" Type="datetime" Nullable="false" />
+          <Property Name="ArriveTime" Type="datetime" />
+          <Property Name="Request" Type="ntext" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="img">
+          <Key>
+            <PropertyRef Name="imgID" />
+          </Key>
+          <Property Name="imgID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imgLink" Type="varchar(max)" />
+          <Property Name="imgMoTa" Type="ntext" />
+          <Property Name="imgType" Type="int" />
+          <Property Name="nhahangID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="IdKH" />
+          </Key>
+          <Property Name="IdKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="Job" Type="nvarchar" MaxLength="150" />
+          <Property Name="Img" Type="varchar(max)" />
+          <Property Name="Review" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="KhamPha">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nhahangID" Type="int" />
+          <Property Name="baivietID" Type="int" />
+        </EntityType>
+        <EntityType Name="KhamPhaBv">
+          <Key>
+            <PropertyRef Name="IdBv" />
+          </Key>
+          <Property Name="IdBv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Img" Type="varchar(max)" />
+          <Property Name="Diadiem" Type="int" />
+          <Property Name="Min" Type="int" />
+          <Property Name="Max" Type="int" />
+          <Property Name="Rating" Type="float" />
+          <Property Name="Promotion" Type="nvarchar" MaxLength="150" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="LinkBv" Type="varchar(max)" />
+          <Property Name="City" Type="int" />
+        </EntityType>
+        <EntityType Name="khuyenmai">
+          <Key>
+            <PropertyRef Name="kmID" />
+          </Key>
+          <Property Name="kmID" Type="int" Nullable="false" />
+          <Property Name="kmLoai" Type="int" />
+          <Property Name="kmNoiDung" Type="ntext" />
+          <Property Name="kmApDung" Type="ntext" />
+          <Property Name="nhahangID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="loc">
+          <Key>
+            <PropertyRef Name="locID" />
+          </Key>
+          <Property Name="locID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="locDiaChi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenMenu" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SoluongNH" Type="int" Nullable="false" />
+          <Property Name="ThanhPho" Type="int" Nullable="false" />
+          <Property Name="ImgLink" Type="varchar(max)" Nullable="false" />
+          <Property Name="MenuLink" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="MoiNhat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nhahangID" Type="int" />
+        </EntityType>
+        <EntityType Name="NhaHangUyTin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nhahangID" Type="int" />
+        </EntityType>
+        <EntityType Name="PasgoRestaurant">
+          <Key>
+            <PropertyRef Name="PasgoRID" />
+          </Key>
+          <Property Name="PasgoRID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RName" Type="nchar" MaxLength="250" Nullable="false" />
+          <Property Name="Rlink" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Rpromotion" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Rstar" Type="int" Nullable="false" />
+          <Property Name="Rdollar" Type="int" Nullable="false" />
+          <Property Name="Raddress" Type="nchar" MaxLength="250" Nullable="false" />
+          <Property Name="Rcity" Type="int" Nullable="false" />
+          <Property Name="RLoaiHinh" Type="ntext" />
+          <Property Name="RPhuHop" Type="ntext" />
+          <Property Name="RKhongGian" Type="ntext" />
+          <Property Name="RChoDeXe" Type="ntext" />
+          <Property Name="RDacTrung" Type="ntext" />
+          <Property Name="RThongTinThem" Type="ntext" />
+          <Property Name="RGioiThieu" Type="ntext" />
+          <Property Name="Rdate" Type="date" />
+          <Property Name="RpromotionPercent" Type="int" Nullable="false" />
+          <Property Name="Rfeature" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PasgoTV">
+          <Key>
+            <PropertyRef Name="IdTV" />
+          </Key>
+          <Property Name="IdTV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Tag" Type="nchar" MaxLength="50" />
+          <Property Name="TagLink" Type="varchar(max)" />
+          <Property Name="Img" Type="varchar(max)" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Views" Type="int" />
+          <Property Name="LinkTV" Type="varchar(max)" />
+          <Property Name="VideoTime" Type="char" MaxLength="4" />
+          <Property Name="City" Type="int" />
+        </EntityType>
+        <EntityType Name="PasgoUser">
+          <Key>
+            <PropertyRef Name="PasgoID" />
+          </Key>
+          <Property Name="PasgoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nchar" MaxLength="250" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="Gender " Type="bit" Nullable="false" />
+          <Property Name="PhoneConfrimed" Type="bit" Nullable="false" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="Salt" Type="varchar(max)" />
+          <Property Name="PasswordHashed" Type="varchar(max)" />
+          <Property Name="Level" Type="int" Nullable="false" />
+          <Property Name="Locked" Type="datetime" />
+          <Property Name="ConnectionIds " Type="varchar(max)" />
+          <Property Name="Avatar" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PasgoVisitor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nchar" MaxLength="250" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Gender" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Promotion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PName" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PasGo.dbo.thongtinthem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="thongtinthem">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PhongRieng" />
+            <PropertyRef Name="GheTreEm" />
+            <PropertyRef Name="HutThuoc" />
+            <PropertyRef Name="Wifi" />
+            <PropertyRef Name="DieuHoa" />
+            <PropertyRef Name="Visa" />
+            <PropertyRef Name="MayChieu" />
+            <PropertyRef Name="VAT" />
+            <PropertyRef Name="ChoChoi" />
+            <PropertyRef Name="HDtructiep" />
+            <PropertyRef Name="NgoaiTroi" />
+            <PropertyRef Name="ShipPasgo" />
+            <PropertyRef Name="Karaoke" />
+            <PropertyRef Name="SuKien" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="PhongRieng" Type="bit" Nullable="false" />
+          <Property Name="GheTreEm" Type="bit" Nullable="false" />
+          <Property Name="HutThuoc" Type="bit" Nullable="false" />
+          <Property Name="Wifi" Type="bit" Nullable="false" />
+          <Property Name="DieuHoa" Type="bit" Nullable="false" />
+          <Property Name="Visa" Type="bit" Nullable="false" />
+          <Property Name="MayChieu" Type="bit" Nullable="false" />
+          <Property Name="VAT" Type="bit" Nullable="false" />
+          <Property Name="ChoChoi" Type="bit" Nullable="false" />
+          <Property Name="HDtructiep" Type="bit" Nullable="false" />
+          <Property Name="NgoaiTroi" Type="bit" Nullable="false" />
+          <Property Name="ShipPasgo" Type="bit" Nullable="false" />
+          <Property Name="Karaoke" Type="bit" Nullable="false" />
+          <Property Name="SuKien" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ThuongHieuChuoi">
+          <Key>
+            <PropertyRef Name="IdThuongHieu" />
+          </Key>
+          <Property Name="IdThuongHieu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Promotion" Type="nvarchar" MaxLength="150" />
+          <Property Name="LinkTH" Type="varchar(max)" />
+          <Property Name="ImgTH" Type="varchar(max)" />
+          <Property Name="City" Type="int" />
+          <Property Name="NameDT" Type="nvarchar(max)" />
+          <Property Name="AddressDT" Type="nvarchar(max)" />
+          <Property Name="ImgDT" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="ThuongHieuChuoiDS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdThuongHieu" Type="int" />
+          <Property Name="IdNhaHang" Type="int" />
+        </EntityType>
+        <EntityType Name="UuDaiHot">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nhahangID" Type="int" />
+        </EntityType>
+        <Association Name="FK_dbo_anuong_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AnUong" Type="Self.AnUong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="AnUong">
+              <PropertyRef Name="nhahangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Chat_dbo_Conversation_PasgoID">
+          <End Role="Conversation" Type="Self.Conversation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Chat" Type="Self.Chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conversation">
+              <PropertyRef Name="IdConversation" />
+            </Principal>
+            <Dependent Role="Chat">
+              <PropertyRef Name="IdConversation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Conversation_dbo_PasgoUser_PasgoID">
+          <End Role="PasgoUser" Type="Self.PasgoUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Conversation" Type="Self.Conversation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoUser">
+              <PropertyRef Name="PasgoID" />
+            </Principal>
+            <Dependent Role="Conversation">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_HeaderSlide_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HeaderSlide" Type="Self.HeaderSlide" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="HeaderSlide">
+              <PropertyRef Name="nhahangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_History_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="PasgoRID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_img_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="img" Type="Self.img" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="img">
+              <PropertyRef Name="nhahangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_KhamPha_dbo_KhamPhaBv_PasgoRID">
+          <End Role="KhamPhaBv" Type="Self.KhamPhaBv" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="KhamPha" Type="Self.KhamPha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhamPhaBv">
+              <PropertyRef Name="IdBv" />
+            </Principal>
+            <Dependent Role="KhamPha">
+              <PropertyRef Name="baivietID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_KhamPha_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="KhamPha" Type="Self.KhamPha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="KhamPha">
+              <PropertyRef Name="nhahangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_khuyenmai_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="khuyenmai" Type="Self.khuyenmai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="khuyenmai">
+              <PropertyRef Name="nhahangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_MoiNhat_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MoiNhat" Type="Self.MoiNhat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="MoiNhat">
+              <PropertyRef Name="nhahangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_NhaHangUyTin_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NhaHangUyTin" Type="Self.NhaHangUyTin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="NhaHangUyTin">
+              <PropertyRef Name="nhahangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PasgoRestaurant_dbo_City_Id">
+          <End Role="City" Type="Self.City" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PasgoRestaurant">
+              <PropertyRef Name="Rcity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_thongitnthem_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="thongtinthem" Type="Self.thongtinthem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="thongtinthem">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ThuongHieuChuoiDS_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ThuongHieuChuoiDS" Type="Self.ThuongHieuChuoiDS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="ThuongHieuChuoiDS">
+              <PropertyRef Name="IdNhaHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ThuongHieuChuoiDS_dbo_ThuongHieuChuoi_PasgoRID">
+          <End Role="ThuongHieuChuoi" Type="Self.ThuongHieuChuoi" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ThuongHieuChuoiDS" Type="Self.ThuongHieuChuoiDS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThuongHieuChuoi">
+              <PropertyRef Name="IdThuongHieu" />
+            </Principal>
+            <Dependent Role="ThuongHieuChuoiDS">
+              <PropertyRef Name="IdThuongHieu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UuDaiHot_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UuDaiHot" Type="Self.UuDaiHot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="UuDaiHot">
+              <PropertyRef Name="nhahangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AddConnectionId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phonenumber" Type="varchar" Mode="In" />
+          <Parameter Name="connection" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="AddConversation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="allImg" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AnUong2SP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AnUongSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city" Type="int" Mode="In" />
+        </Function>
+        <Function Name="APIsearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city" Type="int" Mode="In" />
+          <Parameter Name="type" Type="int" Mode="In" />
+          <Parameter Name="keyword" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="BaiVietSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city" Type="int" Mode="In" />
+          <Parameter Name="type" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ChatHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="conversationid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CheckUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ChuoiThuongHieuSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteConnection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="connection" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="DoiTacSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="FindConnectionID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idconversation" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FullInfoHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="type" Type="int" Mode="In" />
+          <Parameter Name="from" Type="date" Mode="In" />
+          <Parameter Name="to" Type="date" Mode="In" />
+        </Function>
+        <Function Name="FullInfoRestaurant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FullInfoUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="type" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="getAllConn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetConversation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetConversationList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="type" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetUserInforSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="imgSlide" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="InsertUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nchar" Mode="In" />
+          <Parameter Name="PhoneNumber" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Gender" Type="bit" Mode="In" />
+          <Parameter Name="Salt" Type="varchar(max)" Mode="In" />
+          <Parameter Name="PasswordHashed" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="KhachhangSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="KhamPhaSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city" Type="int" Mode="In" />
+        </Function>
+        <Function Name="LockUnlock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pasgoid" Type="int" Mode="In" />
+          <Parameter Name="loai" Type="int" Mode="In" />
+          <Parameter Name="type" Type="varchar" Mode="In" />
+          <Parameter Name="howlong" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="hash" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="MenuCatalogue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ModifyConnectionId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="connection" Type="varchar(max)" Mode="In" />
+          <Parameter Name="type" Type="int" Mode="In" />
+        </Function>
+        <Function Name="MoiNhatSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city" Type="int" Mode="In" />
+        </Function>
+        <Function Name="NewMessage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idconversation" Type="int" Mode="In" />
+          <Parameter Name="idreceived" Type="int" Mode="In" />
+          <Parameter Name="type" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PasgotvSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Salt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sdt" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SaveMessage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="messagetype" Type="bit" Mode="In" />
+          <Parameter Name="message" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SearchChuoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SimpleHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="type" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="SimpleRestaurant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city" Type="int" Mode="In" />
+          <Parameter Name="promotion" Type="int" Mode="In" />
+          <Parameter Name="number" Type="int" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SimpleUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="varchar" Mode="In" />
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="lock" Type="bit" Mode="In" />
+          <Parameter Name="visitor" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="StaffList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="StaffSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="level" Type="int" Mode="In" />
+        </Function>
+        <Function Name="StaffSetLevels" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="level" Type="int" Mode="In" />
+        </Function>
+        <Function Name="test1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="thongtinthemSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ThuocThuongHieuChuoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="name" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="phonenumber" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="dob" Type="date" Mode="In" />
+          <Parameter Name="gender" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="UpdateAvatar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="avatarid" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateChuoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nhahang" Type="int" Mode="In" />
+          <Parameter Name="chuoicu" Type="int" Mode="In" />
+          <Parameter Name="chuoimoi" Type="int" Mode="In" />
+          <Parameter Name="mucdich" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateConversationStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idconversation" Type="int" Mode="In" />
+          <Parameter Name="status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="UpdateIMG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="link" Type="varchar(max)" Mode="In" />
+          <Parameter Name="mota" Type="ntext" Mode="In" />
+          <Parameter Name="loai" Type="int" Mode="In" />
+          <Parameter Name="nhahang" Type="int" Mode="In" />
+          <Parameter Name="mucdich" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateInsertImg" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="link" Type="varchar(max)" Mode="In" />
+          <Parameter Name="mota" Type="ntext" Mode="In" />
+          <Parameter Name="type" Type="int" Mode="In" />
+          <Parameter Name="nhahangid" Type="int" Mode="In" />
+          <Parameter Name="loai" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateInsertRestaurantInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="name" Type="nchar" Mode="In" />
+          <Parameter Name="link" Type="varchar" Mode="In" />
+          <Parameter Name="promotion" Type="nvarchar" Mode="In" />
+          <Parameter Name="star" Type="int" Mode="In" />
+          <Parameter Name="dollar" Type="int" Mode="In" />
+          <Parameter Name="address" Type="nchar" Mode="In" />
+          <Parameter Name="city" Type="int" Mode="In" />
+          <Parameter Name="percent" Type="int" Mode="In" />
+          <Parameter Name="feature" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="loaihinh" Type="ntext" Mode="In" />
+          <Parameter Name="phuphop" Type="ntext" Mode="In" />
+          <Parameter Name="khonggian" Type="ntext" Mode="In" />
+          <Parameter Name="chodexe" Type="ntext" Mode="In" />
+          <Parameter Name="dactrung" Type="ntext" Mode="In" />
+          <Parameter Name="thongtinthem" Type="ntext" Mode="In" />
+          <Parameter Name="gioithieu" Type="ntext" Mode="In" />
+          <Parameter Name="loai" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdatePassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="oldhash" Type="varchar(max)" Mode="In" />
+          <Parameter Name="newsalt" Type="varchar(max)" Mode="In" />
+          <Parameter Name="newhash" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UpdateThongtinthem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="pr" Type="bit" Mode="In" />
+          <Parameter Name="tre" Type="bit" Mode="In" />
+          <Parameter Name="ht" Type="bit" Mode="In" />
+          <Parameter Name="wf" Type="bit" Mode="In" />
+          <Parameter Name="dh" Type="bit" Mode="In" />
+          <Parameter Name="visa" Type="bit" Mode="In" />
+          <Parameter Name="mc" Type="bit" Mode="In" />
+          <Parameter Name="vat" Type="bit" Mode="In" />
+          <Parameter Name="cho" Type="bit" Mode="In" />
+          <Parameter Name="hd" Type="bit" Mode="In" />
+          <Parameter Name="ban" Type="bit" Mode="In" />
+          <Parameter Name="ship" Type="bit" Mode="In" />
+          <Parameter Name="kara" Type="bit" Mode="In" />
+          <Parameter Name="sk" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="UpdateUserInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="name" Type="nchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="dob" Type="date" Mode="In" />
+          <Parameter Name="gender" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="UuDaiSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UyTinSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="PasGoModelStoreContainer">
+          <EntitySet Name="AnUong" EntityType="Self.AnUong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BaiViet" EntityType="Self.BaiViet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConnectionIdDB" EntityType="Self.ConnectionIdDB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Conversation" EntityType="Self.Conversation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HeaderSlide" EntityType="Self.HeaderSlide" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="img" EntityType="Self.img" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhamPha" EntityType="Self.KhamPha" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhamPhaBv" EntityType="Self.KhamPhaBv" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="khuyenmai" EntityType="Self.khuyenmai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="loc" EntityType="Self.loc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MoiNhat" EntityType="Self.MoiNhat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhaHangUyTin" EntityType="Self.NhaHangUyTin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PasgoRestaurant" EntityType="Self.PasgoRestaurant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PasgoTV" EntityType="Self.PasgoTV" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PasgoUser" EntityType="Self.PasgoUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PasgoVisitor" EntityType="Self.PasgoVisitor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Promotion" EntityType="Self.Promotion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThuongHieuChuoi" EntityType="Self.ThuongHieuChuoi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThuongHieuChuoiDS" EntityType="Self.ThuongHieuChuoiDS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UuDaiHot" EntityType="Self.UuDaiHot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chat" EntityType="Self.Chat" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Chat].[IdConversation] AS [IdConversation], 
+    [Chat].[MessageType] AS [MessageType], 
+    [Chat].[Message] AS [Message], 
+    [Chat].[DateSent] AS [DateSent]
+    FROM [dbo].[Chat] AS [Chat]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="thongtinthem" EntityType="Self.thongtinthem" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [thongtinthem].[Id] AS [Id], 
+    [thongtinthem].[PhongRieng] AS [PhongRieng], 
+    [thongtinthem].[GheTreEm] AS [GheTreEm], 
+    [thongtinthem].[HutThuoc] AS [HutThuoc], 
+    [thongtinthem].[Wifi] AS [Wifi], 
+    [thongtinthem].[DieuHoa] AS [DieuHoa], 
+    [thongtinthem].[Visa] AS [Visa], 
+    [thongtinthem].[MayChieu] AS [MayChieu], 
+    [thongtinthem].[VAT] AS [VAT], 
+    [thongtinthem].[ChoChoi] AS [ChoChoi], 
+    [thongtinthem].[HDtructiep] AS [HDtructiep], 
+    [thongtinthem].[NgoaiTroi] AS [NgoaiTroi], 
+    [thongtinthem].[ShipPasgo] AS [ShipPasgo], 
+    [thongtinthem].[Karaoke] AS [Karaoke], 
+    [thongtinthem].[SuKien] AS [SuKien]
+    FROM [dbo].[thongtinthem] AS [thongtinthem]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_dbo_anuong_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_anuong_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurant" />
+            <End Role="AnUong" EntitySet="AnUong" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Chat_dbo_Conversation_PasgoID" Association="Self.FK_dbo_Chat_dbo_Conversation_PasgoID">
+            <End Role="Conversation" EntitySet="Conversation" />
+            <End Role="Chat" EntitySet="Chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Conversation_dbo_PasgoUser_PasgoID" Association="Self.FK_dbo_Conversation_dbo_PasgoUser_PasgoID">
+            <End Role="PasgoUser" EntitySet="PasgoUser" />
+            <End Role="Conversation" EntitySet="Conversation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_HeaderSlide_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_HeaderSlide_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurant" />
+            <End Role="HeaderSlide" EntitySet="HeaderSlide" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_History_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_History_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurant" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_img_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_img_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurant" />
+            <End Role="img" EntitySet="img" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_KhamPha_dbo_KhamPhaBv_PasgoRID" Association="Self.FK_dbo_KhamPha_dbo_KhamPhaBv_PasgoRID">
+            <End Role="KhamPhaBv" EntitySet="KhamPhaBv" />
+            <End Role="KhamPha" EntitySet="KhamPha" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_KhamPha_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_KhamPha_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurant" />
+            <End Role="KhamPha" EntitySet="KhamPha" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_khuyenmai_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_khuyenmai_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurant" />
+            <End Role="khuyenmai" EntitySet="khuyenmai" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_MoiNhat_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_MoiNhat_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurant" />
+            <End Role="MoiNhat" EntitySet="MoiNhat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_NhaHangUyTin_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_NhaHangUyTin_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurant" />
+            <End Role="NhaHangUyTin" EntitySet="NhaHangUyTin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PasgoRestaurant_dbo_City_Id" Association="Self.FK_dbo_PasgoRestaurant_dbo_City_Id">
+            <End Role="City" EntitySet="City" />
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_thongitnthem_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_thongitnthem_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurant" />
+            <End Role="thongtinthem" EntitySet="thongtinthem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ThuongHieuChuoiDS_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_ThuongHieuChuoiDS_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurant" />
+            <End Role="ThuongHieuChuoiDS" EntitySet="ThuongHieuChuoiDS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ThuongHieuChuoiDS_dbo_ThuongHieuChuoi_PasgoRID" Association="Self.FK_dbo_ThuongHieuChuoiDS_dbo_ThuongHieuChuoi_PasgoRID">
+            <End Role="ThuongHieuChuoi" EntitySet="ThuongHieuChuoi" />
+            <End Role="ThuongHieuChuoiDS" EntitySet="ThuongHieuChuoiDS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UuDaiHot_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_UuDaiHot_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurant" />
+            <End Role="UuDaiHot" EntitySet="UuDaiHot" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PasGoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AnUong">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nhahangID" Type="Int32" />
+          <Property Name="city" Type="Int32" />
+          <NavigationProperty Name="PasgoRestaurant" Relationship="Self.FK_dbo_anuong_dbo_PasgoRestaurant_PasgoRID" FromRole="AnUong" ToRole="PasgoRestaurant" />
+        </EntityType>
+        <EntityType Name="BaiViet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Teaser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="City" Type="Int32" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PasgoRestaurants" Relationship="Self.FK_dbo_PasgoRestaurant_dbo_City_Id" FromRole="City" ToRole="PasgoRestaurant" />
+        </EntityType>
+        <EntityType Name="ConnectionIdDB">
+          <Key>
+            <PropertyRef Name="IdConnection" />
+          </Key>
+          <Property Name="IdConnection" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Conn" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Conversation">
+          <Key>
+            <PropertyRef Name="IdConversation" />
+          </Key>
+          <Property Name="IdConversation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="IdStaff" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Creat" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NewMessage" Type="Boolean" />
+          <NavigationProperty Name="Chats" Relationship="Self.FK_dbo_Chat_dbo_Conversation_PasgoID" FromRole="Conversation" ToRole="Chat" />
+          <NavigationProperty Name="PasgoUser" Relationship="Self.FK_dbo_Conversation_dbo_PasgoUser_PasgoID" FromRole="Conversation" ToRole="PasgoUser" />
+        </EntityType>
+        <EntityType Name="HeaderSlide">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="nhahangID" Type="Int32" />
+          <NavigationProperty Name="PasgoRestaurant" Relationship="Self.FK_dbo_HeaderSlide_dbo_PasgoRestaurant_PasgoRID" FromRole="HeaderSlide" ToRole="PasgoRestaurant" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDuser" Type="Int32" Nullable="false" />
+          <Property Name="UserType" Type="Boolean" Nullable="false" />
+          <Property Name="PasgoRID" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="Int32" Nullable="false" />
+          <Property Name="CallTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ETA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ArriveTime" Type="DateTime" Precision="3" />
+          <Property Name="Request" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PasgoRestaurant" Relationship="Self.FK_dbo_History_dbo_PasgoRestaurant_PasgoRID" FromRole="History" ToRole="PasgoRestaurant" />
+        </EntityType>
+        <EntityType Name="img">
+          <Key>
+            <PropertyRef Name="imgID" />
+          </Key>
+          <Property Name="imgID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imgLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="imgMoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="imgType" Type="Int32" />
+          <Property Name="nhahangID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PasgoRestaurant" Relationship="Self.FK_dbo_img_dbo_PasgoRestaurant_PasgoRID" FromRole="img" ToRole="PasgoRestaurant" />
+        </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="IdKH" />
+          </Key>
+          <Property Name="IdKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Job" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Review" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="KhamPha">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nhahangID" Type="Int32" />
+          <Property Name="baivietID" Type="Int32" />
+          <NavigationProperty Name="KhamPhaBv" Relationship="Self.FK_dbo_KhamPha_dbo_KhamPhaBv_PasgoRID" FromRole="KhamPha" ToRole="KhamPhaBv" />
+          <NavigationProperty Name="PasgoRestaurant" Relationship="Self.FK_dbo_KhamPha_dbo_PasgoRestaurant_PasgoRID" FromRole="KhamPha" ToRole="PasgoRestaurant" />
+        </EntityType>
+        <EntityType Name="KhamPhaBv">
+          <Key>
+            <PropertyRef Name="IdBv" />
+          </Key>
+          <Property Name="IdBv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Diadiem" Type="Int32" />
+          <Property Name="Min" Type="Int32" />
+          <Property Name="Max" Type="Int32" />
+          <Property Name="Rating" Type="Double" />
+          <Property Name="Promotion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LinkBv" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="Int32" />
+          <NavigationProperty Name="KhamPhas" Relationship="Self.FK_dbo_KhamPha_dbo_KhamPhaBv_PasgoRID" FromRole="KhamPhaBv" ToRole="KhamPha" />
+        </EntityType>
+        <EntityType Name="khuyenmai">
+          <Key>
+            <PropertyRef Name="kmID" />
+          </Key>
+          <Property Name="kmID" Type="Int32" Nullable="false" />
+          <Property Name="kmLoai" Type="Int32" />
+          <Property Name="kmNoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="kmApDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="nhahangID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PasgoRestaurant" Relationship="Self.FK_dbo_khuyenmai_dbo_PasgoRestaurant_PasgoRID" FromRole="khuyenmai" ToRole="PasgoRestaurant" />
+        </EntityType>
+        <EntityType Name="loc">
+          <Key>
+            <PropertyRef Name="locID" />
+          </Key>
+          <Property Name="locID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="locDiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenMenu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SoluongNH" Type="Int32" Nullable="false" />
+          <Property Name="ThanhPho" Type="Int32" Nullable="false" />
+          <Property Name="ImgLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MenuLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MoiNhat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nhahangID" Type="Int32" />
+          <NavigationProperty Name="PasgoRestaurant" Relationship="Self.FK_dbo_MoiNhat_dbo_PasgoRestaurant_PasgoRID" FromRole="MoiNhat" ToRole="PasgoRestaurant" />
+        </EntityType>
+        <EntityType Name="NhaHangUyTin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nhahangID" Type="Int32" />
+          <NavigationProperty Name="PasgoRestaurant" Relationship="Self.FK_dbo_NhaHangUyTin_dbo_PasgoRestaurant_PasgoRID" FromRole="NhaHangUyTin" ToRole="PasgoRestaurant" />
+        </EntityType>
+        <EntityType Name="PasgoRestaurant">
+          <Key>
+            <PropertyRef Name="PasgoRID" />
+          </Key>
+          <Property Name="PasgoRID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RName" Type="String" MaxLength="250" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Rlink" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rpromotion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rstar" Type="Int32" Nullable="false" />
+          <Property Name="Rdollar" Type="Int32" Nullable="false" />
+          <Property Name="Raddress" Type="String" MaxLength="250" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Rcity" Type="Int32" Nullable="false" />
+          <Property Name="RLoaiHinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RPhuHop" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RKhongGian" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RChoDeXe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RDacTrung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RThongTinThem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RGioiThieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Rdate" Type="DateTime" Precision="0" />
+          <Property Name="RpromotionPercent" Type="Int32" Nullable="false" />
+          <Property Name="Rfeature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AnUongs" Relationship="Self.FK_dbo_anuong_dbo_PasgoRestaurant_PasgoRID" FromRole="PasgoRestaurant" ToRole="AnUong" />
+          <NavigationProperty Name="City" Relationship="Self.FK_dbo_PasgoRestaurant_dbo_City_Id" FromRole="PasgoRestaurant" ToRole="City" />
+          <NavigationProperty Name="HeaderSlides" Relationship="Self.FK_dbo_HeaderSlide_dbo_PasgoRestaurant_PasgoRID" FromRole="PasgoRestaurant" ToRole="HeaderSlide" />
+          <NavigationProperty Name="Histories" Relationship="Self.FK_dbo_History_dbo_PasgoRestaurant_PasgoRID" FromRole="PasgoRestaurant" ToRole="History" />
+          <NavigationProperty Name="imgs" Relationship="Self.FK_dbo_img_dbo_PasgoRestaurant_PasgoRID" FromRole="PasgoRestaurant" ToRole="img" />
+          <NavigationProperty Name="KhamPhas" Relationship="Self.FK_dbo_KhamPha_dbo_PasgoRestaurant_PasgoRID" FromRole="PasgoRestaurant" ToRole="KhamPha" />
+          <NavigationProperty Name="khuyenmais" Relationship="Self.FK_dbo_khuyenmai_dbo_PasgoRestaurant_PasgoRID" FromRole="PasgoRestaurant" ToRole="khuyenmai" />
+          <NavigationProperty Name="MoiNhats" Relationship="Self.FK_dbo_MoiNhat_dbo_PasgoRestaurant_PasgoRID" FromRole="PasgoRestaurant" ToRole="MoiNhat" />
+          <NavigationProperty Name="NhaHangUyTins" Relationship="Self.FK_dbo_NhaHangUyTin_dbo_PasgoRestaurant_PasgoRID" FromRole="PasgoRestaurant" ToRole="NhaHangUyTin" />
+          <NavigationProperty Name="thongtinthems" Relationship="Self.FK_dbo_thongitnthem_dbo_PasgoRestaurant_PasgoRID" FromRole="PasgoRestaurant" ToRole="thongtinthem" />
+          <NavigationProperty Name="ThuongHieuChuoiDS" Relationship="Self.FK_dbo_ThuongHieuChuoiDS_dbo_PasgoRestaurant_PasgoRID" FromRole="PasgoRestaurant" ToRole="ThuongHieuChuoiDS" />
+          <NavigationProperty Name="UuDaiHots" Relationship="Self.FK_dbo_UuDaiHot_dbo_PasgoRestaurant_PasgoRID" FromRole="PasgoRestaurant" ToRole="UuDaiHot" />
+        </EntityType>
+        <EntityType Name="PasgoTV">
+          <Key>
+            <PropertyRef Name="IdTV" />
+          </Key>
+          <Property Name="IdTV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tag" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="TagLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Views" Type="Int32" />
+          <Property Name="LinkTV" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VideoTime" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="City" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PasgoUser">
+          <Key>
+            <PropertyRef Name="PasgoID" />
+          </Key>
+          <Property Name="PasgoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="Gender_" Type="Boolean" Nullable="false" />
+          <Property Name="PhoneConfrimed" Type="Boolean" Nullable="false" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="Salt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordHashed" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <Property Name="Locked" Type="DateTime" Precision="3" />
+          <Property Name="ConnectionIds_" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Conversations" Relationship="Self.FK_dbo_Conversation_dbo_PasgoUser_PasgoID" FromRole="PasgoUser" ToRole="Conversation" />
+          <Property Name="Avatar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PasgoVisitor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="250" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Promotion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ThuongHieuChuoi">
+          <Key>
+            <PropertyRef Name="IdThuongHieu" />
+          </Key>
+          <Property Name="IdThuongHieu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Promotion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LinkTH" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgTH" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="NameDT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AddressDT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImgDT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ThuongHieuChuoiDS" Relationship="Self.FK_dbo_ThuongHieuChuoiDS_dbo_ThuongHieuChuoi_PasgoRID" FromRole="ThuongHieuChuoi" ToRole="ThuongHieuChuoiDS" />
+        </EntityType>
+        <EntityType Name="ThuongHieuChuoiD">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdThuongHieu" Type="Int32" />
+          <Property Name="IdNhaHang" Type="Int32" />
+          <NavigationProperty Name="PasgoRestaurant" Relationship="Self.FK_dbo_ThuongHieuChuoiDS_dbo_PasgoRestaurant_PasgoRID" FromRole="ThuongHieuChuoiDS" ToRole="PasgoRestaurant" />
+          <NavigationProperty Name="ThuongHieuChuoi" Relationship="Self.FK_dbo_ThuongHieuChuoiDS_dbo_ThuongHieuChuoi_PasgoRID" FromRole="ThuongHieuChuoiDS" ToRole="ThuongHieuChuoi" />
+        </EntityType>
+        <EntityType Name="UuDaiHot">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nhahangID" Type="Int32" />
+          <NavigationProperty Name="PasgoRestaurant" Relationship="Self.FK_dbo_UuDaiHot_dbo_PasgoRestaurant_PasgoRID" FromRole="UuDaiHot" ToRole="PasgoRestaurant" />
+        </EntityType>
+        <EntityType Name="Chat">
+          <Key>
+            <PropertyRef Name="IdConversation" />
+            <PropertyRef Name="MessageType" />
+            <PropertyRef Name="DateSent" />
+          </Key>
+          <Property Name="IdConversation" Type="Int32" Nullable="false" />
+          <Property Name="MessageType" Type="Boolean" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateSent" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Conversation" Relationship="Self.FK_dbo_Chat_dbo_Conversation_PasgoID" FromRole="Chat" ToRole="Conversation" />
+        </EntityType>
+        <EntityType Name="thongtinthem">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PhongRieng" />
+            <PropertyRef Name="GheTreEm" />
+            <PropertyRef Name="HutThuoc" />
+            <PropertyRef Name="Wifi" />
+            <PropertyRef Name="DieuHoa" />
+            <PropertyRef Name="Visa" />
+            <PropertyRef Name="MayChieu" />
+            <PropertyRef Name="VAT" />
+            <PropertyRef Name="ChoChoi" />
+            <PropertyRef Name="HDtructiep" />
+            <PropertyRef Name="NgoaiTroi" />
+            <PropertyRef Name="ShipPasgo" />
+            <PropertyRef Name="Karaoke" />
+            <PropertyRef Name="SuKien" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="PhongRieng" Type="Boolean" Nullable="false" />
+          <Property Name="GheTreEm" Type="Boolean" Nullable="false" />
+          <Property Name="HutThuoc" Type="Boolean" Nullable="false" />
+          <Property Name="Wifi" Type="Boolean" Nullable="false" />
+          <Property Name="DieuHoa" Type="Boolean" Nullable="false" />
+          <Property Name="Visa" Type="Boolean" Nullable="false" />
+          <Property Name="MayChieu" Type="Boolean" Nullable="false" />
+          <Property Name="VAT" Type="Boolean" Nullable="false" />
+          <Property Name="ChoChoi" Type="Boolean" Nullable="false" />
+          <Property Name="HDtructiep" Type="Boolean" Nullable="false" />
+          <Property Name="NgoaiTroi" Type="Boolean" Nullable="false" />
+          <Property Name="ShipPasgo" Type="Boolean" Nullable="false" />
+          <Property Name="Karaoke" Type="Boolean" Nullable="false" />
+          <Property Name="SuKien" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PasgoRestaurant" Relationship="Self.FK_dbo_thongitnthem_dbo_PasgoRestaurant_PasgoRID" FromRole="thongtinthem" ToRole="PasgoRestaurant" />
+        </EntityType>
+        <Association Name="FK_dbo_anuong_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AnUong" Type="Self.AnUong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="AnUong">
+              <PropertyRef Name="nhahangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PasgoRestaurant_dbo_City_Id">
+          <End Role="City" Type="Self.City" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PasgoRestaurant">
+              <PropertyRef Name="Rcity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Chat_dbo_Conversation_PasgoID">
+          <End Role="Conversation" Type="Self.Conversation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Chat" Type="Self.Chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conversation">
+              <PropertyRef Name="IdConversation" />
+            </Principal>
+            <Dependent Role="Chat">
+              <PropertyRef Name="IdConversation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Conversation_dbo_PasgoUser_PasgoID">
+          <End Role="PasgoUser" Type="Self.PasgoUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Conversation" Type="Self.Conversation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoUser">
+              <PropertyRef Name="PasgoID" />
+            </Principal>
+            <Dependent Role="Conversation">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_HeaderSlide_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HeaderSlide" Type="Self.HeaderSlide" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="HeaderSlide">
+              <PropertyRef Name="nhahangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_History_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="PasgoRID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_img_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="img" Type="Self.img" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="img">
+              <PropertyRef Name="nhahangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_KhamPha_dbo_KhamPhaBv_PasgoRID">
+          <End Role="KhamPhaBv" Type="Self.KhamPhaBv" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="KhamPha" Type="Self.KhamPha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhamPhaBv">
+              <PropertyRef Name="IdBv" />
+            </Principal>
+            <Dependent Role="KhamPha">
+              <PropertyRef Name="baivietID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_KhamPha_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="KhamPha" Type="Self.KhamPha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="KhamPha">
+              <PropertyRef Name="nhahangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_khuyenmai_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="khuyenmai" Type="Self.khuyenmai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="khuyenmai">
+              <PropertyRef Name="nhahangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_MoiNhat_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MoiNhat" Type="Self.MoiNhat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="MoiNhat">
+              <PropertyRef Name="nhahangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_NhaHangUyTin_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NhaHangUyTin" Type="Self.NhaHangUyTin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="NhaHangUyTin">
+              <PropertyRef Name="nhahangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_thongitnthem_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="thongtinthem" Type="Self.thongtinthem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="thongtinthem">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ThuongHieuChuoiDS_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ThuongHieuChuoiDS" Type="Self.ThuongHieuChuoiD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="ThuongHieuChuoiDS">
+              <PropertyRef Name="IdNhaHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UuDaiHot_dbo_PasgoRestaurant_PasgoRID">
+          <End Role="PasgoRestaurant" Type="Self.PasgoRestaurant" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UuDaiHot" Type="Self.UuDaiHot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasgoRestaurant">
+              <PropertyRef Name="PasgoRID" />
+            </Principal>
+            <Dependent Role="UuDaiHot">
+              <PropertyRef Name="nhahangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ThuongHieuChuoiDS_dbo_ThuongHieuChuoi_PasgoRID">
+          <End Role="ThuongHieuChuoi" Type="Self.ThuongHieuChuoi" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ThuongHieuChuoiDS" Type="Self.ThuongHieuChuoiD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThuongHieuChuoi">
+              <PropertyRef Name="IdThuongHieu" />
+            </Principal>
+            <Dependent Role="ThuongHieuChuoiDS">
+              <PropertyRef Name="IdThuongHieu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PasGoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AnUongs" EntityType="Self.AnUong" />
+          <EntitySet Name="BaiViets" EntityType="Self.BaiViet" />
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="ConnectionIdDBs" EntityType="Self.ConnectionIdDB" />
+          <EntitySet Name="Conversations" EntityType="Self.Conversation" />
+          <EntitySet Name="HeaderSlides" EntityType="Self.HeaderSlide" />
+          <EntitySet Name="Histories" EntityType="Self.History" />
+          <EntitySet Name="imgs" EntityType="Self.img" />
+          <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
+          <EntitySet Name="KhamPhas" EntityType="Self.KhamPha" />
+          <EntitySet Name="KhamPhaBvs" EntityType="Self.KhamPhaBv" />
+          <EntitySet Name="khuyenmais" EntityType="Self.khuyenmai" />
+          <EntitySet Name="locs" EntityType="Self.loc" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="MoiNhats" EntityType="Self.MoiNhat" />
+          <EntitySet Name="NhaHangUyTins" EntityType="Self.NhaHangUyTin" />
+          <EntitySet Name="PasgoRestaurants" EntityType="Self.PasgoRestaurant" />
+          <EntitySet Name="PasgoTVs" EntityType="Self.PasgoTV" />
+          <EntitySet Name="PasgoUsers" EntityType="Self.PasgoUser" />
+          <EntitySet Name="PasgoVisitors" EntityType="Self.PasgoVisitor" />
+          <EntitySet Name="Promotions" EntityType="Self.Promotion" />
+          <EntitySet Name="ThuongHieuChuois" EntityType="Self.ThuongHieuChuoi" />
+          <EntitySet Name="ThuongHieuChuoiDS" EntityType="Self.ThuongHieuChuoiD" />
+          <EntitySet Name="UuDaiHots" EntityType="Self.UuDaiHot" />
+          <EntitySet Name="Chats" EntityType="Self.Chat" />
+          <EntitySet Name="thongtinthems" EntityType="Self.thongtinthem" />
+          <AssociationSet Name="FK_dbo_anuong_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_anuong_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurants" />
+            <End Role="AnUong" EntitySet="AnUongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PasgoRestaurant_dbo_City_Id" Association="Self.FK_dbo_PasgoRestaurant_dbo_City_Id">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Chat_dbo_Conversation_PasgoID" Association="Self.FK_dbo_Chat_dbo_Conversation_PasgoID">
+            <End Role="Conversation" EntitySet="Conversations" />
+            <End Role="Chat" EntitySet="Chats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Conversation_dbo_PasgoUser_PasgoID" Association="Self.FK_dbo_Conversation_dbo_PasgoUser_PasgoID">
+            <End Role="PasgoUser" EntitySet="PasgoUsers" />
+            <End Role="Conversation" EntitySet="Conversations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_HeaderSlide_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_HeaderSlide_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurants" />
+            <End Role="HeaderSlide" EntitySet="HeaderSlides" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_History_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_History_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurants" />
+            <End Role="History" EntitySet="Histories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_img_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_img_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurants" />
+            <End Role="img" EntitySet="imgs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_KhamPha_dbo_KhamPhaBv_PasgoRID" Association="Self.FK_dbo_KhamPha_dbo_KhamPhaBv_PasgoRID">
+            <End Role="KhamPhaBv" EntitySet="KhamPhaBvs" />
+            <End Role="KhamPha" EntitySet="KhamPhas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_KhamPha_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_KhamPha_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurants" />
+            <End Role="KhamPha" EntitySet="KhamPhas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_khuyenmai_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_khuyenmai_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurants" />
+            <End Role="khuyenmai" EntitySet="khuyenmais" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_MoiNhat_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_MoiNhat_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurants" />
+            <End Role="MoiNhat" EntitySet="MoiNhats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_NhaHangUyTin_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_NhaHangUyTin_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurants" />
+            <End Role="NhaHangUyTin" EntitySet="NhaHangUyTins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_thongitnthem_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_thongitnthem_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurants" />
+            <End Role="thongtinthem" EntitySet="thongtinthems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ThuongHieuChuoiDS_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_ThuongHieuChuoiDS_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurants" />
+            <End Role="ThuongHieuChuoiDS" EntitySet="ThuongHieuChuoiDS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UuDaiHot_dbo_PasgoRestaurant_PasgoRID" Association="Self.FK_dbo_UuDaiHot_dbo_PasgoRestaurant_PasgoRID">
+            <End Role="PasgoRestaurant" EntitySet="PasgoRestaurants" />
+            <End Role="UuDaiHot" EntitySet="UuDaiHots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ThuongHieuChuoiDS_dbo_ThuongHieuChuoi_PasgoRID" Association="Self.FK_dbo_ThuongHieuChuoiDS_dbo_ThuongHieuChuoi_PasgoRID">
+            <End Role="ThuongHieuChuoi" EntitySet="ThuongHieuChuois" />
+            <End Role="ThuongHieuChuoiDS" EntitySet="ThuongHieuChuoiDS" />
+          </AssociationSet>
+          <FunctionImport Name="AddConnectionId" ReturnType="Collection(PasGoModel.AddConnectionId_Result)">
+            <Parameter Name="phonenumber" Mode="In" Type="String" />
+            <Parameter Name="connection" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddConversation" ReturnType="Collection(Int32)">
+          <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="allImg" ReturnType="Collection(PasGoModel.allImg_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AnUong2SP" ReturnType="Collection(PasGoModel.AnUong2SP_Result)">
+          <Parameter Name="city" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AnUongSP" ReturnType="Collection(PasGoModel.AnUongSP_Result)">
+          <Parameter Name="city" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="APIsearch" ReturnType="Collection(PasGoModel.APIsearch_Result)">
+            <Parameter Name="city" Mode="In" Type="Int32" />
+            <Parameter Name="type" Mode="In" Type="Int32" />
+            <Parameter Name="keyword" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="BaiVietSP" ReturnType="Collection(PasGoModel.BaiVietSP_Result)">
+            <Parameter Name="city" Mode="In" Type="Int32" />
+            <Parameter Name="type" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ChatHistory" ReturnType="Collection(PasGoModel.ChatHistory_Result)">
+          <Parameter Name="conversationid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CheckUser" ReturnType="Collection(Int32)">
+          <Parameter Name="phone" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ChuoiThuongHieuSP" EntitySet="ThuongHieuChuois" ReturnType="Collection(PasGoModel.ThuongHieuChuoi)">
+          <Parameter Name="city" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteConnection">
+          <Parameter Name="connection" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DoiTacSP" ReturnType="Collection(PasGoModel.DoiTacSP_Result)" />
+          <FunctionImport Name="FindConnectionID" ReturnType="Collection(PasGoModel.FindConnectionID_Result)">
+          <Parameter Name="idconversation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FullInfoHistory" ReturnType="Collection(PasGoModel.FullInfoHistory_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="type" Mode="In" Type="Int32" />
+            <Parameter Name="from" Mode="In" Type="DateTime" />
+            <Parameter Name="to" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="FullInfoRestaurant" EntitySet="PasgoRestaurants" ReturnType="Collection(PasGoModel.PasgoRestaurant)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FullInfoUser" ReturnType="Collection(PasGoModel.FullInfoUser_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="type" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="getAllConn" ReturnType="Collection(PasGoModel.getAllConn_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetConversation" ReturnType="Collection(PasGoModel.GetConversation_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetConversationList" ReturnType="Collection(PasGoModel.GetConversationList_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="type" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetUserInforSP" ReturnType="Collection(PasGoModel.GetUserInforSP_Result)">
+          <Parameter Name="phone" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="imgSlide" ReturnType="Collection(PasGoModel.imgSlide_Result)" />
+          <FunctionImport Name="InsertUser" ReturnType="Collection(Int32)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="PhoneNumber" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="Boolean" />
+            <Parameter Name="Salt" Mode="In" Type="String" />
+            <Parameter Name="PasswordHashed" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="KhachhangSP" EntitySet="KhachHangs" ReturnType="Collection(PasGoModel.KhachHang)" />
+          <FunctionImport Name="KhamPhaSP" EntitySet="KhamPhaBvs" ReturnType="Collection(PasGoModel.KhamPhaBv)">
+          <Parameter Name="city" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="LockUnlock" ReturnType="Collection(Int32)">
+            <Parameter Name="pasgoid" Mode="In" Type="Int32" />
+            <Parameter Name="loai" Mode="In" Type="Int32" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="howlong" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Login" ReturnType="Collection(PasGoModel.Login_Result)">
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="hash" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="MenuCatalogue" EntitySet="Menus" ReturnType="Collection(PasGoModel.Menu)">
+          <Parameter Name="city" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ModifyConnectionId" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="connection" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MoiNhatSP" ReturnType="Collection(PasGoModel.MoiNhatSP_Result)">
+          <Parameter Name="city" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="NewMessage">
+            <Parameter Name="idconversation" Mode="In" Type="Int32" />
+            <Parameter Name="idreceived" Mode="In" Type="Int32" />
+            <Parameter Name="type" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PasgotvSP" EntitySet="PasgoTVs" ReturnType="Collection(PasGoModel.PasgoTV)">
+          <Parameter Name="city" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Salt" ReturnType="Collection(String)">
+          <Parameter Name="sdt" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SaveMessage" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="messagetype" Mode="In" Type="Boolean" />
+            <Parameter Name="message" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SearchChuoi" ReturnType="Collection(PasGoModel.ThuocThuongHieuChuoi_Result)">
+          <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SimpleHistory" ReturnType="Collection(PasGoModel.SimpleHistory_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="type" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SimpleRestaurant" ReturnType="Collection(PasGoModel.SimpleRestaurant_Result)">
+            <Parameter Name="city" Mode="In" Type="Int32" />
+            <Parameter Name="promotion" Mode="In" Type="Int32" />
+            <Parameter Name="number" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SimpleUser" ReturnType="Collection(PasGoModel.SimpleUser_Result)">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="lock" Mode="In" Type="Boolean" />
+            <Parameter Name="visitor" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="StaffList" ReturnType="Collection(PasGoModel.StaffList_Result)" />
+          <FunctionImport Name="StaffSearch" ReturnType="Collection(PasGoModel.StaffList_Result)">
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="level" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="StaffSetLevels" ReturnType="Collection(Int32)">
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="level" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="test1" ReturnType="Collection(PasGoModel.test1_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="thongtinthemSP" ReturnType="Collection(PasGoModel.thongtinthemSP_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ThuocThuongHieuChuoi" ReturnType="Collection(PasGoModel.ThuocThuongHieuChuoi_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateAccount" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="phonenumber" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="dob" Mode="In" Type="DateTime" />
+            <Parameter Name="gender" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateChuoi">
+            <Parameter Name="nhahang" Mode="In" Type="Int32" />
+            <Parameter Name="chuoicu" Mode="In" Type="Int32" />
+            <Parameter Name="chuoimoi" Mode="In" Type="Int32" />
+            <Parameter Name="mucdich" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateConversationStatus" ReturnType="Collection(Int32)">
+            <Parameter Name="idconversation" Mode="In" Type="Int32" />
+            <Parameter Name="status" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateIMG">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="link" Mode="In" Type="String" />
+            <Parameter Name="mota" Mode="In" Type="String" />
+            <Parameter Name="loai" Mode="In" Type="Int32" />
+            <Parameter Name="nhahang" Mode="In" Type="Int32" />
+            <Parameter Name="mucdich" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateInsertImg" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="link" Mode="In" Type="String" />
+            <Parameter Name="mota" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="Int32" />
+            <Parameter Name="nhahangid" Mode="In" Type="Int32" />
+            <Parameter Name="loai" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateInsertRestaurantInfo" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="link" Mode="In" Type="String" />
+            <Parameter Name="promotion" Mode="In" Type="String" />
+            <Parameter Name="star" Mode="In" Type="Int32" />
+            <Parameter Name="dollar" Mode="In" Type="Int32" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="Int32" />
+            <Parameter Name="percent" Mode="In" Type="Int32" />
+            <Parameter Name="feature" Mode="In" Type="String" />
+            <Parameter Name="loaihinh" Mode="In" Type="String" />
+            <Parameter Name="phuphop" Mode="In" Type="String" />
+            <Parameter Name="khonggian" Mode="In" Type="String" />
+            <Parameter Name="chodexe" Mode="In" Type="String" />
+            <Parameter Name="dactrung" Mode="In" Type="String" />
+            <Parameter Name="thongtinthem" Mode="In" Type="String" />
+            <Parameter Name="gioithieu" Mode="In" Type="String" />
+            <Parameter Name="loai" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdatePassword" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="oldhash" Mode="In" Type="String" />
+            <Parameter Name="newsalt" Mode="In" Type="String" />
+            <Parameter Name="newhash" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateThongtinthem" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="pr" Mode="In" Type="Boolean" />
+            <Parameter Name="tre" Mode="In" Type="Boolean" />
+            <Parameter Name="ht" Mode="In" Type="Boolean" />
+            <Parameter Name="wf" Mode="In" Type="Boolean" />
+            <Parameter Name="dh" Mode="In" Type="Boolean" />
+            <Parameter Name="visa" Mode="In" Type="Boolean" />
+            <Parameter Name="mc" Mode="In" Type="Boolean" />
+            <Parameter Name="vat" Mode="In" Type="Boolean" />
+            <Parameter Name="cho" Mode="In" Type="Boolean" />
+            <Parameter Name="hd" Mode="In" Type="Boolean" />
+            <Parameter Name="ban" Mode="In" Type="Boolean" />
+            <Parameter Name="ship" Mode="In" Type="Boolean" />
+            <Parameter Name="kara" Mode="In" Type="Boolean" />
+            <Parameter Name="sk" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateUserInfo" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="dob" Mode="In" Type="DateTime" />
+            <Parameter Name="gender" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="UuDaiSP" ReturnType="Collection(PasGoModel.UuDaiSP_Result)">
+          <Parameter Name="city" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UyTinSP" ReturnType="Collection(PasGoModel.AnUongSP_Result)">
+          <Parameter Name="city" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateAvatar" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="avatarid" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="AddConnectionId_Result">
+          <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="ConnectionIds_" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="allImg_Result">
+          <Property Type="Int64" Name="No" Nullable="true" />
+          <Property Type="Int32" Name="imgID" Nullable="false" />
+          <Property Type="String" Name="imgLink" Nullable="true" />
+          <Property Type="String" Name="imgMoTa" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="imgType" Nullable="true" />
+          <Property Type="Int32" Name="nhahangID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="AnUong2SP_Result">
+          <Property Type="Int32" Name="PasgoRID" Nullable="false" />
+          <Property Type="String" Name="RName" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Raddress" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Rlink" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="Rstar" Nullable="false" />
+          <Property Type="Int32" Name="Rdollar" Nullable="false" />
+          <Property Type="String" Name="Rpromotion" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Rfeature" Nullable="false" />
+          <Property Type="String" Name="imgLink" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="AnUongSP_Result">
+          <Property Type="Int32" Name="PasgoRID" Nullable="false" />
+          <Property Type="String" Name="RName" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Raddress" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Rlink" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="Rstar" Nullable="false" />
+          <Property Type="Int32" Name="Rdollar" Nullable="false" />
+          <Property Type="String" Name="Rpromotion" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Rfeature" Nullable="false" />
+          <Property Type="String" Name="imgLink" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="BaiVietSP_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="true" />
+          <Property Type="String" Name="Teaser" Nullable="true" />
+          <Property Type="String" Name="date" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Link" Nullable="true" />
+          <Property Type="String" Name="Img" Nullable="true" />
+          <Property Type="Int32" Name="Type" Nullable="true" />
+          <Property Type="Int32" Name="City" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ChatHistory_Result">
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Message" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="DateSent" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="ChuoiThuongHieuSP_Result">
+          <Property Type="Int32" Name="IdThuongHieu" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" />
+          <Property Type="String" Name="Promotion" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="LinkTH" Nullable="true" />
+          <Property Type="String" Name="ImgTH" Nullable="true" />
+          <Property Type="Int32" Name="City" Nullable="true" />
+          <Property Type="String" Name="NameDT" Nullable="true" />
+          <Property Type="String" Name="AddressDT" Nullable="true" />
+          <Property Type="String" Name="ImgDT" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DoiTacSP_Result">
+          <Property Type="String" Name="NameDT" Nullable="true" />
+          <Property Type="String" Name="AddressDT" Nullable="true" />
+          <Property Type="String" Name="ImgDT" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="FindConnectionID_Result">
+          <Property Type="String" Name="UserConn" Nullable="true" />
+          <Property Type="String" Name="StaffConn" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="FullInfoHistory_Result">
+          <Property Type="DateTime" Name="CallTime" Nullable="false" Precision="23" />
+          <Property Type="String" Name="RName" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Raddress" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Rlink" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="imgLink" Nullable="true" />
+          <Property Type="Int32" Name="RPhone" Nullable="false" />
+          <Property Type="Int32" Name="Num" Nullable="false" />
+          <Property Type="DateTime" Name="ETA" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ArriveTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="TrangThai1" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="Request" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="HoaDon" Nullable="false" />
+          <Property Type="String" Name="TrangThai2" Nullable="false" MaxLength="21" />
+        </ComplexType>
+        <ComplexType Name="FullInfoRestaurant_Result">
+          <Property Type="Int32" Name="PasgoRID" Nullable="false" />
+          <Property Type="String" Name="RName" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Rlink" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Rpromotion" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="Rstar" Nullable="false" />
+          <Property Type="Int32" Name="Rdollar" Nullable="false" />
+          <Property Type="String" Name="Raddress" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="Rcity" Nullable="false" />
+          <Property Type="String" Name="RLoaiHinh" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="RPhuHop" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="RKhongGian" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="RChoDeXe" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="RDacTrung" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="RThongTinThem" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="RGioiThieu" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="Rdate" Nullable="true" />
+          <Property Type="Int32" Name="RpromotionPercent" Nullable="false" />
+          <Property Type="String" Name="Rfeature" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="FullInfoUser_Result">
+          <Property Type="Int32" Name="PasgoID" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="DOB" Nullable="true" />
+          <Property Type="Boolean" Name="Gender_" Nullable="false" />
+          <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="15" />
+          <Property Type="Boolean" Name="PhoneConfrimed" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="EmailConfirmed" Nullable="false" />
+          <Property Type="String" Name="loai" Nullable="false" MaxLength="10" />
+          <Property Type="DateTime" Name="Locked" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="7" />
+        </ComplexType>
+        <ComplexType Name="getAllConn_Result">
+          <Property Type="Int32" Name="IdConnection" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="Conn" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetConversation_Result">
+          <Property Type="Int32" Name="IdConversation" Nullable="false" />
+          <Property Type="Int32" Name="IdUser" Nullable="false" />
+          <Property Type="Int32" Name="IdStaff" Nullable="false" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="DateTime" Name="Creat" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="Boolean" Name="NewMessage" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetConversationList_Result">
+          <Property Type="Int32" Name="IdConversation" Nullable="false" />
+          <Property Type="DateTime" Name="date" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="IdUser" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="DateTime" Name="Creat" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="NewMessage" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetUserInforSP_Result">
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DOB" Nullable="true" />
+          <Property Type="Boolean" Name="Gender_" Nullable="false" />
+          <Property Type="String" Name="Avatar" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="imgSlide_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Rlink" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="RName" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Rpromotion" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="imgLink" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="KhachhangSP_Result">
+          <Property Type="Int32" Name="IdKH" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Job" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Img" Nullable="true" />
+          <Property Type="String" Name="Review" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="KhamPhaSP_Result">
+          <Property Type="Int32" Name="IdBv" Nullable="false" />
+          <Property Type="String" Name="Img" Nullable="true" />
+          <Property Type="Int32" Name="Diadiem" Nullable="true" />
+          <Property Type="Int32" Name="Min" Nullable="true" />
+          <Property Type="Int32" Name="Max" Nullable="true" />
+          <Property Type="Double" Name="Rating" Nullable="true" />
+          <Property Type="String" Name="Promotion" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Name" Nullable="true" />
+          <Property Type="String" Name="LinkBv" Nullable="true" />
+          <Property Type="Int32" Name="City" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Login_Result">
+          <Property Type="Int32" Name="PasgoID" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DOB" Nullable="true" />
+          <Property Type="Boolean" Name="Gender_" Nullable="false" />
+          <Property Type="Int32" Name="Level" Nullable="false" />
+          <Property Type="DateTime" Name="Locked" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="MenuCatalogue_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="TenMenu" Nullable="false" />
+          <Property Type="Int32" Name="SoluongNH" Nullable="false" />
+          <Property Type="Int32" Name="ThanhPho" Nullable="false" />
+          <Property Type="String" Name="ImgLink" Nullable="false" />
+          <Property Type="String" Name="MenuLink" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="MoiNhatSP_Result">
+          <Property Type="Int32" Name="PasgoRID" Nullable="false" />
+          <Property Type="String" Name="RName" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Raddress" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Rlink" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="Rstar" Nullable="false" />
+          <Property Type="Int32" Name="Rdollar" Nullable="false" />
+          <Property Type="String" Name="Rpromotion" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Rfeature" Nullable="false" />
+          <Property Type="String" Name="imgLink" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PasgotvSP_Result">
+          <Property Type="Int32" Name="IdTV" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="true" />
+          <Property Type="String" Name="Tag" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TagLink" Nullable="true" />
+          <Property Type="String" Name="Img" Nullable="true" />
+          <Property Type="DateTime" Name="Date" Nullable="true" />
+          <Property Type="Int32" Name="Views" Nullable="true" />
+          <Property Type="String" Name="LinkTV" Nullable="true" />
+          <Property Type="String" Name="VideoTime" Nullable="true" MaxLength="4" />
+          <Property Type="Int32" Name="City" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SimpleHistory_Result">
+          <Property Type="DateTime" Name="ThoiGian" Nullable="false" Precision="23" />
+          <Property Type="String" Name="NhaHang" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="SoLuong" Nullable="false" />
+          <Property Type="String" Name="YeuCau" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="TrangThai" Nullable="false" MaxLength="21" />
+        </ComplexType>
+        <ComplexType Name="StaffList_Result">
+          <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="Level" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="test1_Result">
+          <Property Type="Int32" Name="IdConversation" Nullable="false" />
+          <Property Type="DateTime" Name="date" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="thongtinthemSP_Result">
+          <Property Type="String" Name="thuoctinh" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="val" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ThuocThuongHieuChuoi_Result">
+          <Property Type="Int32" Name="IdThuongHieu" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" />
+          <Property Type="String" Name="AddressDT" Nullable="true" />
+          <Property Type="String" Name="LinkTH" Nullable="true" />
+          <Property Type="String" Name="ImgDT" Nullable="true" />
+          <Property Type="String" Name="ImgTH" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UuDaiSP_Result">
+          <Property Type="Int32" Name="PasgoRID" Nullable="false" />
+          <Property Type="String" Name="RName" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Raddress" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Rlink" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="Rstar" Nullable="false" />
+          <Property Type="Int32" Name="Rdollar" Nullable="false" />
+          <Property Type="String" Name="Rpromotion" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Rfeature" Nullable="false" />
+          <Property Type="String" Name="imgLink" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UyTinSP_Result">
+          <Property Type="Int32" Name="PasgoRID" Nullable="false" />
+          <Property Type="String" Name="RName" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Raddress" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Rlink" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="Rstar" Nullable="false" />
+          <Property Type="Int32" Name="Rdollar" Nullable="false" />
+          <Property Type="String" Name="Rpromotion" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Rfeature" Nullable="false" />
+          <Property Type="String" Name="imgLink" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="StaffSearch_Result">
+          <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="Level" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SimpleRestaurant_Result">
+          <Property Type="Int64" Name="No" Nullable="true" />
+          <Property Type="Int32" Name="Code" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Promotion" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="City" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="APIsearch_Result">
+          <Property Type="String" Name="RName" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Raddress" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Rlink" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="imgLink" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SimpleUser_Result">
+          <Property Type="Int32" Name="PasgoID" Nullable="false" />
+          <Property Type="Int32" Name="Visitor" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Locked" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="7" />
+        </ComplexType>
+        <ComplexType Name="SearchChuoi_Result">
+          <Property Type="Int32" Name="IdThuongHieu" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" />
+          <Property Type="String" Name="AddressDT" Nullable="true" />
+          <Property Type="String" Name="LinkTH" Nullable="true" />
+          <Property Type="String" Name="ImgDT" Nullable="true" />
+          <Property Type="String" Name="ImgTH" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PasGoModelStoreContainer" CdmEntityContainer="PasGoEntities">
+          <EntitySetMapping Name="AnUongs">
+            <EntityTypeMapping TypeName="PasGoModel.AnUong">
+              <MappingFragment StoreEntitySet="AnUong">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nhahangID" ColumnName="nhahangID" />
+                <ScalarProperty Name="city" ColumnName="city" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BaiViets">
+            <EntityTypeMapping TypeName="PasGoModel.BaiViet">
+              <MappingFragment StoreEntitySet="BaiViet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Teaser" ColumnName="Teaser" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="PasGoModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CName" ColumnName="CName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConnectionIdDBs">
+            <EntityTypeMapping TypeName="PasGoModel.ConnectionIdDB">
+              <MappingFragment StoreEntitySet="ConnectionIdDB">
+                <ScalarProperty Name="IdConnection" ColumnName="IdConnection" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Conn" ColumnName="Conn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Conversations">
+            <EntityTypeMapping TypeName="PasGoModel.Conversation">
+              <MappingFragment StoreEntitySet="Conversation">
+                <ScalarProperty Name="IdConversation" ColumnName="IdConversation" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdStaff" ColumnName="IdStaff" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Creat" ColumnName="Creat" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NewMessage" ColumnName="NewMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HeaderSlides">
+            <EntityTypeMapping TypeName="PasGoModel.HeaderSlide">
+              <MappingFragment StoreEntitySet="HeaderSlide">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nhahangID" ColumnName="nhahangID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Histories">
+            <EntityTypeMapping TypeName="PasGoModel.History">
+              <MappingFragment StoreEntitySet="History">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IDuser" ColumnName="IDuser" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="PasgoRID" ColumnName="PasgoRID" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="CallTime" ColumnName="CallTime" />
+                <ScalarProperty Name="ETA" ColumnName="ETA" />
+                <ScalarProperty Name="ArriveTime" ColumnName="ArriveTime" />
+                <ScalarProperty Name="Request" ColumnName="Request" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="imgs">
+            <EntityTypeMapping TypeName="PasGoModel.img">
+              <MappingFragment StoreEntitySet="img">
+                <ScalarProperty Name="imgID" ColumnName="imgID" />
+                <ScalarProperty Name="imgLink" ColumnName="imgLink" />
+                <ScalarProperty Name="imgMoTa" ColumnName="imgMoTa" />
+                <ScalarProperty Name="imgType" ColumnName="imgType" />
+                <ScalarProperty Name="nhahangID" ColumnName="nhahangID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhachHangs">
+            <EntityTypeMapping TypeName="PasGoModel.KhachHang">
+              <MappingFragment StoreEntitySet="KhachHang">
+                <ScalarProperty Name="IdKH" ColumnName="IdKH" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="Review" ColumnName="Review" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhamPhas">
+            <EntityTypeMapping TypeName="PasGoModel.KhamPha">
+              <MappingFragment StoreEntitySet="KhamPha">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nhahangID" ColumnName="nhahangID" />
+                <ScalarProperty Name="baivietID" ColumnName="baivietID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhamPhaBvs">
+            <EntityTypeMapping TypeName="PasGoModel.KhamPhaBv">
+              <MappingFragment StoreEntitySet="KhamPhaBv">
+                <ScalarProperty Name="IdBv" ColumnName="IdBv" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="Diadiem" ColumnName="Diadiem" />
+                <ScalarProperty Name="Min" ColumnName="Min" />
+                <ScalarProperty Name="Max" ColumnName="Max" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Promotion" ColumnName="Promotion" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LinkBv" ColumnName="LinkBv" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="khuyenmais">
+            <EntityTypeMapping TypeName="PasGoModel.khuyenmai">
+              <MappingFragment StoreEntitySet="khuyenmai">
+                <ScalarProperty Name="kmID" ColumnName="kmID" />
+                <ScalarProperty Name="kmLoai" ColumnName="kmLoai" />
+                <ScalarProperty Name="kmNoiDung" ColumnName="kmNoiDung" />
+                <ScalarProperty Name="kmApDung" ColumnName="kmApDung" />
+                <ScalarProperty Name="nhahangID" ColumnName="nhahangID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="locs">
+            <EntityTypeMapping TypeName="PasGoModel.loc">
+              <MappingFragment StoreEntitySet="loc">
+                <ScalarProperty Name="locID" ColumnName="locID" />
+                <ScalarProperty Name="locDiaChi" ColumnName="locDiaChi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="PasGoModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TenMenu" ColumnName="TenMenu" />
+                <ScalarProperty Name="SoluongNH" ColumnName="SoluongNH" />
+                <ScalarProperty Name="ThanhPho" ColumnName="ThanhPho" />
+                <ScalarProperty Name="ImgLink" ColumnName="ImgLink" />
+                <ScalarProperty Name="MenuLink" ColumnName="MenuLink" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MoiNhats">
+            <EntityTypeMapping TypeName="PasGoModel.MoiNhat">
+              <MappingFragment StoreEntitySet="MoiNhat">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nhahangID" ColumnName="nhahangID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhaHangUyTins">
+            <EntityTypeMapping TypeName="PasGoModel.NhaHangUyTin">
+              <MappingFragment StoreEntitySet="NhaHangUyTin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nhahangID" ColumnName="nhahangID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PasgoRestaurants">
+            <EntityTypeMapping TypeName="PasGoModel.PasgoRestaurant">
+              <MappingFragment StoreEntitySet="PasgoRestaurant">
+                <ScalarProperty Name="PasgoRID" ColumnName="PasgoRID" />
+                <ScalarProperty Name="RName" ColumnName="RName" />
+                <ScalarProperty Name="Rlink" ColumnName="Rlink" />
+                <ScalarProperty Name="Rpromotion" ColumnName="Rpromotion" />
+                <ScalarProperty Name="Rstar" ColumnName="Rstar" />
+                <ScalarProperty Name="Rdollar" ColumnName="Rdollar" />
+                <ScalarProperty Name="Raddress" ColumnName="Raddress" />
+                <ScalarProperty Name="Rcity" ColumnName="Rcity" />
+                <ScalarProperty Name="RLoaiHinh" ColumnName="RLoaiHinh" />
+                <ScalarProperty Name="RPhuHop" ColumnName="RPhuHop" />
+                <ScalarProperty Name="RKhongGian" ColumnName="RKhongGian" />
+                <ScalarProperty Name="RChoDeXe" ColumnName="RChoDeXe" />
+                <ScalarProperty Name="RDacTrung" ColumnName="RDacTrung" />
+                <ScalarProperty Name="RThongTinThem" ColumnName="RThongTinThem" />
+                <ScalarProperty Name="RGioiThieu" ColumnName="RGioiThieu" />
+                <ScalarProperty Name="Rdate" ColumnName="Rdate" />
+                <ScalarProperty Name="RpromotionPercent" ColumnName="RpromotionPercent" />
+                <ScalarProperty Name="Rfeature" ColumnName="Rfeature" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PasgoTVs">
+            <EntityTypeMapping TypeName="PasGoModel.PasgoTV">
+              <MappingFragment StoreEntitySet="PasgoTV">
+                <ScalarProperty Name="IdTV" ColumnName="IdTV" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+                <ScalarProperty Name="TagLink" ColumnName="TagLink" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="LinkTV" ColumnName="LinkTV" />
+                <ScalarProperty Name="VideoTime" ColumnName="VideoTime" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PasgoUsers">
+            <EntityTypeMapping TypeName="PasGoModel.PasgoUser">
+              <MappingFragment StoreEntitySet="PasgoUser">
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="PasgoID" ColumnName="PasgoID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender_" ColumnName="Gender " />
+                <ScalarProperty Name="PhoneConfrimed" ColumnName="PhoneConfrimed" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="PasswordHashed" ColumnName="PasswordHashed" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Locked" ColumnName="Locked" />
+                <ScalarProperty Name="ConnectionIds_" ColumnName="ConnectionIds " />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PasgoVisitors">
+            <EntityTypeMapping TypeName="PasGoModel.PasgoVisitor">
+              <MappingFragment StoreEntitySet="PasgoVisitor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promotions">
+            <EntityTypeMapping TypeName="PasGoModel.Promotion">
+              <MappingFragment StoreEntitySet="Promotion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PName" ColumnName="PName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThuongHieuChuois">
+            <EntityTypeMapping TypeName="PasGoModel.ThuongHieuChuoi">
+              <MappingFragment StoreEntitySet="ThuongHieuChuoi">
+                <ScalarProperty Name="IdThuongHieu" ColumnName="IdThuongHieu" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Promotion" ColumnName="Promotion" />
+                <ScalarProperty Name="LinkTH" ColumnName="LinkTH" />
+                <ScalarProperty Name="ImgTH" ColumnName="ImgTH" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="NameDT" ColumnName="NameDT" />
+                <ScalarProperty Name="AddressDT" ColumnName="AddressDT" />
+                <ScalarProperty Name="ImgDT" ColumnName="ImgDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThuongHieuChuoiDS">
+            <EntityTypeMapping TypeName="PasGoModel.ThuongHieuChuoiD">
+              <MappingFragment StoreEntitySet="ThuongHieuChuoiDS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdThuongHieu" ColumnName="IdThuongHieu" />
+                <ScalarProperty Name="IdNhaHang" ColumnName="IdNhaHang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UuDaiHots">
+            <EntityTypeMapping TypeName="PasGoModel.UuDaiHot">
+              <MappingFragment StoreEntitySet="UuDaiHot">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nhahangID" ColumnName="nhahangID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chats">
+            <EntityTypeMapping TypeName="PasGoModel.Chat">
+              <MappingFragment StoreEntitySet="Chat">
+                <ScalarProperty Name="IdConversation" ColumnName="IdConversation" />
+                <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="DateSent" ColumnName="DateSent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="thongtinthems">
+            <EntityTypeMapping TypeName="PasGoModel.thongtinthem">
+              <MappingFragment StoreEntitySet="thongtinthem">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PhongRieng" ColumnName="PhongRieng" />
+                <ScalarProperty Name="GheTreEm" ColumnName="GheTreEm" />
+                <ScalarProperty Name="HutThuoc" ColumnName="HutThuoc" />
+                <ScalarProperty Name="Wifi" ColumnName="Wifi" />
+                <ScalarProperty Name="DieuHoa" ColumnName="DieuHoa" />
+                <ScalarProperty Name="Visa" ColumnName="Visa" />
+                <ScalarProperty Name="MayChieu" ColumnName="MayChieu" />
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="ChoChoi" ColumnName="ChoChoi" />
+                <ScalarProperty Name="HDtructiep" ColumnName="HDtructiep" />
+                <ScalarProperty Name="NgoaiTroi" ColumnName="NgoaiTroi" />
+                <ScalarProperty Name="ShipPasgo" ColumnName="ShipPasgo" />
+                <ScalarProperty Name="Karaoke" ColumnName="Karaoke" />
+                <ScalarProperty Name="SuKien" ColumnName="SuKien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddConnectionId" FunctionName="PasGoModel.Store.AddConnectionId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.AddConnectionId_Result">
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="ConnectionIds_" ColumnName="ConnectionIds " />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddConversation" FunctionName="PasGoModel.Store.AddConversation" />
+          <FunctionImportMapping FunctionImportName="allImg" FunctionName="PasGoModel.Store.allImg">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.allImg_Result">
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="imgID" ColumnName="imgID" />
+                <ScalarProperty Name="imgLink" ColumnName="imgLink" />
+                <ScalarProperty Name="imgMoTa" ColumnName="imgMoTa" />
+                <ScalarProperty Name="imgType" ColumnName="imgType" />
+                <ScalarProperty Name="nhahangID" ColumnName="nhahangID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AnUong2SP" FunctionName="PasGoModel.Store.AnUong2SP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.AnUong2SP_Result">
+                <ScalarProperty Name="PasgoRID" ColumnName="PasgoRID" />
+                <ScalarProperty Name="RName" ColumnName="RName" />
+                <ScalarProperty Name="Raddress" ColumnName="Raddress" />
+                <ScalarProperty Name="Rlink" ColumnName="Rlink" />
+                <ScalarProperty Name="Rstar" ColumnName="Rstar" />
+                <ScalarProperty Name="Rdollar" ColumnName="Rdollar" />
+                <ScalarProperty Name="Rpromotion" ColumnName="Rpromotion" />
+                <ScalarProperty Name="Rfeature" ColumnName="Rfeature" />
+                <ScalarProperty Name="imgLink" ColumnName="imgLink" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AnUongSP" FunctionName="PasGoModel.Store.AnUongSP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.AnUongSP_Result">
+                <ScalarProperty Name="PasgoRID" ColumnName="PasgoRID" />
+                <ScalarProperty Name="RName" ColumnName="RName" />
+                <ScalarProperty Name="Raddress" ColumnName="Raddress" />
+                <ScalarProperty Name="Rlink" ColumnName="Rlink" />
+                <ScalarProperty Name="Rstar" ColumnName="Rstar" />
+                <ScalarProperty Name="Rdollar" ColumnName="Rdollar" />
+                <ScalarProperty Name="Rpromotion" ColumnName="Rpromotion" />
+                <ScalarProperty Name="Rfeature" ColumnName="Rfeature" />
+                <ScalarProperty Name="imgLink" ColumnName="imgLink" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="APIsearch" FunctionName="PasGoModel.Store.APIsearch" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.APIsearch_Result">
+                <ScalarProperty Name="RName" ColumnName="RName" />
+                <ScalarProperty Name="Raddress" ColumnName="Raddress" />
+                <ScalarProperty Name="Rlink" ColumnName="Rlink" />
+                <ScalarProperty Name="imgLink" ColumnName="imgLink" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BaiVietSP" FunctionName="PasGoModel.Store.BaiVietSP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.BaiVietSP_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Teaser" ColumnName="Teaser" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ChatHistory" FunctionName="PasGoModel.Store.ChatHistory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.ChatHistory_Result">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="DateSent" ColumnName="DateSent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CheckUser" FunctionName="PasGoModel.Store.CheckUser" />
+          <FunctionImportMapping FunctionImportName="ChuoiThuongHieuSP" FunctionName="PasGoModel.Store.ChuoiThuongHieuSP">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DeleteConnection" FunctionName="PasGoModel.Store.DeleteConnection" />
+          <FunctionImportMapping FunctionImportName="DoiTacSP" FunctionName="PasGoModel.Store.DoiTacSP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.DoiTacSP_Result">
+                <ScalarProperty Name="NameDT" ColumnName="NameDT" />
+                <ScalarProperty Name="AddressDT" ColumnName="AddressDT" />
+                <ScalarProperty Name="ImgDT" ColumnName="ImgDT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FindConnectionID" FunctionName="PasGoModel.Store.FindConnectionID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.FindConnectionID_Result">
+                <ScalarProperty Name="UserConn" ColumnName="UserConn" />
+                <ScalarProperty Name="StaffConn" ColumnName="StaffConn" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FullInfoHistory" FunctionName="PasGoModel.Store.FullInfoHistory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.FullInfoHistory_Result">
+                <ScalarProperty Name="CallTime" ColumnName="CallTime" />
+                <ScalarProperty Name="RName" ColumnName="RName" />
+                <ScalarProperty Name="Raddress" ColumnName="Raddress" />
+                <ScalarProperty Name="Rlink" ColumnName="Rlink" />
+                <ScalarProperty Name="imgLink" ColumnName="imgLink" />
+                <ScalarProperty Name="RPhone" ColumnName="RPhone" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="ETA" ColumnName="ETA" />
+                <ScalarProperty Name="ArriveTime" ColumnName="ArriveTime" />
+                <ScalarProperty Name="TrangThai1" ColumnName="TrangThai1" />
+                <ScalarProperty Name="Request" ColumnName="Request" />
+                <ScalarProperty Name="HoaDon" ColumnName="HoaDon" />
+                <ScalarProperty Name="TrangThai2" ColumnName="TrangThai2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FullInfoRestaurant" FunctionName="PasGoModel.Store.FullInfoRestaurant">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FullInfoUser" FunctionName="PasGoModel.Store.FullInfoUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.FullInfoUser_Result">
+                <ScalarProperty Name="PasgoID" ColumnName="PasgoID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender_" ColumnName="Gender " />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneConfrimed" ColumnName="PhoneConfrimed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="loai" ColumnName="loai" />
+                <ScalarProperty Name="Locked" ColumnName="Locked" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getAllConn" FunctionName="PasGoModel.Store.getAllConn">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.getAllConn_Result">
+                <ScalarProperty Name="IdConnection" ColumnName="IdConnection" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Conn" ColumnName="Conn" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetConversation" FunctionName="PasGoModel.Store.GetConversation">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.GetConversation_Result">
+                <ScalarProperty Name="IdConversation" ColumnName="IdConversation" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdStaff" ColumnName="IdStaff" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Creat" ColumnName="Creat" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NewMessage" ColumnName="NewMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetConversationList" FunctionName="PasGoModel.Store.GetConversationList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.GetConversationList_Result">
+                <ScalarProperty Name="IdConversation" ColumnName="IdConversation" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Creat" ColumnName="Creat" />
+                <ScalarProperty Name="NewMessage" ColumnName="NewMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetUserInforSP" FunctionName="PasGoModel.Store.GetUserInforSP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.GetUserInforSP_Result">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender_" ColumnName="Gender " />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="imgSlide" FunctionName="PasGoModel.Store.imgSlide">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.imgSlide_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Rlink" ColumnName="Rlink" />
+                <ScalarProperty Name="RName" ColumnName="RName" />
+                <ScalarProperty Name="Rpromotion" ColumnName="Rpromotion" />
+                <ScalarProperty Name="imgLink" ColumnName="imgLink" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertUser" FunctionName="PasGoModel.Store.InsertUser" />
+          <FunctionImportMapping FunctionImportName="KhachhangSP" FunctionName="PasGoModel.Store.KhachhangSP">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="KhamPhaSP" FunctionName="PasGoModel.Store.KhamPhaSP">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LockUnlock" FunctionName="PasGoModel.Store.LockUnlock" />
+          <FunctionImportMapping FunctionImportName="Login" FunctionName="PasGoModel.Store.Login">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.Login_Result">
+                <ScalarProperty Name="PasgoID" ColumnName="PasgoID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender_" ColumnName="Gender " />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Locked" ColumnName="Locked" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MenuCatalogue" FunctionName="PasGoModel.Store.MenuCatalogue">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ModifyConnectionId" FunctionName="PasGoModel.Store.ModifyConnectionId" />
+          <FunctionImportMapping FunctionImportName="MoiNhatSP" FunctionName="PasGoModel.Store.MoiNhatSP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.MoiNhatSP_Result">
+                <ScalarProperty Name="PasgoRID" ColumnName="PasgoRID" />
+                <ScalarProperty Name="RName" ColumnName="RName" />
+                <ScalarProperty Name="Raddress" ColumnName="Raddress" />
+                <ScalarProperty Name="Rlink" ColumnName="Rlink" />
+                <ScalarProperty Name="Rstar" ColumnName="Rstar" />
+                <ScalarProperty Name="Rdollar" ColumnName="Rdollar" />
+                <ScalarProperty Name="Rpromotion" ColumnName="Rpromotion" />
+                <ScalarProperty Name="Rfeature" ColumnName="Rfeature" />
+                <ScalarProperty Name="imgLink" ColumnName="imgLink" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NewMessage" FunctionName="PasGoModel.Store.NewMessage" />
+          <FunctionImportMapping FunctionImportName="PasgotvSP" FunctionName="PasGoModel.Store.PasgotvSP">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Salt" FunctionName="PasGoModel.Store.Salt" />
+          <FunctionImportMapping FunctionImportName="SaveMessage" FunctionName="PasGoModel.Store.SaveMessage" />
+          <FunctionImportMapping FunctionImportName="SearchChuoi" FunctionName="PasGoModel.Store.SearchChuoi" >
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.ThuocThuongHieuChuoi_Result">
+                <ScalarProperty Name="IdThuongHieu" ColumnName="IdThuongHieu" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AddressDT" ColumnName="AddressDT" />
+                <ScalarProperty Name="LinkTH" ColumnName="LinkTH" />
+                <ScalarProperty Name="ImgDT" ColumnName="ImgDT" />
+                <ScalarProperty Name="ImgTH" ColumnName="ImgTH" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SimpleHistory" FunctionName="PasGoModel.Store.SimpleHistory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.SimpleHistory_Result">
+                <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+                <ScalarProperty Name="NhaHang" ColumnName="NhaHang" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="YeuCau" ColumnName="YeuCau" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SimpleRestaurant" FunctionName="PasGoModel.Store.SimpleRestaurant" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.SimpleRestaurant_Result">
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Promotion" ColumnName="Promotion" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SimpleUser" FunctionName="PasGoModel.Store.SimpleUser" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.SimpleUser_Result">
+                <ScalarProperty Name="PasgoID" ColumnName="PasgoID" />
+                <ScalarProperty Name="Visitor" ColumnName="Visitor" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Locked" ColumnName="Locked" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="StaffList" FunctionName="PasGoModel.Store.StaffList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.StaffList_Result">
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="StaffSearch" FunctionName="PasGoModel.Store.StaffSearch" >
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.StaffList_Result">
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="StaffSetLevels" FunctionName="PasGoModel.Store.StaffSetLevels" />
+          <FunctionImportMapping FunctionImportName="test1" FunctionName="PasGoModel.Store.test1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.test1_Result">
+                <ScalarProperty Name="IdConversation" ColumnName="IdConversation" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="thongtinthemSP" FunctionName="PasGoModel.Store.thongtinthemSP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.thongtinthemSP_Result">
+                <ScalarProperty Name="thuoctinh" ColumnName="thuoctinh" />
+                <ScalarProperty Name="val" ColumnName="val" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ThuocThuongHieuChuoi" FunctionName="PasGoModel.Store.ThuocThuongHieuChuoi">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.ThuocThuongHieuChuoi_Result">
+                <ScalarProperty Name="IdThuongHieu" ColumnName="IdThuongHieu" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AddressDT" ColumnName="AddressDT" />
+                <ScalarProperty Name="LinkTH" ColumnName="LinkTH" />
+                <ScalarProperty Name="ImgDT" ColumnName="ImgDT" />
+                <ScalarProperty Name="ImgTH" ColumnName="ImgTH" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateAccount" FunctionName="PasGoModel.Store.UpdateAccount" />
+          <FunctionImportMapping FunctionImportName="UpdateChuoi" FunctionName="PasGoModel.Store.UpdateChuoi" />
+          <FunctionImportMapping FunctionImportName="UpdateConversationStatus" FunctionName="PasGoModel.Store.UpdateConversationStatus" />
+          <FunctionImportMapping FunctionImportName="UpdateIMG" FunctionName="PasGoModel.Store.UpdateIMG" />
+          <FunctionImportMapping FunctionImportName="UpdateInsertImg" FunctionName="PasGoModel.Store.UpdateInsertImg" />
+          <FunctionImportMapping FunctionImportName="UpdateInsertRestaurantInfo" FunctionName="PasGoModel.Store.UpdateInsertRestaurantInfo" />
+          <FunctionImportMapping FunctionImportName="UpdatePassword" FunctionName="PasGoModel.Store.UpdatePassword" />
+          <FunctionImportMapping FunctionImportName="UpdateThongtinthem" FunctionName="PasGoModel.Store.UpdateThongtinthem" />
+          <FunctionImportMapping FunctionImportName="UpdateUserInfo" FunctionName="PasGoModel.Store.UpdateUserInfo" />
+          <FunctionImportMapping FunctionImportName="UuDaiSP" FunctionName="PasGoModel.Store.UuDaiSP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.UuDaiSP_Result">
+                <ScalarProperty Name="PasgoRID" ColumnName="PasgoRID" />
+                <ScalarProperty Name="RName" ColumnName="RName" />
+                <ScalarProperty Name="Raddress" ColumnName="Raddress" />
+                <ScalarProperty Name="Rlink" ColumnName="Rlink" />
+                <ScalarProperty Name="Rstar" ColumnName="Rstar" />
+                <ScalarProperty Name="Rdollar" ColumnName="Rdollar" />
+                <ScalarProperty Name="Rpromotion" ColumnName="Rpromotion" />
+                <ScalarProperty Name="Rfeature" ColumnName="Rfeature" />
+                <ScalarProperty Name="imgLink" ColumnName="imgLink" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UyTinSP" FunctionName="PasGoModel.Store.UyTinSP">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="PasGoModel.AnUongSP_Result">
+                <ScalarProperty Name="PasgoRID" ColumnName="PasgoRID" />
+                <ScalarProperty Name="RName" ColumnName="RName" />
+                <ScalarProperty Name="Raddress" ColumnName="Raddress" />
+                <ScalarProperty Name="Rlink" ColumnName="Rlink" />
+                <ScalarProperty Name="Rstar" ColumnName="Rstar" />
+                <ScalarProperty Name="Rdollar" ColumnName="Rdollar" />
+                <ScalarProperty Name="Rpromotion" ColumnName="Rpromotion" />
+                <ScalarProperty Name="Rfeature" ColumnName="Rfeature" />
+                <ScalarProperty Name="imgLink" ColumnName="imgLink" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateAvatar" FunctionName="PasGoModel.Store.UpdateAvatar" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

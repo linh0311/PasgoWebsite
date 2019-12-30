@@ -29,7 +29,7 @@ namespace WebApplication2
             public string date { get; set; }
         }
 
-        private PasGoEntities2 db = new PasGoEntities2();
+        private PasGoEntities db = new PasGoEntities();
         //Hub does not support session, pass query string here
         public override async Task OnConnected()
         {

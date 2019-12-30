@@ -16,9 +16,9 @@ namespace WebApplication2.Models
         public int IdConversation { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public int IdUser { get; set; }
+        public string Name { get; set; }
         public bool Status { get; set; }
         public System.DateTime Creat { get; set; }
-        public string Name { get; set; }
         public Nullable<bool> NewMessage { get; set; }
     }
 }

@@ -11,7 +11,7 @@
 function sendmessage(name, message, date) {
     $(".notification1").hide();
     $(".notification2").hide();
-    if (name == "@Session["FullName"]")
+    if (name == "@Session['FullName']")
     $('#discussion').append('<li class="chat-right"><span class="timestamp">' + htmlEncode(date) + '</span><br /><span>' + htmlEncode(message) + '</span><strong> :' + htmlEncode(name)
         + '</strong></li>');
             else

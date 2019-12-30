@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="69b91088185b4cfab5394b624bc24916" Name="Diagram1" ZoomLevel="80">
+        <EntityTypeShape EntityType="PasGoModel.AnUong" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.BaiViet" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.City" Width="1.5" PointX="0.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.ConnectionIdDB" Width="1.5" PointX="2.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.Conversation" Width="1.5" PointX="10" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.HeaderSlide" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.History" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.img" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.KhachHang" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.KhamPha" Width="1.5" PointX="8.25" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.KhamPhaBv" Width="1.5" PointX="6" PointY="37.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.khuyenmai" Width="1.5" PointX="5.25" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.loc" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.Menu" Width="1.5" PointX="8.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.MoiNhat" Width="1.5" PointX="5.25" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.NhaHangUyTin" Width="1.5" PointX="5.25" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.PasgoRestaurant" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.PasgoTV" Width="1.5" PointX="7.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.PasgoUser" Width="1.5" PointX="7.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.PasgoVisitor" Width="1.5" PointX="9.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.Promotion" Width="1.5" PointX="10.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.ThuongHieuChuoi" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.ThuongHieuChuoiD" Width="1.5" PointX="8.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.UuDaiHot" Width="1.5" PointX="5.25" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.Chat" Width="1.5" PointX="12.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PasGoModel.thongtinthem" Width="1.5" PointX="5.25" PointY="32.5" IsExpanded="true" />
+        <AssociationConnector Association="PasGoModel.FK_dbo_anuong_dbo_PasgoRestaurant_PasgoRID" ManuallyRouted="false" />
+        <AssociationConnector Association="PasGoModel.FK_dbo_PasgoRestaurant_dbo_City_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="PasGoModel.FK_dbo_Chat_dbo_Conversation_PasgoID" ManuallyRouted="false" />
+        <AssociationConnector Association="PasGoModel.FK_dbo_Conversation_dbo_PasgoUser_PasgoID" ManuallyRouted="false" />
+        <AssociationConnector Association="PasGoModel.FK_dbo_HeaderSlide_dbo_PasgoRestaurant_PasgoRID" ManuallyRouted="false" />
+        <AssociationConnector Association="PasGoModel.FK_dbo_History_dbo_PasgoRestaurant_PasgoRID" ManuallyRouted="false" />
+        <AssociationConnector Association="PasGoModel.FK_dbo_img_dbo_PasgoRestaurant_PasgoRID" ManuallyRouted="false" />
+        <AssociationConnector Association="PasGoModel.FK_dbo_KhamPha_dbo_KhamPhaBv_PasgoRID" ManuallyRouted="false" />
+        <AssociationConnector Association="PasGoModel.FK_dbo_KhamPha_dbo_PasgoRestaurant_PasgoRID" ManuallyRouted="false" />
+        <AssociationConnector Association="PasGoModel.FK_dbo_khuyenmai_dbo_PasgoRestaurant_PasgoRID" ManuallyRouted="false" />
+        <AssociationConnector Association="PasGoModel.FK_dbo_MoiNhat_dbo_PasgoRestaurant_PasgoRID" ManuallyRouted="false" />
+        <AssociationConnector Association="PasGoModel.FK_dbo_NhaHangUyTin_dbo_PasgoRestaurant_PasgoRID" ManuallyRouted="false" />
+        <AssociationConnector Association="PasGoModel.FK_dbo_thongitnthem_dbo_PasgoRestaurant_PasgoRID" ManuallyRouted="false" />
+        <AssociationConnector Association="PasGoModel.FK_dbo_ThuongHieuChuoiDS_dbo_PasgoRestaurant_PasgoRID" ManuallyRouted="false" />
+        <AssociationConnector Association="PasGoModel.FK_dbo_UuDaiHot_dbo_PasgoRestaurant_PasgoRID" ManuallyRouted="false" />
+        <AssociationConnector Association="PasGoModel.FK_dbo_ThuongHieuChuoiDS_dbo_ThuongHieuChuoi_PasgoRID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

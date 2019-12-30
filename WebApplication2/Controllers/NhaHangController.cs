@@ -9,7 +9,7 @@ namespace WebApplication2.Controllers
 {
     public class NhaHangController : Controller
     {
-        private PasGoEntities2 db = new PasGoEntities2();
+        private PasGoEntities db = new PasGoEntities();
         // GET: NhaHang
 
         public ActionResult Index()

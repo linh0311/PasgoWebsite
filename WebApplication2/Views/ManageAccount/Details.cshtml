@@ -19,11 +19,12 @@
                     <ul class="col-12 col-sm-4">
                         <li class="col-12 infor-tab">
                             <div class="col-12 col-sm-3 avatar">
-                                <img src="" alt="Smiley face">
+                                <img src=https://localhost:44389/Upload/Avatar/@{@Model.Avatar}   alt="Smiley face">
                             </div>
                             <div class="col-12 col-sm-9 pasgo-user-id">
                                 <p>ID Pasgo : @Session["PasgoID"]</p>
                                 <p>SĐT : @Session["PhoneNumber"]</p>
+                                <input value=@Session["PasgoID"] type="hidden" id="PasgoID" />
                             </div>
                         </li>
                         <li class="col-12 infor-tab">
@@ -55,6 +56,11 @@
                     <div class="col-12 col-sm-8">
 
                         <h1 class="col-12">THÔNG TIN TÀI KHOẢN</h1>
+                        <div class="col-12 infor-user">
+                            <label class="col-2">Avatar :</label>
+                            <input name="file" type="file" id="dir"/>
+                            <input type="button" id="Upload" value="Upload" onclick="UploadAvatar()"/>
+                        </div>
                         <div class="col-12 infor-user">
                             <label class="col-2">Tên :</label>
                             @Html.TextBoxFor(model => model.FullName, new { @class = "col-6" })

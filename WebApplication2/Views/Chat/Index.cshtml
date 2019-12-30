@@ -45,12 +45,13 @@
 
 </div>
 @section Scripts {
-    <script src="~/Scripts/Chat.js"></script>
     <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
     <script src="~/signalr/hubs"></script>
     <script>
         $(function () {
+            //$.connection.hub.logging = true;
             var chat = $.connection.chatHub;
+            
             //Client nhận tin
             chat.client.addNewMessageToPage = function (name, message, date) {
                 sendmessage(name, message, date);
@@ -78,6 +79,7 @@
                     var idconversation = null;
                     //Get history ver 2: List conversation with newest time/date
                 list();
+                console.log(getCookie("CurrentConversation"));
                 if (getCookie("CurrentConversation") != "none") {
                     chathistory(getCookie("CurrentConversation"));
                     idreceived = getCookie("CurrentIdreceived");

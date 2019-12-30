@@ -22,7 +22,7 @@ namespace WebApplication2.Models
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<int> Views { get; set; }
         public string LinkTV { get; set; }
-        public Nullable<int> City { get; set; }
         public string VideoTime { get; set; }
+        public Nullable<int> City { get; set; }
     }
 }

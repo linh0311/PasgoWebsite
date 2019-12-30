@@ -19,5 +19,8 @@ namespace WebApplication2.Models
         public string LinkTH { get; set; }
         public string ImgTH { get; set; }
         public Nullable<int> City { get; set; }
+        public string NameDT { get; set; }
+        public string AddressDT { get; set; }
+        public string ImgDT { get; set; }
     }
 }

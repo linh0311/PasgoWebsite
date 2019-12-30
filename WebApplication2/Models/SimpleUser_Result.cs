@@ -14,11 +14,11 @@ namespace WebApplication2.Models
     public partial class SimpleUser_Result
     {
         public int PasgoID { get; set; }
+        public int Visitor { get; set; }
         public string FullName { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public Nullable<System.DateTime> Locked { get; set; }
         public string Status { get; set; }
-        public int Visitor { get; set; }
     }
 }

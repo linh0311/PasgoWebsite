@@ -13,13 +13,13 @@ namespace WebApplication2.Models
     
     public partial class AnUongSP_Result
     {
+        public int PasgoRID { get; set; }
         public string RName { get; set; }
         public string Raddress { get; set; }
         public string Rlink { get; set; }
-        public Nullable<int> Rstar { get; set; }
-        public Nullable<int> Rdollar { get; set; }
+        public int Rstar { get; set; }
+        public int Rdollar { get; set; }
         public string Rpromotion { get; set; }
-        public int PasgoRID { get; set; }
         public string Rfeature { get; set; }
         public string imgLink { get; set; }
     }

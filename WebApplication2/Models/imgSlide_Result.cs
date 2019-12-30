@@ -14,9 +14,9 @@ namespace WebApplication2.Models
     public partial class imgSlide_Result
     {
         public int Id { get; set; }
+        public string Rlink { get; set; }
         public string RName { get; set; }
         public string Rpromotion { get; set; }
         public string imgLink { get; set; }
-        public string Rlink { get; set; }
     }
 }

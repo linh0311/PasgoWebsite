@@ -10,7 +10,7 @@ namespace WebApplication2.Controllers
     public class NhanVienController : Controller
     {
         //KhÔng nên sử dụng chung tài khoản SQL để query
-        private PasGoEntities2 db = new PasGoEntities2();
+        private PasGoEntities db = new PasGoEntities();
         // GET: NhanVien
         public ActionResult Index()
         {

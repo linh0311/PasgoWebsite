@@ -64,7 +64,7 @@
                     </ul>
 
                     <input type="text" id="message" name="idbox" placeholder="      Nhập tin nhắn" style="width: 80%; height: 50px; bottom: 0; float: left" disabled />
-                    <input type="submit" id="sendmessage" value="Gửi" style="margin-left: 5%; height: 50px; float: left; width: 10%" disabled/>
+                    <input type="submit" id="sendmessage" value="Gửi" style="margin-left: 5%; height: 50px; float: left; width: 10%" disabled />
                     <!--<input type="text" id="connId" name="connetionid" style="width: 50%" />Connected ID send
                     <input type="text" id="idconversation" name="idconversation" /> value get
                     <input type="hidden" id="friendconnId" style="width: 50%" value=Model.IdStaff />-->
@@ -73,13 +73,15 @@
         </div>
     </div>
 </div>
-    <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
-    <script src="~/signalr/hubs"></script>
-    <script>
+<script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+<script src="~/signalr/hubs"></script>
+<script>
         //can user render javascript based on conversation status -> better
-        $(function () {
+    $(function () {
+            $.connection.hub.logging = true;
                 //Kết nối tới hub bằng generated proxy
             var chat = $.connection.chatHub;
+            
                 //Chỉnh back end phải check trước khi lưu message
             chat.client.addListConversationToPage = function (id, name, date, status, idreceived) {
                 listconversation(id, name, date, status, idreceived);
@@ -108,16 +110,18 @@
                     if (e.which == 13)
                         $('#sendmessage').trigger("click");
                 });
+                console.log("Connecting.......");
                 //QueryString được gọi trước khi start conn
                 $.connection.hub.qs = { 'side': 'client' };
                 //Thiết lập kết nối với hub
                 $.connection.hub.start()
                     //Trạng thái: thành công.
                     .done(function () {
+                        console.log("Conencted to: " + $.connection.hub.id + " - with transport - " + $.connection.hub.transport.name);
                         var idreceived = null;
                         var idconversation = null;
                         list();
-                        console.log(getCookie("CurrentConversation"));
+                        //console.log(getCookie("CurrentConversation"));
                         if (getCookie("CurrentConversation") != "none") {
                             chathistory(getCookie("CurrentConversation"));
                             idreceived = getCookie("CurrentIdreceived");
@@ -125,6 +129,7 @@
                         }
                         //console.log("@Session["FullName"]");
                         chat.server.saveConnection(@Session["PasgoID"]);
+                        //console.log();
                         //$(".list-discussion").eq(0).addClass("activelist");
 
                         //Onclick each <li> element
@@ -147,6 +152,7 @@
                             setCookie("CurrentConversation", idconversation, 1);
                             setCookie("CurrentIdreceived", idreceived, 1);
                             chathistory(this.id);
+                            console.log(this.id);
                             $('#discussion').animate({ scrollTop: 99999999 }, 500);
                         });
 
@@ -196,8 +202,7 @@
                     $.each(result, function () {
                         var result = this;
                         chat.client.addListConversationToPage(result.IdConversation, result.Name, result.date, result.Status, result.IdUser);
-                    });
-                    console.log(status);
+                    });             
                 })
                 .fail(function (error) {
                     console.log('Error: ' + error);
@@ -234,16 +239,14 @@
         }
 
         function listconversation(id, name, date, status, idreceived) {
-            //active list / conversation open-close / 
+            //active list / conversation open-close /
             var addclass = "list-discussion";
-            if (htmlEncode(id) == getCookie("CurrentConversation")) 
+            if (htmlEncode(id) == getCookie("CurrentConversation"))
                 addclass = addclass + " activelist";
             if (htmlEncode(status) == "true")
                 addclass = addclass + " conversationopen";
             else
                 addClass = addclass + "conversationclose";
-            
-            if (hrml)
             if (htmlEncode(id) == getCookie("CurrentConversation")) {
                 if (htmlEncode(status) == "true")
                     $('#list-discussion').append('<li class="list-discussion conversationopen activelist" id="' + htmlEncode(id) + '" status="' + htmlEncode(status) + '" idreceived="' + htmlEncode(idreceived) + '">' + htmlEncode(name) + htmlEncode(date) + '</li>');
@@ -305,4 +308,4 @@
             var expires = "expires="+d.toUTCString();
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
         }
-    </script>
+</script>

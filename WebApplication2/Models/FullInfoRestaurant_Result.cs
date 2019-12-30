@@ -17,10 +17,10 @@ namespace WebApplication2.Models
         public string RName { get; set; }
         public string Rlink { get; set; }
         public string Rpromotion { get; set; }
-        public Nullable<int> Rstar { get; set; }
-        public Nullable<int> Rdollar { get; set; }
+        public int Rstar { get; set; }
+        public int Rdollar { get; set; }
         public string Raddress { get; set; }
-        public Nullable<int> Rcity { get; set; }
+        public int Rcity { get; set; }
         public string RLoaiHinh { get; set; }
         public string RPhuHop { get; set; }
         public string RKhongGian { get; set; }
@@ -29,7 +29,7 @@ namespace WebApplication2.Models
         public string RThongTinThem { get; set; }
         public string RGioiThieu { get; set; }
         public Nullable<System.DateTime> Rdate { get; set; }
-        public Nullable<int> RpromotionPercent { get; set; }
+        public int RpromotionPercent { get; set; }
         public string Rfeature { get; set; }
     }
 }

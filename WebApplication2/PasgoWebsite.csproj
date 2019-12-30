@@ -168,6 +168,8 @@
     <Compile Include="ChatHub.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\APIuserController.cs" />
+    <Compile Include="Controllers\ReservationController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -175,125 +177,146 @@
     <Compile Include="Controllers\NguoiDungController.cs" />
     <Compile Include="Controllers\NhaHangController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="CustomHtmlHelper\CustomHtmlHelpers.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AddConnectionId_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\allImg_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AnUong.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AnUong2SP_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AnUongSP_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\APIsearch_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BaiViet.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BaiVietSP_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Chat.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChatHistory_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChuoiThuongHieuSP_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\City.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ConnectionIdDB.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Conversation.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DoiTacSP_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FindConnectionID_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FullInfoHistory_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FullInfoRestaurant_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FullInfoUser_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\getAllConn_Result.cs">
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GetConversationList_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GetConversation_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GetUserInforSP_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HeaderSlide.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\History.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\img.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\imgSlide_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KhachHang.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KhachhangSP_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KhamPha.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KhamPhaBv.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KhamPhaSP_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\khuyenmai.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\loc.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Login_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Menu.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MenuCatalogue1_Result.cs">
       <DependentUpon>NhaHang.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MenuCatalogue_Result.cs">
+      <DependentUpon>NH.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\MoiNhat.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MoiNhatSP_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NH.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NH.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NH.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NH.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NH.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\NhaHang.Context.cs">
       <AutoGen>True</AutoGen>
@@ -311,40 +334,46 @@
       <DependentUpon>NhaHang.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\NhaHangUyTin.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PasgoRestaurant.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PasgoTV.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PasgotvSP_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PasgoUser.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PasgoVisitor.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Procedure_Result.cs">
       <DependentUpon>NhaHang.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Promotion.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SearchChuoi_Result.cs">
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SimpleHistory_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SimpleRestaurant_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SimpleUser_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StaffList_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StaffSearch_Result.cs">
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StaffSetLevels_Result.cs">
       <DependentUpon>NhaHang.tt</DependentUpon>
@@ -352,29 +381,32 @@
     <Compile Include="Models\StaffSetLevel_Result.cs">
       <DependentUpon>NhaHang.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\test1_Result.cs">
+      <DependentUpon>NH.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\thongtinthem.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\thongtinthemSP_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ThuocThuongHieuChuoi_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ThuongHieuChuoi.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ThuongHieuChuoiD.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UuDaiHot.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UuDaiSP_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UyTinSP_Result.cs">
-      <DependentUpon>NhaHang.tt</DependentUpon>
+      <DependentUpon>NH.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -388,16 +420,12 @@
     <Content Include="Assets\background2.jpg" />
     <Content Include="Assets\Images\2x-desktop-v2.png" />
     <Content Include="Assets\Images\2x-mobile.png" />
-    <Content Include="Assets\Images\359550_screenshots_20190829190106_1.jpg" />
     <Content Include="Assets\Images\amp-video\icon-video-pasgo.png" />
     <Content Include="Assets\Images\amp-video\play-icon.png" />
     <Content Include="Assets\Images\appstore.png" />
     <Content Include="Assets\Images\chat-now-green-v1.png" />
     <Content Include="Assets\Images\chat-now-red-v1.png" />
     <Content Include="Assets\Images\Chat\icon-pasgo.png" />
-    <Content Include="Assets\Images\download %281%29.png" />
-    <Content Include="Assets\Images\download %282%29.png" />
-    <Content Include="Assets\Images\download.png" />
     <Content Include="Assets\Images\gif\search-loading.gif" />
     <Content Include="Assets\Images\holder\img-holder-534x330.png" />
     <Content Include="Assets\Images\holder\img-holder-600x600.png" />
@@ -481,12 +509,9 @@
     <Content Include="Assets\Slide\TinTuc\gap-pasgo-tuyen-nhan-vien-cong-tac-vien-phong-dich-vu-khach-hang-500-1811070475.jpg" />
     <Content Include="Assets\Slide\TinTuc\tim-nha-hang-chat-luong-gan-nhat-tren-pasgo-nha-trang-500-1559324579.jpg" />
     <Content Include="bin\Antlr3.Runtime.dll" />
-    <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
-    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
     <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
     <Content Include="bin\Newtonsoft.Json.dll" />
-    <Content Include="bin\Newtonsoft.Json.xml" />
     <Content Include="bin\roslyn\csc.exe" />
     <Content Include="bin\roslyn\csi.exe" />
     <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
@@ -524,19 +549,12 @@
     <Content Include="bin\roslyn\vbc.exe" />
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
     <Content Include="bin\System.Web.Helpers.dll" />
-    <Content Include="bin\System.Web.Helpers.xml" />
     <Content Include="bin\System.Web.Mvc.dll" />
-    <Content Include="bin\System.Web.Mvc.xml" />
     <Content Include="bin\System.Web.Optimization.dll" />
-    <Content Include="bin\System.Web.Optimization.xml" />
     <Content Include="bin\System.Web.Razor.dll" />
-    <Content Include="bin\System.Web.Razor.xml" />
     <Content Include="bin\System.Web.WebPages.Deployment.dll" />
-    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
     <Content Include="bin\System.Web.WebPages.dll" />
     <Content Include="bin\System.Web.WebPages.Razor.dll" />
-    <Content Include="bin\System.Web.WebPages.Razor.xml" />
-    <Content Include="bin\System.Web.WebPages.xml" />
     <Content Include="bin\WebApplication2.dll" />
     <Content Include="bin\WebApplication2.pdb" />
     <Content Include="bin\WebGrease.dll" />
@@ -557,6 +575,17 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Grant.sql" />
+    <Content Include="Models\NH.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NH.edmx</DependentUpon>
+      <LastGenOutput>NH.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\NH.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NH.edmx</DependentUpon>
+      <LastGenOutput>NH.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\NhaHang.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>NhaHang.edmx</DependentUpon>
@@ -584,7 +613,6 @@
     <Content Include="bin\roslyn\vbc.rsp" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="bin\WebApplication2.dll.config" />
-    <Content Include="obj\Debug\build.force" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\WebApplication2.csproj.CopyComplete" />
     <Content Include="obj\Debug\WebApplication2.csprojAssemblyReference.cache" />
@@ -609,6 +637,14 @@
     <Content Include="Content\Admin\bootstrap-theme.min.css.map" />
     <Content Include="Content\Admin\bootstrap.css.map" />
     <Content Include="Content\Admin\bootstrap.min.css.map" />
+    <EntityDeploy Include="Models\NH.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NH.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\NH.edmx.diagram">
+      <DependentUpon>NH.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\Chat.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -691,6 +727,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="Upload\Avatar\" />
+    <Folder Include="Views\APIuser\" />
+    <Folder Include="Views\Reservation\" />
+    <Folder Include="Views\Upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

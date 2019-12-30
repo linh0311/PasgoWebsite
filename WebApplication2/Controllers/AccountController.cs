@@ -45,7 +45,7 @@ namespace WebApplication2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(Models.PasgoUser userModel)
         {
-            using(PasGoEntities2 db = new PasGoEntities2())
+            using(PasGoEntities db = new PasGoEntities())
             {
                 if (db.Salt(userModel.PhoneNumber).Count() == 0)
                 {
@@ -122,7 +122,7 @@ namespace WebApplication2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(Models.PasgoUser userModel)
         {
-            using(PasGoEntities2 db = new PasGoEntities2())
+            using(PasGoEntities db = new PasGoEntities())
             {
                 //Nên để thành 1 private riêng cho chức năng InsertUser
                 //Chuyển thành switch 

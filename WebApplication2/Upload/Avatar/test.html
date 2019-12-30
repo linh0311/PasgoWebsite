@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+	<form enctype="multipart/form-data">
+	    <label>
+	        Using JQuery
+	    </label>
+		</br>
+	    <input name="file" type="file" id="dir" />
+	    <input type="button" id="Upload" value="Upload" />
+	</form>
+	<script type="text/javascript">
+		$(function(){
+			$("#Upload").click(function(){
+				var formData = new FormData();
+				var fileDir = $("#dir")[0];
+				formData.append('fileDir', fileDir.files[0], 'chris.jpg');
+
+				$.ajax({
+	                url: 'https://localhost:44389/api/Upload',
+	                type: 'POST',
+	                data: formData,
+	                cache: false,
+	                contentType: false,
+	                processData: false,
+	                success: function(){
+	                	alert('Done!');
+	                }
+	            });
+			});
+		});
+
+	</script>
+</body>
+</html>

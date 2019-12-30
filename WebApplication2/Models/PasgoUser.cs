@@ -54,6 +54,7 @@ namespace WebApplication2.Models
         public int Level { get; set; }
         public Nullable<System.DateTime> Locked { get; set; }
         public string ConnectionIds_ { get; set; }
+        public string Avatar { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Conversation> Conversations { get; set; }

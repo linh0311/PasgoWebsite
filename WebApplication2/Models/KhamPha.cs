@@ -18,7 +18,7 @@ namespace WebApplication2.Models
         public Nullable<int> nhahangID { get; set; }
         public Nullable<int> baivietID { get; set; }
     
-        public virtual PasgoRestaurant PasgoRestaurant { get; set; }
         public virtual KhamPhaBv KhamPhaBv { get; set; }
+        public virtual PasgoRestaurant PasgoRestaurant { get; set; }
     }
 }

@@ -18,6 +18,6 @@ namespace WebApplication2.Models
         public string Name { get; set; }
         public string Address { get; set; }
         public string Promotion { get; set; }
-        public Nullable<int> City { get; set; }
+        public int City { get; set; }
     }
 }

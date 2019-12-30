@@ -4674,4 +4674,9 @@
     .activelist{
         border: 1px solid black !important;
     }
+    .avatar img{
+        border-radius: 20px;
+        width: 40px;
+        height: 40px;
+    }
 }

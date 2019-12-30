@@ -12,32 +12,63 @@ var fQuanId = document.getElementById("fQuanId");
 var btnsearchSlide = document.getElementById("btnsearchSlide");
 let blogteaser = document.querySelectorAll(".blog-teaser");
 
-function searchWebsite() {
-    var i = textSearch.value;
-    c = fQuanId.options[fQuanId.selectedIndex].value;
-    //r = fQuanId.options[fQuanId.selectedIndex].text;
-    n = "https://localhost:44389/api/APIuser?city=";
-    // n = "https://cors-anywhere.herokuapp.com/https://pasgo.vn/Search/SearchHeader/?keySearch=&typeName="
-    //m = "&typeName=";
-    m = "&keyword=";
+function UploadAvatar() {
+    getHost();
+    var formData = new FormData(),
+        fileDir = $("#dir")[0],
+        id = $("#PasgoID").val(),
+        n = getHost() + "api/Upload";
+    formData.append('img', fileDir.files[0]);    //id tra ve object [object]
+    formData.append('PasgoID', id);
+    formData.append('apikey', 'trantuanlinh');
+    //khong nen gan du lieu vao ten -> de bi rename
     $.ajax({
-        url: n + c + m + i ,
-        //url: n,
+        //localhost:44389/api/Upload    -   Cho deploy may khach
+        url: n,
+        type: 'POST',
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (x) {
+            alert(x.message);
+        },
+        statusCode: {
+            404: function (x) {
+                console.log(x.message + " / 404");
+            },
+            400: function (x) {
+                console.log(x.message + " / 400");
+            }
+        }
+        })
+}
+
+function searchWebsite() {
+    var i = textSearch.value,
+        c = fQuanId.options[fQuanId.selectedIndex].value,   
+        n = getHost() + "api/Search",
+        m = "&keyword=";
+    $.ajax({
+        url: n,
         data: {
-            // keySearch: i
-            //'id': c,
-            //'keyword': i
+            city: c,
+            keyword: i
         },
         dataType: "html",
         accept: "text/html",
         contentType: "text/html; charset=UTF-8",
         traditional: !0,
-        type: "POST",
+        type: "GET",
         success: function (n) {
             document.getElementById("result").innerHTML = n;
         }
 
     })
+}
+
+function getHost() {
+    return (window.location.protocol + "//" + window.location.hostname + (window.location.port ? ":" + window.location.port : "") + "/");
 }
 
 textSearch.addEventListener("keypress", function (event) {
@@ -363,66 +394,5 @@ function showSlides(n) {
     slides[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].className += " active";
     captionText.innerHTML = dots[slideIndex - 1].alt;
-}
-
-function chathistory(result) {
-    var chat = $.connection.chatHub;
-    $(".chat-right").remove();
-    $(".chat-left").remove();
-    $.each(result, function () {
-        var result = this;
-        chat.client.addNewMessageToPage(result.name, result.message, result.date, result.Status, result.IdUser);
-    });
-}
-
-function sendmessage(name, message, date) {
-    $(".notification1").hide();
-    $(".notification2").hide();
-    if (name == "@Session["FullName"]")
-    $('#discussion').append('<li class="chat-right"><span class="timestamp">' + htmlEncode(date) + '</span><br /><span>' + htmlEncode(message) + '</span><strong> :' + htmlEncode(name)
-        + '</strong></li>');
-            else
-    $('#discussion').append('<li class="chat-left"><span class="timestamp">' + htmlEncode(date) + '</span><br /><strong>' + htmlEncode(name)
-        + '</strong>:<span>' + htmlEncode(message) + '</span></li>');
-    $('#discussion').animate({ scrollTop: 99999999 }, 500);
-}
-
-function listconversation(id, name, date, status, idreceived) {
-    if (htmlEncode(status) == "true")
-        $('#list-discussion').append('<li class="list-discussion conversationopen" id="' + htmlEncode(id) + '" status="' + htmlEncode(status) + '" idreceived="' + htmlEncode(idreceived) + '">' + htmlEncode(name) + htmlEncode(date) + '</li>');
-    else
-        $('#list-discussion').append('<li class="list-discussion conversationclose" id="' + htmlEncode(id) + '" status="' + htmlEncode(status) + '" idreceived="' + htmlEncode(idreceived) + '">' + htmlEncode(name) + htmlEncode(date) + '</li>');
-}
-
-function notification(type) {
-    switch (type) {
-        case "1":
-            $(".notification1").hide();
-            $('#discussion').append('<li class="chat-middle notification1"><span>đang trả lời...</span></li>').children(':last').delay(3000).fadeOut(100);
-            break;
-        case "2":
-            $(".notification2").hide();
-            $('#discussion').append('<li class="chat-middle notification2"><span>Đã đọc</span></li>');
-            break;
-        case "3":
-            $(".notification2").hide();
-            $('#discussion').append('<li class="chat-middle notification2"><span>Không gửi được tin nhắn</span></li>');
-            break;
-        case "4":
-            $(".notification2").hide();
-            $('#discussion').append('<li class="chat-middle notification2"><span>Cuộc hội thoại đã kết thúc! Để được hỗ trợ hãy tạo hội thoại mới!</span></li>');
-            break;
-        default:
-            $(".notification2").hide();
-            $('#discussion').append('<li class="chat-middle notification2"><span>Đã gửi</span></li>');
-            break;
-    }
-    $('#discussion').animate({ scrollTop: 99999999 }, 500);
-}
-
-// This optional function html-encodes messages for display in the page.
-function htmlEncode(value) {
-    var encodedValue = $('<div />').text(value).html();
-    return encodedValue;
 }
 

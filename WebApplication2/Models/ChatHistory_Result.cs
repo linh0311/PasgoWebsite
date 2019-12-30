@@ -13,8 +13,8 @@ namespace WebApplication2.Models
     
     public partial class ChatHistory_Result
     {
+        public string FullName { get; set; }
         public string Message { get; set; }
         public System.DateTime DateSent { get; set; }
-        public string FullName { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace WebApplication2.Controllers
 {
     public class NguoiDungController : Controller
     {
-        private PasGoEntities2 db = new PasGoEntities2();
+        private PasGoEntities db = new PasGoEntities();
 
         public ActionResult Index()
         {

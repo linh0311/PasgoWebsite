@@ -17,5 +17,6 @@ namespace WebApplication2.Models
         public string Email { get; set; }
         public Nullable<System.DateTime> DOB { get; set; }
         public bool Gender_ { get; set; }
+        public string Avatar { get; set; }
     }
 }

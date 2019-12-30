@@ -13,11 +13,11 @@ namespace WebApplication2.Models
     
     public partial class allImg_Result
     {
-        public string imgLink { get; set; }
         public Nullable<long> No { get; set; }
+        public int imgID { get; set; }
+        public string imgLink { get; set; }
         public string imgMoTa { get; set; }
         public Nullable<int> imgType { get; set; }
         public int nhahangID { get; set; }
-        public int imgID { get; set; }
     }
 }
