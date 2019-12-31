@@ -43,6 +43,7 @@ namespace WebApplication2.Controllers
             Guid g = Guid.NewGuid();
             Dictionary<string, object> dict = new Dictionary<string, object>();
             int maxLength = 1024 * 1024 * 1;
+            System.Diagnostics.Trace.Write(HttpContext.Current.Request.ToString());
             //dat bien vao day, cuoi try check ok hoac fail
             try
             {
@@ -53,9 +54,9 @@ namespace WebApplication2.Controllers
                 //test gia tri di kem
                 foreach (string key in httprequest.Form)
                 {
-                    System.Diagnostics.Debug.WriteLine("key - "+ key + "/value : " + httprequest.Form[key]);
+                    System.Diagnostics.Debug.WriteLine("key - "+ key + "////////value : " + httprequest.Form[key]);
                 }
-
+                System.Diagnostics.Debug.WriteLine("oke1");
                 foreach (string file in httprequest.Files)
                 {
                     HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
@@ -82,12 +83,17 @@ namespace WebApplication2.Controllers
                             var mapPath = HttpContext.Current.Server.MapPath("~/Upload/Avatar/" + g.ToString() + extension);
                             postedFile.SaveAs(mapPath);
                         }
+                        System.Diagnostics.Debug.WriteLine("save it: " + g.ToString() + extension + "//in id: "+ pasgoid);
                         var cf = db.UpdateAvatar(pasgoid, g.ToString()+ extension);
-                        if(Convert.ToInt32(cf.ToList().ElementAt(0)) != 0)
+                        //db.UpdateAvatar(pasgoid, "adasdasd");
+                        //System.Diagnostics.Debug.WriteLine(rs.ToString());
+                        
+                        if (Convert.ToInt32(cf.ToList().ElementAt(0)) != 0)
                             dict.Add("message", string.Format("Upload ảnh thành công!"));
                         else
                             dict.Add("message", string.Format("Upload ảnh thất bại!"));
                         return Request.CreateResponse(HttpStatusCode.Created, dict);
+                        
                     }
                 }
                 dict.Add("message", string.Format("Chọn một ảnh!"));

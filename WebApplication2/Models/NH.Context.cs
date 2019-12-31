@@ -946,17 +946,17 @@ namespace WebApplication2.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AnUongSP_Result>("UyTinSP", cityParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> UpdateAvatar(Nullable<int> id, string avatarid)
+        public virtual ObjectResult<Nullable<int>> UpdateAvatar(Nullable<int> id, string avatar)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
                 new ObjectParameter("id", typeof(int));
     
-            var avataridParameter = avatarid != null ?
-                new ObjectParameter("avatarid", avatarid) :
-                new ObjectParameter("avatarid", typeof(string));
+            var avatarParameter = avatar != null ?
+                new ObjectParameter("avatar", avatar) :
+                new ObjectParameter("avatar", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("UpdateAvatar", idParameter, avataridParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("UpdateAvatar", idParameter, avatarParameter);
         }
     }
 }

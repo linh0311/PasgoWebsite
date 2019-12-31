@@ -11,27 +11,32 @@ namespace WebApplication2.Controllers
 
         public static String dataweek = "Monday:8h10-8h30/2h20-2h10;TuesDay:15h30-20h10;Friday:20h30-23h30";
         public static String datayear = "9/10;20/11;1/1;2/9";
+        public static String datatime = "10/10:8h00-10h30; 20/10:8h40-10-55";
         public static DateTime datetime = new DateTime(2019, 12, 31, 10, 5, 30);
         // GET: Reservation
-        public void CheckDayOfWeek()
+        public void CheckDayOfWeek(DateTime dateinput)
         {
             var DayOfWeek = datetime.ToString("dddd");
             string[] dayseperate = dataweek.Split(':', ';');
-            int arrindex = Array.IndexOf(dayseperate, DayOfWeek);
+            if (checkDay(dayseperate, DayOfWeek, dateinput))
+                System.Diagnostics.Trace.WriteLine("Can do!");
+            else
+                System.Diagnostics.Trace.WriteLine("Can not do!");
+        }
+
+        public Boolean checkDay(string[] dayseperate, string day, DateTime dateinput)
+        {
+            int arrindex = Array.IndexOf(dayseperate, day);
             if (arrindex != -1)
             {
                 string hour = dayseperate[arrindex + 1];
                 string[] hourseperate = hour.Split('h', '-', '/');
                 List<int> number = new List<int>();
-                foreach(string x in hourseperate)
-                {
+                foreach (string x in hourseperate)
                     number.Add(Convert.ToInt32(x));
-                }
-                if (checkTime(number, datetime.TimeOfDay))
-                    Console.WriteLine("Time ok!");
-                else
-                    Console.WriteLine("TIme not ok!");
+                return checkTime(number, dateinput.TimeOfDay);
             }
+            return false;
         }
 
         public Boolean checkTime(List<int> list, TimeSpan timecheck)
@@ -47,11 +52,34 @@ namespace WebApplication2.Controllers
             return result;
         }
 
-        public void CheckDayOfYear()
+        public void CheckDayOfMonth(DateTime input)
         {
-            var DayOfYear = datetime.Date;
-            string exampleDate = "9/10";
-            DateTime oDate = DateTime.ParseExact(exampleDate, "dd/MM"
+            var DayOfYear = input.Date;
+            string[] dayseperate = datayear.Split(';');
+            // string exampleDate = "31/12";
+            foreach (var day in dayseperate)
+            {
+                DateTime date = DateTime.ParseExact(day, "dd/MM", null);
+                if (DateTime.Compare(date, DayOfYear) == 0)
+                {
+                    Console.WriteLine("Cant do!");
+                }
+            }
+        }
+
+        public void CheckTimeOfDay(DateTime dateinput)
+        {
+            var DayOfYear = datetime.Date.ToString("dd/MM");
+            string[] dayseperate = datatime.Split(';',':');
+            if (checkDay(dayseperate, DayOfYear, dateinput))
+                System.Diagnostics.Trace.WriteLine("Can do!");
+            else
+                System.Diagnostics.Trace.WriteLine("Can not do!");
+        }
+
+        public ActionResult Index()
+        {
+            return View();
         }
     }
 }

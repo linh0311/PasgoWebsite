@@ -17,7 +17,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <IISExpressSSLPort>44389</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -724,12 +724,12 @@
     <Content Include="Views\API\APIresultNhaHang1.cshtml" />
     <Content Include="Views\Chat\Index.cshtml" />
     <Content Include="Views\ManageAccount\Chat.cshtml" />
+    <Content Include="Views\Reservation\Reservation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Upload\Avatar\" />
     <Folder Include="Views\APIuser\" />
-    <Folder Include="Views\Reservation\" />
     <Folder Include="Views\Upload\" />
   </ItemGroup>
   <ItemGroup>

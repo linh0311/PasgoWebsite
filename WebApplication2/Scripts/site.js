@@ -23,7 +23,6 @@ function UploadAvatar() {
     formData.append('apikey', 'trantuanlinh');
     //khong nen gan du lieu vao ten -> de bi rename
     $.ajax({
-        //localhost:44389/api/Upload    -   Cho deploy may khach
         url: n,
         type: 'POST',
         data: formData,

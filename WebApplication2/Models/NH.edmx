@@ -702,7 +702,7 @@ warning 6002: The table/view 'PasGo.dbo.thongtinthem' does not have a primary ke
         </Function>
         <Function Name="UpdateAvatar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
-          <Parameter Name="avatarid" Type="varchar" Mode="In" />
+          <Parameter Name="avatar" Type="varchar" Mode="In" />
         </Function>
         <Function Name="UpdateChuoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nhahang" Type="int" Mode="In" />
@@ -1805,7 +1805,7 @@ warning 6002: The table/view 'PasGo.dbo.thongtinthem' does not have a primary ke
           </FunctionImport>
           <FunctionImport Name="UpdateAvatar" ReturnType="Collection(Int32)">
             <Parameter Name="id" Mode="In" Type="Int32" />
-            <Parameter Name="avatarid" Mode="In" Type="String" />
+            <Parameter Name="avatar" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="AddConnectionId_Result">

@@ -25,6 +25,8 @@ namespace WebApplication2.Controllers
             {
                 result.Add(rs);
             }
+            var x = db.UpdateAvatar(1, "asdasdas");
+            System.Diagnostics.Trace.WriteLine(x.ToList().ElementAt(0));
             return PartialView("SlideShow", result.ToArray());
         }
 
